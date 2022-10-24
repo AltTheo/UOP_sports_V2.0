@@ -1,0 +1,226 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:sport_test/registerScreen.dart';
+import 'package:sport_test/Nav.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<StatefulWidget> createState() => HomePageState();
+}
+
+class HomePageState extends State<HomePage> {
+  // Initialize the firebase app
+
+  Future<FirebaseApp> _initializeFirebase() async {
+    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    return firebaseApp;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: FutureBuilder(
+        future: _initializeFirebase(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return const loginScreen();
+          }
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Colors.purple,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class loginScreen extends StatefulWidget {
+  const loginScreen({super.key});
+
+  @override
+  State<StatefulWidget> createState() => loginState();
+}
+
+class loginState extends State<loginScreen> {
+    bool passwordVisible = true;
+// Login Function
+  static Future<User?> loginUsingEmailPassword(
+      {required String email,
+      required String password,
+      required BuildContext context}) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      user = userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "user-not-found") {
+        print("No user found for that email");
+      } else if (e.code == "invalid-email") {
+        print("Please enter the correct email");
+      } else if (e.code == "wrong-password") {
+        print("The password is incorrect");
+      }
+    }
+    return user;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+
+    return Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('App ',
+                textHeightBehavior:
+                    TextHeightBehavior(applyHeightToFirstAscent: true),
+                style: TextStyle(
+                    color: Colors.purple,
+                    fontSize: 44.0,
+                    fontWeight: FontWeight.bold)),
+            const Text(
+              'Login',
+              style: TextStyle(
+                  color: Colors.purple,
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(
+              height: 32.0,
+            ),
+            TextFormField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                    // errorText: 'Please enter your Email',
+                    // errorStyle: TextStyle(color: Colors.red),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                    hintText: 'email address',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    prefixIcon: Padding(
+                        padding: EdgeInsetsDirectional.only(start: 12.0),
+                        child:
+                            Icon(Icons.email_rounded, color: Colors.purple)))),
+            const SizedBox(height: 34.0),
+            TextFormField(
+              controller: passwordController,
+              obscureText: passwordVisible,
+              obscuringCharacter: '*',
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                // errorText: 'Please Enter your password',
+                // errorStyle: TextStyle(color: Colors.red),
+                border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                hintText: 'password',
+                // focusedBorder: OutlineInputBorder(
+                //     borderRadius: BorderRadius.circular(14.0),
+                //     borderSide: const BorderSide(color: Colors.black)),
+                hintStyle: const TextStyle(color: Colors.grey),
+                prefixIcon: const Padding(
+                    padding: EdgeInsetsDirectional.only(start: 15.0),
+                    child:
+                        Icon(Icons.lock_outline_rounded, color: Colors.purple)),
+                suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        passwordVisible = !passwordVisible;
+                      });
+                    },
+                    icon: Icon(passwordVisible
+                        ? Icons.visibility_rounded
+                        : Icons.visibility_off_rounded)),
+              ),
+            ),
+            const SizedBox(
+              height: 12.0,
+            ),
+            GestureDetector(
+              onTap: () {
+                // Navigator.of(context).pushReplacement(
+                // MaterialPageRoute(builder: (context) => ));
+                if (kDebugMode) {
+                  print('changing password');
+                }
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  Text(
+                    "Forgot password ?",
+                    style: TextStyle(color: Colors.lightBlue),
+                  )
+                ],
+              ),
+            ),
+            const SizedBox(height: 43.0),
+            Container(
+                width: double.infinity,
+                height: 51.0,
+                child: RawMaterialButton(
+                  fillColor: Colors.purple,
+                  splashColor: const Color.fromARGB(255, 200, 129, 212),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12.0)),
+                  enableFeedback: true,
+                  onPressed: () async {
+                    User? user = await loginUsingEmailPassword(
+                        email: emailController.text,
+                        password: passwordController.text,
+                        context: context);
+                    print(user);
+                    if (emailController.text.isEmpty &&
+                        passwordController.text.isEmpty) {}
+                    if (user != null) {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => Nav()));
+                    }
+                  },
+                  child: const Text(
+                    'Login',
+                    style:
+                        TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+                  ),
+                )),
+            const SizedBox(
+              height: 50.0,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const RegPage()));
+                if (kDebugMode) {
+                  print('Registering new user');
+                }
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  Text("Don't have an account, "),
+                          Text(" Register,",
+                      style: TextStyle(
+                          color: Colors.lightBlue,
+                          decoration: TextDecoration.underline))
+                ],
+              ),
+            )
+          ],
+        ));
+  }
+}
