@@ -43,14 +43,12 @@ class RegPageState extends State<RegPage> {
 class Register extends StatefulWidget {
   const Register({super.key});
 
-
   @override
   State<StatefulWidget> createState() => RegisterState();
 }
 
 class RegisterState extends State<Register> {
   bool passwordVisible = true;
-
 
 
   static Future<User?> loginUsingEmailPassword(
@@ -121,7 +119,7 @@ class RegisterState extends State<Register> {
           const SizedBox(
             height: 23.0,
           ),
-          TextFormField(
+          TextField(
               obscureText: passwordVisible,
               obscuringCharacter: '*',
               controller: newPasswordController,
@@ -137,16 +135,10 @@ class RegisterState extends State<Register> {
                     padding: EdgeInsetsDirectional.only(start: 15.0),
                     child:
                         Icon(Icons.lock_outline_rounded, color: Colors.purple)),
-                suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        passwordVisible = !passwordVisible;
-                      });
-                    },
-                    icon: Icon(passwordVisible
-                        ? Icons.visibility_rounded
-                        : Icons.visibility_off_rounded)),
-              )),
+                suffixIcon: InkWell(
+                    onTap: toggleVisibility,
+                    child: const Icon(Icons.visibility_rounded),
+              ))),
           const SizedBox(
             height: 23.0,
           ),
@@ -175,7 +167,7 @@ class RegisterState extends State<Register> {
                 fillColor: Colors.purple,
                 splashColor: const Color.fromARGB(255, 200, 129, 212),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0)),
+                    borderRadius: BorderRadius.circular(15.0)),
                 enableFeedback: true,
                 onPressed: () async {
                   User? user = await loginUsingEmailPassword(
@@ -224,5 +216,10 @@ class RegisterState extends State<Register> {
         ],
       ),
     );
+  }
+  void toggleVisibility() {
+    setState(() {
+      passwordVisible = !passwordVisible;
+    });
   }
 }

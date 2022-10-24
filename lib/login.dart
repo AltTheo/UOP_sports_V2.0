@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sport_test/registerScreen.dart';
 import 'package:sport_test/Nav.dart';
+import 'package:sport_test/reset.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -151,8 +152,8 @@ class LoginState extends State<LoginScreen> {
             ),
             GestureDetector(
               onTap: () {
-                // Navigator.of(context).pushReplacement(
-                // MaterialPageRoute(builder: (context) => ));
+                Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const ResetScreen()));
                 if (kDebugMode) {
                   print('changing password');
                 }
@@ -209,7 +210,7 @@ class LoginState extends State<LoginScreen> {
                 }
               },
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
                   Text("Don't have an account, "),
