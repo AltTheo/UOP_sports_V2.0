@@ -4,10 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-
 class ResetPage extends StatefulWidget {
   const ResetPage({super.key});
-
 
   @override
   State<StatefulWidget> createState() => ResetState();
@@ -41,6 +39,7 @@ class ResetState extends State<ResetPage> {
     );
   }
 }
+
 class ResetScreen extends StatefulWidget {
   const ResetScreen({super.key});
 
@@ -49,29 +48,9 @@ class ResetScreen extends StatefulWidget {
 }
 
 class ResetScreenState extends State<ResetScreen> {
+  late String userEmail;
+  final auth = FirebaseAuth.instance;
 
-  static Future<User?> loginUsingEmailPassword(
-      {required String email,
-      required String password,
-      required BuildContext context}) async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    User? user;
-    try {
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      user = userCredential.user;
-    } on FirebaseAuthException catch (e) {
-      if (e.code == "user-not-found") {
-        print("No user found for that email");
-      } else if (e.code == "invalid-email") {
-        print("Please enter the correct email");
-      } else if (e.code == "wrong-password") {
-        print("The password is incorrect");
-      }
-    }
-    return user;
-  }
-  
   @override
   Widget build(BuildContext context) {
     TextEditingController resetPassEmail = TextEditingController();
@@ -105,7 +84,10 @@ class ResetScreenState extends State<ResetScreen> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0)),
                   enableFeedback: true,
-                  onPressed: () {},
+                  onPressed: () {
+                    auth.sendPasswordResetEmail(email: userEmail);
+                    Navigator.of(context).pop();
+                  },
                   child: const Text(
                     'Send Request',
                     style:
