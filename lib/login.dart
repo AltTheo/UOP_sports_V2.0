@@ -28,7 +28,7 @@ class HomePageState extends State<HomePage> {
         future: _initializeFirebase(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return const loginScreen();
+            return const LoginScreen();
           }
           return const Center(
             child: CircularProgressIndicator(
@@ -41,14 +41,14 @@ class HomePageState extends State<HomePage> {
   }
 }
 
-class loginScreen extends StatefulWidget {
-  const loginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<StatefulWidget> createState() => loginState();
+  State<StatefulWidget> createState() => LoginState();
 }
 
-class loginState extends State<loginScreen> {
+class LoginState extends State<LoginScreen> {
     bool passwordVisible = true;
 // Login Function
   static Future<User?> loginUsingEmailPassword(

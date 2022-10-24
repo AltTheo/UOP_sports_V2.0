@@ -8,7 +8,7 @@ class Activity extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Activity'),
+        title: const Text('Activity'),
         backgroundColor: Colors.purple,
         
       ),

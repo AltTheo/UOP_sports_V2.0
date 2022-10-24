@@ -27,7 +27,7 @@ class RegPageState extends State<RegPage> {
         future: _initializeFirebase(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return const register();
+            return const Register();
           }
           return const Center(
             child: CircularProgressIndicator(
@@ -40,14 +40,15 @@ class RegPageState extends State<RegPage> {
   }
 }
 
-class register extends StatefulWidget {
-  const register({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
+
 
   @override
-  State<StatefulWidget> createState() => registerState();
+  State<StatefulWidget> createState() => RegisterState();
 }
 
-class registerState extends State<register> {
+class RegisterState extends State<Register> {
   bool passwordVisible = true;
 
 
@@ -64,7 +65,9 @@ class registerState extends State<register> {
       user = userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == "user-not-found") {
-        print("No user found for that email");
+        if (kDebugMode) {
+          print("No user found for that email");
+        }
       }
     }
     return user;

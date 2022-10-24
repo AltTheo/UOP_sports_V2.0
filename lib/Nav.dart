@@ -7,6 +7,8 @@ import 'AccountScreen.dart';
 import 'BookingScreen.dart';
 
 class Nav extends StatefulWidget {
+  const Nav({super.key});
+
   @override
   State<StatefulWidget> createState() => NavState();
 }
@@ -14,7 +16,7 @@ class Nav extends StatefulWidget {
 class NavState extends State<Nav> {
   int selectedIndex = 0;
   List<Widget> widgetOptions = <Widget>[
-    HomeScreen(),
+    const HomeScreen(),
     const BookingScreen(),
     const Activity(),
     Accounts(),

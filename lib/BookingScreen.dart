@@ -8,7 +8,7 @@ class BookingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bookings'),
+        title: const Text('Bookings'),
         backgroundColor: Colors.purple,
       ),
       floatingActionButton: FloatingActionButton(
