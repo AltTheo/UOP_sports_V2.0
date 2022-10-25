@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sport_test/login.dart';
-import 'package:sport_test/verifyScreen.dart';
+import 'package:sport_test/screens/verifyScreen.dart';
 
 class RegPage extends StatefulWidget {
   const RegPage({super.key});

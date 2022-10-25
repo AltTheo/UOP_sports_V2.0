@@ -10,6 +10,7 @@ class BookingScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Bookings'),
         backgroundColor: Colors.purple,
+        centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

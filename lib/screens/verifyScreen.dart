@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:sport_test/HomeScreen.dart';
+import 'package:sport_test/screens/HomeScreen.dart';
 
 // ignore: camel_case_types
 class verifyScreen extends StatefulWidget {

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sport_test/Activity.dart';
-import 'package:sport_test/HomeScreen.dart';
+import 'package:sport_test/screens/Activity.dart';
+import 'package:sport_test/screens/HomeScreen.dart';
 
-import 'AccountScreen.dart';
-import 'BookingScreen.dart';
+import 'screens/AccountScreen.dart';
+import 'screens/BookingScreen.dart';
 
 class Nav extends StatefulWidget {
   const Nav({super.key});
@@ -35,21 +35,20 @@ class NavState extends State<Nav> {
         //     title: Text('Bottom NavBar'), backgroundColor: Colors.purple),
         body: Center(child: widgetOptions.elementAt(selectedIndex)),
         bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home_rounded), label: 'home'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.timer_outlined), label: 'Bookings'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.local_activity_outlined), label: 'Activity'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline_sharp), label: 'Account')
-          ],
-          currentIndex: selectedIndex,
-          onTap: onItemTapped,
-          fixedColor: Colors.purple,
-          landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
-          type: BottomNavigationBarType.fixed
-        ));
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.dashboard_outlined), label: 'home'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.timer_outlined), label: 'Bookings'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.auto_graph_rounded), label: 'Activity'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person_outline_sharp), label: 'Account')
+            ],
+            currentIndex: selectedIndex,
+            onTap: onItemTapped,
+            fixedColor: Colors.purple,
+            landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
+            type: BottomNavigationBarType.fixed));
   }
 }
