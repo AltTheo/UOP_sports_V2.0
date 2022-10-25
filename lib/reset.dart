@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:sport_test/login.dart';
 
 class ResetPage extends StatefulWidget {
   const ResetPage({super.key});
@@ -48,8 +49,11 @@ class ResetScreen extends StatefulWidget {
 }
 
 class ResetScreenState extends State<ResetScreen> {
-  late String userEmail;
   final auth = FirebaseAuth.instance;
+
+  Future<void> resetPassword(String email) async {
+    await auth.sendPasswordResetEmail(email: email);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +79,7 @@ class ResetScreenState extends State<ResetScreen> {
                         child:
                             Icon(Icons.email_rounded, color: Colors.purple)))),
             const SizedBox(height: 43.0),
-            Container(
+            SizedBox(
                 width: double.infinity,
                 height: 51.0,
                 child: RawMaterialButton(
@@ -85,8 +89,9 @@ class ResetScreenState extends State<ResetScreen> {
                       borderRadius: BorderRadius.circular(12.0)),
                   enableFeedback: true,
                   onPressed: () {
-                    auth.sendPasswordResetEmail(email: userEmail);
-                    Navigator.of(context).pop();
+                    resetPassword(resetPassEmail.text);
+                    Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => const HomePage()));
                   },
                   child: const Text(
                     'Send Request',

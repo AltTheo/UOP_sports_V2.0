@@ -153,7 +153,7 @@ class LoginState extends State<LoginScreen> {
             GestureDetector(
               onTap: () {
                 Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => const ResetScreen()));
+                MaterialPageRoute(builder: (context) => const ResetPage()));
                 if (kDebugMode) {
                   print('changing password');
                 }
@@ -210,7 +210,7 @@ class LoginState extends State<LoginScreen> {
                 }
               },
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
                   Text("Don't have an account, "),
