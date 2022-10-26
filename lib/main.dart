@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sport_test/Nav.dart';
-import 'package:sport_test/screens/registerScreen.dart';
-import 'package:sport_test/screens/reset.dart';
+import 'package:sport_test/login.dart';
 // import 'package:flutter/cupertino.dart';
 
-import 'login.dart';
 // import 'login.dart';
 
 void main() {
@@ -16,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(title: 'application', home: Nav());
+    return const MaterialApp(title: 'application', home: HomePage());
   }
 }
 

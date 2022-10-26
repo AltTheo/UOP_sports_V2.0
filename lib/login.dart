@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sport_test/screens/registerScreen.dart';
@@ -50,7 +49,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginState extends State<LoginScreen> {
-    bool passwordVisible = true;
+  bool passwordVisible = true;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
 // Login Function
   static Future<User?> loginUsingEmailPassword(
       {required String email,
@@ -76,9 +78,6 @@ class LoginState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-
     return Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -106,7 +105,7 @@ class LoginState extends State<LoginScreen> {
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
-                    // errorText: 'Please enter your Email',
+                    // errorText: '',
                     // errorStyle: TextStyle(color: Colors.red),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(14.0))),
@@ -153,7 +152,7 @@ class LoginState extends State<LoginScreen> {
             GestureDetector(
               onTap: () {
                 Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => const ResetPage()));
+                    MaterialPageRoute(builder: (context) => const ResetPage()));
                 if (kDebugMode) {
                   print('changing password');
                 }
@@ -214,7 +213,7 @@ class LoginState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
                   Text("Don't have an account, "),
-                          Text(" Register,",
+                  Text(" Register,",
                       style: TextStyle(
                           color: Colors.lightBlue,
                           decoration: TextDecoration.underline))
