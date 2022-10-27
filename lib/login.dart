@@ -52,6 +52,8 @@ class LoginState extends State<LoginScreen> {
   bool passwordVisible = true;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  GlobalKey<FormState> emailKey = GlobalKey();
+  GlobalKey<FormState> passwordKey = GlobalKey();
 
 // Login Function
   static Future<User?> loginUsingEmailPassword(
@@ -101,26 +103,43 @@ class LoginState extends State<LoginScreen> {
             const SizedBox(
               height: 32.0,
             ),
-            TextFormField(
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                    // errorText: '',
-                    // errorStyle: TextStyle(color: Colors.red),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(14.0))),
-                    hintText: 'email address',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    prefixIcon: Padding(
-                        padding: EdgeInsetsDirectional.only(start: 12.0),
-                        child:
-                            Icon(Icons.email_rounded, color: Colors.purple)))),
+            Form(
+                key: emailKey,
+                child: TextFormField(
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (emailText) {
+                      if (emailText == null|| emailText.isEmpty) {
+                        return 'please enter your email';
+                      }
+                      return null;
+                    },
+                    decoration: const InputDecoration(
+                        // errorText: '',
+                        // errorStyle: TextStyle(color: Colors.red),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(14.0))),
+                        hintText: 'email address',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        prefixIcon: Padding(
+                            padding: EdgeInsetsDirectional.only(start: 12.0),
+                            child: Icon(Icons.email_rounded,
+                                color: Colors.purple))))),
             const SizedBox(height: 34.0),
-            TextFormField(
+            Form(
+              key: passwordKey,
+            child: TextFormField(
               controller: passwordController,
               obscureText: passwordVisible,
               obscuringCharacter: '*',
               keyboardType: TextInputType.text,
+              validator: (passText) {
+                      if (passText == null|| passText.isEmpty) {
+                        return 'PLease enter your password';
+                      }
+                      return null;
+                    },
               decoration: InputDecoration(
                 // errorText: 'Please Enter your password',
                 // errorStyle: TextStyle(color: Colors.red),
@@ -145,7 +164,7 @@ class LoginState extends State<LoginScreen> {
                         ? Icons.visibility_rounded
                         : Icons.visibility_off_rounded)),
               ),
-            ),
+            )),
             const SizedBox(
               height: 12.0,
             ),
@@ -169,7 +188,7 @@ class LoginState extends State<LoginScreen> {
               ),
             ),
             const SizedBox(height: 43.0),
-            Container(
+            SizedBox(
                 width: double.infinity,
                 height: 51.0,
                 child: RawMaterialButton(
@@ -184,9 +203,7 @@ class LoginState extends State<LoginScreen> {
                         password: passwordController.text,
                         context: context);
                     print(user);
-                    if (emailController.text.isEmpty &&
-                        passwordController.text.isEmpty) {}
-                    if (user != null) {
+                    if (user != null && !emailKey.currentState!.validate() && !passwordKey.currentState!.validate() ) {
                       Navigator.of(context).pushReplacement(
                           MaterialPageRoute(builder: (context) => Nav()));
                     }
