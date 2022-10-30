@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sport_test/screens/Activity.dart';
@@ -5,6 +6,39 @@ import 'package:sport_test/screens/HomeScreen.dart';
 
 import 'screens/AccountScreen.dart';
 import 'screens/BookingScreen.dart';
+
+class appBody extends StatefulWidget {
+  const appBody({super.key});
+
+  @override
+  State<StatefulWidget> createState() => appState();
+}
+
+class appState extends State<appBody> {
+    Future<FirebaseApp> _initializeFirebase() async {
+    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    return firebaseApp;
+  }
+  @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        body: FutureBuilder(
+          future: _initializeFirebase(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return const Nav();
+            }
+            return const Center(
+              child: CircularProgressIndicator(
+                color: Colors.purple,
+              ),
+            );
+          },
+        ),
+      );
+    }
+  }
+
 
 class Nav extends StatefulWidget {
   const Nav({super.key});
