@@ -23,13 +23,6 @@ class RegPageState extends State<RegPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.purple,leading: BackButton(
-            color: Colors.white,
-            onPressed: () {
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const HomePage()));
-            },
-          ),),
       body: FutureBuilder(
         future: _initializeFirebase(),
         builder: (context, snapshot) {
@@ -86,13 +79,20 @@ class RegisterState extends State<Register> {
 
     return Padding(
       padding: const EdgeInsets.only(
-          top: 0.0, left: 20.0, right: 20.0, bottom: 20.0),
+          top: 50.0, left: 20.0, right: 20.0, bottom: 20.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          BackButton(
+            color: Colors.purpleAccent,
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const HomePage()));
+            },
+          ),
           const SizedBox(
-            height: 2.0,
+            height: 20.0,
           ),
           const Text('Sign Up',
               style: TextStyle(

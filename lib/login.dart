@@ -24,7 +24,6 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.purple),
       body: FutureBuilder(
         future: _initializeFirebase(),
         builder: (context, snapshot) {
@@ -102,7 +101,7 @@ class LoginState extends State<LoginScreen> {
                   fontWeight: FontWeight.bold),
             ),
             const SizedBox(
-              height: 22.0,
+              height: 32.0,
             ),
             Form(
                 key: emailKey,
@@ -188,7 +187,7 @@ class LoginState extends State<LoginScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 15.0),
+            const SizedBox(height: 43.0),
             SizedBox(
                 width: double.infinity,
                 height: 51.0,
@@ -204,9 +203,9 @@ class LoginState extends State<LoginScreen> {
                         password: passwordController.text,
                         context: context);
                     print(user);
-                    if (user != null || emailKey.currentState!.validate() && passwordKey.currentState!.validate() ) {
+                    if (user != null && !emailKey.currentState!.validate() && !passwordKey.currentState!.validate() ) {
                       Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => const appBody()));
+                          MaterialPageRoute(builder: (context) => Nav()));
                     }
                   },
                   child: const Text(
@@ -216,7 +215,7 @@ class LoginState extends State<LoginScreen> {
                   ),
                 )),
             const SizedBox(
-              height: 10.0,
+              height: 50.0,
             ),
             GestureDetector(
               onTap: () {

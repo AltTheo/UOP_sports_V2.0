@@ -23,14 +23,6 @@ class ResetState extends State<ResetPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.purple,
-        leading:  BackButton(
-        color: Colors.white,
-        onPressed: () {
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const HomePage()));
-            },)),
       body: FutureBuilder(
         future: _initializeFirebase(),
         builder: (context, snapshot) {
