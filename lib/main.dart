@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sport_test/Nav.dart';
 import 'package:sport_test/login.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:booking_calendar/booking_calendar.dart';
 import 'package:intl/date_symbol_data_local.dart';
