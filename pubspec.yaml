@@ -39,7 +39,6 @@ dependencies:
   # Firebase auth and firebase core
   firebase_auth: ^3.11.2
   firebase_core: ^1.24.0
-  booking_calendar: ^1.1.6
 
 dev_dependencies:
   flutter_test:
