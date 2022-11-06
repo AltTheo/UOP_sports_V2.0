@@ -111,7 +111,8 @@ class LoginState extends State<LoginScreen> {
             const SizedBox(
               height: 12.0,
             ),
-            Form(
+            Flexible(
+            child: Form(
                 key: emailKey,
                 child: TextFormField(
                     controller: emailController,
@@ -133,9 +134,10 @@ class LoginState extends State<LoginScreen> {
                         prefixIcon: Padding(
                             padding: EdgeInsetsDirectional.only(start: 12.0),
                             child: Icon(Icons.email_rounded,
-                                color: Colors.purple))))),
+                                color: Colors.purple)))))),
             const SizedBox(height: 34.0),
-            Form(
+            Flexible(
+            child: Form(
                 key: passwordKey,
                 child: TextFormField(
                   controller: passwordController,
@@ -172,7 +174,7 @@ class LoginState extends State<LoginScreen> {
                             ? Icons.visibility_rounded
                             : Icons.visibility_off_rounded)),
                   ),
-                )),
+                ))),
             const SizedBox(
               height: 12.0,
             ),
@@ -198,7 +200,7 @@ class LoginState extends State<LoginScreen> {
             const SizedBox(height: 43.0),
             SizedBox(
                 width: double.infinity,
-                height: 41.0,
+                height: 51.0,
                 child: RawMaterialButton(
                   fillColor: Colors.purple,
                   splashColor: const Color.fromARGB(255, 200, 129, 212),

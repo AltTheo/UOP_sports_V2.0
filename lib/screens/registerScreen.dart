@@ -99,7 +99,8 @@ class RegisterState extends State<Register> {
           const SizedBox(
             height: 20.0,
           ),
-          TextFormField(
+          Flexible(
+          child:TextFormField(
               controller: newEmailController,
               keyboardType: TextInputType.emailAddress,
               decoration: const InputDecoration(
@@ -112,11 +113,12 @@ class RegisterState extends State<Register> {
                 prefixIcon: Padding(
                     padding: EdgeInsetsDirectional.only(start: 15.0),
                     child: Icon(Icons.email_rounded, color: Colors.purple)),
-              )),
+              ))),
           const SizedBox(
             height: 23.0,
           ),
-          TextField(
+          Flexible(
+          child :TextField(
               obscureText: passwordVisible,
               obscuringCharacter: '*',
               controller: newPasswordController,
@@ -135,11 +137,12 @@ class RegisterState extends State<Register> {
                   suffixIcon: InkWell(
                     onTap: toggleVisibility,
                     child: const Icon(Icons.visibility_rounded),
-                  ))),
+                  )))),
           const SizedBox(
             height: 23.0,
           ),
-          TextFormField(
+          Flexible(
+          child :TextFormField(
               obscureText: passwordVisible,
               obscuringCharacter: '*',
               controller: confirmPasswordController,
@@ -155,7 +158,7 @@ class RegisterState extends State<Register> {
                     padding: EdgeInsetsDirectional.only(start: 15.0),
                     child:
                         Icon(Icons.lock_outline_rounded, color: Colors.purple)),
-              )),
+              ))),
           const SizedBox(height: 23.0),
           SizedBox(
               width: double.infinity,
