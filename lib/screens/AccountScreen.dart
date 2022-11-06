@@ -6,6 +6,7 @@ class Accounts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: Text('Account'),
           backgroundColor: Colors.purple,
         ),
@@ -23,7 +24,8 @@ class Accounts extends StatelessWidget {
                       Text(
                         'Sign out',
                         style: TextStyle(color: Colors.red, fontSize: 20.0),
-                      ),                    ],
+                      ),
+                    ],
                   )),
             )
           ],

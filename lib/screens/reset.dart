@@ -23,6 +23,18 @@ class ResetState extends State<ResetPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.purple,
+        title: const Text('Reset Password'),
+        centerTitle: true,
+        leading: BackButton(
+          color: Colors.white,
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const HomePage()));
+          },
+        ),
+      ),
       body: FutureBuilder(
         future: _initializeFirebase(),
         builder: (context, snapshot) {
@@ -90,8 +102,8 @@ class ResetScreenState extends State<ResetScreen> {
                   enableFeedback: true,
                   onPressed: () {
                     resetPassword(resetPassEmail.text);
-                    Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => const HomePage()));
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const HomePage()));
                   },
                   child: const Text(
                     'Send Request',

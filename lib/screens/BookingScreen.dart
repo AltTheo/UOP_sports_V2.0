@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'dart:math' as math;
 
-
 @immutable
 class BookingScreen extends StatelessWidget {
   static const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
@@ -30,6 +29,7 @@ class BookingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.purple,
         title: const Text('Bookings'),
       ),
@@ -267,24 +267,24 @@ class ActionButton extends StatelessWidget {
   }
 }
 
-// @immutable
-// class FakeItem extends StatelessWidget {
-//   const FakeItem({
-//     super.key,
-//     required this.isBig,
-//   });
+@immutable
+class FakeItem extends StatelessWidget {
+  const FakeItem({
+    super.key,
+    required this.isBig,
+  });
 
-//   final bool isBig;
+  final bool isBig;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24.0),
-//       height: isBig ? 128.0 : 36.0,
-//       decoration: BoxDecoration(
-//         borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-//         color: Colors.grey.shade300,
-//       ),
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24.0),
+      height: isBig ? 128.0 : 36.0,
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+        color: Colors.grey.shade300,
+      ),
 //     );
 //   }
 // }

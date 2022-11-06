@@ -23,6 +23,15 @@ class RegPageState extends State<RegPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.purple,
+          leading: BackButton(
+            color: Colors.white,
+            onPressed: () {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const HomePage()));
+            },
+          )),
       body: FutureBuilder(
         future: _initializeFirebase(),
         builder: (context, snapshot) {
@@ -49,7 +58,6 @@ class Register extends StatefulWidget {
 
 class RegisterState extends State<Register> {
   bool passwordVisible = true;
-
 
   static Future<User?> loginUsingEmailPassword(
       {required String email,
@@ -78,22 +86,11 @@ class RegisterState extends State<Register> {
     TextEditingController confirmPasswordController = TextEditingController();
 
     return Padding(
-      padding: const EdgeInsets.only(
-          top: 50.0, left: 20.0, right: 20.0, bottom: 20.0),
+      padding: const EdgeInsets.all(20.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          BackButton(
-            color: Colors.purpleAccent,
-            onPressed: () {
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const HomePage()));
-            },
-          ),
-          const SizedBox(
-            height: 20.0,
-          ),
           const Text('Sign Up',
               style: TextStyle(
                   color: Colors.purple,
@@ -125,20 +122,20 @@ class RegisterState extends State<Register> {
               controller: newPasswordController,
               keyboardType: TextInputType.visiblePassword,
               decoration: InputDecoration(
-                // errorText: 'Please Enter your phone number',
-                // errorStyle: TextStyle(color: Colors.red),
-                border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(14.0))),
-                hintText: 'new Password',
-                hintStyle: const TextStyle(color: Colors.grey),
-                prefixIcon: const Padding(
-                    padding: EdgeInsetsDirectional.only(start: 15.0),
-                    child:
-                        Icon(Icons.lock_outline_rounded, color: Colors.purple)),
-                suffixIcon: InkWell(
+                  // errorText: 'Please Enter your phone number',
+                  // errorStyle: TextStyle(color: Colors.red),
+                  border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                  hintText: 'new Password',
+                  hintStyle: const TextStyle(color: Colors.grey),
+                  prefixIcon: const Padding(
+                      padding: EdgeInsetsDirectional.only(start: 15.0),
+                      child: Icon(Icons.lock_outline_rounded,
+                          color: Colors.purple)),
+                  suffixIcon: InkWell(
                     onTap: toggleVisibility,
                     child: const Icon(Icons.visibility_rounded),
-              ))),
+                  ))),
           const SizedBox(
             height: 23.0,
           ),
@@ -217,6 +214,7 @@ class RegisterState extends State<Register> {
       ),
     );
   }
+
   void toggleVisibility() {
     setState(() {
       passwordVisible = !passwordVisible;

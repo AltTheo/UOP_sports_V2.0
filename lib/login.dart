@@ -24,6 +24,14 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.purple,
+        title: const Text(
+          'App',
+          style: TextStyle(fontSize: 40),
+        ),
+      ),
       body: FutureBuilder(
         future: _initializeFirebase(),
         builder: (context, snapshot) {
@@ -83,7 +91,7 @@ class LoginState extends State<LoginScreen> {
     return Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text('App ',
@@ -101,7 +109,7 @@ class LoginState extends State<LoginScreen> {
                   fontWeight: FontWeight.bold),
             ),
             const SizedBox(
-              height: 32.0,
+              height: 12.0,
             ),
             Form(
                 key: emailKey,
@@ -109,7 +117,7 @@ class LoginState extends State<LoginScreen> {
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     validator: (emailText) {
-                      if (emailText == null|| emailText.isEmpty) {
+                      if (emailText == null || emailText.isEmpty) {
                         return 'please enter your email';
                       }
                       return null;
@@ -128,43 +136,43 @@ class LoginState extends State<LoginScreen> {
                                 color: Colors.purple))))),
             const SizedBox(height: 34.0),
             Form(
-              key: passwordKey,
-            child: TextFormField(
-              controller: passwordController,
-              obscureText: passwordVisible,
-              obscuringCharacter: '*',
-              keyboardType: TextInputType.text,
-              validator: (passText) {
-                      if (passText == null|| passText.isEmpty) {
-                        return 'PLease enter your password';
-                      }
-                      return null;
-                    },
-              decoration: InputDecoration(
-                // errorText: 'Please Enter your password',
-                // errorStyle: TextStyle(color: Colors.red),
-                border: const OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(14.0))),
-                hintText: 'password',
-                // focusedBorder: OutlineInputBorder(
-                //     borderRadius: BorderRadius.circular(14.0),
-                //     borderSide: const BorderSide(color: Colors.black)),
-                hintStyle: const TextStyle(color: Colors.grey),
-                prefixIcon: const Padding(
-                    padding: EdgeInsetsDirectional.only(start: 15.0),
-                    child:
-                        Icon(Icons.lock_outline_rounded, color: Colors.purple)),
-                suffixIcon: IconButton(
-                    onPressed: () {
-                      setState(() {
-                        passwordVisible = !passwordVisible;
-                      });
-                    },
-                    icon: Icon(passwordVisible
-                        ? Icons.visibility_rounded
-                        : Icons.visibility_off_rounded)),
-              ),
-            )),
+                key: passwordKey,
+                child: TextFormField(
+                  controller: passwordController,
+                  obscureText: passwordVisible,
+                  obscuringCharacter: '*',
+                  keyboardType: TextInputType.text,
+                  validator: (passText) {
+                    if (passText == null || passText.isEmpty) {
+                      return 'Please enter your password';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    // errorText: 'Please Enter your password',
+                    // errorStyle: TextStyle(color: Colors.red),
+                    border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                    hintText: 'password',
+                    // focusedBorder: OutlineInputBorder(
+                    //     borderRadius: BorderRadius.circular(14.0),
+                    //     borderSide: const BorderSide(color: Colors.black)),
+                    hintStyle: const TextStyle(color: Colors.grey),
+                    prefixIcon: const Padding(
+                        padding: EdgeInsetsDirectional.only(start: 15.0),
+                        child: Icon(Icons.lock_outline_rounded,
+                            color: Colors.purple)),
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            passwordVisible = !passwordVisible;
+                          });
+                        },
+                        icon: Icon(passwordVisible
+                            ? Icons.visibility_rounded
+                            : Icons.visibility_off_rounded)),
+                  ),
+                )),
             const SizedBox(
               height: 12.0,
             ),
@@ -190,12 +198,12 @@ class LoginState extends State<LoginScreen> {
             const SizedBox(height: 43.0),
             SizedBox(
                 width: double.infinity,
-                height: 51.0,
+                height: 41.0,
                 child: RawMaterialButton(
                   fillColor: Colors.purple,
                   splashColor: const Color.fromARGB(255, 200, 129, 212),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0)),
+                      borderRadius: BorderRadius.circular(50.0)),
                   enableFeedback: true,
                   onPressed: () async {
                     User? user = await loginUsingEmailPassword(
@@ -203,7 +211,7 @@ class LoginState extends State<LoginScreen> {
                         password: passwordController.text,
                         context: context);
                     print(user);
-                    if (user != null && !emailKey.currentState!.validate() && !passwordKey.currentState!.validate() ) {
+                    if (user != null) {
                       Navigator.of(context).pushReplacement(
                           MaterialPageRoute(builder: (context) => Nav()));
                     }
@@ -215,7 +223,7 @@ class LoginState extends State<LoginScreen> {
                   ),
                 )),
             const SizedBox(
-              height: 50.0,
+              height: 20.0,
             ),
             GestureDetector(
               onTap: () {
