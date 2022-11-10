@@ -29,6 +29,13 @@
             {
               "client_id": "906297552907-jmkhk8s9g6a11vhf6alrc9rjs6497iur.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "906297552907-fe5c1km8hdsdknrpff1hl9m2ooekeda9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sportTest"
+              }
             }
           ]
         }
