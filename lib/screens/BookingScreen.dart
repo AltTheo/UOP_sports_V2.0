@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'dart:math' as math;
 
+import 'calendarView.dart';
+
 @immutable
 class BookingScreen extends StatelessWidget {
   static const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
@@ -33,11 +35,13 @@ class BookingScreen extends StatelessWidget {
         backgroundColor: Colors.purple,
         title: const Text('Bookings'),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: ExpandableFab(
         distance: 112.0,
         children: [
           ActionButton(
-            onPressed: () => _showAction(context, 0),
+            onPressed: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) =>  const CalendarView())),
             icon: const Icon(Icons.sports_gymnastics_rounded),
           ),
           ActionButton(
@@ -50,7 +54,7 @@ class BookingScreen extends StatelessWidget {
           ),
           ActionButton(
             onPressed: () => _showAction(context, 2),
-            icon: const Icon(Icons.video_call),
+            icon: const Icon(Icons.hiking_outlined),
           ),
         ],
       ),
