@@ -6,7 +6,7 @@ import 'calendarView.dart';
 
 @immutable
 class BookingScreen extends StatelessWidget {
-  static const _actionTitles = ['Create Post', 'Upload Photo', 'Upload Video'];
+  static const _actionTitles = ['Book a gym session', 'Book a Swimming session', 'Book a climbing session', 'Book a gym class'];
 
   const BookingScreen({super.key});
 
@@ -19,8 +19,11 @@ class BookingScreen extends StatelessWidget {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('CLOSE'),
+              child: const Text('close'),
             ),
+            TextButton(onPressed: () => Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) =>  const BookView())),
+            child: const Text('Accept'),)
           ],
         );
       },
@@ -40,21 +43,20 @@ class BookingScreen extends StatelessWidget {
         distance: 112.0,
         children: [
           ActionButton(
-            onPressed: () => Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) =>  const CalendarView())),
-            icon: const Icon(Icons.sports_gymnastics_rounded),
-          ),
-          ActionButton(
             onPressed: () => _showAction(context, 0),
-            icon: const Icon(Icons.class_rounded),
+            icon: Image.asset('lib/assets/images/gym_dumbbell.png'),
           ),
           ActionButton(
-            onPressed: () => _showAction(context, 1),
-            icon: const Icon(Icons.waves_rounded),
+            onPressed: () => _showAction(context, 3),
+            icon: Image.asset('lib/assets/images/classes_2.png'),
           ),
           ActionButton(
             onPressed: () => _showAction(context, 2),
-            icon: const Icon(Icons.hiking_outlined),
+            icon: Image.asset('lib/assets/images/rock_climbing.png'),
+          ),
+          ActionButton(
+            onPressed: () => _showAction(context,1),
+            icon: Image.asset('lib/assets/images/swimming.png'),
           ),
         ],
       ),
