@@ -3,7 +3,8 @@
         "ARGB",
         "Cupertino",
         "firestore",
-        "Schyler"
+        "Schyler",
+        "syncfusion"
     ],
     "java.configuration.updateBuildConfiguration": "interactive"
 }
