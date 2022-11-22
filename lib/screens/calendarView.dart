@@ -13,8 +13,7 @@ class BookView extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.purple,
         ),
-        body: SizedBox(
-            child: SfCalendar(
+        body: SfCalendar(
           controller: bookController,
           view: CalendarView.workWeek,
           todayHighlightColor: Colors.purple,
@@ -23,6 +22,6 @@ class BookView extends StatelessWidget {
           showNavigationArrow: true,
           showDatePickerButton: true,
           showCurrentTimeIndicator: true,
-        )));
+        ));
   }
 }

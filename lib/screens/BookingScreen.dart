@@ -6,7 +6,12 @@ import 'calendarView.dart';
 
 @immutable
 class BookingScreen extends StatelessWidget {
-  static const _actionTitles = ['Book a gym session', 'Book a Swimming session', 'Book a climbing session', 'Book a gym class'];
+  static const _actionTitles = [
+    'Book a gym session',
+    'Book a Swimming session',
+    'Book a climbing session',
+    'Book a gym class'
+  ];
 
   const BookingScreen({super.key});
 
@@ -21,9 +26,11 @@ class BookingScreen extends StatelessWidget {
               onPressed: () => Navigator.of(context).pop(),
               child: const Text('close'),
             ),
-            TextButton(onPressed: () => Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) =>  const BookView())),
-            child: const Text('Accept'),)
+            TextButton(
+              onPressed: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const BookView())),
+              child: const Text('Accept'),
+            )
           ],
         );
       },
@@ -55,7 +62,7 @@ class BookingScreen extends StatelessWidget {
             icon: Image.asset('lib/assets/images/rock_climbing.png'),
           ),
           ActionButton(
-            onPressed: () => _showAction(context,1),
+            onPressed: () => _showAction(context, 1),
             icon: Image.asset('lib/assets/images/swimming.png'),
           ),
         ],
@@ -267,7 +274,7 @@ class ActionButton extends StatelessWidget {
       child: IconButton(
         onPressed: onPressed,
         icon: icon,
-        color: theme.colorScheme.onSecondary,
+        color: Colors.white,
       ),
     );
   }
