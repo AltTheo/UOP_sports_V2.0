@@ -1,5 +1,7 @@
 import 'package:booking_calendar/booking_calendar.dart';
 import 'package:flutter/material.dart';
+  import 'package:intl/intl.dart';
+    import 'package:intl/date_symbol_data_local.dart';
 
 class BookingCalendarDemoApp extends StatefulWidget {
   const BookingCalendarDemoApp({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
   @override
   void initState() {
     super.initState();
+    initializeDateFormatting();
     // DateTime.now().startOfDay
     // DateTime.now().endOfDay
     mockBookingService = BookingService(
@@ -84,13 +87,13 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
               getBookingStream: getBookingStreamMock,
               uploadBooking: uploadBookingMock,
               pauseSlots: generatePauseSlots(),
-              pauseSlotText: 'LUNCH',
+              pauseSlotText: 'Booked',
               hideBreakTime: false,
               loadingWidget: const Text('Fetching data...'),
               uploadingWidget: const CircularProgressIndicator(),
               locale: 'hu_HU',
-              startingDayOfWeek: StartingDayOfWeek.tuesday,
-              disabledDays: const [6, 7],
+              startingDayOfWeek: StartingDayOfWeek.sunday,
+              // disabledDays: const [6, 7],
             ),
           ),
         ));

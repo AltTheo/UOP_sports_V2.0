@@ -83,6 +83,7 @@ class BookingScreen extends StatelessWidget {
                       Image.asset(
                         activityImages[index],
                         fit: BoxFit.cover,
+                        alignment:Alignment.center,
                         height: 50,
                         width: 50,
                         color: Colors.white,
@@ -93,7 +94,7 @@ class BookingScreen extends StatelessWidget {
                       Text(
                         activityTitles[index],
                         style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                       ),
                     ],
                   ),

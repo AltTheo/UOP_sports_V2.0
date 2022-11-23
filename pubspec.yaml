@@ -46,6 +46,7 @@ dependencies:
   booking_calendar: ^1.1.6
   table_calendar: ^3.0.8
   json_annotation: ^4.7.0
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
