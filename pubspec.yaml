@@ -43,6 +43,9 @@ dependencies:
   firebase_ui_auth: ^1.0.0-dev.0
   firebase_database: ^10.0.6
   syncfusion_flutter_calendar: ^20.3.57
+  booking_calendar: ^1.1.6
+  table_calendar: ^3.0.8
+  json_annotation: ^4.7.0
 
 dev_dependencies:
   flutter_test:
