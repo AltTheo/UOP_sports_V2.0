@@ -24,14 +24,15 @@ class BookingScreen extends StatelessWidget {
           content: Text(_actionTitles[index]),
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('close'),
+              onPressed: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (context) => const BookingCalendarDemoApp())),
+              child: const Text('Accept'),
             ),
             TextButton(
-              onPressed: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const BookingCalendarDemoApp())),
-              child: const Text('Accept'),
-            )
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('Close'),
+            ),
           ],
         );
       },
@@ -83,7 +84,7 @@ class BookingScreen extends StatelessWidget {
                       Image.asset(
                         activityImages[index],
                         fit: BoxFit.cover,
-                        alignment:Alignment.center,
+                        alignment: Alignment.center,
                         height: 50,
                         width: 50,
                         color: Colors.white,
@@ -94,7 +95,9 @@ class BookingScreen extends StatelessWidget {
                       Text(
                         activityTitles[index],
                         style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                       ),
                     ],
                   ),
