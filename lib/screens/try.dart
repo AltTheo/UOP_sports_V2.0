@@ -1,4 +1,5 @@
 import 'package:booking_calendar/booking_calendar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -23,7 +24,7 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
     mockBookingService = BookingService(
         serviceName: 'Sports Booking',
         serviceDuration: 15,
-        bookingEnd: DateTime(now.year, now.month, now.day, 22, 0),
+        bookingEnd: DateTime(now.year, now.month, now.day, 22, 00),
         bookingStart: DateTime(now.year, now.month, now.day, 6, 30));
   }
 
@@ -37,7 +38,9 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
     await Future.delayed(const Duration(seconds: 3));
     converted.add(DateTimeRange(
         start: newBooking.bookingStart, end: newBooking.bookingEnd));
-    print('${newBooking.toJson()} has been uploaded');
+    if (kDebugMode) {
+      print('${newBooking.toJson()} has been uploaded');
+    }
   }
 
   List<DateTimeRange> converted = [];
@@ -82,10 +85,11 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
           convertStreamResultToDateTimeRanges: convertStreamResultMock,
           getBookingStream: getBookingStreamMock,
           uploadBooking: uploadBookingMock,
-          pauseSlotText: 'Booked',
-          hideBreakTime: false,
+          hideBreakTime: true,
           loadingWidget: const Text('Fetching data...'),
-          uploadingWidget: const CircularProgressIndicator(),
+          uploadingWidget: const CircularProgressIndicator(
+            color: Colors.purple,
+          ),
           startingDayOfWeek: StartingDayOfWeek.sunday,
           // disabledDays: const [6, 7],
         ),

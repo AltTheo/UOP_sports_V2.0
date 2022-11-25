@@ -3,8 +3,6 @@ import 'package:sport_test/screens/try.dart';
 
 import 'dart:math' as math;
 
-import 'calendarView.dart';
-
 @immutable
 class BookingScreen extends StatelessWidget {
   static const _actionTitles = [

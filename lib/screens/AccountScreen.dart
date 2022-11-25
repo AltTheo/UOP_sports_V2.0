@@ -1,13 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Accounts extends StatelessWidget {
+  const Accounts({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Account'),
+          title: const Text('Account'),
           backgroundColor: Colors.purple,
         ),
         body: Column(
