@@ -22,6 +22,8 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
     // DateTime.now().startOfDay
     // DateTime.now().endOfDay
     mockBookingService = BookingService(
+        // userEmail: ,
+        // userId: ,
         serviceName: 'Sports Booking',
         serviceDuration: 15,
         bookingEnd: DateTime(now.year, now.month, now.day, 22, 00),
@@ -91,6 +93,7 @@ class _BookingCalendarDemoAppState extends State<BookingCalendarDemoApp> {
             color: Colors.purple,
           ),
           startingDayOfWeek: StartingDayOfWeek.sunday,
+          locale: "en",
           // disabledDays: const [6, 7],
         ),
       ),

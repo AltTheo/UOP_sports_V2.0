@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sport_test/screens/registerScreen.dart';
-import 'package:sport_test/Nav.dart';
+import 'package:sport_test/src/Nav.dart';
 import 'package:sport_test/screens/reset.dart';
 
 class HomePage extends StatefulWidget {

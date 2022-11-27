@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:sport_test/login.dart';
+import 'package:sport_test/src/login.dart';
 
 class ResetPage extends StatefulWidget {
   const ResetPage({super.key});

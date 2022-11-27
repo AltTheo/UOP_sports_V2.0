@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:sport_test/screens/Activity.dart';
 import 'package:sport_test/screens/HomeScreen.dart';
 
-import 'screens/AccountScreen.dart';
-import 'screens/BookingScreen.dart';
+import '../screens/AccountScreen.dart';
+import '../screens/BookingScreen.dart';
 
 class Nav extends StatefulWidget {
   const Nav({super.key});
