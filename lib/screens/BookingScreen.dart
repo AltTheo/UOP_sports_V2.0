@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sport_test/screens/try.dart';
+import 'package:sport_test/screens/calendarView.dart';
 
 import 'dart:math' as math;
 
@@ -24,7 +24,7 @@ class BookingScreen extends StatelessWidget {
             TextButton(
               onPressed: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                      builder: (context) => const BookingCalendarDemoApp())),
+                      builder: (context) => const BookingCalendarView())),
               child: const Text('Accept'),
             ),
             TextButton(
