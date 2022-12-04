@@ -71,7 +71,9 @@ class BookingScreen extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () {
-                  _showAction(context, index); // call click event
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) =>
+                          const BookingCalendarView())); // call click event
                 },
                 child: Card(
                   color: Colors.purple,

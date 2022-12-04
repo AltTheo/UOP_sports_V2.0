@@ -3,6 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:sport_test/screens/BookingScreen.dart';
+import 'package:sport_test/src/Nav.dart';
 
 class BookingCalendarView extends StatefulWidget {
   const BookingCalendarView({Key? key}) : super(key: key);
@@ -74,10 +76,19 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
   //   ];
   // }
 
+// String Function(DateTime){
+//   Text formatted = 
+// }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(
+            color: Colors.white,
+            onPressed: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                      builder: (context) => const Nav()))),
         backgroundColor: Colors.purple,
         title: const Text('Book a slot'),
       ),
@@ -87,13 +98,23 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
           convertStreamResultToDateTimeRanges: convertStreamResultMock,
           getBookingStream: getBookingStreamMock,
           uploadBooking: uploadBookingMock,
-          hideBreakTime: true,
+          hideBreakTime: false,
           loadingWidget: const Text('Fetching data...'),
           uploadingWidget: const CircularProgressIndicator(
             color: Colors.purple,
           ),
           startingDayOfWeek: StartingDayOfWeek.sunday,
           locale: "en",
+          gridScrollPhysics:
+              const ScrollPhysics(parent: BouncingScrollPhysics()),
+              availableSlotText: 'AVAILABLE',
+              selectedSlotText: 'SELECTED',
+              bookedSlotText: 'BOOKED',
+              pauseSlotText: 'UNAVAILABLE',
+              pauseSlotColor: Colors.grey,
+              bookingGridCrossAxisCount: 4,
+              bookingGridChildAspectRatio: 350/420,
+              // formatDateTime: ,
           // disabledDays: const [6, 7],
         ),
       ),

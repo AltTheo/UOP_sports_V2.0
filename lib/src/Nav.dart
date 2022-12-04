@@ -14,12 +14,12 @@ class Nav extends StatefulWidget {
 }
 
 class NavState extends State<Nav> {
-  int selectedIndex = 0;
+  int selectedIndex = 1;
   List<Widget> widgetOptions = <Widget>[
     const HomeScreen(),
     const BookingScreen(),
     const Activity(),
-    Accounts(),
+    const Accounts(),
   ];
 
   void onItemTapped(int index) {
