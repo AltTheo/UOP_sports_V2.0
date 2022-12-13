@@ -1,3 +1,4 @@
+import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sport_test/screens/Activity.dart';
@@ -34,21 +35,68 @@ class NavState extends State<Nav> {
         // appBar: AppBar(
         //     title: Text('Bottom NavBar'), backgroundColor: Colors.purple),
         body: Center(child: widgetOptions.elementAt(selectedIndex)),
-        bottomNavigationBar: BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.dashboard_outlined), label: 'home'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.timer_outlined), label: 'Bookings'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.auto_graph_rounded), label: 'Activity'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), label: 'Settings')
-            ],
-            currentIndex: selectedIndex,
-            onTap: onItemTapped,
-            fixedColor: Colors.purple,
-            landscapeLayout: BottomNavigationBarLandscapeLayout.centered,
-            type: BottomNavigationBarType.fixed));
+        bottomNavigationBar: AnimatedNotchBottomBar(
+          notchColor: Colors.white,
+          color: Colors.white,
+
+          // ignore: prefer_const_literals_to_create_immutables
+          bottomBarItems: [
+            const BottomBarItem(
+              inActiveItem: Icon(
+                Icons.dashboard_outlined,
+                color: Colors.grey,
+                size: 25,
+              ),
+              activeItem: Icon(
+                Icons.dashboard_outlined,
+                color: Colors.purple,
+                size: 25,
+              ),
+              itemLabel: 'home',
+            ),
+            const BottomBarItem(
+              inActiveItem: Icon(
+                Icons.timer_outlined,
+                color: Colors.grey,
+                size: 25,
+              ),
+              activeItem: Icon(
+                Icons.timer_outlined,
+                color: Colors.purple,
+                size: 25,
+              ),
+              itemLabel: 'Bookings',
+            ),
+            const BottomBarItem(
+              inActiveItem: Icon(
+                Icons.auto_graph_outlined,
+                color: Colors.grey,
+                size: 25,
+              ),
+              activeItem: Icon(
+                Icons.auto_graph_outlined,
+                color: Colors.purple,
+                size: 25,
+              ),
+              itemLabel: 'activity',
+            ),
+            const BottomBarItem(
+              inActiveItem: Icon(
+                Icons.settings,
+                color: Colors.grey,
+                size: 25,
+              ),
+              activeItem: Icon(
+                Icons.settings,
+                color: Colors.purple,
+                size: 25,
+              ),
+              itemLabel: 'settings',
+            ),
+          ],
+
+          onTap: onItemTapped,
+          pageController: PageController(initialPage: selectedIndex),
+        ));
   }
 }
