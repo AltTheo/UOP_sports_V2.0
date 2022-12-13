@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sport_test/screens/Activity.dart';
 import 'package:sport_test/screens/HomeScreen.dart';
 
-import '../screens/AccountScreen.dart';
+import '../screens/SettingsScreen.dart';
 import '../screens/BookingScreen.dart';
 
 class Nav extends StatefulWidget {
@@ -19,7 +19,7 @@ class NavState extends State<Nav> {
     const HomeScreen(),
     const BookingScreen(),
     const Activity(),
-    const Accounts(),
+    const Settings(),
   ];
 
   void onItemTapped(int index) {
@@ -43,7 +43,7 @@ class NavState extends State<Nav> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.auto_graph_rounded), label: 'Activity'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.person_outline_sharp), label: 'Account')
+                  icon: Icon(Icons.settings), label: 'Settings')
             ],
             currentIndex: selectedIndex,
             onTap: onItemTapped,
