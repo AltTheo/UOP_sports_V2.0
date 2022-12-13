@@ -36,14 +36,15 @@ class NavyState extends State<Navy> {
         //     title: Text('Bottom NavBar'), backgroundColor: Colors.purple),
         body: Center(child: widgetOptions.elementAt(selectedIndex)),
         bottomNavigationBar: CurvedNavigationBar(
-          animationDuration: const Duration(milliseconds: 800), 
+          animationDuration: const Duration(milliseconds: 1000), 
           backgroundColor: Colors.purple,
+          buttonBackgroundColor: Colors.white,
             // ignore: prefer_const_literals_to_create_immutables
             items: [
-              const Icon(Icons.dashboard_outlined, size: 25, color: Colors.purple,),
-              const Icon(Icons.timer_outlined, size: 25, color: Colors.purple),
-              const Icon(Icons.auto_graph_outlined, size: 25, color: Colors.purple),
-              const Icon(Icons.settings, size: 25, color: Colors.purple)
+              const Icon(CupertinoIcons.home, size: 25, color: Colors.purple,),
+              const Icon(CupertinoIcons.calendar_badge_plus, size: 25, color: Colors.purple),
+              const Icon(CupertinoIcons.graph_square, size: 25, color: Colors.purple),
+              const Icon(CupertinoIcons.settings, size: 25, color: Colors.purple)
             ], onTap: onItemTapped, ), 
             );
   }

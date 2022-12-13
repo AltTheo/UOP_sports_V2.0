@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
         title: 'application',
-        home: const Nav(),
+        home: const Navy(),
         theme: ThemeData(brightness: Brightness.light),
         darkTheme: ThemeData(
           brightness: Brightness.dark,
