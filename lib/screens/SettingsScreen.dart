@@ -6,7 +6,7 @@ import 'package:sport_test/src/login.dart';
 class Settings extends StatelessWidget {
   const Settings({super.key});
 
-  void _showAction(BuildContext context, int index) {
+  void _showAction(BuildContext context) {
     showDialog<void>(
       context: context,
       builder: (context) {
@@ -127,6 +127,34 @@ class Settings extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+@immutable
+class ActionButton extends StatelessWidget {
+  const ActionButton({
+    super.key,
+    this.onPressed,
+    required this.icon,
+  });
+
+  final VoidCallback? onPressed;
+  final Widget icon;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Material(
+      shape: const CircleBorder(),
+      clipBehavior: Clip.antiAlias,
+      color: Colors.purple,
+      elevation: 4.0,
+      child: IconButton(
+        onPressed: onPressed,
+        icon: icon,
+        color: Colors.white,
       ),
     );
   }

@@ -6,6 +6,8 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:sport_test/screens/BookingScreen.dart';
 import 'package:sport_test/src/Nav.dart';
 
+import '../src/Navybar.dart';
+
 class BookingCalendarView extends StatefulWidget {
   const BookingCalendarView({Key? key}) : super(key: key);
 
@@ -88,7 +90,7 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
             color: Colors.white,
             onPressed: () => Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
-                      builder: (context) => const Nav()))),
+                      builder: (context) => const Navy()))),
         backgroundColor: Colors.purple,
         title: const Text('Book a slot'),
       ),
