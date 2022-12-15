@@ -36,7 +36,7 @@ class NavyState extends State<Navy> {
         //     title: Text('Bottom NavBar'), backgroundColor: Colors.purple),
         body: Center(child: widgetOptions.elementAt(selectedIndex)),
         bottomNavigationBar: CurvedNavigationBar(
-          animationDuration: const Duration(milliseconds: 1000), 
+          animationDuration: const Duration(milliseconds: 800), 
           backgroundColor: Colors.purple,
           buttonBackgroundColor: Colors.white,
             // ignore: prefer_const_literals_to_create_immutables

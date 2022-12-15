@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ class Settings extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: const Text('are .you sure ?'),
+          content: const Text('are you sure ?'),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pushReplacement(
@@ -39,7 +40,7 @@ class Settings extends StatelessWidget {
         backgroundColor: Colors.purple,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15),
+        padding:  const EdgeInsets.all(10),
         child: ListView(
           children: [
             // You can add a settings title
@@ -57,7 +58,9 @@ class Settings extends StatelessWidget {
                   subtitle: 'manage your membership',
                 ),
                 SettingsItem(
-                  onTap: () {},
+                  onTap: () {
+                    _showAction(context);
+                  },
                   icons: Icons.exit_to_app_outlined,
                   iconStyle: IconStyle(
                       backgroundColor: Colors.purple,
