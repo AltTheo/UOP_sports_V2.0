@@ -40,7 +40,7 @@ class Settings extends StatelessWidget {
         backgroundColor: Colors.purple,
       ),
       body: Padding(
-        padding:  const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: ListView(
           children: [
             // You can add a settings title
@@ -97,6 +97,7 @@ class Settings extends StatelessWidget {
                     backgroundColor: Colors.purple,
                   ),
                   title: 'Privacy',
+                  titleStyle: const TextStyle(fontSize: 20),
                 ),
                 SettingsItem(
                   onTap: () {},
@@ -107,7 +108,9 @@ class Settings extends StatelessWidget {
                     backgroundColor: Colors.purple,
                   ),
                   title: 'Dark mode',
+                  titleStyle: const TextStyle(fontSize: 20),
                   subtitle: "Automatic",
+                  subtitleStyle: const TextStyle(fontSize: 16),
                   trailing: Switch.adaptive(
                     value: false,
                     onChanged: (value) {
@@ -129,7 +132,9 @@ class Settings extends StatelessWidget {
                     backgroundColor: Colors.purple,
                   ),
                   title: 'About',
+                  titleStyle: const TextStyle(fontSize: 20),
                   subtitle: "Learn more about the App",
+                  subtitleStyle: const TextStyle(fontSize: 16),
                 ),
               ],
             ),
