@@ -55,7 +55,9 @@ class Settings extends StatelessWidget {
                       iconsColor: Colors.white),
                   onTap: () {},
                   title: 'Member Info',
+                  titleStyle: const TextStyle(fontSize: 20),
                   subtitle: 'manage your membership',
+                  subtitleStyle: const TextStyle(fontSize: 16),
                 ),
                 SettingsItem(
                   onTap: () {
@@ -67,6 +69,7 @@ class Settings extends StatelessWidget {
                       withBackground: true,
                       iconsColor: Colors.white),
                   title: "Sign Out",
+                  titleStyle: const TextStyle(fontSize: 20),
                 ),
               ],
             ),
@@ -81,7 +84,9 @@ class Settings extends StatelessWidget {
                       withBackground: true,
                       backgroundColor: Colors.purple),
                   title: 'Appearance',
+                  titleStyle: const TextStyle(fontSize: 20),
                   subtitle: "Make the App yours",
+                  subtitleStyle: const TextStyle(fontSize: 16),
                 ),
                 SettingsItem(
                   onTap: () {},
@@ -107,7 +112,7 @@ class Settings extends StatelessWidget {
                     value: false,
                     onChanged: (value) {
                       setState() {
-                        isSwitched = true;
+                        isSwitched = value;
                       }
                     },
                   ),
