@@ -2,7 +2,13 @@
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sport_test/src/Nav.dart';
 import 'package:sport_test/src/login.dart';
+
+import '../src/Navybar.dart';
+import '../subScreens/Info.dart';
+
+
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -53,7 +59,10 @@ class Settings extends StatelessWidget {
                       backgroundColor: Colors.purple,
                       withBackground: true,
                       iconsColor: Colors.white),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => const Info()));
+                  },
                   title: 'Member Info',
                   titleStyle: const TextStyle(fontSize: 20),
                   subtitle: 'manage your membership',
@@ -172,3 +181,5 @@ class ActionButton extends StatelessWidget {
     );
   }
 }
+
+
