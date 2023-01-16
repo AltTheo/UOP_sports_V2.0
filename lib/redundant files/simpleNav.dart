@@ -52,3 +52,17 @@
 //             type: BottomNavigationBarType.fixed));
 //   }
 // }
+
+
+
+
+// class InfoRoute extends CupertinoPageRoute {
+// //   InfoRoute() : super(builder: (BuildContext context) => const Info());
+
+// //   // OPTIONAL IF YOU WISH TO HAVE SOME EXTRA ANIMATION WHILE ROUTING
+// //   @override
+// //   Widget buildPage(BuildContext context, Animation<double> animation,
+// //       Animation<double> secondaryAnimation) {
+// //     return FadeTransition(opacity: animation, child: const Info());
+// //   }
+// // }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navbar_router/navbar_router.dart';
-import 'package:sport_test/src/test.dart';
+import 'package:sport_test/src/main.dart';
 
 import '../screens/BookingScreen.dart';
 import '../screens/HomeScreen.dart';
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
       // ),
       body: NavbarRouter(
         errorBuilder: (context) {
-          return const Center(child: Text('Error 404'));
+          return const Center(child: Text('Error 404 - Page not found'));
         },
         isDesktop: size.width > 600 ? true : false,
         onBackButtonPressed: (isExitingApp) {
@@ -119,11 +119,12 @@ class _HomePageState extends State<HomePage> {
             return isExitingApp;
           }
         },
-        initialIndex: 2,
+        initialIndex: 0,
         type: NavbarType.notched,
         destinationAnimationCurve: Curves.fastOutSlowIn,
-        destinationAnimationDuration: 600,
+        destinationAnimationDuration: 500,
         decoration: NotchedDecoration(
+          elevation: 10.0,
             // selectedLabelTextStyle: const TextStyle(color: Colors.red),
             showUnselectedLabels: true,
             unselectedIconColor: Colors.white,

@@ -1,14 +1,21 @@
 import 'package:booking_calendar/booking_calendar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:navbar_router/navbar_router.dart';
 
 @immutable
-class BookingScreen extends StatelessWidget {
-  const BookingScreen({Key? key}) : super(key: key);
+class BookingScreen extends StatefulWidget {
   static const String route = '/';
+  const BookingScreen({super.key});
 
+  @override
+  State<BookingScreen> createState() => BookingScreenState();
+}
+
+class BookingScreenState extends State<BookingScreen> {
   // void _showAction(BuildContext context, int index) {
   //   showDialog<void>(
   //     context: context,
@@ -31,6 +38,42 @@ class BookingScreen extends StatelessWidget {
   //     },
   //   );
   // }
+
+  final _scrollController = ScrollController();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    size = MediaQuery.of(context).size;
+    if (size.width < 600) {
+      _addScrollListener();
+    }
+  }
+
+  void handleScroll() {
+    if (size.width > 600) return;
+    if (_scrollController.position.userScrollDirection ==
+        ScrollDirection.forward) {
+      if (NavbarNotifier.isNavbarHidden) {
+        NavbarNotifier.hideBottomNavBar = false;
+      }
+    } else {
+      if (!NavbarNotifier.isNavbarHidden) {
+        NavbarNotifier.hideBottomNavBar = true;
+      }
+    }
+  }
+
+  void _addScrollListener() {
+    _scrollController.addListener(handleScroll);
+  }
+
+  Size size = Size.zero;
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +102,7 @@ class BookingScreen extends StatelessWidget {
         ),
         body: Center(
           child: GridView.builder(
+            controller: _scrollController,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 5.0,
@@ -207,9 +251,14 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
   //   ];
   // }
 
-// String Function(DateTime){
-//   Text formatted =
-// }
+  // String changeText(DateTime time) {
+  //   String timeChange = time.toString();
+  //   Text(timeChange) {
+  //     const TextStyle(fontSize: 15);
+  //   }
+
+  //   return timeChange;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -240,7 +289,7 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
           pauseSlotColor: Colors.grey,
           bookingGridCrossAxisCount: 4,
           bookingGridChildAspectRatio: 350 / 420,
-          // formatDateTime: ,
+          // formatDateTime: changeText(),
           // disabledDays: const [6, 7],
         ),
       ),

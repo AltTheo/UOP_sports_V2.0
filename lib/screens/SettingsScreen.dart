@@ -244,17 +244,6 @@ class ActionButton extends StatelessWidget {
   }
 }
 
-class InfoRoute extends CupertinoPageRoute {
-  InfoRoute() : super(builder: (BuildContext context) => const Info());
-
-  // OPTIONAL IF YOU WISH TO HAVE SOME EXTRA ANIMATION WHILE ROUTING
-  @override
-  Widget buildPage(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation) {
-    return new FadeTransition(opacity: animation, child: const Info());
-  }
-}
-
 class Info extends StatelessWidget {
   static const String route = '/Settings/Info';
   const Info({super.key});
