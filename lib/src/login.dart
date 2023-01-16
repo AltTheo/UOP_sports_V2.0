@@ -215,7 +215,7 @@ class LoginState extends State<LoginScreen> {
                     print(user);
                     if (user != null) {
                       Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => Nav()));
+                          MaterialPageRoute(builder: (context) => const HomePage()));
                     }
                   },
                   child: const Text(

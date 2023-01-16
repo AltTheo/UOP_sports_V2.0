@@ -329,6 +329,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  navbar_router:
+    dependency: "direct main"
+    description:
+      name: navbar_router
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.1"
   nested:
     dependency: transitive
     description:

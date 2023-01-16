@@ -52,6 +52,7 @@ dependencies:
   animated_notch_bottom_bar: ^0.0.6
   molten_navigationbar_flutter: ^1.0.1
   curved_navigation_bar: ^1.0.3
+  navbar_router: ^0.4.1
 
 dev_dependencies:
   flutter_test:
