@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sport_test/screens/registerScreen.dart';
-import 'package:sport_test/redundant%20files/Nav.dart';
 import 'package:sport_test/screens/reset.dart';
 
 class HomePage extends StatefulWidget {
@@ -112,69 +111,71 @@ class LoginState extends State<LoginScreen> {
               height: 12.0,
             ),
             Flexible(
-            child: Form(
-                key: emailKey,
-                child: TextFormField(
-                    controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    validator: (emailText) {
-                      if (emailText == null || emailText.isEmpty) {
-                        return 'please enter your email';
-                      }
-                      return null;
-                    },
-                    decoration: const InputDecoration(
-                        // errorText: '',
-                        // errorStyle: TextStyle(color: Colors.red),
-                        border: OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(14.0))),
-                        hintText: 'email address',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        prefixIcon: Padding(
-                            padding: EdgeInsetsDirectional.only(start: 12.0),
-                            child: Icon(Icons.email_rounded,
-                                color: Colors.purple)))))),
+                child: Form(
+                    key: emailKey,
+                    child: TextFormField(
+                        controller: emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (emailText) {
+                          if (emailText == null || emailText.isEmpty) {
+                            return 'please enter your email';
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                            // errorText: '',
+                            // errorStyle: TextStyle(color: Colors.red),
+                            border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(14.0))),
+                            hintText: 'email address',
+                            hintStyle: TextStyle(color: Colors.grey),
+                            prefixIcon: Padding(
+                                padding:
+                                    EdgeInsetsDirectional.only(start: 12.0),
+                                child: Icon(Icons.email_rounded,
+                                    color: Colors.purple)))))),
             const SizedBox(height: 34.0),
             Flexible(
-            child: Form(
-                key: passwordKey,
-                child: TextFormField(
-                  controller: passwordController,
-                  obscureText: passwordVisible,
-                  obscuringCharacter: '*',
-                  keyboardType: TextInputType.text,
-                  validator: (passText) {
-                    if (passText == null || passText.isEmpty) {
-                      return 'Please enter your password';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    // errorText: 'Please Enter your password',
-                    // errorStyle: TextStyle(color: Colors.red),
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(14.0))),
-                    hintText: 'password',
-                    // focusedBorder: OutlineInputBorder(
-                    //     borderRadius: BorderRadius.circular(14.0),
-                    //     borderSide: const BorderSide(color: Colors.black)),
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    prefixIcon: const Padding(
-                        padding: EdgeInsetsDirectional.only(start: 15.0),
-                        child: Icon(Icons.lock_outline_rounded,
-                            color: Colors.purple)),
-                    suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            passwordVisible = !passwordVisible;
-                          });
-                        },
-                        icon: Icon(passwordVisible
-                            ? Icons.visibility_rounded
-                            : Icons.visibility_off_rounded)),
-                  ),
-                ))),
+                child: Form(
+                    key: passwordKey,
+                    child: TextFormField(
+                      controller: passwordController,
+                      obscureText: passwordVisible,
+                      obscuringCharacter: '*',
+                      keyboardType: TextInputType.text,
+                      validator: (passText) {
+                        if (passText == null || passText.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        // errorText: 'Please Enter your password',
+                        // errorStyle: TextStyle(color: Colors.red),
+                        border: const OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(14.0))),
+                        hintText: 'password',
+                        // focusedBorder: OutlineInputBorder(
+                        //     borderRadius: BorderRadius.circular(14.0),
+                        //     borderSide: const BorderSide(color: Colors.black)),
+                        hintStyle: const TextStyle(color: Colors.grey),
+                        prefixIcon: const Padding(
+                            padding: EdgeInsetsDirectional.only(start: 15.0),
+                            child: Icon(Icons.lock_outline_rounded,
+                                color: Colors.purple)),
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                passwordVisible = !passwordVisible;
+                              });
+                            },
+                            icon: Icon(passwordVisible
+                                ? Icons.visibility_rounded
+                                : Icons.visibility_off_rounded)),
+                      ),
+                    ))),
             const SizedBox(
               height: 12.0,
             ),
@@ -214,8 +215,9 @@ class LoginState extends State<LoginScreen> {
                         context: context);
                     print(user);
                     if (user != null) {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => const HomePage()));
+                      // ignore: use_build_context_synchronously
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => const HomePage()));
                     }
                   },
                   child: const Text(

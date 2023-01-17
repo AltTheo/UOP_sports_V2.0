@@ -3,11 +3,28 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:navbar_router/navbar_router.dart';
+import 'package:splash_view/splash_view.dart';
 
 import 'NavRouteBar.dart';
 
+
+// void main() {
+//   runApp(MyApp());
+// }
 void main() {
-  runApp(MyApp());
+runApp(
+    MaterialApp(
+      home: SplashView(
+        bottomLoading: true,
+        backgroundColor: Colors.purple,
+        title: const Text('Sports App ', style: TextStyle(color: Colors.white),),
+        duration: const Duration(seconds: 5),
+        logo: const FlutterLogo(size: 50.0,),
+        loadingIndicator: const CircularProgressIndicator(),
+        done: Done( MyApp()),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

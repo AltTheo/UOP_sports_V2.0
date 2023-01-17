@@ -53,6 +53,7 @@ dependencies:
   molten_navigationbar_flutter: ^1.0.1
   curved_navigation_bar: ^1.0.3
   navbar_router: ^0.4.1
+  splash_view: ^2.0.1
 
 dev_dependencies:
   flutter_test:
