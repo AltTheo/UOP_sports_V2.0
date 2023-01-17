@@ -23,7 +23,7 @@ import 'package:navbar_router/navbar_router.dart';
 
 const Color mediumPurple = Color.fromRGBO(79, 0, 241, 1.0);
 const String placeHolderText =
-    'Some news about sports and the university.';
+    'Some news about sports from the university.';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -76,9 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Home'),
       ),
+      drawer: const Drawer(backgroundColor: Colors.white12,),
       body: ListView.builder(
         controller: _scrollController,
-        itemCount: 30,
+        itemCount: 11,
         itemBuilder: (context, index) {
           return InkWell(
               onTap: () {
@@ -115,7 +116,7 @@ class FeedTile extends StatelessWidget {
             right: 4,
             left: 4,
             child: Container(
-              color: Colors.grey,
+              color: Colors.purpleAccent,
               height: 180,
               alignment: Alignment.center,
               child: Text('Feed $index card'),

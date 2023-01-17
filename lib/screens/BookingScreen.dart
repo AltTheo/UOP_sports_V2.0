@@ -115,11 +115,14 @@ class BookingScreenState extends State<BookingScreen> {
                     BookingCalendarView.route,
                     isRootNavigator: false,
                   ); //call click event
-                  NavbarNotifier.hideBottomNavBar = false; 
+                  NavbarNotifier.hideBottomNavBar = false;
                 },
                 child: Card(
                   color: Colors.purple,
-                  shadowColor: Colors.purpleAccent,
+                  elevation: 20,
+                  borderOnForeground: true,
+                  surfaceTintColor: Colors.purpleAccent,
+                  shadowColor: Colors.black,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -138,8 +141,11 @@ class BookingScreenState extends State<BookingScreen> {
                         activityTitles[index],
                         style: const TextStyle(
                             fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                            locale:Locale('en'),
+                            decoration:TextDecoration.overline,
+                            // fontWeight: FontWeight.bold,
                             color: Colors.white),
+                            
                       ),
                     ],
                   ),
@@ -254,7 +260,7 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
   //   String timeChange = time.toString();
   //   Text(timeChange) {
   //     const TextStyle(fontSize: 15);
-  //   }  
+  //   }
 
   //   return timeChange;
   // }
