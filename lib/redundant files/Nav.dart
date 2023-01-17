@@ -106,3 +106,108 @@
 // void main() {
 //   runApp(MyApp());
 // }
+
+
+// SettingsGroup(
+//               settingsGroupTitle: "Account",
+//               items: [
+//                 SettingsItem(
+//                   icons: CupertinoIcons.person,
+//                   iconStyle: IconStyle(
+//                       // backgroundColor: Colors.purple,
+//                       withBackground: true,
+//                       iconsColor: Colors.white),
+//                   onTap: () {
+//                     NavbarNotifier.hideBottomNavBar = false;
+//                     navigate(
+//                       context,
+//                       Info.route,
+//                       isRootNavigator: false,
+//                     );
+//                   },
+//                   title: 'Member Info',
+//                   titleStyle: const TextStyle(fontSize: 17),
+//                   subtitle: 'manage your membership',
+//                   subtitleStyle: const TextStyle(fontSize: 15),
+//                 ),
+//                 SettingsItem(
+//                   onTap: () {
+//                     _showAction(context);
+//                   },
+//                   icons: Icons.exit_to_app_outlined,
+//                   iconStyle: IconStyle(
+//                       // backgroundColor: Colors.purple,
+//                       withBackground: true,
+//                       iconsColor: Colors.white),
+//                   title: "Sign Out",
+//                   titleStyle: const TextStyle(fontSize: 17),
+//                 ),
+//               ],
+//             ),
+//             SettingsGroup(
+//               settingsGroupTitle: 'App preferences',
+//               items: [
+//                 SettingsItem(
+//                   onTap: () {},
+//                   icons: Icons.edit,
+//                   iconStyle: IconStyle(
+//                     iconsColor: Colors.white,
+//                     withBackground: true,
+//                     // backgroundColor: Colors.purple
+//                   ),
+//                   title: 'Appearance',
+//                   titleStyle: const TextStyle(fontSize: 17),
+//                   subtitle: "Make the App yours",
+//                   subtitleStyle: const TextStyle(fontSize: 15),
+//                 ),
+//                 SettingsItem(
+//                   onTap: () {},
+//                   icons: CupertinoIcons.lock_shield_fill,
+//                   iconStyle: IconStyle(
+//                     iconsColor: Colors.white,
+//                     withBackground: true,
+//                     // backgroundColor: Colors.purple,
+//                   ),
+//                   title: 'Privacy',
+//                   titleStyle: const TextStyle(fontSize: 17),
+//                 ),
+//                 SettingsItem(
+//                   onTap: () {},
+//                   icons: Icons.dark_mode_rounded,
+//                   iconStyle: IconStyle(
+//                     iconsColor: Colors.white,
+//                     withBackground: true,
+//                     // backgroundColor: Colors.purple,
+//                   ),
+//                   title: 'Dark mode',
+//                   titleStyle: const TextStyle(fontSize: 17),
+//                   subtitle: "Automatic",
+//                   subtitleStyle: const TextStyle(fontSize: 15),
+//                   trailing: Switch.adaptive(
+//                     value: false,
+//                     onChanged: (value) {
+//                       setState() {
+//                         isSwitched = value;
+//                       }
+//                     },
+//                   ),
+//                 ),
+//               ],
+//             ),
+//             SettingsGroup(
+//               settingsGroupTitle: 'Privacy',
+//               items: [
+//                 SettingsItem(
+//                   onTap: () {},
+//                   icons: Icons.info_rounded,
+//                   iconStyle: IconStyle(
+//                       // backgroundColor: Colors.purple,
+//                       ),
+//                   title: 'About',
+//                   titleStyle: const TextStyle(fontSize: 17),
+//                   subtitle: "Learn more about the App",
+//                   subtitleStyle: const TextStyle(fontSize: 15),
+//                 ),
+//                 SettingsItem(icons: Icons.g_mobiledata, title: 'title', onTap: (){}),
+//               ],
+//             ),

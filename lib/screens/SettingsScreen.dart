@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:sport_test/src/login.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatefulWidget {
   static const String route = '/';
@@ -103,112 +104,71 @@ class _SettingsState extends State<Settings> {
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: ListView(
-          controller:_scrollController,
+          controller: _scrollController,
           children: [
             // You can add a settings title
+            SettingsItem(
+              icons: Icons.person_sharp,
+              onTap: () {
+                NavbarNotifier.hideBottomNavBar = false;
+                navigate(
+                  context,
+                  Info.route,
+                  isRootNavigator: false,
+                );
+              },
+              title: 'Account',
+              titleStyle: const TextStyle(fontSize: 17),
+            ),
+            SettingsItem(
+              onTap: () {},
+              icons: CupertinoIcons.paintbrush,
+              title: 'App Appearance',
+              titleStyle: const TextStyle(fontSize: 17),
+            ),
+            SettingsItem(
+                icons: CupertinoIcons.bell,
+                title: 'Notifications',
+                titleStyle: const TextStyle(fontSize: 17),
+                onTap: () {}),
             SettingsGroup(
-              settingsGroupTitle: "Account",
+              settingsGroupTitle: 'Privacy',
+              settingsGroupTitleStyle: const TextStyle(fontSize: 16),
               items: [
                 SettingsItem(
-                  icons: CupertinoIcons.person,
-                  iconStyle: IconStyle(
-                      // backgroundColor: Colors.purple,
-                      withBackground: true,
-                      iconsColor: Colors.white),
                   onTap: () {
                     NavbarNotifier.hideBottomNavBar = false;
                     navigate(
                       context,
-                      Info.route,
+                      About.route,
                       isRootNavigator: false,
                     );
                   },
-                  title: 'Member Info',
-                  titleStyle: const TextStyle(fontSize: 17),
-                  subtitle: 'manage your membership',
-                  subtitleStyle: const TextStyle(fontSize: 15),
-                ),
-                SettingsItem(
-                  onTap: () {
-                    _showAction(context);
-                  },
-                  icons: Icons.exit_to_app_outlined,
-                  iconStyle: IconStyle(
-                      // backgroundColor: Colors.purple,
-                      withBackground: true,
-                      iconsColor: Colors.white),
-                  title: "Sign Out",
-                  titleStyle: const TextStyle(fontSize: 17),
-                ),
-              ],
-            ),
-            SettingsGroup(
-              settingsGroupTitle: 'App preferences',
-              items: [
-                SettingsItem(
-                  onTap: () {},
-                  icons: Icons.edit,
-                  iconStyle: IconStyle(
-                    iconsColor: Colors.white,
-                    withBackground: true,
-                    // backgroundColor: Colors.purple
-                  ),
-                  title: 'Appearance',
-                  titleStyle: const TextStyle(fontSize: 17),
-                  subtitle: "Make the App yours",
-                  subtitleStyle: const TextStyle(fontSize: 15),
-                ),
-                SettingsItem(
-                  onTap: () {},
-                  icons: CupertinoIcons.lock_shield_fill,
-                  iconStyle: IconStyle(
-                    iconsColor: Colors.white,
-                    withBackground: true,
-                    // backgroundColor: Colors.purple,
-                  ),
-                  title: 'Privacy',
-                  titleStyle: const TextStyle(fontSize: 17),
-                ),
-                SettingsItem(
-                  onTap: () {},
-                  icons: Icons.dark_mode_rounded,
-                  iconStyle: IconStyle(
-                    iconsColor: Colors.white,
-                    withBackground: true,
-                    // backgroundColor: Colors.purple,
-                  ),
-                  title: 'Dark mode',
-                  titleStyle: const TextStyle(fontSize: 17),
-                  subtitle: "Automatic",
-                  subtitleStyle: const TextStyle(fontSize: 15),
-                  trailing: Switch.adaptive(
-                    value: false,
-                    onChanged: (value) {
-                      setState() {
-                        isSwitched = value;
-                      }
-                    },
-                  ),
-                ),
-              ],
-            ),
-            SettingsGroup(
-              settingsGroupTitle: 'Privacy',
-              items: [
-                SettingsItem(
-                  onTap: () {},
-                  icons: Icons.info_rounded,
-                  iconStyle: IconStyle(
-                      // backgroundColor: Colors.purple,
-                      ),
+                  icons: CupertinoIcons.info,
                   title: 'About',
                   titleStyle: const TextStyle(fontSize: 17),
-                  subtitle: "Learn more about the App",
-                  subtitleStyle: const TextStyle(fontSize: 15),
                 ),
-                SettingsItem(icons: Icons.g_mobiledata, title: 'title', onTap: (){}),
               ],
             ),
+            SettingsGroup(
+                settingsGroupTitle: 'Login',
+                settingsGroupTitleStyle: const TextStyle(fontSize: 17),
+                items: [
+                  SettingsItem(
+                    icons: Icons.exit_to_app_sharp,
+                    onTap: () {
+                      NavbarNotifier.hideBottomNavBar = false;
+                      navigate(
+                        context,
+                        LoginScreen.route,
+                        isRootNavigator: false,
+                      );
+                    },
+                    title: 'Log out',
+                    titleStyle: const TextStyle(fontSize: 17),
+                    subtitleStyle: const TextStyle(fontSize: 15),
+                  ),
+                ])
           ],
         ),
       ),
@@ -216,6 +176,7 @@ class _SettingsState extends State<Settings> {
   }
 }
 
+//action button class
 @immutable
 class ActionButton extends StatelessWidget {
   const ActionButton({
@@ -244,18 +205,73 @@ class ActionButton extends StatelessWidget {
   }
 }
 
+//Class for Accounts
 class Info extends StatelessWidget {
   static const String route = '/Settings/Info';
   const Info({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('User Profile'),
-        backgroundColor: Colors.purple,
-        centerTitle: true,
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('Account'),
+          backgroundColor: Colors.purple,
+        ),
+        body: Padding(
+            padding: const EdgeInsets.all(10),
+            child: ListView(
+              children: [
+                SettingsItem(
+                  icons: CupertinoIcons.person_2,
+                  title: 'Member Info',
+                  titleStyle: const TextStyle(fontSize: 17),
+                  onTap: () {},
+                ),
+                SettingsItem(
+                    icons: CupertinoIcons.nosign,
+                    title: 'Cancel Membership',
+                    titleStyle: const TextStyle(fontSize: 17),
+                    onTap: () {})
+              ],
+            )));
+  }
+}
+
+//Class for Privacy
+class About extends StatelessWidget {
+  static const String route = '/Settings/About';
+
+  const About({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('About'),
+          backgroundColor: Colors.purple,
+        ),
+        body: Padding(
+            padding: const EdgeInsets.all(10),
+            child: ListView(
+              children: [
+                SettingsItem(
+                  icons: Icons.remove_red_eye_rounded,
+                  title: 'Privacy Policy',
+                  titleStyle: const TextStyle(fontSize: 17),
+                  onTap: () async {
+                    final Uri url = Uri.parse(
+                        'https://stackoverflow.com/questions/72697570/warning-the-plugin-permission-handler-android-requires-android-sdk-version-33');
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
+                ),
+                SettingsItem(
+                    icons: CupertinoIcons.book,
+                    title: 'Terms of Use',
+                    titleStyle: const TextStyle(fontSize: 17),
+                    onTap: () {})
+              ],
+            )));
   }
 }

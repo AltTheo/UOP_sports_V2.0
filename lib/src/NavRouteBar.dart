@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navbar_router/navbar_router.dart';
+import 'package:sport_test/screens/Activity.dart';
+import 'package:sport_test/src/login.dart';
 import 'package:sport_test/src/main.dart';
 
 import '../screens/BookingScreen.dart';
@@ -32,12 +34,14 @@ class _HomePageState extends State<HomePage> {
       // ProductComments.route: ProductComments(),
     },
     2: {
-      '/': UserProfile(),
+      '/': Activity(),
       ProfileEdit.route: ProfileEdit(),
     },
     3: {
       '/': Settings(),
-      Info.route : Info()
+      Info.route : Info(),
+      About.route: About(),
+      LoginScreen.route: LoginScreen()
     },
   };
 

@@ -6,6 +6,7 @@ import 'package:sport_test/screens/registerScreen.dart';
 import 'package:sport_test/screens/reset.dart';
 
 class HomePage extends StatefulWidget {
+  static const String route = '/';
   const HomePage({super.key});
 
   @override
@@ -49,6 +50,7 @@ class HomePageState extends State<HomePage> {
 }
 
 class LoginScreen extends StatefulWidget {
+  static const String route = '/HomePage/Login';
   const LoginScreen({super.key});
 
   @override

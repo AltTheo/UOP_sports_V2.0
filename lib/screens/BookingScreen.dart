@@ -110,12 +110,12 @@ class BookingScreenState extends State<BookingScreen> {
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () {
-                  NavbarNotifier.hideBottomNavBar = false;
                   navigate(
                     context,
                     BookingCalendarView.route,
                     isRootNavigator: false,
-                  ); // call click event
+                  ); //call click event
+                  NavbarNotifier.hideBottomNavBar = false; 
                 },
                 child: Card(
                   color: Colors.purple,
