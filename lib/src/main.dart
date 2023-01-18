@@ -3,12 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:navbar_router/navbar_router.dart';
-import 'package:splash_view/splash_view.dart';
-
 import 'NavRouteBar.dart';
 
-
-void main() {
+Future<void> main() async {
   runApp(MyApp());
 }
 // void main() {

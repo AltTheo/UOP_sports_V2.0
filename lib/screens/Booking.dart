@@ -1,4 +1,5 @@
 import 'package:booking_calendar/booking_calendar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -6,15 +7,15 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:navbar_router/navbar_router.dart';
 
 @immutable
-class BookingScreen extends StatefulWidget {
+class Booking extends StatefulWidget {
   static const String route = '/';
-  const BookingScreen({super.key});
+  const Booking({super.key});
 
   @override
-  State<BookingScreen> createState() => BookingScreenState();
+  State<Booking> createState() => BookingState();
 }
 
-class BookingScreenState extends State<BookingScreen> {
+class BookingState extends State<Booking> {
   // void _showAction(BuildContext context, int index) {
   //   showDialog<void>(
   //     context: context,
@@ -76,23 +77,13 @@ class BookingScreenState extends State<BookingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final List<Map> activities =
-    //     List.generate(4, (index) => {"id": index, "name": "Activity $index"})
-    //         .toList();
+    // final List activityImages = [
+    //   'lib/assets/images/gym_dumbbell.png',
+    //   'lib/assets/images/classes_2.png',
+    //   'lib/assets/images/swimming.png',
+    //   'lib/assets/images/rock_climbing.png',
+    // ];
 
-    final List activityImages = [
-      'lib/assets/images/gym_dumbbell.png',
-      'lib/assets/images/classes_2.png',
-      'lib/assets/images/swimming.png',
-      'lib/assets/images/rock_climbing.png',
-    ];
-
-    final List activityTitles = [
-      'Gym Session',
-      'Gym classes',
-      'Swimming',
-      'Climbing'
-    ];
     return Scaffold(
         appBar: AppBar(
           // centerTitle: true,
@@ -100,37 +91,28 @@ class BookingScreenState extends State<BookingScreen> {
           title: const Text('Bookings'),
         ),
         body: Center(
-          child: GridView.builder(
-            controller: _scrollController,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 5.0,
-            ),
-            itemCount: 4,
-            itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
+            child: GridView(
+                padding: const EdgeInsets.all(10),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 5.0,
+                ),
+                children: [
+              InkWell(
                 onTap: () {
-  //                 SimpleDialog(
-  //             title:const Text('GeeksforGeeks'),
-  //             children: <Widget>[
-  //                SimpleDialogOption(
-  //                      onPressed: () { },
-  //                           child:const Text('Option 1'),
-  //                        ),
-  //                 SimpleDialogOption(
-  //                    onPressed: () { },
-  //                 child: const Text('Option 2'),
-  //             ),
-  //      ],
-  // ),
                   navigate(
                     context,
-                    BookingCalendarView.route,
+                    Gymsesh.route,
                     isRootNavigator: false,
-                  ); //call click event
-                  NavbarNotifier.hideBottomNavBar = false;
+                  );
                 },
                 child: Card(
+                  shape: const RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Colors.purpleAccent,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                  ),
                   color: Colors.purple,
                   elevation: 20,
                   borderOnForeground: true,
@@ -140,19 +122,19 @@ class BookingScreenState extends State<BookingScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        activityImages[index],
+                        'lib/assets/images/gym_dumbbell.png',
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
                         height: 50,
                         width: 50,
                         color: Colors.white,
                       ),
-                      // const SizedBox(
-                      //   height: 10,
-                      // ),
-                      Text(
-                        activityTitles[index],
-                        style: const TextStyle(
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Text(
+                        'Gym Session',
+                        style: TextStyle(
                             fontSize: 20,
                             decoration: TextDecoration.overline,
                             // fontWeight: FontWeight.bold,
@@ -161,10 +143,125 @@ class BookingScreenState extends State<BookingScreen> {
                     ],
                   ),
                 ),
-              );
-            },
-          ),
-        ));
+              ),
+              InkWell(
+                child: Card(
+                  shape: const RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Colors.purpleAccent,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                  ),
+                  color: Colors.purple,
+                  elevation: 20,
+                  borderOnForeground: true,
+                  surfaceTintColor: Colors.purpleAccent,
+                  shadowColor: Colors.black,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'lib/assets/images/classes_2.png',
+                        fit: BoxFit.cover,
+                        alignment: Alignment.center,
+                        height: 50,
+                        width: 50,
+                        color: Colors.white,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Text(
+                        'Gym Classes',
+                        style: TextStyle(
+                            fontSize: 20,
+                            decoration: TextDecoration.overline,
+                            // fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              InkWell(
+                child: Card(
+                  shape: const RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Colors.purpleAccent,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                  ),
+                  color: Colors.purple,
+                  elevation: 20,
+                  borderOnForeground: true,
+                  surfaceTintColor: Colors.purpleAccent,
+                  shadowColor: Colors.black,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'lib/assets/images/swimming.png',
+                        fit: BoxFit.cover,
+                        alignment: Alignment.center,
+                        height: 50,
+                        width: 50,
+                        color: Colors.white,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Text(
+                        'Swimming',
+                        style: TextStyle(
+                            fontSize: 20,
+                            decoration: TextDecoration.overline,
+                            // fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              InkWell(
+                child: Card(
+                  color: Colors.purple,
+                  elevation: 20,
+                  borderOnForeground: true,
+                  shape: const RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Colors.purpleAccent,
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                  ),
+                  surfaceTintColor: Colors.purpleAccent,
+                  shadowColor: Colors.black,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'lib/assets/images/rock_climbing.png',
+                        fit: BoxFit.cover,
+                        alignment: Alignment.center,
+                        height: 50,
+                        width: 50,
+                        color: Colors.white,
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Text(
+                        'Climbing',
+                        style: TextStyle(
+                            fontSize: 20,
+                            decoration: TextDecoration.overline,
+                            // fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ])));
   }
 }
 
@@ -196,8 +293,47 @@ class ActionButton extends StatelessWidget {
   }
 }
 
+class Gymsesh extends StatefulWidget {
+  static const String route = '/Bookings/Gymsesh';
+  const Gymsesh({Key? key}) : super(key: key);
+
+  @override
+  State<Gymsesh> createState() => GymseshState();
+}
+
+class GymseshState extends State<Gymsesh> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: const Text('Gym Session')),
+        body: Padding(
+          padding: const EdgeInsets.all(25),
+          child: Column(
+            children: [
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                Row(
+                  children: const [
+                    Icon(CupertinoIcons.location_solid),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      'Sports & Recreation',
+                      style: TextStyle(fontSize: 17, color: Colors.black),
+                    )
+                  ],
+                ),
+              ])
+            ],
+          ),
+        ));
+  }
+}
+
 class BookingCalendarView extends StatefulWidget {
-  static const String route = '/Bookings/calendarView';
+  static const String route = '/Bookings/Gymsesh/calendarView';
   const BookingCalendarView({Key? key}) : super(key: key);
 
   @override
@@ -301,7 +437,6 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
           availableSlotText: 'AVAILABLE',
           selectedSlotText: 'SELECTED',
           bookedSlotText: 'BOOKED',
-          pauseSlotText: 'UNAVAILABLE',
           pauseSlotColor: Colors.grey,
           bookingGridCrossAxisCount: 4,
           bookingGridChildAspectRatio: 350 / 420,

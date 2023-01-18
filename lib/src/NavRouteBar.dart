@@ -4,6 +4,7 @@ import 'package:sport_test/screens/Activity.dart';
 import 'package:sport_test/src/login.dart';
 import 'package:sport_test/src/main.dart';
 
+import '../screens/Booking.dart';
 import '../screens/BookingScreen.dart';
 import '../screens/HomeScreen.dart';
 import '../screens/SettingsScreen.dart';
@@ -29,8 +30,9 @@ class _HomePageState extends State<HomePage> {
       // FeedDetail.route: FeedDetail(),
     },
     1: {
-      '/': BookingScreen(),
-      BookingCalendarView.route: BookingCalendarView(),
+      '/': Booking(),
+      Gymsesh.route: Gymsesh()
+      // BookingCalendarView.route: BookingCalendarView(),
       // ProductComments.route: ProductComments(),
     },
     2: {

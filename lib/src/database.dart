@@ -14,13 +14,14 @@
 //   final int? servicePrice;
 
 //   //Because we are storing timestamp in Firestore, we need a converter for DateTime
-//   /* static DateTime timeStampToDateTime(Timestamp timestamp) {
+//   static DateTime timeStampToDateTime(Timestamp timestamp) {
 //     return DateTime.parse(timestamp.toDate().toString());
 //   }
 
 //   static Timestamp dateTimeToTimeStamp(DateTime? dateTime) {
 //     return Timestamp.fromDate(dateTime ?? DateTime.now()); //To TimeStamp
-//   }*/
+//   }
+
 //   @JsonKey(fromJson: AppUtil.timeStampToDateTime, toJson: AppUtil.dateTimeToTimeStamp)
 //   final DateTime? bookingStart;
 //   @JsonKey(fromJson: AppUtil.timeStampToDateTime, toJson: AppUtil.dateTimeToTimeStamp)
@@ -32,7 +33,6 @@
 //   SportBooking(
 //       {this.email,
 //       this.phoneNumber,
-//       this.placeAddress,
 //       this.bookingStart,
 //       this.bookingEnd,
 //       this.placeId,
