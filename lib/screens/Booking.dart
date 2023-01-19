@@ -412,7 +412,7 @@ class ClimbState extends State<Climb> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Gym Session')),
+        appBar: AppBar(title: const Text('Climbing')),
         body: Padding(
           padding: const EdgeInsets.all(25),
           child: Column(
@@ -454,7 +454,7 @@ class SwimState extends State<Swim> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Gym Session')),
+        appBar: AppBar(title: const Text('Swimming')),
         body: Padding(
           padding: const EdgeInsets.all(25),
           child: Column(
