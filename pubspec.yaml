@@ -84,6 +84,16 @@ flutter:
     - lib/assets/images/gym_dumbbell.png
     - lib/assets/images/rock_climbing.png
     - lib/assets/images/swimming.png
+    - lib/assets/images/swim_image.png
+    - lib/assets/images/man_swim.png
+    - lib/assets/images/sauna.png
+    - lib/assets/images/under_16.png
+    - lib/assets/images/session_help.png
+    - lib/assets/images/ravelin_gym.png
+    - lib/assets/images/ravelin_gym2.png
+    - lib/assets/images/ravelin_class.png
+    - lib/assets/images/ravelin_swim.png
+    - lib/assets/images/ravelin_climb.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

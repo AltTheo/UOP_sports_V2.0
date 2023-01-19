@@ -87,7 +87,6 @@ class BookingState extends State<Booking> {
     return Scaffold(
         appBar: AppBar(
           // centerTitle: true,
-          backgroundColor: Colors.purple,
           title: const Text('Bookings'),
         ),
         body: Center(
@@ -109,34 +108,34 @@ class BookingState extends State<Booking> {
                 child: Card(
                   shape: const RoundedRectangleBorder(
                     side: BorderSide(
-                      color: Colors.purpleAccent,
+                      color: Colors.white,
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    // borderRadius: BorderRadius.all(Radius.circular(12)),
                   ),
                   color: Colors.purple,
                   elevation: 20,
                   borderOnForeground: true,
-                  surfaceTintColor: Colors.purpleAccent,
-                  shadowColor: Colors.black,
+                  // surfaceTintColor: Colors.purpleAccent,
+                  shadowColor: Colors.white,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Image.asset(
-                        'lib/assets/images/gym_dumbbell.png',
+                        'lib/assets/images/ravelin_gym2.png',
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
-                        height: 50,
-                        width: 50,
-                        color: Colors.white,
+                        // height: 50,
+                        // width: 50,
+                        // color: Colors.white,
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       const Text(
-                        'Gym Session',
+                        'Gym',
                         style: TextStyle(
-                            fontSize: 20,
-                            decoration: TextDecoration.overline,
+                            fontSize: 25,
+                            // decoration: TextDecoration.overline,
                             // fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),
@@ -155,34 +154,34 @@ class BookingState extends State<Booking> {
                 child: Card(
                   shape: const RoundedRectangleBorder(
                     side: BorderSide(
-                      color: Colors.purpleAccent,
+                      color: Colors.white,
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    // borderRadius: BorderRadius.all(Radius.circular(12)),
                   ),
                   color: Colors.purple,
                   elevation: 20,
                   borderOnForeground: true,
-                  surfaceTintColor: Colors.purpleAccent,
-                  shadowColor: Colors.black,
+                  // surfaceTintColor: Colors.purpleAccent,
+                  shadowColor: Colors.white,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Image.asset(
-                        'lib/assets/images/classes_2.png',
+                        'lib/assets/images/ravelin_class.png',
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
-                        height: 50,
-                        width: 50,
-                        color: Colors.white,
+                        // height: 50,
+                        // width: 50,
+                        // color: Colors.white,
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       const Text(
-                        'Gym Classes',
+                        'Classes',
                         style: TextStyle(
-                            fontSize: 20,
-                            decoration: TextDecoration.overline,
+                            fontSize: 25,
+                            // decoration: TextDecoration.overline,
                             // fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),
@@ -201,34 +200,34 @@ class BookingState extends State<Booking> {
                 child: Card(
                   shape: const RoundedRectangleBorder(
                     side: BorderSide(
-                      color: Colors.purpleAccent,
+                      color: Colors.white,
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    // borderRadius: BorderRadius.all(Radius.circular(12)),
                   ),
                   color: Colors.purple,
                   elevation: 20,
                   borderOnForeground: true,
-                  surfaceTintColor: Colors.purpleAccent,
-                  shadowColor: Colors.black,
+                  // surfaceTintColor: Colors.purpleAccent,
+                  shadowColor: Colors.white,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Image.asset(
-                        'lib/assets/images/swimming.png',
+                        'lib/assets/images/ravelin_swim.png',
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
-                        height: 50,
-                        width: 50,
-                        color: Colors.white,
+                        // height: 50,
+                        // width: 50,
+                        // color: Colors.white,
                       ),
                       const SizedBox(
                         height: 10,
                       ),
                       const Text(
-                        'Swimming',
+                        'Swim',
                         style: TextStyle(
-                            fontSize: 20,
-                            decoration: TextDecoration.overline,
+                            fontSize: 25,
+                            // decoration: TextDecoration.overline,
                             // fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),
@@ -250,31 +249,31 @@ class BookingState extends State<Booking> {
                   borderOnForeground: true,
                   shape: const RoundedRectangleBorder(
                     side: BorderSide(
-                      color: Colors.purpleAccent,
+                      color: Colors.white,
                     ),
-                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                    // borderRadius: BorderRadius.all(Radius.circular(12)),
                   ),
                   surfaceTintColor: Colors.purpleAccent,
-                  shadowColor: Colors.black,
+                  shadowColor: Colors.white,
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Image.asset(
-                        'lib/assets/images/rock_climbing.png',
+                        'lib/assets/images/ravelin_climb.png',
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
-                        height: 50,
-                        width: 50,
-                        color: Colors.white,
+                        // height: 50,
+                        // width: 50,
+                        // color: Colors.white,
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 25,
                       ),
                       const Text(
-                        'Climbing',
+                        'WALL CLIMB',
                         style: TextStyle(
                             fontSize: 20,
-                            decoration: TextDecoration.overline,
+                            // decoration: TextDecoration.overline,
                             // fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),
@@ -314,6 +313,8 @@ class ActionButton extends StatelessWidget {
   }
 }
 
+//Gym session page
+
 class Gymsesh extends StatefulWidget {
   static const String route = '/Bookings/Gymsesh';
   const Gymsesh({Key? key}) : super(key: key);
@@ -331,9 +332,7 @@ class GymseshState extends State<Gymsesh> {
           padding: const EdgeInsets.all(25),
           child: Column(
             children: [
-              Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+              Column(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Row(
                   children: const [
                     Icon(CupertinoIcons.location_solid),
@@ -353,11 +352,7 @@ class GymseshState extends State<Gymsesh> {
   }
 }
 
-
-
-
-
-
+//Gym Class Page
 class Gymclass extends StatefulWidget {
   static const String route = '/Bookings/Gymclass';
   const Gymclass({Key? key}) : super(key: key);
@@ -375,9 +370,7 @@ class GymclassState extends State<Gymclass> {
           padding: const EdgeInsets.all(25),
           child: Column(
             children: [
-              Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+              Column(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Row(
                   children: const [
                     Icon(CupertinoIcons.location_solid),
@@ -397,9 +390,7 @@ class GymclassState extends State<Gymclass> {
   }
 }
 
-
-
-
+//Climbing Page
 class Climb extends StatefulWidget {
   static const String route = '/Bookings/Climb';
   const Climb({Key? key}) : super(key: key);
@@ -417,9 +408,7 @@ class ClimbState extends State<Climb> {
           padding: const EdgeInsets.all(25),
           child: Column(
             children: [
-              Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+              Column(mainAxisAlignment: MainAxisAlignment.start, children: [
                 Row(
                   children: const [
                     Icon(CupertinoIcons.location_solid),
@@ -439,9 +428,7 @@ class ClimbState extends State<Climb> {
   }
 }
 
-
-
-
+//Swim Page
 class Swim extends StatefulWidget {
   static const String route = '/Bookings/Swim';
   const Swim({Key? key}) : super(key: key);
@@ -451,36 +438,255 @@ class Swim extends StatefulWidget {
 }
 
 class SwimState extends State<Swim> {
+  final swimscrollController = ScrollController();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    size = MediaQuery.of(context).size;
+    if (size.width < 50) {
+      _addScrollListener();
+    }
+  }
+
+  void handleScroll() {
+    if (size.width > 50) return;
+    if (swimscrollController.position.userScrollDirection ==
+        ScrollDirection.forward) {
+      if (NavbarNotifier.isNavbarHidden) {
+        NavbarNotifier.hideBottomNavBar = false;
+      }
+    } else {
+      if (!NavbarNotifier.isNavbarHidden) {
+        NavbarNotifier.hideBottomNavBar = true;
+      }
+    }
+  }
+
+  void _addScrollListener() {
+    swimscrollController.addListener(handleScroll);
+  }
+
+  Size size = Size.zero;
+  @override
+  void dispose() {
+    swimscrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Swimming')),
-        body: Padding(
-          padding: const EdgeInsets.all(25),
-          child: Column(
-            children: [
-              Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                Row(
-                  children: const [
-                    Icon(CupertinoIcons.location_solid),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      'Sports & Recreation',
-                      style: TextStyle(fontSize: 17, color: Colors.black),
-                    )
-                  ],
+      appBar: AppBar(title: const Text('Swimming, steam and Sauna')),
+      body: GridView(
+        padding: const EdgeInsets.all(20),
+        controller: swimscrollController,
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        children: [
+          InkWell(
+            onTap: () {
+              navigate(
+                context,
+                Gymclass.route,
+                isRootNavigator: false,
+              );
+            },
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
                 ),
-              ])
-            ],
+                // borderRadius: BorderRadius.all(Radius.circular(2)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.black,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/man_swim.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text(
+                    'Swim',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    'Bookings  >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ));
+          InkWell(
+            onTap: () {
+              navigate(
+                context,
+                Gymclass.route,
+                isRootNavigator: false,
+              );
+            },
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                // borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/sauna.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    'Steam &',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    'Sauna  >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              navigate(
+                context,
+                Gymclass.route,
+                isRootNavigator: false,
+              );
+            },
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                // borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/under_16.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                  const Text(
+                    'Under 16',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    ' Booking >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              navigate(
+                context,
+                Gymclass.route,
+                isRootNavigator: false,
+              );
+            },
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                // borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/session_help.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    'Session',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    'Help  >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
+//The booking view.
 class BookingCalendarView extends StatefulWidget {
   static const String route = '/Bookings/Gymsesh/calendarView';
   const BookingCalendarView({Key? key}) : super(key: key);
