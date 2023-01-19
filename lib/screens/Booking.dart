@@ -145,6 +145,13 @@ class BookingState extends State<Booking> {
                 ),
               ),
               InkWell(
+                onTap: () {
+                  navigate(
+                    context,
+                    Gymclass.route,
+                    isRootNavigator: false,
+                  );
+                },
                 child: Card(
                   shape: const RoundedRectangleBorder(
                     side: BorderSide(
@@ -184,6 +191,13 @@ class BookingState extends State<Booking> {
                 ),
               ),
               InkWell(
+                onTap: () {
+                  navigate(
+                    context,
+                    Swim.route,
+                    isRootNavigator: false,
+                  );
+                },
                 child: Card(
                   shape: const RoundedRectangleBorder(
                     side: BorderSide(
@@ -223,6 +237,13 @@ class BookingState extends State<Booking> {
                 ),
               ),
               InkWell(
+                onTap: () {
+                  navigate(
+                    context,
+                    Climb.route,
+                    isRootNavigator: false,
+                  );
+                },
                 child: Card(
                   color: Colors.purple,
                   elevation: 20,
@@ -302,6 +323,134 @@ class Gymsesh extends StatefulWidget {
 }
 
 class GymseshState extends State<Gymsesh> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: const Text('Gym Session')),
+        body: Padding(
+          padding: const EdgeInsets.all(25),
+          child: Column(
+            children: [
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                Row(
+                  children: const [
+                    Icon(CupertinoIcons.location_solid),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      'Sports & Recreation',
+                      style: TextStyle(fontSize: 17, color: Colors.black),
+                    )
+                  ],
+                ),
+              ])
+            ],
+          ),
+        ));
+  }
+}
+
+
+
+
+
+
+class Gymclass extends StatefulWidget {
+  static const String route = '/Bookings/Gymclass';
+  const Gymclass({Key? key}) : super(key: key);
+
+  @override
+  State<Gymclass> createState() => GymclassState();
+}
+
+class GymclassState extends State<Gymclass> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: const Text('Gym classes')),
+        body: Padding(
+          padding: const EdgeInsets.all(25),
+          child: Column(
+            children: [
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                Row(
+                  children: const [
+                    Icon(CupertinoIcons.location_solid),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      'Sports & Recreation',
+                      style: TextStyle(fontSize: 17, color: Colors.black),
+                    )
+                  ],
+                ),
+              ])
+            ],
+          ),
+        ));
+  }
+}
+
+
+
+
+class Climb extends StatefulWidget {
+  static const String route = '/Bookings/Climb';
+  const Climb({Key? key}) : super(key: key);
+
+  @override
+  State<Climb> createState() => ClimbState();
+}
+
+class ClimbState extends State<Climb> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: const Text('Gym Session')),
+        body: Padding(
+          padding: const EdgeInsets.all(25),
+          child: Column(
+            children: [
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                Row(
+                  children: const [
+                    Icon(CupertinoIcons.location_solid),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      'Sports & Recreation',
+                      style: TextStyle(fontSize: 17, color: Colors.black),
+                    )
+                  ],
+                ),
+              ])
+            ],
+          ),
+        ));
+  }
+}
+
+
+
+
+class Swim extends StatefulWidget {
+  static const String route = '/Bookings/Swim';
+  const Swim({Key? key}) : super(key: key);
+
+  @override
+  State<Swim> createState() => SwimState();
+}
+
+class SwimState extends State<Swim> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

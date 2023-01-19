@@ -9,14 +9,14 @@ import '../screens/BookingScreen.dart';
 import '../screens/HomeScreen.dart';
 import '../screens/SettingsScreen.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class SportsHome extends StatefulWidget {
+  const SportsHome({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<SportsHome> createState() => _SportsHomeState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _SportsHomeState extends State<SportsHome> {
   List<NavbarItem> items = [
     NavbarItem(Icons.home, 'Home', backgroundColor: colors[0]),
     NavbarItem(Icons.timer_outlined, 'Booking', backgroundColor: colors[1]),
@@ -31,7 +31,11 @@ class _HomePageState extends State<HomePage> {
     },
     1: {
       '/': Booking(),
-      Gymsesh.route: Gymsesh()
+      Gymsesh.route: Gymsesh(),
+      Gymclass.route: Gymclass(),
+      Swim.route: Swim(),
+      Climb.route: Climb()
+
       // BookingCalendarView.route: BookingCalendarView(),
       // ProductComments.route: ProductComments(),
     },
@@ -128,7 +132,7 @@ class _HomePageState extends State<HomePage> {
         initialIndex: 0,
         type: NavbarType.notched,
         destinationAnimationCurve: Curves.fastOutSlowIn,
-        destinationAnimationDuration: 500,
+        destinationAnimationDuration: 400,
         decoration: NotchedDecoration(
           elevation: 10.0,
             // selectedLabelTextStyle: const TextStyle(color: Colors.red),

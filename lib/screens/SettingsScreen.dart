@@ -157,12 +157,9 @@ class _SettingsState extends State<Settings> {
                   SettingsItem(
                     icons: Icons.exit_to_app_sharp,
                     onTap: () {
-                      NavbarNotifier.hideBottomNavBar = false;
-                      navigate(
-                        context,
-                        LoginScreen.route,
-                        isRootNavigator: false,
-                      );
+                      NavbarNotifier.hideBottomNavBar = true;
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => const HomePage()));
                     },
                     title: 'Log out',
                     titleStyle: const TextStyle(fontSize: 17),

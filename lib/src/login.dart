@@ -4,6 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sport_test/screens/registerScreen.dart';
 import 'package:sport_test/screens/reset.dart';
+import 'package:sport_test/src/NavRouteBar.dart';
+import 'package:sport_test/src/main.dart';
 
 class HomePage extends StatefulWidget {
   static const String route = '/';
@@ -28,8 +30,7 @@ class HomePageState extends State<HomePage> {
         centerTitle: true,
         backgroundColor: Colors.purple,
         title: const Text(
-          'App',
-          style: TextStyle(fontSize: 40),
+          'Sports App',
         ),
       ),
       body: FutureBuilder(
@@ -41,6 +42,7 @@ class HomePageState extends State<HomePage> {
           return const Center(
             child: CircularProgressIndicator(
               color: Colors.purple,
+              value:20
             ),
           );
         },
@@ -77,11 +79,17 @@ class LoginState extends State<LoginScreen> {
       user = userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == "user-not-found") {
-        print("No user found for that email");
+        if (kDebugMode) {
+          print("No user found for that email");
+        }
       } else if (e.code == "invalid-email") {
-        print("Please enter the correct email");
+        if (kDebugMode) {
+          print("Please enter the correct email");
+        }
       } else if (e.code == "wrong-password") {
-        print("The password is incorrect");
+        if (kDebugMode) {
+          print("The password is incorrect");
+        }
       }
     }
     return user;
@@ -92,7 +100,7 @@ class LoginState extends State<LoginScreen> {
     return Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text('App ',
@@ -219,7 +227,7 @@ class LoginState extends State<LoginScreen> {
                     if (user != null) {
                       // ignore: use_build_context_synchronously
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const HomePage()));
+                          builder: (context) => const SportsHome()));
                     }
                   },
                   child: const Text(
