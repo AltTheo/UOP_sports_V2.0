@@ -7,15 +7,15 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:navbar_router/navbar_router.dart';
 
 @immutable
-class Booking extends StatefulWidget {
+class Service extends StatefulWidget {
   static const String route = '/';
-  const Booking({super.key});
+  const Service({super.key});
 
   @override
-  State<Booking> createState() => BookingState();
+  State<Service> createState() => ServiceState();
 }
 
-class BookingState extends State<Booking> {
+class ServiceState extends State<Service> {
   // void _showAction(BuildContext context, int index) {
   //   showDialog<void>(
   //     context: context,
@@ -87,14 +87,14 @@ class BookingState extends State<Booking> {
     return Scaffold(
         appBar: AppBar(
           // centerTitle: true,
-          title: const Text('Bookings'),
+          title: const Text('Services'),
         ),
         body: Center(
             child: GridView(
                 padding: const EdgeInsets.all(10),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 5.0,
+                  crossAxisSpacing: 15.0,
                 ),
                 children: [
               InkWell(
@@ -270,9 +270,9 @@ class BookingState extends State<Booking> {
                         height: 25,
                       ),
                       const Text(
-                        'WALL CLIMB',
+                        'Wall Climb',
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 25,
                             // decoration: TextDecoration.overline,
                             // fontWeight: FontWeight.bold,
                             color: Colors.white),

@@ -250,19 +250,17 @@ class About extends StatelessWidget {
             child: ListView(
               children: [
                 SettingsItem(
-                  icons: Icons.remove_red_eye_rounded,
-                  title: 'Privacy Policy',
-                  titleStyle: const TextStyle(fontSize: 17),
-                  onTap: () async {
-                    final Uri url = Uri.parse(
-                        'https://stackoverflow.com/questions/72697570/warning-the-plugin-permission-handler-android-requires-android-sdk-version-33');
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(url);
-                    } else {
-                      throw 'Could not launch $url';
-                    }
-                  },
-                ),
+                    icons: Icons.remove_red_eye_rounded,
+                    title: 'Privacy Policy',
+                    titleStyle: const TextStyle(fontSize: 17),
+                    onTap: () async {
+                      var url = Uri.parse("https://www.geeksforgeeks.org/");
+                      if (await canLaunchUrl(url)) {
+                        await launchUrl(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    }),
                 SettingsItem(
                     icons: CupertinoIcons.book,
                     title: 'Terms of Use',

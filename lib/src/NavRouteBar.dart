@@ -1,11 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:sport_test/screens/Activity.dart';
 import 'package:sport_test/src/login.dart';
 import 'package:sport_test/src/main.dart';
 
-import '../screens/Booking.dart';
-import '../screens/BookingScreen.dart';
+import '../screens/Services.dart';
 import '../screens/HomeScreen.dart';
 import '../screens/SettingsScreen.dart';
 
@@ -19,7 +20,7 @@ class SportsHome extends StatefulWidget {
 class _SportsHomeState extends State<SportsHome> {
   List<NavbarItem> items = [
     NavbarItem(Icons.home, 'Home', backgroundColor: colors[0]),
-    NavbarItem(Icons.timer_outlined, 'Booking', backgroundColor: colors[1]),
+    NavbarItem(Ionicons.barbell, 'Services', backgroundColor: colors[1]),
     NavbarItem(Icons.auto_graph_outlined, 'Activity', backgroundColor: colors[2]),
     NavbarItem(Icons.settings, 'Settings', backgroundColor: colors[0]),
   ];
@@ -30,7 +31,7 @@ class _SportsHomeState extends State<SportsHome> {
       // FeedDetail.route: FeedDetail(),
     },
     1: {
-      '/': Booking(),
+      '/': Service(),
       Gymsesh.route: Gymsesh(),
       Gymclass.route: Gymclass(),
       Swim.route: Swim(),
