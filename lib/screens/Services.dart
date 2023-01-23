@@ -1,5 +1,4 @@
 import 'package:booking_calendar/booking_calendar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -327,28 +326,191 @@ class GymseshState extends State<Gymsesh> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Gym Session')),
-        body: Padding(
-          padding: const EdgeInsets.all(25),
-          child: Column(
-            children: [
-              Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-                Row(
-                  children: const [
-                    Icon(CupertinoIcons.location_solid),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      'Sports & Recreation',
-                      style: TextStyle(fontSize: 17, color: Colors.black),
-                    )
-                  ],
+      appBar: AppBar(
+        title: const Text('Gym Session'),
+        centerTitle: true,
+      ),
+      body: GridView(
+        padding: const EdgeInsets.all(20),
+        // controller: swimscrollController,
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        children: [
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
                 ),
-              ])
-            ],
+                // borderRadius: BorderRadius.all(Radius.circular(2)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.black,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/man_swim.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text(
+                    'Gym',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    'Bookings  >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ));
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                // borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/sauna.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    '',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    '',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                // borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/under_16.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                  const Text(
+                    'Under 16',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    ' Booking >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                // borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/session_help.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    'Session',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    'Help  >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -365,28 +527,191 @@ class GymclassState extends State<Gymclass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Gym classes')),
-        body: Padding(
-          padding: const EdgeInsets.all(25),
-          child: Column(
-            children: [
-              Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-                Row(
-                  children: const [
-                    Icon(CupertinoIcons.location_solid),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      'Sports & Recreation',
-                      style: TextStyle(fontSize: 17, color: Colors.black),
-                    )
-                  ],
+      appBar: AppBar(
+        title: const Text('Classes'),
+        centerTitle: true,
+      ),
+      body: GridView(
+        padding: const EdgeInsets.all(20),
+        // controller: swimscrollController,
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        children: [
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
                 ),
-              ])
-            ],
+                // borderRadius: BorderRadius.all(Radius.circular(2)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.black,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/man_swim.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text(
+                    'Class',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    'Bookings  >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ));
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                // borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/sauna.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    'Aqua',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    '   Classes  >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                // borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/under_16.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                  const Text(
+                    'Under 16',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    ' Booking >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                // borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/session_help.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    'Session',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    'Help  >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -400,34 +725,197 @@ class Climb extends StatefulWidget {
 }
 
 class ClimbState extends State<Climb> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Climbing')),
-        body: Padding(
-          padding: const EdgeInsets.all(25),
-          child: Column(
-            children: [
-              Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-                Row(
-                  children: const [
-                    Icon(CupertinoIcons.location_solid),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      'Sports & Recreation',
-                      style: TextStyle(fontSize: 17, color: Colors.black),
-                    )
-                  ],
+      appBar: AppBar(
+        title: const Text('Climbing'),
+        centerTitle: true,
+      ),
+      body: GridView(
+        padding: const EdgeInsets.all(20),
+        // controller: swimscrollController,
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        children: [
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
                 ),
-              ])
-            ],
+                // borderRadius: BorderRadius.all(Radius.circular(2)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.black,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/man_swim.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text(
+                    'Climb',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    '  Bookings  >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ));
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                // borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/sauna.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    'Steam &',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    'Sauna  >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                // borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/under_16.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                  const Text(
+                    'Under 16',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    ' Booking >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                // borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/session_help.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    'Session',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    'Help  >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
-
 //Swim Page
 class Swim extends StatefulWidget {
   static const String route = '/Bookings/Swim';
@@ -477,7 +965,10 @@ class SwimState extends State<Swim> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Swimming, steam and Sauna')),
+      appBar: AppBar(
+        title: const Text('Swimming, steam and Sauna'),
+        centerTitle: true,
+      ),
       body: GridView(
         padding: const EdgeInsets.all(20),
         controller: swimscrollController,
@@ -485,13 +976,7 @@ class SwimState extends State<Swim> {
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         children: [
           InkWell(
-            onTap: () {
-              navigate(
-                context,
-                Gymclass.route,
-                isRootNavigator: false,
-              );
-            },
+            onTap: () {},
             child: Card(
               shape: const RoundedRectangleBorder(
                 side: BorderSide(
@@ -534,13 +1019,7 @@ class SwimState extends State<Swim> {
             ),
           ),
           InkWell(
-            onTap: () {
-              navigate(
-                context,
-                Gymclass.route,
-                isRootNavigator: false,
-              );
-            },
+            onTap: () {},
             child: Card(
               shape: const RoundedRectangleBorder(
                 side: BorderSide(
@@ -583,13 +1062,7 @@ class SwimState extends State<Swim> {
             ),
           ),
           InkWell(
-            onTap: () {
-              navigate(
-                context,
-                Gymclass.route,
-                isRootNavigator: false,
-              );
-            },
+            onTap: () {},
             child: Card(
               shape: const RoundedRectangleBorder(
                 side: BorderSide(
@@ -632,13 +1105,7 @@ class SwimState extends State<Swim> {
             ),
           ),
           InkWell(
-            onTap: () {
-              navigate(
-                context,
-                Gymclass.route,
-                isRootNavigator: false,
-              );
-            },
+            onTap: () {},
             child: Card(
               shape: const RoundedRectangleBorder(
                 side: BorderSide(
