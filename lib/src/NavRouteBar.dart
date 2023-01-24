@@ -32,10 +32,11 @@ class _SportsHomeState extends State<SportsHome> {
     },
     1: {
       '/': Service(),
-      Gymsesh.route: Gymsesh(),
+      Gymsesh.route: Gymsesh(), 
       Gymclass.route: Gymclass(),
       Swim.route: Swim(),
-      Climb.route: Climb()
+      Climb.route: Climb(),
+      BookingCalendarView.route: BookingCalendarView()
 
       // BookingCalendarView.route: BookingCalendarView(),
       // ProductComments.route: ProductComments(),

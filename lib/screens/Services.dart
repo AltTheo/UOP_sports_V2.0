@@ -337,7 +337,11 @@ class GymseshState extends State<Gymsesh> {
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         children: [
           InkWell(
-            onTap: () {},
+            onTap: () {
+              NavbarNotifier.hideBottomNavBar = false;
+              navigate(context, BookingCalendarView.route,
+                  isRootNavigator: false);
+            },
             child: Card(
               shape: const RoundedRectangleBorder(
                 side: BorderSide(
@@ -354,7 +358,7 @@ class GymseshState extends State<Gymsesh> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'lib/assets/images/man_swim.png',
+                    'lib/assets/images/gym_lifting.png',
                     fit: BoxFit.fill,
                     alignment: Alignment.center,
                   ),
@@ -397,7 +401,7 @@ class GymseshState extends State<Gymsesh> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'lib/assets/images/sauna.png',
+                    'lib/assets/images/Gym_booking.png',
                     fit: BoxFit.fill,
                     alignment: Alignment.center,
                   ),
@@ -405,14 +409,14 @@ class GymseshState extends State<Gymsesh> {
                     height: 8,
                   ),
                   const Text(
-                    '',
+                    'Gym ',
                     style: TextStyle(
                         fontSize: 20,
                         // fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
                   const Text(
-                    '',
+                    'Services  >',
                     style: TextStyle(
                         fontSize: 20,
                         // fontWeight: FontWeight.bold,
@@ -440,7 +444,7 @@ class GymseshState extends State<Gymsesh> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'lib/assets/images/under_16.png',
+                    'lib/assets/images/gym_services.png',
                     fit: BoxFit.fill,
                     alignment: Alignment.center,
                   ),
@@ -448,57 +452,14 @@ class GymseshState extends State<Gymsesh> {
                     height: 7,
                   ),
                   const Text(
-                    'Under 16',
+                    'Gym',
                     style: TextStyle(
                         fontSize: 20,
                         // fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
                   const Text(
-                    ' Booking >',
-                    style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () {},
-            child: Card(
-              shape: const RoundedRectangleBorder(
-                side: BorderSide(
-                  color: Colors.white,
-                ),
-                // borderRadius: BorderRadius.all(Radius.circular(12)),
-              ),
-              elevation: 20,
-              color: Colors.purple,
-              borderOnForeground: true,
-              surfaceTintColor: Colors.purple,
-              shadowColor: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'lib/assets/images/session_help.png',
-                    fit: BoxFit.fill,
-                    alignment: Alignment.center,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const Text(
-                    'Session',
-                    style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  const Text(
-                    'Help  >',
+                    '   rules >',
                     style: TextStyle(
                         fontSize: 20,
                         // fontWeight: FontWeight.bold,
@@ -725,7 +686,6 @@ class Climb extends StatefulWidget {
 }
 
 class ClimbState extends State<Climb> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -916,6 +876,7 @@ class ClimbState extends State<Climb> {
     );
   }
 }
+
 //Swim Page
 class Swim extends StatefulWidget {
   static const String route = '/Bookings/Swim';
@@ -1237,35 +1198,37 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.purple,
-        title: const Text('Book a slot'),
-      ),
-      body: Center(
-        child: BookingCalendar(
-          bookingService: sportBookingService,
-          convertStreamResultToDateTimeRanges: convertStreamResultMock,
-          getBookingStream: getBookingStreamMock,
-          uploadBooking: uploadBookingMock,
-          hideBreakTime: false,
-          loadingWidget: const Text('Fetching data...'),
-          uploadingWidget: const CircularProgressIndicator(
-            color: Colors.purple,
-          ),
-          startingDayOfWeek: StartingDayOfWeek.sunday,
-          locale: "en",
-          gridScrollPhysics:
-              const ScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-          availableSlotText: 'AVAILABLE',
-          selectedSlotText: 'SELECTED',
-          bookedSlotText: 'BOOKED',
-          pauseSlotColor: Colors.grey,
-          bookingGridCrossAxisCount: 4,
-          bookingGridChildAspectRatio: 350 / 420,
-          // formatDateTime: changeText(),
-          // disabledDays: const [6, 7],
+        appBar: AppBar(
+          backgroundColor: Colors.purple,
+          automaticallyImplyLeading: true,
+          title: const Text('Book a slot'),
         ),
-      ),
-    );
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 85.0),
+          child: Center(
+            child: BookingCalendar(
+              bookingService: sportBookingService,
+              convertStreamResultToDateTimeRanges: convertStreamResultMock,
+              getBookingStream: getBookingStreamMock,
+              uploadBooking: uploadBookingMock,
+              hideBreakTime: true,
+              loadingWidget: const Text('Fetching data...'),
+              uploadingWidget:
+                  const CircularProgressIndicator(color: Colors.purple),
+              startingDayOfWeek: StartingDayOfWeek.monday,
+              locale: "en",
+              gridScrollPhysics:
+                  const ScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+              availableSlotText: 'Available',
+              selectedSlotText: 'Selected',
+              bookedSlotText: 'Booked',
+              // pauseSlotColor: Colors.grey,
+              bookingGridCrossAxisCount: 4,
+              bookingGridChildAspectRatio: 350 / 420,
+              // formatDateTime: changeText(),
+              // disabledDays: const [6, 7],
+            ),
+          ),
+        ));
   }
 }

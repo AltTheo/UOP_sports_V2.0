@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:sport_test/screens/registerScreen.dart';
 import 'package:sport_test/screens/reset.dart';
 import 'package:sport_test/src/NavRouteBar.dart';
-import 'package:sport_test/src/main.dart';
 
 class HomePage extends StatefulWidget {
   static const String route = '/';

@@ -265,7 +265,14 @@ class About extends StatelessWidget {
                     icons: CupertinoIcons.book,
                     title: 'Terms of Use',
                     titleStyle: const TextStyle(fontSize: 17),
-                    onTap: () {})
+                    onTap: () async {
+                      var url = Uri.parse("https://www.geeksforgeeks.org/");
+                      if (await canLaunchUrl(url)) {
+                        await launchUrl(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    })
               ],
             )));
   }
