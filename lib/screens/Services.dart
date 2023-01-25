@@ -109,7 +109,7 @@ class ServiceState extends State<Service> {
                     side: BorderSide(
                       color: Colors.white,
                     ),
-                    // borderRadius: BorderRadius.all(Radius.circular(12)),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
                   ),
                   color: Colors.purple,
                   elevation: 20,
@@ -155,7 +155,7 @@ class ServiceState extends State<Service> {
                     side: BorderSide(
                       color: Colors.white,
                     ),
-                    // borderRadius: BorderRadius.all(Radius.circular(12)),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
                   ),
                   color: Colors.purple,
                   elevation: 20,
@@ -201,7 +201,7 @@ class ServiceState extends State<Service> {
                     side: BorderSide(
                       color: Colors.white,
                     ),
-                    // borderRadius: BorderRadius.all(Radius.circular(12)),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
                   ),
                   color: Colors.purple,
                   elevation: 20,
@@ -250,7 +250,7 @@ class ServiceState extends State<Service> {
                     side: BorderSide(
                       color: Colors.white,
                     ),
-                    // borderRadius: BorderRadius.all(Radius.circular(12)),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
                   ),
                   surfaceTintColor: Colors.purpleAccent,
                   shadowColor: Colors.white,
@@ -261,12 +261,12 @@ class ServiceState extends State<Service> {
                         'lib/assets/images/ravelin_climb.png',
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
-                        // height: 50,
-                        // width: 50,
+                        height: 125,
+                        width: 250,
                         // color: Colors.white,
                       ),
                       const SizedBox(
-                        height: 25,
+                        height: 10,
                       ),
                       const Text(
                         'Wall Climb',
@@ -361,6 +361,8 @@ class GymseshState extends State<Gymsesh> {
                     'lib/assets/images/gym_lifting.png',
                     fit: BoxFit.fill,
                     alignment: Alignment.center,
+                    height: 115,
+                    width: 250,
                   ),
                   const SizedBox(
                     height: 5,
@@ -516,9 +518,11 @@ class GymclassState extends State<Gymclass> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'lib/assets/images/man_swim.png',
+                    'lib/assets/images/classes_3.png',
                     fit: BoxFit.fill,
                     alignment: Alignment.center,
+                    height: 115,
+                    width: 250,
                   ),
                   const SizedBox(
                     height: 5,
@@ -559,9 +563,11 @@ class GymclassState extends State<Gymclass> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'lib/assets/images/sauna.png',
+                    'lib/assets/images/aquaclass_2.png',
                     fit: BoxFit.fill,
                     alignment: Alignment.center,
+                    height: 110,
+                    width: 168,
                   ),
                   const SizedBox(
                     height: 8,
@@ -602,22 +608,24 @@ class GymclassState extends State<Gymclass> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'lib/assets/images/under_16.png',
+                    'lib/assets/images/classes_4.png',
                     fit: BoxFit.fill,
                     alignment: Alignment.center,
+                    height: 115,
+                    width: 250,
                   ),
                   const SizedBox(
                     height: 7,
                   ),
                   const Text(
-                    'Under 16',
+                    'Class',
                     style: TextStyle(
                         fontSize: 20,
                         // fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
                   const Text(
-                    ' Booking >',
+                    '  Rules >',
                     style: TextStyle(
                         fontSize: 20,
                         // fontWeight: FontWeight.bold,
@@ -653,14 +661,14 @@ class GymclassState extends State<Gymclass> {
                     height: 8,
                   ),
                   const Text(
-                    'Session',
+                    'UOP',
                     style: TextStyle(
                         fontSize: 20,
                         // fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
                   const Text(
-                    'Help  >',
+                    'Fitness  >',
                     style: TextStyle(
                         fontSize: 20,
                         // fontWeight: FontWeight.bold,
@@ -706,7 +714,7 @@ class ClimbState extends State<Climb> {
                 side: BorderSide(
                   color: Colors.white,
                 ),
-                // borderRadius: BorderRadius.all(Radius.circular(2)),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
               elevation: 20,
               color: Colors.purple,
@@ -717,9 +725,11 @@ class ClimbState extends State<Climb> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'lib/assets/images/man_swim.png',
+                    'lib/assets/images/climb_girl.png',
                     fit: BoxFit.fill,
                     alignment: Alignment.center,
+                    height: 115,
+                    width: 170,
                   ),
                   const SizedBox(
                     height: 5,
@@ -749,7 +759,7 @@ class ClimbState extends State<Climb> {
                 side: BorderSide(
                   color: Colors.white,
                 ),
-                // borderRadius: BorderRadius.all(Radius.circular(12)),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
               ),
               elevation: 20,
               color: Colors.purple,
@@ -760,93 +770,7 @@ class ClimbState extends State<Climb> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image.asset(
-                    'lib/assets/images/sauna.png',
-                    fit: BoxFit.fill,
-                    alignment: Alignment.center,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const Text(
-                    'Steam &',
-                    style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  const Text(
-                    'Sauna  >',
-                    style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () {},
-            child: Card(
-              shape: const RoundedRectangleBorder(
-                side: BorderSide(
-                  color: Colors.white,
-                ),
-                // borderRadius: BorderRadius.all(Radius.circular(12)),
-              ),
-              elevation: 20,
-              color: Colors.purple,
-              borderOnForeground: true,
-              surfaceTintColor: Colors.purple,
-              shadowColor: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'lib/assets/images/under_16.png',
-                    fit: BoxFit.fill,
-                    alignment: Alignment.center,
-                  ),
-                  const SizedBox(
-                    height: 7,
-                  ),
-                  const Text(
-                    'Under 16',
-                    style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  const Text(
-                    ' Booking >',
-                    style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () {},
-            child: Card(
-              shape: const RoundedRectangleBorder(
-                side: BorderSide(
-                  color: Colors.white,
-                ),
-                // borderRadius: BorderRadius.all(Radius.circular(12)),
-              ),
-              elevation: 20,
-              color: Colors.purple,
-              borderOnForeground: true,
-              surfaceTintColor: Colors.purple,
-              shadowColor: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'lib/assets/images/session_help.png',
+                    'lib/assets/images/climb_3.png',
                     fit: BoxFit.fill,
                     alignment: Alignment.center,
                   ),
@@ -862,6 +786,94 @@ class ClimbState extends State<Climb> {
                   ),
                   const Text(
                     'Help  >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/climb_1.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                    height:  115,
+                    width: 170,
+                  ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                  const Text(
+                    'Climbing',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    ' Equipments >',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () {},
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                side: BorderSide(
+                  color: Colors.white,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+              ),
+              elevation: 20,
+              color: Colors.purple,
+              borderOnForeground: true,
+              surfaceTintColor: Colors.purple,
+              shadowColor: Colors.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    'lib/assets/images/climb_2.png',
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    'Under 16',
+                    style: TextStyle(
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  const Text(
+                    'Bookings  >',
                     style: TextStyle(
                         fontSize: 20,
                         // fontWeight: FontWeight.bold,

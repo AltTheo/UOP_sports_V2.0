@@ -100,7 +100,16 @@ flutter:
     - lib/assets/images/gym_services.png
     - lib/assets/images/gym_lifting.png
     - lib/assets/images/gym_people.png
-
+    - lib/assets/images/gym_guy.png
+    - lib/assets/images/climb_1.png
+    - lib/assets/images/climb_2.png
+    - lib/assets/images/climb_3.png
+    - lib/assets/images/classes_3.png
+    - lib/assets/images/aquaclass_1.png
+    - lib/assets/images/aquaclass_2.png
+    - lib/assets/images/classes_4.png
+    - lib/assets/images/classes_5.png
+    - lib/assets/images/climb_girl.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
