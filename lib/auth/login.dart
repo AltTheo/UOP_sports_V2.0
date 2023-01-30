@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sport_test/auth/registerScreen.dart';
 import 'package:sport_test/auth/reset.dart';
 import 'package:sport_test/src/NavRouteBar.dart';
@@ -102,20 +104,23 @@ class LoginState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('App ',
-                textHeightBehavior:
-                    TextHeightBehavior(applyHeightToFirstAscent: true),
-                style: TextStyle(
-                    color: Colors.purple,
-                    fontSize: 44.0,
-                    fontWeight: FontWeight.bold)),
-            const Text(
-              'Login',
-              style: TextStyle(
-                  color: Colors.purple,
-                  fontSize: 28.0,
-                  fontWeight: FontWeight.bold),
-            ),
+            const Center(
+                child: Icon(CupertinoIcons.person_alt_circle_fill,
+                    size: 100, color: Colors.purple)),
+            // const Text('App ',
+            //     textHeightBehavior:
+            //         TextHeightBehavior(applyHeightToFirstAscent: true),
+            //     style: TextStyle(
+            //         color: Colors.purple,
+            //         fontSize: 44.0,
+            //         fontWeight: FontWeight.bold)),
+            // const Text(
+            //   'Login',
+            //   style: TextStyle(
+            //       color: Colors.purple,
+            //       fontSize: 28.0,
+            //       fontWeight: FontWeight.bold),
+            // ),
             const SizedBox(
               height: 12.0,
             ),
@@ -226,6 +231,9 @@ class LoginState extends State<LoginScreen> {
                         context: context);
                     print(user);
                     if (user != null) {
+                      SharedPreferences pref =
+                          await SharedPreferences.getInstance();
+                      // pref.setString("UserID", User.user.uid);
                       // ignore: use_build_context_synchronously
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => const SportsHome()));

@@ -4,13 +4,17 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:navbar_router/navbar_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sport_test/auth/login.dart';
+import 'package:sport_test/src/splashscreen.dart';
 import 'NavRouteBar.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  var email = prefs.getString('email');
+  runApp(MaterialApp(home:email == null ? MyApp() : const SportsHome()));
 }
 // void main() {
 // runApp(
@@ -42,7 +46,7 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData(
           brightness: Brightness.dark,
         ),
-        home: const HomePage());
+        home: const SplashScreen());
     // home: const NavbarSample(title: 'BottomNavbar Demo'));
   }
 }

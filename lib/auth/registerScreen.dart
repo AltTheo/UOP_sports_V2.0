@@ -180,9 +180,11 @@ class RegisterState extends State<Register> {
                       password: newPasswordController.text,
                       context: context);
                   print(user);
+                  // FirebaseAuth result = await 
                   if (newEmailController.text.isEmpty &&
                       newPasswordController.text.isEmpty) {}
                   if (user != null) {
+                    User? user = FirebaseAuth.instance.currentUser;
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const verifyScreen()));
                   }
