@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sport_test/src/login.dart';
-import 'package:sport_test/screens/verifyScreen.dart';
+import 'package:sport_test/auth/login.dart';
+import 'package:sport_test/auth/verifyScreen.dart';
 
 class RegPage extends StatefulWidget {
   const RegPage({super.key});
@@ -70,10 +70,11 @@ class RegisterState extends State<Register> {
           email: email, password: password);
       user = userCredential.user;
     } on FirebaseAuthException catch (e) {
-      if (e.code == "user-not-found") {
-        if (kDebugMode) {
-          print("No user found for that email");
-        }
+      if (e.code == "invalid-email") {
+        print("No user found for that email");
+      }
+      if (e.code == "weak-password") {
+        print("password is weak");
       }
     }
     return user;
@@ -88,7 +89,7 @@ class RegisterState extends State<Register> {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text('Sign Up',
@@ -100,65 +101,69 @@ class RegisterState extends State<Register> {
             height: 20.0,
           ),
           Flexible(
-          child:TextFormField(
-              controller: newEmailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                // errorText: 'Please Enter your email address',
-                // errorStyle: TextStyle(color: Colors.red),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(14.0))),
-                hintText: 'Email Address',
-                hintStyle: TextStyle(color: Colors.grey),
-                prefixIcon: Padding(
-                    padding: EdgeInsetsDirectional.only(start: 15.0),
-                    child: Icon(Icons.email_rounded, color: Colors.purple)),
-              ))),
+              child: TextFormField(
+                  textInputAction: TextInputAction.next,
+                  controller: newEmailController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
+                    // errorText: 'Please Enter your email address',
+                    // errorStyle: TextStyle(color: Colors.red),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                    hintText: 'Email Address',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    prefixIcon: Padding(
+                        padding: EdgeInsetsDirectional.only(start: 15.0),
+                        child: Icon(Icons.email_rounded, color: Colors.purple)),
+                  ))),
           const SizedBox(
             height: 23.0,
           ),
           Flexible(
-          child :TextField(
-              obscureText: passwordVisible,
-              obscuringCharacter: '*',
-              controller: newPasswordController,
-              keyboardType: TextInputType.visiblePassword,
-              decoration: InputDecoration(
-                  // errorText: 'Please Enter your phone number',
-                  // errorStyle: TextStyle(color: Colors.red),
-                  border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(14.0))),
-                  hintText: 'new Password',
-                  hintStyle: const TextStyle(color: Colors.grey),
-                  prefixIcon: const Padding(
-                      padding: EdgeInsetsDirectional.only(start: 15.0),
-                      child: Icon(Icons.lock_outline_rounded,
-                          color: Colors.purple)),
-                  suffixIcon: InkWell(
-                    onTap: toggleVisibility,
-                    child: const Icon(Icons.visibility_rounded),
-                  )))),
+              child: TextField(
+                  textInputAction: TextInputAction.next,
+                  obscureText: passwordVisible,
+                  obscuringCharacter: '*',
+                  controller: newPasswordController,
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: InputDecoration(
+                      // errorText: 'Please Enter your phone number',
+                      // errorStyle: TextStyle(color: Colors.red),
+                      border: const OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(14.0))),
+                      hintText: 'new Password',
+                      hintStyle: const TextStyle(color: Colors.grey),
+                      prefixIcon: const Padding(
+                          padding: EdgeInsetsDirectional.only(start: 15.0),
+                          child: Icon(Icons.lock_outline_rounded,
+                              color: Colors.purple)),
+                      suffixIcon: InkWell(
+                        onTap: toggleVisibility,
+                        child: const Icon(Icons.visibility_rounded),
+                      )))),
           const SizedBox(
             height: 23.0,
           ),
           Flexible(
-          child :TextFormField(
-              obscureText: passwordVisible,
-              obscuringCharacter: '*',
-              controller: confirmPasswordController,
-              keyboardType: TextInputType.visiblePassword,
-              decoration: const InputDecoration(
-                // errorText: 'Please Enter your phone number',
-                // errorStyle: TextStyle(color: Colors.red),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(14.0))),
-                hintText: 'confirm Password',
-                hintStyle: TextStyle(color: Colors.grey),
-                prefixIcon: Padding(
-                    padding: EdgeInsetsDirectional.only(start: 15.0),
-                    child:
-                        Icon(Icons.lock_outline_rounded, color: Colors.purple)),
-              ))),
+              child: TextFormField(
+                  textInputAction: TextInputAction.done,
+                  obscureText: passwordVisible,
+                  obscuringCharacter: '*',
+                  controller: confirmPasswordController,
+                  keyboardType: TextInputType.visiblePassword,
+                  decoration: const InputDecoration(
+                    // errorText: 'Please Enter your phone number',
+                    // errorStyle: TextStyle(color: Colors.red),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                    hintText: 'confirm Password',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    prefixIcon: Padding(
+                        padding: EdgeInsetsDirectional.only(start: 15.0),
+                        child: Icon(Icons.lock_outline_rounded,
+                            color: Colors.purple)),
+                  ))),
           const SizedBox(height: 23.0),
           SizedBox(
               width: double.infinity,

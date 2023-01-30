@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:navbar_router/navbar_router.dart';
-import 'package:sport_test/src/login.dart';
+import 'package:sport_test/auth/login.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatefulWidget {
@@ -158,7 +158,7 @@ class _SettingsState extends State<Settings> {
                     icons: Icons.exit_to_app_sharp,
                     onTap: () {
                       NavbarNotifier.hideBottomNavBar = true;
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const HomePage()));
                     },
                     title: 'Log out',

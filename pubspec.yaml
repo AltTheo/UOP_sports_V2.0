@@ -56,6 +56,7 @@ dependencies:
   splash_view: ^2.0.1
   url_launcher: ^6.1.7
   ionicons: ^0.2.2
+  shared_preferences: ^2.0.17
 
 dev_dependencies:
   flutter_test:

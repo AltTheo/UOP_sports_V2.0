@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:sport_test/screens/Activity.dart';
-import 'package:sport_test/src/login.dart';
+import 'package:sport_test/auth/login.dart';
 import 'package:sport_test/src/main.dart';
 
 import '../screens/Services.dart';
@@ -21,7 +20,8 @@ class _SportsHomeState extends State<SportsHome> {
   List<NavbarItem> items = [
     NavbarItem(Icons.home, 'Home', backgroundColor: colors[0]),
     NavbarItem(Ionicons.barbell, 'Services', backgroundColor: colors[1]),
-    NavbarItem(Icons.auto_graph_outlined, 'Activity', backgroundColor: colors[2]),
+    NavbarItem(Icons.auto_graph_outlined, 'Activity',
+        backgroundColor: colors[2]),
     NavbarItem(Icons.settings, 'Settings', backgroundColor: colors[0]),
   ];
 
@@ -32,7 +32,7 @@ class _SportsHomeState extends State<SportsHome> {
     },
     1: {
       '/': Service(),
-      Gymsesh.route: Gymsesh(), 
+      Gymsesh.route: Gymsesh(),
       Gymclass.route: Gymclass(),
       Swim.route: Swim(),
       Climb.route: Climb(),
@@ -47,7 +47,7 @@ class _SportsHomeState extends State<SportsHome> {
     },
     3: {
       '/': Settings(),
-      Info.route : Info(),
+      Info.route: Info(),
       About.route: About(),
       LoginScreen.route: LoginScreen()
     },
@@ -137,16 +137,16 @@ class _SportsHomeState extends State<SportsHome> {
         destinationAnimationDuration: 400,
         decoration: NotchedDecoration(
           elevation: 10.0,
-            // selectedLabelTextStyle: const TextStyle(color: Colors.red),
-            showUnselectedLabels: true,
-            unselectedIconColor: Colors.white,
-            unselectedItemColor: Colors.white,
-            unselectedLabelTextStyle:
-                const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold),
-            selectedIconTheme: const IconThemeData(color: Colors.white),
-            // isExtended: size.width > 800 ? true : false,
-            // navbarType: BottomNavigationBarType.shifting
-            ),
+          // selectedLabelTextStyle: const TextStyle(color: Colors.red),
+          showUnselectedLabels: true,
+          unselectedIconColor: Colors.white,
+          unselectedItemColor: Colors.white,
+          unselectedLabelTextStyle: const TextStyle(
+              color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold),
+          selectedIconTheme: const IconThemeData(color: Colors.white),
+          // isExtended: size.width > 800 ? true : false,
+          // navbarType: BottomNavigationBarType.shifting
+        ),
         onChanged: (x) {},
         backButtonBehavior: BackButtonBehavior.rememberHistory,
         destinations: [

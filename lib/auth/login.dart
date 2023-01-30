@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sport_test/screens/registerScreen.dart';
-import 'package:sport_test/screens/reset.dart';
+import 'package:sport_test/auth/registerScreen.dart';
+import 'package:sport_test/auth/reset.dart';
 import 'package:sport_test/src/NavRouteBar.dart';
 
 class HomePage extends StatefulWidget {
@@ -39,10 +39,7 @@ class HomePageState extends State<HomePage> {
             return const LoginScreen();
           }
           return const Center(
-            child: CircularProgressIndicator(
-              color: Colors.purple,
-              value:20
-            ),
+            child: CircularProgressIndicator(color: Colors.purple, value: 20),
           );
         },
       ),
@@ -78,17 +75,20 @@ class LoginState extends State<LoginScreen> {
       user = userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == "user-not-found") {
-        if (kDebugMode) {
-          print("No user found for that email");
-        }
+        const SnackBar(
+          content: Text('user not found'),
+        );
+        print("No user found for that email");
       } else if (e.code == "invalid-email") {
-        if (kDebugMode) {
-          print("Please enter the correct email");
-        }
+        const SnackBar(
+          content: Text('Incorrect email'),
+        );
+        print("Please enter the correct email");
       } else if (e.code == "wrong-password") {
-        if (kDebugMode) {
-          print("The password is incorrect");
-        }
+        const SnackBar(
+          content: Text('Incorrect password'),
+        );
+        print("The password is incorrect");
       }
     }
     return user;
@@ -123,6 +123,7 @@ class LoginState extends State<LoginScreen> {
                 child: Form(
                     key: emailKey,
                     child: TextFormField(
+                        textInputAction: TextInputAction.next,
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         validator: (emailText) {
@@ -149,6 +150,7 @@ class LoginState extends State<LoginScreen> {
                 child: Form(
                     key: passwordKey,
                     child: TextFormField(
+                      textInputAction: TextInputAction.done,
                       controller: passwordController,
                       obscureText: passwordVisible,
                       obscuringCharacter: '*',
@@ -227,6 +229,12 @@ class LoginState extends State<LoginScreen> {
                       // ignore: use_build_context_synchronously
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => const SportsHome()));
+                    }
+                    if (user == null) {
+                      const SnackBar(
+                        content: Text('Enter Username and password'),
+                        backgroundColor: Colors.purple,
+                      );
                     }
                   },
                   child: const Text(
