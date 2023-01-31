@@ -106,7 +106,7 @@ class LoginState extends State<LoginScreen> {
           children: [
             const Center(
                 child: Icon(CupertinoIcons.person_alt_circle_fill,
-                    size: 100, color: Colors.purple)),
+                    size: 85, color: Colors.purple)),
             // const Text('App ',
             //     textHeightBehavior:
             //         TextHeightBehavior(applyHeightToFirstAscent: true),
@@ -122,7 +122,7 @@ class LoginState extends State<LoginScreen> {
             //       fontWeight: FontWeight.bold),
             // ),
             const SizedBox(
-              height: 12.0,
+              height: 15.0,
             ),
             Flexible(
                 child: Form(

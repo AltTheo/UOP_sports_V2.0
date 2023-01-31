@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../auth/login.dart';
 
@@ -16,7 +18,7 @@ class SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        const Duration(seconds: 5),
+        const Duration(seconds: 3),
         () => Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const HomePage())));
   }
@@ -24,16 +26,34 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      backgroundColor: Colors.white,
+      body: Center(
+          child: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.white, Colors.deepPurpleAccent])),
+        child: Center(
+            child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          // ignore: prefer_const_literals_to_create_immutables
           children: [
-            const Text('splashscreen'),
-            const CircularProgressIndicator.adaptive(
-              backgroundColor: Colors.purple,
-            )
-          ]),
+            const Center(
+                child: Icon(CupertinoIcons.sportscourt,
+                    size: 85, color: Colors.purple)),
+            Text('Sports App',
+                style: GoogleFonts.lato(
+                    fontStyle: FontStyle.italic,
+                    fontSize: 64,
+                    color: Colors.purple,
+                    fontWeight: FontWeight.w900)),
+                    const SizedBox(
+                      height: 50,
+                    ),
+            const CircularProgressIndicator()
+          ],
+        )),
+      )),
     );
   }
 }

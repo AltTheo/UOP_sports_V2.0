@@ -57,6 +57,7 @@ dependencies:
   url_launcher: ^6.1.7
   ionicons: ^0.2.2
   shared_preferences: ^2.0.17
+  google_fonts: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -82,7 +83,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/assets/images/classes_2.png
-    - lib/assets//images/classes.png
     - lib/assets/images/gym_dumbbell.png
     - lib/assets/images/rock_climbing.png
     - lib/assets/images/swimming.png

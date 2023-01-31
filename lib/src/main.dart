@@ -12,9 +12,8 @@ import 'NavRouteBar.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  var email = prefs.getString('email');
-  runApp(MaterialApp(home:email == null ? MyApp() : const SportsHome()));
+
+  runApp(MyApp());
 }
 // void main() {
 // runApp(

@@ -225,7 +225,7 @@ class Info extends StatelessWidget {
                 ),
                 SettingsItem(
                     icons: CupertinoIcons.nosign,
-                    title: 'Cancel Membership',
+                    title: 'Manage Membership',
                     titleStyle: const TextStyle(fontSize: 17),
                     onTap: () {})
               ],
