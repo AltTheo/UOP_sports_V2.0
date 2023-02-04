@@ -58,6 +58,12 @@ class Register extends StatefulWidget {
 
 class RegisterState extends State<Register> {
   bool passwordVisible = true;
+  TextEditingController newEmailController = TextEditingController();
+  TextEditingController newPasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  GlobalKey<FormState> emailKey = GlobalKey();
+  GlobalKey<FormState> passwordKey = GlobalKey();
+  GlobalKey<FormState> confirmKey = GlobalKey();
 
   static Future<User?> loginUsingEmailPassword(
       {required String email,
@@ -82,88 +88,110 @@ class RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController newEmailController = TextEditingController();
-    TextEditingController newPasswordController = TextEditingController();
-    TextEditingController confirmPasswordController = TextEditingController();
-
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Sign Up',
-              style: TextStyle(
-                  color: Colors.purple,
-                  fontSize: 44.0,
-                  fontWeight: FontWeight.bold)),
+          const Center(
+            child: Text('Sign Up',
+                style: TextStyle(
+                    color: Colors.purple,
+                    fontSize: 44.0,
+                    fontWeight: FontWeight.bold)),
+          ),
           const SizedBox(
-            height: 20.0,
+            height: 25.0,
           ),
           Flexible(
-              child: TextFormField(
-                  textInputAction: TextInputAction.next,
-                  controller: newEmailController,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    // errorText: 'Please Enter your email address',
-                    // errorStyle: TextStyle(color: Colors.red),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(14.0))),
-                    hintText: 'Email Address',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    prefixIcon: Padding(
-                        padding: EdgeInsetsDirectional.only(start: 15.0),
-                        child: Icon(Icons.email_rounded, color: Colors.purple)),
-                  ))),
+              child: Form(
+                key: emailKey,
+            child: TextFormField(
+                textInputAction: TextInputAction.next,
+                controller: newEmailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                  // errorText: 'Please Enter your email address',
+                  // errorStyle: TextStyle(color: Colors.red),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                  hintText: 'email Address',
+                  hintStyle: TextStyle(color: Colors.grey),
+                  prefixIcon: Padding(
+                      padding: EdgeInsetsDirectional.only(start: 15.0),
+                      child: Icon(Icons.email_rounded, color: Colors.purple)),
+                )),
+          )),
           const SizedBox(
             height: 23.0,
           ),
           Flexible(
-              child: TextField(
-                  textInputAction: TextInputAction.next,
-                  obscureText: passwordVisible,
-                  obscuringCharacter: '*',
-                  controller: newPasswordController,
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                      // errorText: 'Please Enter your phone number',
+              child: Form(
+                  key: passwordKey,
+                  child: TextFormField(
+                    textInputAction: TextInputAction.next,
+                    controller: newPasswordController,
+                    obscureText: passwordVisible,
+                    obscuringCharacter: '*',
+                    keyboardType: TextInputType.text,
+                    validator: (passText) {
+                      if (passText == null || passText.isEmpty) {
+                        return 'Please enter your password';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      // errorText: 'Please Enter your password',
                       // errorStyle: TextStyle(color: Colors.red),
                       border: const OutlineInputBorder(
                           borderRadius:
                               BorderRadius.all(Radius.circular(14.0))),
-                      hintText: 'new Password',
+                      hintText: 'new password',
+                      // focusedBorder: OutlineInputBorder(
+                      //     borderRadius: BorderRadius.circular(14.0),
+                      //     borderSide: const BorderSide(color: Colors.black)),
                       hintStyle: const TextStyle(color: Colors.grey),
                       prefixIcon: const Padding(
                           padding: EdgeInsetsDirectional.only(start: 15.0),
                           child: Icon(Icons.lock_outline_rounded,
                               color: Colors.purple)),
-                      suffixIcon: InkWell(
-                        onTap: toggleVisibility,
-                        child: const Icon(Icons.visibility_rounded),
-                      )))),
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              passwordVisible = !passwordVisible;
+                            });
+                          },
+                          icon: Icon(passwordVisible
+                              ? Icons.visibility_rounded
+                              : Icons.visibility_off_rounded)),
+                    ),
+                  ))),
           const SizedBox(
             height: 23.0,
           ),
           Flexible(
-              child: TextFormField(
-                  textInputAction: TextInputAction.done,
-                  obscureText: passwordVisible,
-                  obscuringCharacter: '*',
-                  controller: confirmPasswordController,
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: const InputDecoration(
-                    // errorText: 'Please Enter your phone number',
-                    // errorStyle: TextStyle(color: Colors.red),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(14.0))),
-                    hintText: 'confirm Password',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    prefixIcon: Padding(
-                        padding: EdgeInsetsDirectional.only(start: 15.0),
-                        child: Icon(Icons.lock_outline_rounded,
-                            color: Colors.purple)),
-                  ))),
+              child: Form(
+                key: confirmKey,
+                child: TextFormField(
+                    textInputAction: TextInputAction.done,
+                    obscureText: passwordVisible,
+                    obscuringCharacter: '*',
+                    controller: confirmPasswordController,
+                    keyboardType: TextInputType.visiblePassword,
+                    decoration: const InputDecoration(
+                      // errorText: 'Please Enter your phone number',
+                      // errorStyle: TextStyle(color: Colors.red),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(14.0))),
+                      hintText: 'confirm Password',
+                      hintStyle: TextStyle(color: Colors.grey),
+                      prefixIcon: Padding(
+                          padding: EdgeInsetsDirectional.only(start: 15.0),
+                          child: Icon(Icons.lock_outline_rounded,
+                              color: Colors.purple)),
+                    )),
+              )),
           const SizedBox(height: 23.0),
           SizedBox(
               width: double.infinity,
@@ -180,10 +208,10 @@ class RegisterState extends State<Register> {
                       password: newPasswordController.text,
                       context: context);
                   print(user);
-                  // FirebaseAuth result = await 
+                  // FirebaseAuth result = await
                   if (newEmailController.text.isEmpty &&
                       newPasswordController.text.isEmpty) {}
-                  if (user != null) {
+                  if (user != null && passwordKey==confirmKey) {
                     User? user = FirebaseAuth.instance.currentUser;
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const verifyScreen()));
@@ -223,11 +251,5 @@ class RegisterState extends State<Register> {
         ],
       ),
     );
-  }
-
-  void toggleVisibility() {
-    setState(() {
-      passwordVisible = !passwordVisible;
-    });
   }
 }

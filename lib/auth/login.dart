@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sport_test/auth/registerScreen.dart';
 import 'package:sport_test/auth/reset.dart';
 import 'package:sport_test/src/NavRouteBar.dart';
+import 'package:sport_test/screens/loginpassstate.dart';
 
 class HomePage extends StatefulWidget {
   static const String route = '/';
@@ -27,13 +28,6 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.purple,
-        title: const Text(
-          'Sports App',
-        ),
-      ),
       body: FutureBuilder(
         future: _initializeFirebase(),
         builder: (context, snapshot) {
@@ -102,10 +96,10 @@ class LoginState extends State<LoginScreen> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Center(
-                child: Icon(CupertinoIcons.person_alt_circle_fill,
+                child: Icon(CupertinoIcons.sportscourt,
                     size: 85, color: Colors.purple)),
             // const Text('App ',
             //     textHeightBehavior:
@@ -122,7 +116,7 @@ class LoginState extends State<LoginScreen> {
             //       fontWeight: FontWeight.bold),
             // ),
             const SizedBox(
-              height: 15.0,
+              height: 65.0,
             ),
             Flexible(
                 child: Form(
@@ -204,7 +198,7 @@ class LoginState extends State<LoginScreen> {
                 }
               },
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
                   Text(
@@ -214,7 +208,7 @@ class LoginState extends State<LoginScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 43.0),
+            const SizedBox(height: 39.0),
             SizedBox(
                 width: double.infinity,
                 height: 51.0,
@@ -236,7 +230,7 @@ class LoginState extends State<LoginScreen> {
                       // pref.setString("UserID", User.user.uid);
                       // ignore: use_build_context_synchronously
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const SportsHome()));
+                          builder: (context) => const LoginPass()));
                     }
                     if (user == null) {
                       const SnackBar(

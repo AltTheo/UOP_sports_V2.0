@@ -6,7 +6,9 @@ import 'package:flutter/rendering.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sport_test/auth/login.dart';
+import 'package:sport_test/redundant%20files/Nav.dart';
 import 'package:sport_test/src/splashscreen.dart';
+import '../redundant files/simpleNav.dart';
 import 'NavRouteBar.dart';
 
 Future<void> main() async {
@@ -15,21 +17,6 @@ Future<void> main() async {
 
   runApp(MyApp());
 }
-// void main() {
-// runApp(
-//     MaterialApp(
-//       home: SplashView(
-//         bottomLoading: true,
-//         backgroundColor: Colors.purple,
-//         title: const Text('Sports App ', style: TextStyle(color: Colors.white),),
-//         duration: const Duration(seconds: 5),
-//         logo: const FlutterLogo(size: 50.0,),
-//         loadingIndicator: const CircularProgressIndicator(),
-//         done: Done( MyApp()),
-//       ),
-//     ),
-//   );
-// }
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
@@ -38,6 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Sports App',
         theme: ThemeData(
           primarySwatch: Colors.purple,
@@ -45,7 +33,7 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData(
           brightness: Brightness.dark,
         ),
-        home: const SplashScreen());
+        home: const SimpleNav());
     // home: const NavbarSample(title: 'BottomNavbar Demo'));
   }
 }

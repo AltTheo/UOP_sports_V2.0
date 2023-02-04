@@ -1,4 +1,5 @@
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -157,9 +158,9 @@ class _SettingsState extends State<Settings> {
                   SettingsItem(
                     icons: Icons.exit_to_app_sharp,
                     onTap: () {
-                      NavbarNotifier.hideBottomNavBar = true;
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const HomePage()));
+                      FirebaseAuth.instance.signOut();
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: ((context) => const HomePage())));
                     },
                     title: 'Log out',
                     titleStyle: const TextStyle(fontSize: 17),
