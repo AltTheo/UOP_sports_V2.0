@@ -5,9 +5,16 @@ import 'package:flutter/rendering.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:navbar_router/navbar_router.dart';
 
+class ServiceNavigatorRoutes {
+  static const String root = '/';
+  static const String gym = '/gym';
+  static const String classes = '/class';
+  static const String swim = '/swim';
+  static const String climb = '/climb';
+}
+
 @immutable
 class Service extends StatefulWidget {
-  static const String route = '/';
   const Service({super.key});
 
   @override
@@ -98,11 +105,8 @@ class ServiceState extends State<Service> {
                 children: [
               InkWell(
                 onTap: () {
-                  navigate(
-                    context,
-                    Gymsesh.route,
-                    isRootNavigator: false,
-                  );
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Gymsesh()));
                 },
                 child: Card(
                   shape: const RoundedRectangleBorder(
@@ -325,153 +329,160 @@ class Gymsesh extends StatefulWidget {
 class GymseshState extends State<Gymsesh> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Gym Session'),
-        centerTitle: true,
-      ),
-      body: GridView(
-        padding: const EdgeInsets.all(20),
-        // controller: swimscrollController,
-        gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        children: [
-          InkWell(
-            onTap: () {
-              NavbarNotifier.hideBottomNavBar = false;
-              navigate(context, BookingCalendarView.route,
-                  isRootNavigator: false);
-            },
-            child: Card(
-              shape: const RoundedRectangleBorder(
-                side: BorderSide(
-                  color: Colors.white,
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.of(context)
+            .pop();
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Gym Session'),
+          centerTitle: true,
+        ),
+        body: GridView(
+          padding: const EdgeInsets.all(20),
+          // controller: swimscrollController,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2),
+          children: [
+            InkWell(
+              onTap: () {
+                NavbarNotifier.hideBottomNavBar = false;
+                navigate(context, BookingCalendarView.route,
+                    isRootNavigator: false);
+              },
+              child: Card(
+                shape: const RoundedRectangleBorder(
+                  side: BorderSide(
+                    color: Colors.white,
+                  ),
+                  // borderRadius: BorderRadius.all(Radius.circular(2)),
                 ),
-                // borderRadius: BorderRadius.all(Radius.circular(2)),
-              ),
-              elevation: 20,
-              color: Colors.purple,
-              borderOnForeground: true,
-              surfaceTintColor: Colors.purple,
-              shadowColor: Colors.black,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'lib/assets/images/gym_lifting.png',
-                    fit: BoxFit.fill,
-                    alignment: Alignment.center,
-                    height: 115,
-                    width: 250,
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  const Text(
-                    'Gym',
-                    style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  const Text(
-                    'Bookings  >',
-                    style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ],
+                elevation: 20,
+                color: Colors.purple,
+                borderOnForeground: true,
+                surfaceTintColor: Colors.purple,
+                shadowColor: Colors.black,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      'lib/assets/images/gym_lifting.png',
+                      fit: BoxFit.fill,
+                      alignment: Alignment.center,
+                      height: 115,
+                      width: 250,
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    const Text(
+                      'Gym',
+                      style: TextStyle(
+                          fontSize: 20,
+                          // fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                    const Text(
+                      'Bookings  >',
+                      style: TextStyle(
+                          fontSize: 20,
+                          // fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          InkWell(
-            onTap: () {},
-            child: Card(
-              shape: const RoundedRectangleBorder(
-                side: BorderSide(
-                  color: Colors.white,
+            InkWell(
+              onTap: () {},
+              child: Card(
+                shape: const RoundedRectangleBorder(
+                  side: BorderSide(
+                    color: Colors.white,
+                  ),
+                  // borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
-                // borderRadius: BorderRadius.all(Radius.circular(12)),
-              ),
-              elevation: 20,
-              color: Colors.purple,
-              borderOnForeground: true,
-              surfaceTintColor: Colors.purple,
-              shadowColor: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'lib/assets/images/Gym_booking.png',
-                    fit: BoxFit.fill,
-                    alignment: Alignment.center,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const Text(
-                    'Gym ',
-                    style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  const Text(
-                    'Services  >',
-                    style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ],
+                elevation: 20,
+                color: Colors.purple,
+                borderOnForeground: true,
+                surfaceTintColor: Colors.purple,
+                shadowColor: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      'lib/assets/images/Gym_booking.png',
+                      fit: BoxFit.fill,
+                      alignment: Alignment.center,
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const Text(
+                      'Gym ',
+                      style: TextStyle(
+                          fontSize: 20,
+                          // fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                    const Text(
+                      'Services  >',
+                      style: TextStyle(
+                          fontSize: 20,
+                          // fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          InkWell(
-            onTap: () {},
-            child: Card(
-              shape: const RoundedRectangleBorder(
-                side: BorderSide(
-                  color: Colors.white,
+            InkWell(
+              onTap: () {},
+              child: Card(
+                shape: const RoundedRectangleBorder(
+                  side: BorderSide(
+                    color: Colors.white,
+                  ),
+                  // borderRadius: BorderRadius.all(Radius.circular(12)),
                 ),
-                // borderRadius: BorderRadius.all(Radius.circular(12)),
-              ),
-              elevation: 20,
-              color: Colors.purple,
-              borderOnForeground: true,
-              surfaceTintColor: Colors.purple,
-              shadowColor: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'lib/assets/images/gym_services.png',
-                    fit: BoxFit.fill,
-                    alignment: Alignment.center,
-                  ),
-                  const SizedBox(
-                    height: 7,
-                  ),
-                  const Text(
-                    'Gym',
-                    style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                  const Text(
-                    '   rules >',
-                    style: TextStyle(
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
-                ],
+                elevation: 20,
+                color: Colors.purple,
+                borderOnForeground: true,
+                surfaceTintColor: Colors.purple,
+                shadowColor: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      'lib/assets/images/gym_services.png',
+                      fit: BoxFit.fill,
+                      alignment: Alignment.center,
+                    ),
+                    const SizedBox(
+                      height: 7,
+                    ),
+                    const Text(
+                      'Gym',
+                      style: TextStyle(
+                          fontSize: 20,
+                          // fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                    const Text(
+                      '   rules >',
+                      style: TextStyle(
+                          fontSize: 20,
+                          // fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -816,7 +827,7 @@ class ClimbState extends State<Climb> {
                     'lib/assets/images/climb_1.png',
                     fit: BoxFit.fill,
                     alignment: Alignment.center,
-                    height:  115,
+                    height: 115,
                     width: 170,
                   ),
                   const SizedBox(

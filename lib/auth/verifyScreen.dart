@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:sport_test/redundant%20files/simpleNav.dart';
 import 'package:sport_test/screens/HomeScreen.dart';
 
 // ignore: camel_case_types
@@ -39,13 +42,21 @@ class verifyScreenState extends State<verifyScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [],
-        ));
+    return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.purple),
+      body: const AlertDialog(
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: Colors.white,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+          ),
+          icon: Icon(CupertinoIcons.check_mark_circled),
+          iconColor: Colors.purple,
+          title: Text('Verfication Link has been sent to your email'),
+          content: Text(
+              'Please click the Link that has just been sent to your email account \n to verify your email and finish the registration process')),
+    );
   }
 
   Future<void> checkEmailVerified() async {
@@ -54,7 +65,7 @@ class verifyScreenState extends State<verifyScreen> {
     if (user.emailVerified) {
       timer.cancel();
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const HomeScreen(),
+        builder: (context) => const SimpleNav(),
       ));
     }
   }

@@ -22,8 +22,7 @@ import 'package:navbar_router/navbar_router.dart';
 // }
 
 const Color mediumPurple = Color.fromRGBO(79, 0, 241, 1.0);
-const String placeHolderText =
-    'Some news about sports from the university.';
+const String placeHolderText = 'Some news about sports from the university.';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -76,14 +75,15 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      drawer: const Drawer(backgroundColor: Colors.white12,),
+      drawer: const Drawer(
+        backgroundColor: Colors.white12,
+      ),
       body: ListView.builder(
         controller: _scrollController,
         itemCount: 11,
         itemBuilder: (context, index) {
           return InkWell(
               onTap: () {
-                NavbarNotifier.hideBottomNavBar = false;
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (contex) => FeedDetail(
                           feedId: index.toString(),
@@ -126,7 +126,9 @@ class FeedTile extends StatelessWidget {
               bottom: 12,
               right: 12,
               left: 12,
-              child: Text(placeHolderText.substring(0,)))
+              child: Text(placeHolderText.substring(
+                0,
+              )))
         ],
       ),
     );

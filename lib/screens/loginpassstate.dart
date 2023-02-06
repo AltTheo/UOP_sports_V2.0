@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sport_test/redundant%20files/Nav.dart';
+import 'package:sport_test/redundant%20files/simpleNav.dart';
 import 'package:sport_test/src/NavRouteBar.dart';
 
 class LoginPass extends StatefulWidget {
@@ -21,7 +22,7 @@ class LoginPassState extends State<LoginPass> {
     Timer(
         const Duration(seconds: 2),
         () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const Nav())));
+            MaterialPageRoute(builder: (context) => const SimpleNav())));
   }
 
   final user = FirebaseAuth.instance.currentUser!;

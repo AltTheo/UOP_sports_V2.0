@@ -3,8 +3,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:sport_test/auth/login.dart';
+import 'package:sport_test/redundant%20files/simpleNav.dart';
+import 'package:sport_test/src/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatefulWidget {
@@ -16,6 +19,8 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  final user = FirebaseAuth.instance.currentUser;
+
   final _scrollController = ScrollController();
 
   @override
@@ -57,11 +62,21 @@ class _SettingsState extends State<Settings> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: const Text('Do you want to sign out?'),
+          shape: const RoundedRectangleBorder(
+            side: BorderSide(
+              color: Colors.white,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+          ),
+          icon: const Icon(Ionicons.alert_circle_sharp),
+          content: Text('Do you want to sign out as \n \n ${user?.email} ?'),
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => const HomePage())),
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) =>  MyApp()));
+              },
               child: const Text('Accept'),
             ),
             TextButton(
@@ -94,8 +109,6 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    bool isSwitched = false;
-
     return Scaffold(
       appBar: AppBar(
         // centerTitle: true,
@@ -103,47 +116,53 @@ class _SettingsState extends State<Settings> {
         backgroundColor: Colors.purple,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.fromLTRB(10,30,10,10),
         child: ListView(
           controller: _scrollController,
           children: [
             // You can add a settings title
-            SettingsItem(
-              icons: Icons.person_sharp,
-              onTap: () {
-                NavbarNotifier.hideBottomNavBar = false;
-                navigate(
-                  context,
-                  Info.route,
-                  isRootNavigator: false,
-                );
-              },
-              title: 'Account',
-              titleStyle: const TextStyle(fontSize: 17),
-            ),
-            SettingsItem(
-              onTap: () {},
-              icons: CupertinoIcons.paintbrush,
-              title: 'App Appearance',
-              titleStyle: const TextStyle(fontSize: 17),
-            ),
-            SettingsItem(
-                icons: CupertinoIcons.bell,
-                title: 'Notifications',
-                titleStyle: const TextStyle(fontSize: 17),
-                onTap: () {}),
+            SettingsGroup(
+                settingsGroupTitle: 'User and App preferences',
+                settingsGroupTitleStyle: const TextStyle(fontSize: 16),
+                items: [
+                  SettingsItem(
+                    icons: Icons.person_sharp,
+                    onTap: () {
+                      NavbarNotifier.hideBottomNavBar = false;
+                      // navigate(
+                      //   context,
+                      //   Info.route,
+                      //   isRootNavigator: false,
+                      // );
+                    },
+                    title: 'Account',
+                    titleStyle: const TextStyle(fontSize: 17),
+                  ),
+                  SettingsItem(
+                    onTap: () {},
+                    icons: CupertinoIcons.paintbrush,
+                    title: 'App Appearance',
+                    titleStyle: const TextStyle(fontSize: 17),
+                  ),
+                  SettingsItem(
+                      icons: CupertinoIcons.bell,
+                      title: 'Notifications',
+                      titleStyle: const TextStyle(fontSize: 17),
+                      onTap: () {}),
+                ]),
+
             SettingsGroup(
               settingsGroupTitle: 'Privacy',
               settingsGroupTitleStyle: const TextStyle(fontSize: 16),
               items: [
                 SettingsItem(
                   onTap: () {
-                    NavbarNotifier.hideBottomNavBar = false;
-                    navigate(
-                      context,
-                      About.route,
-                      isRootNavigator: false,
-                    );
+                    // NavbarNotifier.hideBottomNavBar = false;
+                    // navigate(
+                    //   context,
+                    //   About.route,
+                    //   isRootNavigator: false,
+                    // );
                   },
                   icons: CupertinoIcons.info,
                   title: 'About',
@@ -158,15 +177,20 @@ class _SettingsState extends State<Settings> {
                   SettingsItem(
                     icons: Icons.exit_to_app_sharp,
                     onTap: () {
-                      FirebaseAuth.instance.signOut();
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: ((context) => const HomePage())));
+                      _showAction(context);
                     },
                     title: 'Log out',
                     titleStyle: const TextStyle(fontSize: 17),
                     subtitleStyle: const TextStyle(fontSize: 15),
                   ),
-                ])
+                ]),
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [Text('Signed in as ${user?.email}')]),
+            )
           ],
         ),
       ),
