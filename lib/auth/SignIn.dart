@@ -3,11 +3,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sport_test/auth/registerScreen.dart';
+import 'package:sport_test/auth/SignUp.dart';
 import 'package:sport_test/auth/reset.dart';
+import 'package:sport_test/screens/profile.dart';
 import 'package:sport_test/src/NavRouteBar.dart';
-import 'package:sport_test/screens/loginpassstate.dart';
+import 'package:sport_test/screens/signInpassstate.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 class HomePage extends StatefulWidget {
   static const String route = '/';
@@ -32,7 +35,7 @@ class HomePageState extends State<HomePage> {
         future: _initializeFirebase(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return const LoginScreen();
+            return const SignInScreen();
           }
           return const Center(
             child: CircularProgressIndicator(color: Colors.purple, value: 20),
@@ -43,15 +46,15 @@ class HomePageState extends State<HomePage> {
   }
 }
 
-class LoginScreen extends StatefulWidget {
-  static const String route = '/HomePage/Login';
-  const LoginScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  static const String route = '/HomePage/SignIn';
+  const SignInScreen({super.key});
 
   @override
-  State<StatefulWidget> createState() => LoginState();
+  State<StatefulWidget> createState() => SignInState();
 }
 
-class LoginState extends State<LoginScreen> {
+class SignInState extends State<SignInScreen> {
   bool passwordVisible = true;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -90,6 +93,24 @@ class LoginState extends State<LoginScreen> {
     return user;
   }
 
+  Future<void> signInWithGoogle() async {
+    //create an instance of the firebase auth and google signin
+    FirebaseAuth authG = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    //Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    //Obtain the auth details from the request
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+    //Create a new credentials
+    final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+    //Sign in the user with the credentials
+
+    final UserCredential userCredential =
+        await authG.signInWithCredential(credential);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,7 +138,7 @@ class LoginState extends State<LoginScreen> {
               //       fontWeight: FontWeight.bold),
               // ),
               const SizedBox(
-                height: 65.0,
+                height: 25.0,
               ),
               Flexible(
                   child: Form(
@@ -145,7 +166,7 @@ class LoginState extends State<LoginScreen> {
                                       EdgeInsetsDirectional.only(start: 12.0),
                                   child: Icon(Icons.email_outlined,
                                       color: Colors.purple)))))),
-              const SizedBox(height: 34.0),
+              const SizedBox(height: 10.0),
               Flexible(
                   child: Form(
                       key: passwordKey,
@@ -188,12 +209,12 @@ class LoginState extends State<LoginScreen> {
                         ),
                       ))),
               const SizedBox(
-                height: 12.0,
+                height: 10.0,
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const ResetPage()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const ResetPage()));
                   if (kDebugMode) {
                     print('changing password');
                   }
@@ -209,7 +230,7 @@ class LoginState extends State<LoginScreen> {
                   ],
                 ),
               ),
-              const SizedBox(height: 39.0),
+              const SizedBox(height: 19.0),
               SizedBox(
                   width: double.infinity,
                   height: 51.0,
@@ -231,24 +252,93 @@ class LoginState extends State<LoginScreen> {
                         // pref.setString("UserID", User.user.uid);
                         // ignore: use_build_context_synchronously
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const LoginPass()));
-                      }
-                      if (user == null) {
-                        const SnackBar(
-                          content: Text('Enter Username and password'),
-                          backgroundColor: Colors.purple,
-                        );
+                            builder: (context) => const SignInPass()));
                       }
                     },
                     child: const Text(
-                      'Login',
-                      style:
-                          TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold, color: Colors.white),
+                      'Sign In',
+                      style: TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.white),
                     ),
                   )),
               const SizedBox(
                 height: 20.0,
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  const Text(
+                    'Or Continue with',
+                    style: TextStyle(fontSize: 15),
+                  )
+                ],
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              OutlinedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50))),
+                    backgroundColor: MaterialStateProperty.all(Colors.white)),
+                onPressed: () async {
+                  await signInWithGoogle();
+                  if (mounted) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const ProfilePage()));
+                  }
+                },
+                child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                    child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Image(
+                            image:
+                                AssetImage('lib/assets/images/google_logo.png'),
+                            height: 35.0,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Text(
+                              'Sign in with Google',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black54,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          )
+                        ])),
+              ),
+              // SignInButton(
+              //   padding: EdgeInsets.only(left: 50, right: 50),
+              //   Buttons.Google,
+              //   onPressed: () {},
+              // ),
+              // SizedBox(
+              //     width: double.infinity,
+              //     height: 51.0,
+              //     child: RawMaterialButton(
+              //       fillColor: Colors.white,
+              //       splashColor: const Color.fromARGB(255, 200, 129, 212),
+              //       shape: RoundedRectangleBorder(
+              //           borderRadius: BorderRadius.circular(50.0)),
+              //       enableFeedback: true,
+              //       onPressed: () async {},
+              //       child: const Text(
+              //         'Sign In with Google',
+              //         style: TextStyle(
+              //             fontSize: 25.0,
+              //             fontWeight: FontWeight.normal,
+              //             color: Colors.black),
+              //       ),
+              //     )),
+              const SizedBox(height: 5.0),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(

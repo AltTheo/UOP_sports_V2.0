@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter/material.dart';
-import 'package:sport_test/auth/login.dart';
+import 'package:sport_test/auth/SignIn.dart';
 
 class ResetPage extends StatefulWidget {
   const ResetPage({super.key});
@@ -113,6 +114,25 @@ class ResetScreenState extends State<ResetScreen> {
                             color: Colors.white),
                       ),
                     )),
+                    GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => const SignInScreen()));
+                  if (kDebugMode) {
+                    print('changing password');
+                  }
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Continue to Sign In",
+                      style: TextStyle(color: Colors.lightBlue),
+                    )
+                  ],
+                ),
+              ),
               ],
             )),
       ),

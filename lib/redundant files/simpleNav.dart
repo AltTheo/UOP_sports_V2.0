@@ -32,25 +32,24 @@ class SimpleNavState extends State<SimpleNav> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async {  
-return false;
+      onWillPop: () async {
+        return false;
       },
       child: Scaffold(
           // appBar: AppBar(
           //     title: Text('Bottom NavBar'), backgroundColor: Colors.purple),
           body: IndexedStack(
-          index: selectedIndex,
-          children: widgetOptions,
-        ),
+            index: selectedIndex,
+            children: widgetOptions,
+          ),
           bottomNavigationBar: BottomNavigationBar(
               showSelectedLabels: true,
               unselectedItemColor: Colors.grey,
               showUnselectedLabels: false,
-              useLegacyColorScheme: false,
               enableFeedback: false,
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
-                    activeIcon: Icon(CupertinoIcons.home), 
+                    activeIcon: Icon(CupertinoIcons.home),
                     tooltip: 'News Feed',
                     icon: Icon(Ionicons.home_outline),
                     label: 'home'),

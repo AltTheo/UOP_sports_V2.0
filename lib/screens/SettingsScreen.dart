@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:navbar_router/navbar_router.dart';
-import 'package:sport_test/auth/login.dart';
+import 'package:sport_test/auth/SignIn.dart';
 import 'package:sport_test/redundant%20files/simpleNav.dart';
 import 'package:sport_test/src/main.dart';
 import 'package:url_launcher/url_launcher.dart';

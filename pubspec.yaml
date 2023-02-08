@@ -59,6 +59,8 @@ dependencies:
   shared_preferences: ^2.0.17
   google_fonts: ^4.0.1
   device_preview: ^1.1.0
+  flutter_signin_button: ^2.0.0
+  google_sign_in: ^5.4.4
 
 dev_dependencies:
   flutter_test:
@@ -112,6 +114,8 @@ flutter:
     - lib/assets/images/classes_4.png
     - lib/assets/images/classes_5.png
     - lib/assets/images/climb_girl.png
+    - lib/assets/images/google_logo.png
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

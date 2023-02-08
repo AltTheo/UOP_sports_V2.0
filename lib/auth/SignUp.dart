@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sport_test/auth/login.dart';
+import 'package:sport_test/auth/SignIn.dart';
 import 'package:sport_test/auth/verifyScreen.dart';
 
 class RegPage extends StatefulWidget {
@@ -92,11 +93,14 @@ class RegisterState extends State<Register> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Center(
-                child: Text('Sign Up',
+                  child: Icon(CupertinoIcons.sportscourt,
+                      size: 85, color: Colors.purple)),
+              const Center(
+                child: Text('Create an Account',
                     style: TextStyle(
                         color: Colors.purple,
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold)),
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.normal)),
               ),
               const SizedBox(
                 height: 25.0,
@@ -190,10 +194,10 @@ class RegisterState extends State<Register> {
                       }
                     },
                     child: const Text(
-                      'Sign up',
+                      'Register',
                       style: TextStyle(
                           fontSize: 25.0,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.normal,
                           color: Colors.white),
                     ),
                   )),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:sport_test/screens/Activity.dart';
-import 'package:sport_test/auth/login.dart';
+import 'package:sport_test/auth/SignIn.dart';
 import 'package:sport_test/src/main.dart';
 
 import '../screens/Services.dart';
@@ -49,7 +49,7 @@ class _SportsHomeState extends State<SportsHome> {
       '/': Settings(),
       Info.route: Info(),
       About.route: About(),
-      LoginScreen.route: LoginScreen()
+      SignInScreen.route: SignInScreen()
     },
   };
 

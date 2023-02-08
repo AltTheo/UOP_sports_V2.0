@@ -8,14 +8,14 @@ import 'package:sport_test/redundant%20files/Nav.dart';
 import 'package:sport_test/redundant%20files/simpleNav.dart';
 import 'package:sport_test/src/NavRouteBar.dart';
 
-class LoginPass extends StatefulWidget {
-  const LoginPass({Key? key}) : super(key: key);
+class SignInPass extends StatefulWidget {
+  const SignInPass({Key? key}) : super(key: key);
 
   @override
-  State<LoginPass> createState() => LoginPassState();
+  State<SignInPass> createState() => SignInPassState();
 }
 
-class LoginPassState extends State<LoginPass> {
+class SignInPassState extends State<SignInPass> {
   @override
   void initState() {
     super.initState();
