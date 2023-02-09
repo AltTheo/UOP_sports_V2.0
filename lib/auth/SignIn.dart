@@ -271,7 +271,7 @@ class SignInState extends State<SignInScreen> {
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
                   const Text(
-                    'Or Continue with',
+                    'Or',
                     style: TextStyle(fontSize: 15),
                   )
                 ],
@@ -288,7 +288,7 @@ class SignInState extends State<SignInScreen> {
                   await signInWithGoogle();
                   if (mounted) {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const ProfilePage()));
+                        builder: (context) => const SignInPass()));
                   }
                 },
                 child: Padding(
@@ -305,11 +305,11 @@ class SignInState extends State<SignInScreen> {
                           Padding(
                             padding: EdgeInsets.only(left: 10),
                             child: Text(
-                              'Sign in with Google',
+                              'Continue with Google',
                               style: TextStyle(
                                 fontSize: 20,
-                                color: Colors.black54,
-                                fontWeight: FontWeight.w600,
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
                               ),
                             ),
                           )
@@ -338,7 +338,7 @@ class SignInState extends State<SignInScreen> {
               //             color: Colors.black),
               //       ),
               //     )),
-              const SizedBox(height: 5.0),
+              const SizedBox(height: 15.0),
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
@@ -351,11 +351,11 @@ class SignInState extends State<SignInScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: const [
-                    Text("Don't have an account, "),
-                    Text(" Register,",
+                    Text("Don't have an account?, "),
+                    Text(" Register",
                         style: TextStyle(
-                            color: Colors.lightBlue,
-                            decoration: TextDecoration.underline))
+                          color: Colors.lightBlue,
+                        ))
                   ],
                 ),
               )

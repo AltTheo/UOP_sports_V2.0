@@ -114,25 +114,28 @@ class ResetScreenState extends State<ResetScreen> {
                             color: Colors.white),
                       ),
                     )),
-                    GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const SignInScreen()));
-                  if (kDebugMode) {
-                    print('changing password');
-                  }
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Continue to Sign In",
-                      style: TextStyle(color: Colors.lightBlue),
-                    )
-                  ],
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const SignInScreen()));
+                    if (kDebugMode) {
+                      print('changing password');
+                    }
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "Continue to Sign In",
+                        style: TextStyle(color: Colors.lightBlue, fontSize: 15.0),
+                      )
+                    ],
+                  ),
                 ),
-              ),
               ],
             )),
       ),
