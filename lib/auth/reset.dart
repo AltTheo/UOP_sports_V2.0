@@ -84,7 +84,7 @@ class ResetScreenState extends State<ResetScreen> {
                         // errorStyle: TextStyle(color: Colors.red),
                         border: OutlineInputBorder(
                             borderRadius:
-                                BorderRadius.all(Radius.circular(50.0))),
+                                BorderRadius.all(Radius.circular(2))),
                         hintText: 'email address',
                         hintStyle: TextStyle(color: Colors.grey),
                         prefixIcon: Padding(
@@ -92,15 +92,14 @@ class ResetScreenState extends State<ResetScreen> {
                             child: Icon(Icons.email_outlined,
                                 color: Colors.purple)))),
                 const SizedBox(height: 43.0),
-                SizedBox(
-                    width: double.infinity,
-                    height: 51.0,
-                    child: RawMaterialButton(
-                      fillColor: Colors.purple,
-                      splashColor: const Color.fromARGB(255, 200, 129, 212),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50.0)),
-                      enableFeedback: true,
+                ElevatedButton(
+                      // fillColor: Colors.purple,
+                      // splashColor: const Color.fromARGB(255, 200, 129, 212),
+                      // shape: RoundedRectangleBorder(
+                      //     borderRadius: BorderRadius.circular(50.0)),
+                      // enableFeedback: true,
+                      style: ElevatedButton.styleFrom(
+                          fixedSize: const Size(380, 55)),
                       onPressed: () {
                         resetPassword(resetPassEmail.text);
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -113,10 +112,10 @@ class ResetScreenState extends State<ResetScreen> {
                             fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),
-                    )),
-                    const SizedBox(
-                      height: 15.0,
                     ),
+                const SizedBox(
+                  height: 15.0,
+                ),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -131,7 +130,8 @@ class ResetScreenState extends State<ResetScreen> {
                     children: const [
                       Text(
                         "Continue to Sign In",
-                        style: TextStyle(color: Colors.lightBlue, fontSize: 15.0),
+                        style:
+                            TextStyle(color: Colors.lightBlue, fontSize: 15.0),
                       )
                     ],
                   ),

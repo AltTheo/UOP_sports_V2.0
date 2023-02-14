@@ -3,7 +3,9 @@
         "ARGB",
         "Cupertino",
         "firestore",
+        "Ionicons",
         "Schyler",
+        "sportscourt",
         "syncfusion"
     ],
     "java.configuration.updateBuildConfiguration": "interactive"
