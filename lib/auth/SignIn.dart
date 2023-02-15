@@ -13,15 +13,15 @@ import 'package:sport_test/src/NavRouteBar.dart';
 import 'package:sport_test/screens/signInpassstate.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-class HomePage extends StatefulWidget {
+class SignInPage extends StatefulWidget {
   static const String route = '/';
-  const HomePage({super.key});
+  const SignInPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => HomePageState();
+  State<StatefulWidget> createState() => SignInPageState();
 }
 
-class HomePageState extends State<HomePage> {
+class SignInPageState extends State<SignInPage> {
   // Initialize the firebase app
 
   Future<FirebaseApp> _initializeFirebase() async {
@@ -125,28 +125,16 @@ class SignInState extends State<SignInScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Center(
-                    child: Icon(CupertinoIcons.sportscourt,
-                        size: 65, color: Colors.purple)),
-                const Text('Welcome back                                                                                                ',
-                    style: TextStyle(
-                        color: Colors.purple,
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold)),
-                // const Text('App ',
-                //     textHeightBehavior:
-                //         TextHeightBehavior(applyHeightToFirstAscent: true),
-                //     style: TextStyle(
-                //         color: Colors.purple,
-                //         fontSize: 44.0,
-                //         fontWeight: FontWeight.bold)),
-                // const Text(
-                //   'Login',
-                //   style: TextStyle(
-                //       color: Colors.purple,
-                //       fontSize: 28.0,
-                //       fontWeight: FontWeight.bold),
-                // ),
+                // const Center(
+                //     child: Icon(CupertinoIcons.sportscourt,
+                //         size: 65, color: Colors.purple)),
+                const Text(
+                  'Welcome back',
+                  style: TextStyle(
+                      color: Colors.purple,
+                      fontSize: 30.0,
+                      fontWeight: FontWeight.bold),
+                ),
                 const SizedBox(
                   height: 25.0,
                 ),

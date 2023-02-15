@@ -125,75 +125,69 @@ class RegisterState extends State<Register> {
                   const SizedBox(
                     height: 25.0,
                   ),
-                  SingleChildScrollView(
-                    child: Form(
-                      key: emailKey,
-                      child: TextFormField(
-                          textInputAction: TextInputAction.next,
-                          controller: newEmailController,
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: const InputDecoration(
-                            // errorText: 'Please Enter your email address',
-                            // errorStyle: TextStyle(color: Colors.red),
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5))),
-                            hintText: 'Email address',
-                            hintStyle: TextStyle(color: Colors.grey),
-                            prefixIcon: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.only(start: 15.0),
-                                child: Icon(Icons.email_outlined,
-                                    color: Colors.purple)),
-                          )),
-                    ),
+                  Form(
+                    key: emailKey,
+                    child: TextFormField(
+                        textInputAction: TextInputAction.next,
+                        controller: newEmailController,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: const InputDecoration(
+                          // errorText: 'Please Enter your email address',
+                          // errorStyle: TextStyle(color: Colors.red),
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                          hintText: 'Email address',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          prefixIcon: Padding(
+                              padding: EdgeInsetsDirectional.only(start: 15.0),
+                              child: Icon(Icons.email_outlined,
+                                  color: Colors.purple)),
+                        )),
                   ),
                   const SizedBox(
                     height: 15.0,
                   ),
-                  SingleChildScrollView(
-                    child: Form(
-                        key: passwordKey,
-                        child: TextFormField(
-                          textInputAction: TextInputAction.next,
-                          controller: newPasswordController,
-                          obscureText: passwordVisible,
-                          obscuringCharacter: '*',
-                          keyboardType: TextInputType.text,
-                          validator: (passText) {
-                            if (passText == null || passText.isEmpty) {
-                              return 'Please enter your password';
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                            // errorText: 'Please Enter your password',
-                            // errorStyle: TextStyle(color: Colors.red),
-                            border: const OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5))),
-                            hintText: 'new password',
-                            // focusedBorder: OutlineInputBorder(
-                            //     borderRadius: BorderRadius.circular(14.0),
-                            //     borderSide: const BorderSide(color: Colors.black)),
-                            hintStyle: const TextStyle(color: Colors.grey),
-                            prefixIcon: const Padding(
-                                padding:
-                                    EdgeInsetsDirectional.only(start: 15.0),
-                                child: Icon(Icons.lock_outline_rounded,
-                                    color: Colors.purple)),
-                            suffixIcon: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    passwordVisible = !passwordVisible;
-                                  });
-                                },
-                                icon: Icon(passwordVisible
-                                    ? Icons.visibility_rounded
-                                    : Icons.visibility_off_rounded)),
-                          ),
-                        )),
-                  ),
+                  Form(
+                      key: passwordKey,
+                      child: TextFormField(
+                        textInputAction: TextInputAction.next,
+                        controller: newPasswordController,
+                        obscureText: passwordVisible,
+                        obscuringCharacter: '*',
+                        keyboardType: TextInputType.text,
+                        validator: (passText) {
+                          if (passText == null || passText.isEmpty) {
+                            return 'Please enter your password';
+                          }
+                          return null;
+                        },
+                        decoration: InputDecoration(
+                          // errorText: 'Please Enter your password',
+                          // errorStyle: TextStyle(color: Colors.red),
+                          border: const OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                          hintText: 'new password',
+                          // focusedBorder: OutlineInputBorder(
+                          //     borderRadius: BorderRadius.circular(14.0),
+                          //     borderSide: const BorderSide(color: Colors.black)),
+                          hintStyle: const TextStyle(color: Colors.grey),
+                          prefixIcon: const Padding(
+                              padding: EdgeInsetsDirectional.only(start: 15.0),
+                              child: Icon(Icons.lock_outline_rounded,
+                                  color: Colors.purple)),
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  passwordVisible = !passwordVisible;
+                                });
+                              },
+                              icon: Icon(passwordVisible
+                                  ? Icons.visibility_rounded
+                                  : Icons.visibility_off_rounded)),
+                        ),
+                      )),
                   const SizedBox(height: 30.0),
                   ElevatedButton(
                     // fillColor: Colors.purple,
@@ -234,7 +228,7 @@ class RegisterState extends State<Register> {
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const HomePage()));
+                              builder: (context) => const SignInPage()));
                         },
                         child: const Text('Log in',
                             style: TextStyle(fontSize: 15)),

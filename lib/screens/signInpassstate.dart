@@ -29,28 +29,21 @@ class SignInPassState extends State<SignInPass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-          child: Center(
-              child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        // ignore: prefer_const_literals_to_create_immutables
-        children:  [
-          const Center(
-              child: Icon(CupertinoIcons.sportscourt,
-                  size: 65, color: Colors.purple)),
-          const Text('Logging in',
-              style: TextStyle(
-                  fontStyle: FontStyle.italic,
-                  fontSize: 30,
-                  color: Colors.purple,
-                  fontWeight: FontWeight.w900)),
-          const SizedBox(
-            height: 50,
-          ),
-          const CircularProgressIndicator(color: Colors.purple)
-        ],
-      ))),
-    );
+        backgroundColor: Colors.white,
+        body: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(
+              CupertinoIcons.sportscourt,
+              size: 60.0,
+              color: Colors.purple,
+            ),
+            SizedBox(height: 10.0),
+            Text('Signing in ...', style: TextStyle(fontSize: 18),),
+            SizedBox(height: 20.0),
+            CircularProgressIndicator()
+          ],
+        )));
   }
 }

@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sport_test/auth/SignIn.dart';
 import 'package:sport_test/auth/authScreen.dart';
 import 'package:sport_test/redundant%20files/Nav.dart';
+import 'package:sport_test/screens/signInpassstate.dart';
 import 'package:sport_test/src/splashscreen.dart';
 import '../redundant files/simpleNav.dart';
 import 'NavRouteBar.dart';
