@@ -75,8 +75,8 @@ class _SettingsState extends State<Settings> {
             TextButton(
               onPressed: () {
                 FirebaseAuth.instance.signOut();
-                Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) =>  const WelcomeScreen()));
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const WelcomeScreen()));
               },
               child: const Text('Accept'),
             ),
@@ -116,83 +116,87 @@ class _SettingsState extends State<Settings> {
         title: const Text('Settings'),
         backgroundColor: Colors.purple,
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(10,30,10,10),
-        child: ListView(
-          controller: _scrollController,
-          children: [
-            // You can add a settings title
-            SettingsGroup(
-                settingsGroupTitle: 'User and App preferences',
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+          child: ListView(
+            controller: _scrollController,
+            children: [
+              // You can add a settings title
+              SettingsGroup(
+                  settingsGroupTitle: 'User and App preferences',
+                  settingsGroupTitleStyle: const TextStyle(fontSize: 16),
+                  items: [
+                    SettingsItem(
+                      icons: Icons.manage_accounts_outlined,
+                      onTap: () {
+                        NavbarNotifier.hideBottomNavBar = false;
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const Info()));
+                      },
+                      title: 'Manage account',
+                      titleStyle: const TextStyle(fontSize: 17),
+                    ),
+                    SettingsItem(
+                      onTap: () {},
+                      icons: CupertinoIcons.paintbrush,
+                      title: 'App Appearance',
+                      titleStyle: const TextStyle(fontSize: 17),
+                    ),
+                    SettingsItem(
+                        icons: CupertinoIcons.bell,
+                        title: 'Notifications',
+                        titleStyle: const TextStyle(fontSize: 17),
+                        onTap: () {}),
+                  ]),
+
+              SettingsGroup(
+                settingsGroupTitle: 'Privacy',
                 settingsGroupTitleStyle: const TextStyle(fontSize: 16),
                 items: [
                   SettingsItem(
-                    icons: Icons.person_sharp,
                     onTap: () {
-                      NavbarNotifier.hideBottomNavBar = false;
+                      // NavbarNotifier.hideBottomNavBar = false;
                       // navigate(
                       //   context,
-                      //   Info.route,
+                      //   About.route,
                       //   isRootNavigator: false,
                       // );
                     },
-                    title: 'Account',
+                    icons: CupertinoIcons.info,
+                    title: 'About',
                     titleStyle: const TextStyle(fontSize: 17),
                   ),
                   SettingsItem(
-                    onTap: () {},
-                    icons: CupertinoIcons.paintbrush,
-                    title: 'App Appearance',
+                    icons: Icons.message_outlined,
+                    title: 'Help',
                     titleStyle: const TextStyle(fontSize: 17),
-                  ),
-                  SettingsItem(
-                      icons: CupertinoIcons.bell,
-                      title: 'Notifications',
+                  )
+                ],
+              ),
+              SettingsGroup(
+                  settingsGroupTitle: 'Login',
+                  settingsGroupTitleStyle: const TextStyle(fontSize: 17),
+                  items: [
+                    SettingsItem(
+                      icons: Icons.exit_to_app_sharp,
+                      onTap: () {
+                        _showAction(context);
+                      },
+                      title: 'Log out',
                       titleStyle: const TextStyle(fontSize: 17),
-                      onTap: () {}),
-                ]),
-
-            SettingsGroup(
-              settingsGroupTitle: 'Privacy',
-              settingsGroupTitleStyle: const TextStyle(fontSize: 16),
-              items: [
-                SettingsItem(
-                  onTap: () {
-                    // NavbarNotifier.hideBottomNavBar = false;
-                    // navigate(
-                    //   context,
-                    //   About.route,
-                    //   isRootNavigator: false,
-                    // );
-                  },
-                  icons: CupertinoIcons.info,
-                  title: 'About',
-                  titleStyle: const TextStyle(fontSize: 17),
-                ),
-              ],
-            ),
-            SettingsGroup(
-                settingsGroupTitle: 'Login',
-                settingsGroupTitleStyle: const TextStyle(fontSize: 17),
-                items: [
-                  SettingsItem(
-                    icons: Icons.exit_to_app_sharp,
-                    onTap: () {
-                      _showAction(context);
-                    },
-                    title: 'Log out',
-                    titleStyle: const TextStyle(fontSize: 17),
-                    subtitleStyle: const TextStyle(fontSize: 15),
-                  ),
-                ]),
-            Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [Text('Signed in as ${user?.email}')]),
-            )
-          ],
+                      subtitleStyle: const TextStyle(fontSize: 15),
+                    ),
+                  ]),
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [Text('Signed in as ${user?.email}')]),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -230,13 +234,13 @@ class ActionButton extends StatelessWidget {
 
 //Class for Accounts
 class Info extends StatelessWidget {
-  static const String route = '/Settings/Info';
+  // static const String route = '/Settings/Info';
   const Info({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Account'),
+          title: const Text('Manage Account'),
           backgroundColor: Colors.purple,
         ),
         body: Padding(
@@ -261,7 +265,7 @@ class Info extends StatelessWidget {
 
 //Class for Privacy
 class About extends StatelessWidget {
-  static const String route = '/Settings/About';
+  // static const String route = '/Settings/About';
 
   const About({super.key});
   @override
