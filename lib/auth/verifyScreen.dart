@@ -44,18 +44,39 @@ class verifyScreenState extends State<verifyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.purple),
-      body: const AlertDialog(
-          shape: RoundedRectangleBorder(
-            side: BorderSide(
-              color: Colors.white,
-            ),
-            borderRadius: BorderRadius.all(Radius.circular(30)),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Center(
+                child: Text(
+                  'A Link has been sent to your email',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              const Center(
+                child: Text(
+                  'Please click the link to verify your email',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              ElevatedButton(
+                onPressed: () => user.sendEmailVerification(),
+                child: const Text(
+                  'Resend email',
+                  style: TextStyle(fontSize: 15.0),
+                ),
+              )
+            ],
           ),
-          icon: Icon(CupertinoIcons.check_mark_circled),
-          iconColor: Colors.purple,
-          title: Text('Verfication Link has been sent to your email'),
-          content: Text(
-              'Please click the Link that has just been sent to your email account \n to verify your email and finish the registration process')),
+        ),
+      ),
     );
   }
 
