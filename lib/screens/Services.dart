@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:sport_test/subscreens/climb.dart';
+import 'package:sport_test/subscreens/court.dart';
 import 'package:sport_test/subscreens/gymclass.dart';
 import 'package:sport_test/subscreens/gymsesh.dart';
 import 'package:sport_test/subscreens/swim.dart';
@@ -99,154 +100,202 @@ class ServiceState extends State<Service> {
           // centerTitle: true,
           title: const Text('Services'),
         ),
-        body: Center(
-            child: GridView(
-                padding: const EdgeInsets.all(20),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisSpacing: 15,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 15.0,
-                ),
-                children: [
-              // GYM CARD
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Gymsesh()));
-                },
-                child: Card(
-                  color: Colors.purple,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
+        body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage('lib/assets/images/white_3.png'))),
+          child: Center(
+              child: GridView(
+                  padding: const EdgeInsets.all(20),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisSpacing: 15,
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 15.0,
                   ),
-                  child: Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(15),
-                            topRight: Radius.circular(15)),
-                        child: Image.asset('lib/assets/images/ravelin_gym.png',
-                            height: 110,
-                            gaplessPlayback: true,
-                            fit: BoxFit.fill),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        'Gym',
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                      )
-                    ],
+                  children: [
+                // GYM CARD
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Gymsesh()));
+                  },
+                  child: Card(
+                    color: Colors.purple,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15)),
+                          child: Image.asset(
+                              'lib/assets/images/ravelin_gym.png',
+                              height: 110,
+                              gaplessPlayback: true,
+                              fit: BoxFit.fill),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          'Gym',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
 
-              //CLASSES CARD
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const Gymclass()));
-                },
-                child: Card(
-                  color: Colors.purple,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                  ),
-                  child: Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(15),
-                            topRight: Radius.circular(15)),
-                        child: Image.asset(
-                            'lib/assets/images/ravelin_class.png',
-                            height: 110,
-                            gaplessPlayback: true,
-                            fit: BoxFit.fill),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        'Classes',
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                      )
-                    ],
+                //CLASSES CARD
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Gymclass()));
+                  },
+                  child: Card(
+                    color: Colors.purple,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15)),
+                          child: Image.asset(
+                              'lib/assets/images/ravelin_class.png',
+                              height: 110,
+                              gaplessPlayback: true,
+                              fit: BoxFit.fill),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          'Classes',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
 
-              //SWIM CARD
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Swim()));
-                },
-                child: Card(
-                  color: Colors.purple,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                  ),
-                  child: Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(15),
-                            topRight: Radius.circular(15)),
-                        child: Image.asset('lib/assets/images/ravelin_swim.png',
-                            height: 110, width: 180, fit: BoxFit.fill),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        'Swim',
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                      )
-                    ],
+                //SWIM CARD
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const Swim()));
+                  },
+                  child: Card(
+                    color: Colors.purple,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15)),
+                          child: Image.asset(
+                              'lib/assets/images/ravelin_swim.png',
+                              height: 110,
+                              width: 180,
+                              fit: BoxFit.fill),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          'Swim',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
 
-              //CLIMB CARD
-              InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Climb()));
-                },
-                child: Card(
-                  color: Colors.purple,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15)),
-                  ),
-                  child: Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(15),
-                            topRight: Radius.circular(15)),
-                        child: Image.asset(
-                            'lib/assets/images/ravelin_climb.png',
-                            height: 110,
-                            gaplessPlayback: true,
-                            fit: BoxFit.fill),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        'Climb',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal),
-                      )
-                    ],
+                //CLIMB CARD
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const Climb()));
+                  },
+                  child: Card(
+                    color: Colors.purple,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15)),
+                          child: Image.asset(
+                              'lib/assets/images/ravelin_climb.png',
+                              height: 110,
+                              gaplessPlayback: true,
+                              fit: BoxFit.fill),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          'Climb',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ])));
+
+                //CLIMB CARD
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const Court()));
+                  },
+                  child: Card(
+                    color: Colors.purple,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15)),
+                          child: Image.asset('lib/assets/images/court_2.png',
+                              height: 110,
+                              width: 185,
+                              gaplessPlayback: true,
+                              fit: BoxFit.fill),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          'Courts & Pitches',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ])),
+        ));
   }
 }
 

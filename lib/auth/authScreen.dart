@@ -12,61 +12,70 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Size size = MediaQuery.of(context).size;
     return Scaffold(
-        body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Icon(
-            CupertinoIcons.sportscourt,
-            size: 60.0,
-            color: Colors.purple,
-          ),
-          const SizedBox(height: 10.0),
-          const Text(
-            'Welcome to Sports App',
-            style: TextStyle(fontSize: 18),
-          ),
-          const SizedBox(
-            height: 8.0,
-          ),
-          const Text(
-            'Log in with your account to continue',
-            style: TextStyle(fontSize: 18),
-          ),
-          const SizedBox(
-            height: 10.0,
-          ),
-          Row(
+        body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage('lib/assets/images/white_3.png'))),
+        child: Center(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(fixedSize: const Size(90, 40)),
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const SignInPage()));
-                },
-                child: const Text(
-                  'Log in',
-                  style: TextStyle(fontSize: 15.0),
-                ),
+              const Icon(
+                CupertinoIcons.sportscourt,
+                size: 60.0,
+                color: Colors.purple,
               ),
-              const SizedBox(width: 20.0),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(fixedSize: const Size(90, 40)),
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const SignUp()));
-                },
-                child: const Text(
-                  'Sign up',
-                  style: TextStyle(fontSize: 15.0),
-                ),
+              const SizedBox(height: 10.0),
+              const Text(
+                'Welcome to Sports App',
+                style: TextStyle(fontSize: 18),
               ),
+              const SizedBox(
+                height: 8.0,
+              ),
+              const Text(
+                'Log in with your account to continue',
+                style: TextStyle(fontSize: 18),
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(fixedSize: const Size(90, 40)),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const SignInPage()));
+                    },
+                    child: const Text(
+                      'Log in',
+                      style: TextStyle(fontSize: 15.0),
+                    ),
+                  ),
+                  const SizedBox(width: 20.0),
+                  ElevatedButton(
+                    style:
+                        ElevatedButton.styleFrom(fixedSize: const Size(90, 40)),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const SignUp()));
+                    },
+                    child: const Text(
+                      'Sign up',
+                      style: TextStyle(fontSize: 15.0),
+                    ),
+                  ),
+                ],
+              )
             ],
-          )
-        ],
+          ),
+        ),
       ),
-    ));
+    );
   }
 }

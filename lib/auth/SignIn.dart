@@ -117,8 +117,11 @@ class SignInState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 120.0),
+        child: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage('lib/assets/images/white_3.png'))),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(

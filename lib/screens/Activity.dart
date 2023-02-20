@@ -11,10 +11,15 @@ class Activity extends StatelessWidget {
           title: const Text('Activity'),
           backgroundColor: Colors.purple,
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [],
+        body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('lib/assets/images/white_1.png'))),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [],
+          ),
         ));
   }
 }

@@ -1,26 +1,26 @@
 //Climbing Page
 import 'package:flutter/material.dart';
 
-class Climb extends StatefulWidget {
+class Court extends StatefulWidget {
   static const String route = '/Bookings/Climb';
-  const Climb({Key? key}) : super(key: key);
+  const Court({Key? key}) : super(key: key);
 
   @override
-  State<Climb> createState() => ClimbState();
+  State<Court> createState() => CourtState();
 }
 
-class ClimbState extends State<Climb> {
+class CourtState extends State<Court> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Climbing'),
+          title: const Text('Courts and pitches'),
           centerTitle: true,
         ),
         body: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-                fit: BoxFit.cover,
+                  fit: BoxFit.cover,
                   image: AssetImage('lib/assets/images/white_3.png'))),
           child: GridView(
               padding: const EdgeInsets.all(20),
@@ -44,8 +44,9 @@ class ClimbState extends State<Climb> {
                           borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(15),
                               topRight: Radius.circular(15)),
-                          child: Image.asset('lib/assets/images/climb_girl.png',
+                          child: Image.asset('lib/assets/images/racket.png',
                               height: 110,
+                              width: 165,
                               gaplessPlayback: true,
                               fit: BoxFit.fill),
                         ),
@@ -53,7 +54,7 @@ class ClimbState extends State<Climb> {
                           height: 10,
                         ),
                         const Text(
-                          'Climb booking',
+                          'Racket Sports',
                           style: TextStyle(fontSize: 18, color: Colors.white),
                         )
                       ],
@@ -75,7 +76,7 @@ class ClimbState extends State<Climb> {
                           borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(15),
                               topRight: Radius.circular(15)),
-                          child: Image.asset('lib/assets/images/climb_3.png',
+                          child: Image.asset('lib/assets/images/sport_2.png',
                               height: 110,
                               gaplessPlayback: true,
                               fit: BoxFit.fill),
@@ -84,7 +85,7 @@ class ClimbState extends State<Climb> {
                           height: 10,
                         ),
                         const Text(
-                          'session help',
+                          'Sport bookings',
                           style: TextStyle(fontSize: 18, color: Colors.white),
                         )
                       ],

@@ -116,7 +116,11 @@ class _SettingsState extends State<Settings> {
         title: const Text('Settings'),
         backgroundColor: Colors.purple,
       ),
-      body: SafeArea(
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+                image: AssetImage('lib/assets/images/white_3.png'))),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
           child: ListView(

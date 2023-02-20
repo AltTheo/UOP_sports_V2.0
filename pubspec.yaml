@@ -116,6 +116,19 @@ flutter:
     - lib/assets/images/classes_5.png
     - lib/assets/images/climb_girl.png
     - lib/assets/images/google_logo.png
+    - lib/assets/images/court_1.png
+    - lib/assets/images/court_2.png
+    - lib/assets/images/court_3.png
+    - lib/assets/images/court_4.png
+    - lib/assets/images/court_guys.png
+    - lib/assets/images/purple_background.png
+    - lib/assets/images/purple_background_1.png
+    - lib/assets/images/sport_1.png
+    - lib/assets/images/sport_2.png
+    - lib/assets/images/white_1.png
+    - lib/assets/images/white_2.png
+    - lib/assets/images/white_3.png
+    - lib/assets/images/racket.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

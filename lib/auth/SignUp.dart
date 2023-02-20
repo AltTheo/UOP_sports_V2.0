@@ -26,18 +26,20 @@ class SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        future: _initializeFirebase(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return const Register();
-          }
-          return const Center(
-            child: CircularProgressIndicator(
-              color: Colors.purple,
-            ),
-          );
-        },
+      body: Container(
+        child: FutureBuilder(
+          future: _initializeFirebase(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return const Register();
+            }
+            return const Center(
+              child: CircularProgressIndicator(
+                color: Colors.purple,
+              ),
+            );
+          },
+        ),
       ),
     );
   }
@@ -107,8 +109,11 @@ class RegisterState extends State<Register> {
       },
       child: Scaffold(
         body: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(vertical: 120.0),
+          child: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('lib/assets/images/white_3.png'))),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
