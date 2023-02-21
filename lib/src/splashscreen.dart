@@ -28,18 +28,24 @@ class SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Center(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Icon(
-              CupertinoIcons.sportscourt,
-              size: 60.0,
-              color: Colors.purple,
-            ),
-            SizedBox(height: 10.0),
-            CircularProgressIndicator()
-          ],
-        )));
+        body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage('lib/assets/images/white_3.png'))),
+          child: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Icon(
+                CupertinoIcons.sportscourt,
+                size: 60.0,
+                color: Colors.purple,
+              ),
+              SizedBox(height: 10.0),
+              CircularProgressIndicator()
+            ],
+          )),
+        ));
   }
 }
