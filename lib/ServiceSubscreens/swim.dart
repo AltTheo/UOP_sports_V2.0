@@ -1,5 +1,6 @@
 //Swim Page
 import 'package:flutter/material.dart';
+import 'package:sport_test/screens/Instructions.dart';
 
 class Swim extends StatefulWidget {
   static const String route = '/Bookings/Swim';
@@ -99,7 +100,10 @@ class SwimState extends State<Swim> {
 
                 //SERVICES CARD
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Instructions()));
+                  },
                   child: Card(
                     color: Colors.purple,
                     shape: const RoundedRectangleBorder(

@@ -78,21 +78,27 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: const Drawer(
         backgroundColor: Colors.white12,
       ),
-      body: ListView.builder(
-        controller: _scrollController,
-        itemCount: 11,
-        itemBuilder: (context, index) {
-          return InkWell(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (contex) => FeedDetail(
-                          feedId: index.toString(),
-                        )));
-              },
-              child: FeedTile(
-                index: index,
-              ));
-        },
+      body: Container(
+          decoration: const BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage('lib/assets/images/white_3.png'))),
+        child: ListView.builder(
+          controller: _scrollController,
+          itemCount: 11,
+          itemBuilder: (context, index) {
+            return InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (contex) => FeedDetail(
+                            feedId: index.toString(),
+                          )));
+                },
+                child: FeedTile(
+                  index: index,
+                ));
+          },
+        ),
       ),
     );
   }

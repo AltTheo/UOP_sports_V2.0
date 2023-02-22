@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:navbar_router/navbar_router.dart';
-import 'package:sport_test/subscreens/climb.dart';
-import 'package:sport_test/subscreens/court.dart';
-import 'package:sport_test/subscreens/gymclass.dart';
-import 'package:sport_test/subscreens/gymsesh.dart';
-import 'package:sport_test/subscreens/swim.dart';
+import 'package:sport_test/ServiceSubscreens/climb.dart';
+import 'package:sport_test/ServiceSubscreens/court.dart';
+import 'package:sport_test/ServiceSubscreens/gymclass.dart';
+import 'package:sport_test/ServiceSubscreens/gymsesh.dart';
+import 'package:sport_test/ServiceSubscreens/swim.dart';
+import 'package:sport_test/placeholderScreens/physio.dart';
 
 class ServiceNavigatorRoutes {
   static const String root = '/';
@@ -285,6 +286,42 @@ class ServiceState extends State<Service> {
                         ),
                         const Text(
                           'Courts & Pitches',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const Physio()));
+                  },
+                  child: Card(
+                    color: Colors.purple,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15)),
+                          child: Image.asset('lib/assets/images/physio_1.png',
+                              height: 110,
+                              width: 185,
+                              gaplessPlayback: true,
+                              fit: BoxFit.fill),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text(
+                          'Ravelin physio',
                           style: TextStyle(
                               fontSize: 20,
                               color: Colors.white,

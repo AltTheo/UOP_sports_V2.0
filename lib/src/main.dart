@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData(
           brightness: Brightness.dark,
         ),
-        home: const SplashScreen());
+        home: const SimpleNav());
     // home: const NavbarSample(title: 'BottomNavbar Demo'));
   }
 }

@@ -129,6 +129,8 @@ flutter:
     - lib/assets/images/white_2.png
     - lib/assets/images/white_3.png
     - lib/assets/images/racket.png
+    - lib/assets/images/physio.png
+    - lib/assets/images/physio_1.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

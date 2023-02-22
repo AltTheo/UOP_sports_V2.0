@@ -42,6 +42,9 @@ class GymseshState extends State<Gymsesh> {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => const BookingCalendarView()));
+                        // var url = Uri.parse(
+                        //     "https://uniofportsmouth.leisurecloud.net/Connect/mrmResourceStatus.aspx");
+                        // await launchUrl(url);
                       },
                       child: Card(
                         color: Colors.purple,

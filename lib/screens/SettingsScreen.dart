@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:navbar_router/navbar_router.dart';
+import 'package:sport_test/settingsSubscreen/Info.dart';
 import 'package:sport_test/auth/SignIn.dart';
 import 'package:sport_test/auth/authScreen.dart';
 import 'package:sport_test/redundant%20files/simpleNav.dart';
@@ -119,53 +120,44 @@ class _SettingsState extends State<Settings> {
       body: Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
-              fit: BoxFit.cover,
+                fit: BoxFit.cover,
                 image: AssetImage('lib/assets/images/white_3.png'))),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
           child: ListView(
             controller: _scrollController,
             children: [
               // You can add a settings title
-              SettingsGroup(
-                  settingsGroupTitle: 'User and App preferences',
-                  settingsGroupTitleStyle: const TextStyle(fontSize: 16),
-                  items: [
-                    SettingsItem(
-                      icons: Icons.manage_accounts_outlined,
-                      onTap: () {
-                        NavbarNotifier.hideBottomNavBar = false;
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const Info()));
-                      },
-                      title: 'Manage account',
-                      titleStyle: const TextStyle(fontSize: 17),
-                    ),
-                    SettingsItem(
-                      onTap: () {},
-                      icons: CupertinoIcons.paintbrush,
-                      title: 'App Appearance',
-                      titleStyle: const TextStyle(fontSize: 17),
-                    ),
-                    SettingsItem(
-                        icons: CupertinoIcons.bell,
-                        title: 'Notifications',
-                        titleStyle: const TextStyle(fontSize: 17),
-                        onTap: () {}),
-                  ]),
+              SettingsGroup(items: [
+                SettingsItem(
+                  icons: Icons.manage_accounts_outlined,
+                  onTap: () {
+                    NavbarNotifier.hideBottomNavBar = false;
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const Info()));
+                  },
+                  title: 'Manage account',
+                  titleStyle: const TextStyle(fontSize: 17),
+                ),
+                SettingsItem(
+                  onTap: () {},
+                  icons: CupertinoIcons.paintbrush,
+                  title: 'App Appearance',
+                  titleStyle: const TextStyle(fontSize: 17),
+                ),
+                SettingsItem(
+                    icons: CupertinoIcons.bell,
+                    title: 'Notifications',
+                    titleStyle: const TextStyle(fontSize: 17),
+                    onTap: () {}),
+              ]),
 
               SettingsGroup(
-                settingsGroupTitle: 'Privacy',
-                settingsGroupTitleStyle: const TextStyle(fontSize: 16),
                 items: [
                   SettingsItem(
                     onTap: () {
-                      // NavbarNotifier.hideBottomNavBar = false;
-                      // navigate(
-                      //   context,
-                      //   About.route,
-                      //   isRootNavigator: false,
-                      // );
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const About()));
                     },
                     icons: CupertinoIcons.info,
                     title: 'About',
@@ -178,20 +170,17 @@ class _SettingsState extends State<Settings> {
                   )
                 ],
               ),
-              SettingsGroup(
-                  settingsGroupTitle: 'Login',
-                  settingsGroupTitleStyle: const TextStyle(fontSize: 17),
-                  items: [
-                    SettingsItem(
-                      icons: Icons.exit_to_app_sharp,
-                      onTap: () {
-                        _showAction(context);
-                      },
-                      title: 'Log out',
-                      titleStyle: const TextStyle(fontSize: 17),
-                      subtitleStyle: const TextStyle(fontSize: 15),
-                    ),
-                  ]),
+              SettingsGroup(items: [
+                SettingsItem(
+                  icons: Icons.exit_to_app_sharp,
+                  onTap: () {
+                    _showAction(context);
+                  },
+                  title: 'Log out',
+                  titleStyle: const TextStyle(fontSize: 17),
+                  subtitleStyle: const TextStyle(fontSize: 15),
+                ),
+              ]),
               Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: Column(
@@ -236,37 +225,6 @@ class ActionButton extends StatelessWidget {
   }
 }
 
-//Class for Accounts
-class Info extends StatelessWidget {
-  // static const String route = '/Settings/Info';
-  const Info({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Manage Account'),
-          backgroundColor: Colors.purple,
-        ),
-        body: Padding(
-            padding: const EdgeInsets.all(10),
-            child: ListView(
-              children: [
-                SettingsItem(
-                  icons: CupertinoIcons.person_2,
-                  title: 'Member Info',
-                  titleStyle: const TextStyle(fontSize: 17),
-                  onTap: () {},
-                ),
-                SettingsItem(
-                    icons: CupertinoIcons.nosign,
-                    title: 'Manage Membership',
-                    titleStyle: const TextStyle(fontSize: 17),
-                    onTap: () {})
-              ],
-            )));
-  }
-}
-
 //Class for Privacy
 class About extends StatelessWidget {
   // static const String route = '/Settings/About';
@@ -285,27 +243,20 @@ class About extends StatelessWidget {
               children: [
                 SettingsItem(
                     icons: Icons.remove_red_eye_rounded,
-                    title: 'Privacy Policy',
+                    title: 'Privacy policy',
                     titleStyle: const TextStyle(fontSize: 17),
                     onTap: () async {
-                      var url = Uri.parse("https://www.geeksforgeeks.org/");
-                      if (await canLaunchUrl(url)) {
-                        await launchUrl(url);
-                      } else {
-                        throw 'Could not launch $url';
-                      }
+                      var url = Uri.parse("https://sport.port.ac.uk/about-us/policies-and-terms/privacy-policy");
+                      await launchUrl(url);
                     }),
                 SettingsItem(
                     icons: CupertinoIcons.book,
-                    title: 'Terms of Use',
+                    title: 'Policy and terms',
                     titleStyle: const TextStyle(fontSize: 17),
                     onTap: () async {
-                      var url = Uri.parse("https://www.geeksforgeeks.org/");
-                      if (await canLaunchUrl(url)) {
-                        await launchUrl(url);
-                      } else {
-                        throw 'Could not launch $url';
-                      }
+                      var url = Uri.parse("https://sport.port.ac.uk/about-us/policies-and-terms/");
+
+                      await launchUrl(url);
                     })
               ],
             )));
