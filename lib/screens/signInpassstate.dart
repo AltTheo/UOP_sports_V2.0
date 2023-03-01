@@ -42,7 +42,10 @@ class SignInPassState extends State<SignInPass> {
             SizedBox(height: 10.0),
             Text('Signing in ...', style: TextStyle(fontSize: 18),),
             SizedBox(height: 20.0),
-            CircularProgressIndicator()
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 80.0),
+              child: LinearProgressIndicator(),
+            )
           ],
         )));
   }

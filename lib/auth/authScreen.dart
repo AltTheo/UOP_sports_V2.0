@@ -50,7 +50,7 @@ class WelcomeScreen extends StatelessWidget {
                         ElevatedButton.styleFrom(fixedSize: const Size(90, 40)),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const SignInPage()));
+                          builder: (context) => const SignInScreen()));
                     },
                     child: const Text(
                       'Log in',

@@ -13,6 +13,9 @@ import 'package:sport_test/src/NavRouteBar.dart';
 import 'package:sport_test/screens/signInpassstate.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 
+import '../redundant files/simpleNav.dart';
+import 'authScreen.dart';
+
 class SignInPage extends StatefulWidget {
   static const String route = '/';
   const SignInPage({super.key});
@@ -31,18 +34,28 @@ class SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder(
-        future: _initializeFirebase(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return const SignInScreen();
+    return StreamBuilder(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return const WelcomeScreen();
+        }
+        final user = snapshot.data;
+        if (user != null) {
+          if (kDebugMode) {
+            print("user is logged in");
           }
-          return const Center(
-            child: CircularProgressIndicator(color: Colors.purple, value: 20),
-          );
-        },
-      ),
+          if (kDebugMode) {
+            print(user);
+          }
+          return const SimpleNav();
+        } else {
+          if (kDebugMode) {
+            print("user is not logged in");
+          }
+          return const WelcomeScreen();
+        }
+      },
     );
   }
 }

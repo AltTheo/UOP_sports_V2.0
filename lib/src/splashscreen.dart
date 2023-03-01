@@ -19,9 +19,9 @@ class SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        const Duration(seconds: 5),
+        const Duration(seconds: 2),
         () => Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const WelcomeScreen())));
+            MaterialPageRoute(builder: (context) => const SignInPage())));
   }
 
   @override
@@ -43,7 +43,10 @@ class SplashScreenState extends State<SplashScreen> {
                 color: Colors.purple,
               ),
               SizedBox(height: 10.0),
-              CircularProgressIndicator()
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 80.0),
+                child: LinearProgressIndicator(),
+              )
             ],
           )),
         ));
