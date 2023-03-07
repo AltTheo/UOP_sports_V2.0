@@ -1,17 +1,35 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:sport_test/auth/SignIn.dart';
 import 'package:sport_test/auth/SignUp.dart';
 import 'package:sport_test/redundant%20files/BookingScreen.dart';
 
-class Instructions extends StatelessWidget {
+class Instructions extends StatefulWidget {
   const Instructions({super.key});
+  @override
+  State<StatefulWidget> createState() => InstructionsState();
+}
+
+class InstructionsState extends State<Instructions> {
+  String placeText = '';
+
+  Future<void> textData() async {
+    final String saunaText;
+    const String path = 'lib/assets/text/sauna.txt';
+    saunaText = await rootBundle.loadString(path);
+
+    setState(() {
+      placeText = saunaText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     // Size size = MediaQuery.of(context).size;
+    textData();
     return Scaffold(
       appBar: AppBar(title: const Text('Steam & Sauna')),
       body: Container(
@@ -28,32 +46,16 @@ class Instructions extends StatelessWidget {
                   height: 300, fit: BoxFit.cover),
             ),
             const SizedBox(height: 10.0),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
               child: Text(
-                'Please shower before and after using the steam room / sauna. \nDo not exceed 15 minutes in either room ',
-                style: TextStyle(fontSize: 15),
+                placeText,
+                style: const TextStyle(fontSize: 17.0),
               ),
             ),
             const SizedBox(
               height: 3.0,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
-              child: Text(
-                'Use the emergency panic alarm in the event of an emergency, or speak to a lifeguard if you feel unwell.',
-                style: TextStyle(fontSize: 15),
-              ),
-            ),
-            const SizedBox(
-              height: 3.0,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
-              child: Text(
-                'Appropriate swimwear must be worn at all times',
-                style: TextStyle(fontSize: 15),
-              ),
             ),
             const SizedBox(
               height: 10.0,

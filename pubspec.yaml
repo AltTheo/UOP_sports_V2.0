@@ -86,51 +86,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - lib/assets/images/classes_2.png
-    - lib/assets/images/gym_dumbbell.png
-    - lib/assets/images/rock_climbing.png
-    - lib/assets/images/swimming.png
-    - lib/assets/images/swim_image.png
-    - lib/assets/images/man_swim.png
-    - lib/assets/images/sauna.png
-    - lib/assets/images/under_16.png
-    - lib/assets/images/session_help.png
-    - lib/assets/images/ravelin_gym.png
-    - lib/assets/images/ravelin_gym2.png
-    - lib/assets/images/ravelin_class.png
-    - lib/assets/images/ravelin_swim.png
-    - lib/assets/images/ravelin_climb.png
-    - lib/assets/images/Gym_booking.png
-    - lib/assets/images/gym_rules.png
-    - lib/assets/images/gym_services.png
-    - lib/assets/images/gym_lifting.png
-    - lib/assets/images/gym_people.png
-    - lib/assets/images/gym_guy.png
-    - lib/assets/images/climb_1.png
-    - lib/assets/images/climb_2.png
-    - lib/assets/images/climb_3.png
-    - lib/assets/images/classes_3.png
-    - lib/assets/images/aquaclass_1.png
-    - lib/assets/images/aquaclass_2.png
-    - lib/assets/images/classes_4.png
-    - lib/assets/images/classes_5.png
-    - lib/assets/images/climb_girl.png
-    - lib/assets/images/google_logo.png
-    - lib/assets/images/court_1.png
-    - lib/assets/images/court_2.png
-    - lib/assets/images/court_3.png
-    - lib/assets/images/court_4.png
-    - lib/assets/images/court_guys.png
-    - lib/assets/images/purple_background.png
-    - lib/assets/images/purple_background_1.png
-    - lib/assets/images/sport_1.png
-    - lib/assets/images/sport_2.png
-    - lib/assets/images/white_1.png
-    - lib/assets/images/white_2.png
-    - lib/assets/images/white_3.png
-    - lib/assets/images/racket.png
-    - lib/assets/images/physio.png
-    - lib/assets/images/physio_1.png
+    - lib/assets/images/
+    - lib/assets/text/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

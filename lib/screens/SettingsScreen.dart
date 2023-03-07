@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:navbar_router/navbar_router.dart';
-import 'package:sport_test/settingsSubscreen/Info.dart';
 import 'package:sport_test/auth/SignIn.dart';
 import 'package:sport_test/auth/authScreen.dart';
 import 'package:sport_test/redundant%20files/simpleNav.dart';
+import 'package:sport_test/settingsSubscreen/profile.dart';
 import 'package:sport_test/src/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -133,8 +133,8 @@ class _SettingsState extends State<Settings> {
                   icons: Icons.manage_accounts_outlined,
                   onTap: () {
                     NavbarNotifier.hideBottomNavBar = false;
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const Info()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const Profile()));
                   },
                   title: 'Manage account',
                   titleStyle: const TextStyle(fontSize: 17),
@@ -186,7 +186,7 @@ class _SettingsState extends State<Settings> {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [Text('Signed in as ${user?.email}')]),
+                    children: [Text('Signed in as ${user?.displayName}')]),
               )
             ],
           ),
@@ -246,7 +246,8 @@ class About extends StatelessWidget {
                     title: 'Privacy policy',
                     titleStyle: const TextStyle(fontSize: 17),
                     onTap: () async {
-                      var url = Uri.parse("https://sport.port.ac.uk/about-us/policies-and-terms/privacy-policy");
+                      var url = Uri.parse(
+                          "https://sport.port.ac.uk/about-us/policies-and-terms/privacy-policy");
                       await launchUrl(url);
                     }),
                 SettingsItem(
@@ -254,7 +255,8 @@ class About extends StatelessWidget {
                     title: 'Policy and terms',
                     titleStyle: const TextStyle(fontSize: 17),
                     onTap: () async {
-                      var url = Uri.parse("https://sport.port.ac.uk/about-us/policies-and-terms/");
+                      var url = Uri.parse(
+                          "https://sport.port.ac.uk/about-us/policies-and-terms/");
 
                       await launchUrl(url);
                     })

@@ -8,7 +8,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sport_test/auth/SignUp.dart';
 import 'package:sport_test/auth/reset.dart';
-import 'package:sport_test/screens/profile.dart';
+// import 'package:sport_test/screens/profile.dart';
 import 'package:sport_test/src/NavRouteBar.dart';
 import 'package:sport_test/screens/signInpassstate.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';

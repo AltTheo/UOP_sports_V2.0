@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:sport_test/auth/SignIn.dart';
@@ -7,12 +8,30 @@ import 'package:sport_test/auth/SignUp.dart';
 import 'package:sport_test/redundant%20files/BookingScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Physio extends StatelessWidget {
+class Physio extends StatefulWidget {
   const Physio({super.key});
+
+  @override
+  State<StatefulWidget> createState() => PhysioState();
+}
+
+class PhysioState extends State<Physio> {
+  String placeText = '';
+
+  Future<void> textData() async {
+    final String physioText;
+    const String path = 'lib/assets/text/physio.txt';
+    physioText = await rootBundle.loadString(path);
+
+    setState(() {
+      placeText = physioText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     // Size size = MediaQuery.of(context).size;
+    textData();
     return Scaffold(
       appBar: AppBar(title: const Text('South Coast Rx Physio')),
       body: Container(
@@ -29,33 +48,13 @@ class Physio extends StatelessWidget {
                   height: 300, fit: BoxFit.cover),
             ),
             const SizedBox(height: 10.0),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
-              child: Text(
-                "We're delighted to have South Coast Rx Physio onboard at Ravelin sports Centre\nSouth Coast Rx is a private physio practice run by a team of experienced clinicians who love sport and exercise. ",
-                style: TextStyle(fontSize: 15),
-              ),
-            ),
-            const SizedBox(
-              height: 3.0,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
-              child: Text(
-                'They are passionate believers of an active treatment approach with one central goal - to kep you doing the things you love !',
-                style: TextStyle(fontSize: 15),
-              ),
-            ),
-            const SizedBox(
-              height: 3.0,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
-              child: Text(
-                'Click the link below to find out more information on the services provided and make a booking',
-                style: TextStyle(fontSize: 15),
-              ),
-            ),
+            Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
+                child: Text(
+                  placeText,
+                  style: const TextStyle(fontSize: 17),
+                )),
             const SizedBox(
               height: 10.0,
             ),

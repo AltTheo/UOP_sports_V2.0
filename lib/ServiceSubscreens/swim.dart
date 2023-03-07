@@ -1,6 +1,6 @@
 //Swim Page
 import 'package:flutter/material.dart';
-import 'package:sport_test/screens/Instructions.dart';
+import 'package:sport_test/placeholderScreens/Instructions.dart';
 
 class Swim extends StatefulWidget {
   static const String route = '/Bookings/Swim';
@@ -12,40 +12,6 @@ class Swim extends StatefulWidget {
 
 class SwimState extends State<Swim> {
   final swimscrollController = ScrollController();
-
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  //   size = MediaQuery.of(context).size;
-  //   if (size.width < 50) {
-  //     _addScrollListener();
-  //   }
-  // }
-
-  // void handleScroll() {
-  //   if (size.width > 50) return;
-  //   if (swimscrollController.position.userScrollDirection ==
-  //       ScrollDirection.forward) {
-  //     if (NavbarNotifier.isNavbarHidden) {
-  //       NavbarNotifier.hideBottomNavBar = false;
-  //     }
-  //   } else {
-  //     if (!NavbarNotifier.isNavbarHidden) {
-  //       NavbarNotifier.hideBottomNavBar = true;
-  //     }
-  //   }
-  // }
-
-  // void _addScrollListener() {
-  //   swimscrollController.addListener(handleScroll);
-  // }
-
-  // Size size = Size.zero;
-  // @override
-  // void dispose() {
-  //   swimscrollController.dispose();
-  //   super.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +68,7 @@ class SwimState extends State<Swim> {
                 InkWell(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Instructions()));
+                        builder: (context) => Instructions()));
                   },
                   child: Card(
                     color: Colors.purple,
