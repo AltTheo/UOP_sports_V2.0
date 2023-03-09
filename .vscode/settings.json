@@ -14,5 +14,6 @@
     ],
     "dart.flutterHotReloadOnSave": "allIfDirty",
     "dart.hotReloadOnSave": "allIfDirty",
-    "files.autoSave": "off"
+    "files.autoSave": "afterDelay",
+    "workbench.editor.enablePreview": false
 }

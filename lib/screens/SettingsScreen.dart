@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:sport_test/auth/SignIn.dart';
@@ -11,6 +12,8 @@ import 'package:sport_test/redundant%20files/simpleNav.dart';
 import 'package:sport_test/settingsSubscreen/profile.dart';
 import 'package:sport_test/src/main.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../SettingsSubscreen/About.dart';
 
 class Settings extends StatefulWidget {
   static const String route = '/';
@@ -111,6 +114,9 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
+    String src =
+        'https://lh3.googleusercontent.com/a/AEdFTp7W1SXYppsLgrKV64IpYCDddjB1c7HBUtiXdcJemg=s96-c';
+
     return Scaffold(
       appBar: AppBar(
         // centerTitle: true,
@@ -128,66 +134,69 @@ class _SettingsState extends State<Settings> {
             controller: _scrollController,
             children: [
               // You can add a settings title
-              SettingsGroup(items: [
-                SettingsItem(
+              BigUserCard(
+                backgroundColor: Colors.purple,
+                cardActionWidget: SettingsItem(
                   icons: Icons.manage_accounts_outlined,
-                  onTap: () {
-                    NavbarNotifier.hideBottomNavBar = false;
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Profile()));
+                  title: "Manage Acount",
+                  subtitle: "Tap to manage membership",
+                  onTap: () async {
+                    var url = Uri.parse(
+                        "https://uniofportsmouth.leisurecloud.net/Connect/mrmResourceStatus.aspx");
+                    await launchUrl(url);
                   },
-                  title: 'Manage account',
-                  titleStyle: const TextStyle(fontSize: 17),
                 ),
-                SettingsItem(
-                  onTap: () {},
-                  icons: CupertinoIcons.paintbrush,
-                  title: 'App Appearance',
-                  titleStyle: const TextStyle(fontSize: 17),
+                userMoreInfo: Text(
+                  '${user?.email}',
+                  style: const TextStyle(color: Colors.white),
                 ),
-                SettingsItem(
-                    icons: CupertinoIcons.bell,
-                    title: 'Notifications',
-                    titleStyle: const TextStyle(fontSize: 17),
-                    onTap: () {}),
-              ]),
-
-              SettingsGroup(
-                items: [
-                  SettingsItem(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const About()));
-                    },
-                    icons: CupertinoIcons.info,
-                    title: 'About',
-                    titleStyle: const TextStyle(fontSize: 17),
-                  ),
-                  SettingsItem(
-                    icons: Icons.message_outlined,
-                    title: 'Help',
-                    titleStyle: const TextStyle(fontSize: 17),
-                  )
-                ],
+                userName: '${user?.displayName}',
+                userProfilePic: const AssetImage('lib/assets/images/profile.png')
               ),
-              SettingsGroup(items: [
-                SettingsItem(
-                  icons: Icons.exit_to_app_sharp,
-                  onTap: () {
-                    _showAction(context);
-                  },
-                  title: 'Log out',
+              SettingsItem(
+                onTap: () {},
+                icons: CupertinoIcons.paintbrush,
+                title: 'App Appearance',
+                titleStyle: const TextStyle(fontSize: 17),
+              ),
+              SettingsItem(
+                  icons: CupertinoIcons.bell,
+                  title: 'Notifications',
                   titleStyle: const TextStyle(fontSize: 17),
-                  subtitleStyle: const TextStyle(fontSize: 15),
-                ),
-              ]),
-              Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [Text('Signed in as ${user?.displayName}')]),
-              )
+                  onTap: () {}),
+
+              SettingsItem(
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const About()));
+                },
+                icons: CupertinoIcons.info,
+                title: 'About',
+                titleStyle: const TextStyle(fontSize: 17),
+              ),
+              SettingsItem(
+                icons: Icons.message_outlined,
+                title: 'Help',
+                titleStyle: const TextStyle(fontSize: 17),
+              ),
+
+              SettingsItem(
+                icons: Icons.exit_to_app_sharp,
+                onTap: () {
+                  _showAction(context);
+                },
+                title: 'Log out',
+                titleStyle: const TextStyle(fontSize: 17),
+                subtitleStyle: const TextStyle(fontSize: 15),
+              ),
+
+              // Padding(
+              //   padding: const EdgeInsets.all(30.0),
+              //   child: Column(
+              //       mainAxisAlignment: MainAxisAlignment.end,
+              //       crossAxisAlignment: CrossAxisAlignment.center,
+              //       children: [Text('Signed in as ${user?.displayName}')]),
+              // )
             ],
           ),
         ),
@@ -222,45 +231,5 @@ class ActionButton extends StatelessWidget {
         color: Colors.white,
       ),
     );
-  }
-}
-
-//Class for Privacy
-class About extends StatelessWidget {
-  // static const String route = '/Settings/About';
-
-  const About({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('About'),
-          backgroundColor: Colors.purple,
-        ),
-        body: Padding(
-            padding: const EdgeInsets.all(10),
-            child: ListView(
-              children: [
-                SettingsItem(
-                    icons: Icons.remove_red_eye_rounded,
-                    title: 'Privacy policy',
-                    titleStyle: const TextStyle(fontSize: 17),
-                    onTap: () async {
-                      var url = Uri.parse(
-                          "https://sport.port.ac.uk/about-us/policies-and-terms/privacy-policy");
-                      await launchUrl(url);
-                    }),
-                SettingsItem(
-                    icons: CupertinoIcons.book,
-                    title: 'Policy and terms',
-                    titleStyle: const TextStyle(fontSize: 17),
-                    onTap: () async {
-                      var url = Uri.parse(
-                          "https://sport.port.ac.uk/about-us/policies-and-terms/");
-
-                      await launchUrl(url);
-                    })
-              ],
-            )));
   }
 }
