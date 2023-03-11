@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sport_test/auth/SignIn.dart';
 import 'package:sport_test/auth/verifyScreen.dart';
+import 'package:sport_test/model/users.dart';
 import 'package:sport_test/screens/signInpassstate.dart';
 
 class SignUp extends StatefulWidget {
@@ -207,12 +208,19 @@ class RegisterState extends State<Register> {
                           email: newEmailController.text,
                           password: newPasswordController.text,
                           context: context);
-                      print(user);
+                      if (kDebugMode) {
+                        print(user);
+                      }
                       // FirebaseAuth result = await
                       if (user != null) {
-                        User? user = FirebaseAuth.instance.currentUser;
+                        User user = FirebaseAuth.instance.currentUser!;
+                        Usermodel newUser = Usermodel(
+                          userEmail: '${user.email}',
+                        );
+                        addUser(newUser);
+                        // ignore: use_build_context_synchronously
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const verifyScreen()));
+                            builder: (context) => const SignInPass()));
                       }
                     },
                     child: const Text(
@@ -269,8 +277,14 @@ class RegisterState extends State<Register> {
                       onPressed: () async {
                         await signInWithGoogle();
                         if (mounted) {
+                          User user = FirebaseAuth.instance.currentUser!;
+                          Usermodel newUser = Usermodel(
+                            userEmail: '${user.email}',
+                            fullName: '${user.displayName}'
+                          );
+                          addUser(newUser);
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const SignInPass()));
+                              builder: (context) => const verifyScreen()));
                         }
                       },
                       child: Row(

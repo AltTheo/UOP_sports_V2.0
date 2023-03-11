@@ -135,24 +135,23 @@ class _SettingsState extends State<Settings> {
             children: [
               // You can add a settings title
               BigUserCard(
-                backgroundColor: Colors.purple,
-                cardActionWidget: SettingsItem(
-                  icons: Icons.manage_accounts_outlined,
-                  title: "Manage Acount",
-                  subtitle: "Tap to manage membership",
-                  onTap: () async {
-                    var url = Uri.parse(
-                        "https://uniofportsmouth.leisurecloud.net/Connect/mrmResourceStatus.aspx");
-                    await launchUrl(url);
-                  },
-                ),
-                userMoreInfo: Text(
-                  '${user?.email}',
-                  style: const TextStyle(color: Colors.white),
-                ),
-                userName: '${user?.displayName}',
-                userProfilePic: const AssetImage('lib/assets/images/profile.png')
-              ),
+                  backgroundColor: Colors.purple,
+                  cardActionWidget: SettingsItem(
+                    icons: Icons.manage_accounts_outlined,
+                    title: "Manage Acount",
+                    subtitle: "Tap to manage membership",
+                    onTap: () async {
+                      var url = Uri.parse(
+                          "https://uniofportsmouth.leisurecloud.net/Connect/mrmResourceStatus.aspx");
+                      await launchUrl(url);
+                    },
+                  ),
+                  userMoreInfo: Text(
+                    '${user?.email}',
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  userName: '${user?.displayName}',
+                  userProfilePic: NetworkImage('${user?.photoURL}')),
               SettingsItem(
                 onTap: () {},
                 icons: CupertinoIcons.paintbrush,
