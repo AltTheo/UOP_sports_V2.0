@@ -5,7 +5,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:sport_test/auth/SignIn.dart';
 import 'package:sport_test/auth/SignUp.dart';
-import 'package:sport_test/redundant%20files/BookingScreen.dart';
+
+import '../../src/BookingCalendar.dart';
 
 class Instructions extends StatefulWidget {
   const Instructions({super.key});

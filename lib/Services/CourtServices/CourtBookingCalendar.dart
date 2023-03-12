@@ -6,14 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
-class BookingCalendarView extends StatefulWidget {
-  const BookingCalendarView({Key? key}) : super(key: key);
+class CourtBookingCalendarView extends StatefulWidget {
+  const CourtBookingCalendarView({Key? key}) : super(key: key);
 
   @override
-  State<BookingCalendarView> createState() => _BookingCalendarViewState();
+  State<CourtBookingCalendarView> createState() =>
+      _CourtBookingCalendarViewState();
 }
 
-class _BookingCalendarViewState extends State<BookingCalendarView> {
+class _CourtBookingCalendarViewState extends State<CourtBookingCalendarView> {
   final user = FirebaseAuth.instance.currentUser;
   final now = DateTime.now();
   late BookingService sportBookingService;
@@ -28,7 +29,7 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
         userEmail: '${user?.email}',
         userName: '${user?.displayName}',
         serviceName: 'Sports Booking',
-        serviceDuration: 15,
+        serviceDuration: 60,
         bookingEnd: DateTime(now.year, now.month, now.day, 22, 00),
         bookingStart: DateTime(now.year, now.month, now.day, 6, 30));
   }

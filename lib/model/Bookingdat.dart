@@ -1,21 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Booking {
-  final String username;
+  final String userName;
+  final String userEmail;
   final String bookingInfo;
   final DateTime dateTime;
 
   Booking(
-      {required this.username,
+      {required this.userName,
+      required this.userEmail,
       required this.bookingInfo,
       required this.dateTime});
 
   // Convert a Booking object to a Map (Firestore document)
   Map<String, dynamic> toMap() {
     return {
-      'Username': username,
+      'Username': userName,
       'BookingInfo': bookingInfo,
-      'Datetime' : dateTime
+      'Datetime': dateTime
     };
   }
 
@@ -23,7 +25,8 @@ class Booking {
   factory Booking.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data() as Map<String, dynamic>;
     return Booking(
-      username: data['Username'],
+      userName: data['UserName'],
+      userEmail: data['UserEmail'],
       bookingInfo: data['BookingInfo'],
       dateTime: data['DateTime'],
     );
@@ -31,10 +34,10 @@ class Booking {
 
   toJson() {
     return {
-      "Username": username,
+      "Username": userName,
       "BookingInfo": bookingInfo,
       "DateTime": dateTime,
-    };  
+    };
   }
 }
 

@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:navbar_router/navbar_router.dart';
-import 'package:sport_test/ServiceSubscreens/climb.dart';
-import 'package:sport_test/ServiceSubscreens/court.dart';
-import 'package:sport_test/ServiceSubscreens/gymclass.dart';
-import 'package:sport_test/ServiceSubscreens/gymsesh.dart';
-import 'package:sport_test/ServiceSubscreens/swim.dart';
-import 'package:sport_test/placeholderScreens/physio.dart';
+import 'package:sport_test/Services/ClimbServices/climb.dart';
+import 'package:sport_test/Services/CourtServices/court.dart';
+import 'package:sport_test/Services/GymServices/gymsesh.dart';
+import 'package:sport_test/Services/PhysioServices/physio.dart';
+import 'package:sport_test/Services/SwimServices/swim.dart';
+import '../Services/ClassServices/gymclass.dart';
 
 class ServiceNavigatorRoutes {
   static const String root = '/';
@@ -297,8 +297,8 @@ class ServiceState extends State<Service> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => const Physio()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const RavPhysio()));
                   },
                   child: Card(
                     color: Colors.purple,

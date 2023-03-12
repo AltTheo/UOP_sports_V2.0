@@ -5,17 +5,16 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:sport_test/auth/SignIn.dart';
 import 'package:sport_test/auth/SignUp.dart';
-import 'package:sport_test/redundant%20files/BookingScreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Physio extends StatefulWidget {
-  const Physio({super.key});
+class RavPhysio extends StatefulWidget {
+  const RavPhysio({super.key});
 
   @override
-  State<StatefulWidget> createState() => PhysioState();
+  State<StatefulWidget> createState() => RavPhysioState();
 }
 
-class PhysioState extends State<Physio> {
+class RavPhysioState extends State<RavPhysio> {
   String placeText = '';
 
   Future<void> textData() async {

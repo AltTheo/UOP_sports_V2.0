@@ -6,14 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
-class BookingCalendarView extends StatefulWidget {
-  const BookingCalendarView({Key? key}) : super(key: key);
+class SwimBookingCalendarView extends StatefulWidget {
+  const SwimBookingCalendarView({Key? key}) : super(key: key);
 
   @override
-  State<BookingCalendarView> createState() => _BookingCalendarViewState();
+  State<SwimBookingCalendarView> createState() =>
+      _SwimBookingCalendarViewState();
 }
 
-class _BookingCalendarViewState extends State<BookingCalendarView> {
+class _SwimBookingCalendarViewState extends State<SwimBookingCalendarView> {
   final user = FirebaseAuth.instance.currentUser;
   final now = DateTime.now();
   late BookingService sportBookingService;
@@ -27,7 +28,7 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
     sportBookingService = BookingService(
         userEmail: '${user?.email}',
         userName: '${user?.displayName}',
-        serviceName: 'Sports Booking',
+        serviceName: 'Swim Booking',
         serviceDuration: 15,
         bookingEnd: DateTime(now.year, now.month, now.day, 22, 00),
         bookingStart: DateTime(now.year, now.month, now.day, 6, 30));
@@ -50,6 +51,8 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
   Future<dynamic> createBooking({required BookingService newBooking}) async {
     Future.delayed(const Duration(seconds: 2));
     try {
+      converted.add(DateTimeRange(
+          start: newBooking.bookingStart, end: newBooking.bookingEnd));
       addBooking(newBooking);
       print('Booking added to database.');
     } catch (error) {

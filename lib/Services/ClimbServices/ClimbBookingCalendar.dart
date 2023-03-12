@@ -27,7 +27,7 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
     sportBookingService = BookingService(
         userEmail: '${user?.email}',
         userName: '${user?.displayName}',
-        serviceName: 'Sports Booking',
+        serviceName: 'Climb Booking',
         serviceDuration: 15,
         bookingEnd: DateTime(now.year, now.month, now.day, 22, 00),
         bookingStart: DateTime(now.year, now.month, now.day, 6, 30));

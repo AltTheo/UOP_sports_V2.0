@@ -1,8 +1,9 @@
 //Gym session page
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sport_test/redundant%20files/BookingScreen.dart';
+
+import '../../src/BookingCalendar.dart';
+import 'GymBookingCalendar.dart';
 
 class Gymsesh extends StatefulWidget {
   static const String route = '/Bookings/Gymsesh';
@@ -41,7 +42,8 @@ class GymseshState extends State<Gymsesh> {
                     InkWell(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const BookingCalendarView()));
+                            builder: (context) =>
+                                const GymBookingCalendarView()));
                         // var url = Uri.parse(
                         //     "https://uniofportsmouth.leisurecloud.net/Connect/mrmResourceStatus.aspx");
                         // await launchUrl(url);
