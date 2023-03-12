@@ -1,11 +1,10 @@
-//The booking view.
 import 'package:booking_calendar/booking_calendar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 class BookingCalendarView extends StatefulWidget {
-  static const String route = '/Bookings/Gymsesh/calendarView';
   const BookingCalendarView({Key? key}) : super(key: key);
 
   @override
@@ -13,6 +12,7 @@ class BookingCalendarView extends StatefulWidget {
 }
 
 class _BookingCalendarViewState extends State<BookingCalendarView> {
+  final user = FirebaseAuth.instance.currentUser;
   final now = DateTime.now();
   late BookingService sportBookingService;
 
@@ -23,8 +23,8 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
     // DateTime.now().startOfDay
     // DateTime.now().endOfDay
     sportBookingService = BookingService(
-        // userEmail: ,
-        // userId: ,
+        userEmail: '${user?.email}',
+        userName: '${user?.phoneNumber}',
         serviceName: 'Sports Booking',
         serviceDuration: 15,
         bookingEnd: DateTime(now.year, now.month, now.day, 22, 00),
