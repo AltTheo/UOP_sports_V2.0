@@ -92,12 +92,8 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
   //   ];
   // }
 
-  //  String Function(DateTime) formatDateTime = (dateTime) {
-  //   return DateFormat().format(dateTime);
-  // };
-
-  //  static String formatDateTime1(DateTime dt) {
-  //   return DateFormat.Hm().format(dt);
+  // static String formatDateTime1(DateTime dt) {
+  //   return DateFormat.Hm('en').format(dt);
   // }
 
   @override

@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
+import '../../src/sportbooking.dart';
+
 class GymBookingCalendarView extends StatefulWidget {
   const GymBookingCalendarView({Key? key}) : super(key: key);
 
@@ -53,9 +55,35 @@ class _GymBookingCalendarViewState extends State<GymBookingCalendarView> {
       converted.add(DateTimeRange(
           start: newBooking.bookingStart, end: newBooking.bookingEnd));
       addBooking(newBooking);
-      print('Booking added to database.');
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            backgroundColor: Colors.purple,
+            elevation: 15.0,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0))),
+            duration: Duration(seconds: 1),
+            padding: EdgeInsets.all(15.0),
+            dismissDirection: DismissDirection.startToEnd,
+            behavior: SnackBarBehavior.floating,
+            content: Text(
+              'The session was successfully booked',
+              style: TextStyle(fontSize: 18),
+            )),
+      );
+      if (kDebugMode) {
+        print('Booking added to database.');
+      }
     } catch (error) {
-      print('Error adding booking to database: $error');
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        dismissDirection: DismissDirection.startToEnd,
+        behavior: SnackBarBehavior.floating,
+        content: Text('The booking was unsuccessful'),
+      ));
+      if (kDebugMode) {
+        print('Error adding booking to database: $error');
+      }
     }
 
     // print('Booking Saved');
@@ -72,19 +100,78 @@ class _GymBookingCalendarViewState extends State<GymBookingCalendarView> {
     ///take care this is only mock, so if you add today as disabledDays it will still be visible on the first load
     ///disabledDays will properly work with real data
     DateTime first = now;
-    // DateTime second = now.add(const Duration(minutes: 15));
-    // DateTime third = now.add(const Duration(minutes: 15));
-    // DateTime fourth = now.add(const Duration(minutes: 15));
+    DateTime tomorrow = now.add(const Duration(days: 1));
+    DateTime second = now.add(const Duration(minutes: 55));
+    DateTime third = now.subtract(const Duration(minutes: 240));
+    DateTime fourth = now.subtract(const Duration(minutes: 500));
     // converted.add(
-    //     DateTimeRange(start: first, end: now.add(const Duration(minutes: 15))));
+    //     DateTimeRange(start: first, end: now.add(const Duration(minutes: 8))));
     // converted.add(DateTimeRange(
-    //     start: second, end: second.add(const Duration(minutes: 15))));
+    //     start: second, end: second.add(const Duration(minutes: 23))));
     // converted.add(DateTimeRange(
     //     start: third, end: third.add(const Duration(minutes: 15))));
     // converted.add(DateTimeRange(
-    //     start: fourth, end: fourth.add(const Duration(minutes: 15))));
+    //     start: fourth, end: fourth.add(const Duration(minutes: 50))));
+    //book whole day example
     return converted;
   }
+
+  // List<DateTimeRange> generatePauseSlots() {
+  //   return [
+  //     DateTimeRange(
+  //         start: DateTime(now.year, now.month, now.day, 12, 0),
+  //         end: DateTime(now.year, now.month, now.day, 13, 0))
+  //   ];
+  // }
+
+  List<DateTimeRange> convertStreamResulttwo({required dynamic streamResult}) {
+    List<DateTimeRange> converted = [];
+
+    // Iterate through the stream result and convert each item to DateTimeRange object
+    streamResult.forEach((item) {
+      converted.add(DateTimeRange(
+        start: DateTime.parse(item['bookingStart']),
+        end: DateTime.parse(item['bookingEnd']),
+      ));
+    });
+
+    return converted;
+  }
+
+  ///After you fetched the data from firestore, we only need to have a list of datetimes from the bookings:
+  List<DateTimeRange> convertStreamResultFirebase(
+      {required dynamic streamResult}) {
+    ///here you can parse the streamresult and convert to [List<DateTimeRange>]
+    ///Note that this is dynamic, so you need to know what properties are available on your result, in our case the [SportBooking] has bookingStart and bookingEnd property
+    List<DateTimeRange> converted = [];
+    for (var i = 0; i < streamResult.length; i++) {
+      final item = streamResult.docs[i].data();
+      converted.add(
+          DateTimeRange(start: (item.bookingStart!), end: (item.bookingEnd!)));
+    }
+    return converted;
+  }
+
+  CollectionReference bookings =
+      FirebaseFirestore.instance.collection('Bookings');
+
+  ///This is how can you get the reference to your data from the collection, and serialize the data with the help of the Firestore [withConverter]. This function would be in your repository.
+  CollectionReference<BookingService> getBookingStreamFirestore() {
+    return bookings.doc().collection('Bookings').withConverter<BookingService>(
+          fromFirestore: (snapshots, _) =>
+              BookingService.fromJson(snapshots.data()!),
+          toFirestore: (snapshots, _) => snapshots.toJson(),
+        );
+  }
+
+  //  Stream<dynamic>? getBookingStreamFirebase(
+  //   {required DateTime end, required DateTime start}) {
+  //      return ApiRepository.
+  //                       .getBookingStream(placeId: 'YOUR_DOC_ID')
+  //                       .where('bookingStart', isGreaterThanOrEqualTo: start)
+  //                       .where('bookingStart', isLessThanOrEqualTo: end)
+  //                       .snapshots();
+  // }
 
   // List<DateTimeRange> generatePauseSlots() {
   //   return [
@@ -111,6 +198,7 @@ class _GymBookingCalendarViewState extends State<GymBookingCalendarView> {
         title: const Text('Book a slot'),
       ),
       body: Container(
+        padding: const EdgeInsets.symmetric(vertical: 15.0),
         decoration: const BoxDecoration(
             image: DecorationImage(
                 fit: BoxFit.cover,
@@ -144,12 +232,12 @@ class _GymBookingCalendarViewState extends State<GymBookingCalendarView> {
             locale: "en",
             gridScrollPhysics:
                 const ScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-            availableSlotText: 'Available',
-            selectedSlotText: 'Selected',
-            bookedSlotText: 'Booked',
+            availableSlotText: 'AVAILABLE',
+            selectedSlotText: 'SELECTED',
+            bookedSlotText: 'BOOKED',
             // pauseSlotColor: Colors.grey,
-            bookingGridCrossAxisCount: 4,
-            bookingGridChildAspectRatio: 350 / 420,
+            bookingGridCrossAxisCount: 3,
+            bookingGridChildAspectRatio: 420 / 320,
             wholeDayIsBookedWidget:
                 const Text('Sorry, There are no available slots'),
             // formatDateTime: formatDateTime1(),

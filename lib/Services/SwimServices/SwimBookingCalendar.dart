@@ -49,14 +49,40 @@ class _SwimBookingCalendarViewState extends State<SwimBookingCalendarView> {
   }
 
   Future<dynamic> createBooking({required BookingService newBooking}) async {
-    Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     try {
       converted.add(DateTimeRange(
           start: newBooking.bookingStart, end: newBooking.bookingEnd));
       addBooking(newBooking);
-      print('Booking added to database.');
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            backgroundColor: Colors.purple,
+            elevation: 15.0,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0))),
+            duration: Duration(seconds: 1),
+            padding: EdgeInsets.all(15.0),
+            dismissDirection: DismissDirection.startToEnd,
+            behavior: SnackBarBehavior.floating,
+            content: Text(
+              'The session was successfully booked',
+              style: TextStyle(fontSize: 18),
+            )),
+      );
+      if (kDebugMode) {
+        print('Booking added to database.');
+      }
     } catch (error) {
-      print('Error adding booking to database: $error');
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        dismissDirection: DismissDirection.startToEnd,
+        behavior: SnackBarBehavior.floating,
+        content: Text('The booking was unsuccessful'),
+      ));
+      if (kDebugMode) {
+        print('Error adding booking to database: $error');
+      }
     }
 
     // print('Booking Saved');
