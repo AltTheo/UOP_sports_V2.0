@@ -30,7 +30,7 @@ class _GymBookingCalendarViewState extends State<GymBookingCalendarView> {
         userEmail: '${user?.email}',
         userName: '${user?.displayName}',
         serviceName: 'Gym Booking',
-        serviceDuration: 15,
+        serviceDuration: 30,
         bookingEnd: DateTime(now.year, now.month, now.day, 22, 00),
         bookingStart: DateTime(now.year, now.month, now.day, 6, 30));
   }
@@ -193,16 +193,16 @@ class _GymBookingCalendarViewState extends State<GymBookingCalendarView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        // backgroundColor: Colors.purple,
         automaticallyImplyLeading: true,
         title: const Text('Book a slot'),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 15.0),
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('lib/assets/images/white_3.png'))),
+        // padding: const EdgeInsets.symmetric(vertical: 15.0),
+        // decoration: const BoxDecoration(
+        //     image: DecorationImage(
+        //         fit: BoxFit.cover,
+        //         image: AssetImage('lib/assets/images/white_3.png'))),
         child: Center(
           child: BookingCalendar(
             bookingService: sportBookingService,

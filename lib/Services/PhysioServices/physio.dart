@@ -63,7 +63,7 @@ class RavPhysioState extends State<RavPhysio> {
                 TextButton(
                   style: ElevatedButton.styleFrom(
                       fixedSize: const Size(300, 40),
-                      backgroundColor: Colors.purple),
+                      backgroundColor: Theme.of(context).colorScheme.primary),
                   onPressed: () async {
                     var url = Uri.parse(
                         "https://www.southcoastrxphysiotherapy.co.uk/");

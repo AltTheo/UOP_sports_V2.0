@@ -1,5 +1,6 @@
 //Climbing Page
 import 'package:flutter/material.dart';
+import 'package:sport_test/component/ServiceGrid.dart';
 
 class Court extends StatefulWidget {
   static const String route = '/Bookings/Climb';
@@ -31,129 +32,34 @@ class CourtState extends State<Court> {
               ),
               children: [
                 // BOOKING CARD
-                InkWell(
-                  onTap: () {},
-                  child: Card(
-                    color: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15)),
-                          child: Image.asset('lib/assets/images/racket.png',
-                              height: 110,
-                              width: 165,
-                              gaplessPlayback: true,
-                              fit: BoxFit.fill),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Racket Sports',
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                Servicegrid(
+                    gridImage: Image.asset('lib/assets/images/racket.png',
+                        height: 110,
+                        width: 180,
+                        gaplessPlayback: true,
+                        fit: BoxFit.fill),
+                    onTap: () {},
+                    gridtitle: 'Racket Sports'),
 
                 //SERVICES CARD
-                InkWell(
-                  onTap: () {},
-                  child: Card(
-                    color: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15)),
-                          child: Image.asset('lib/assets/images/sport_2.png',
-                              height: 110,
-                              gaplessPlayback: true,
-                              fit: BoxFit.fill),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Sport bookings',
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                Servicegrid(
+                    gridImage: Image.asset('lib/assets/images/sport_2.png',
+                        height: 110, gaplessPlayback: true, fit: BoxFit.fill),
+                    onTap: () {},
+                    gridtitle: 'Sport bookings'),
 
                 //RULES CARD
-                InkWell(
-                  onTap: () {},
-                  child: Card(
-                    color: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15)),
-                          child: Image.asset('lib/assets/images/climb_1.png',
-                              height: 110, width: 180, fit: BoxFit.fill),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Climbing \nEquipments',
-                          style: TextStyle(fontSize: 17, color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                Servicegrid(
+                    gridImage: Image.asset('lib/assets/images/climb_1.png',
+                        height: 110, gaplessPlayback: true, fit: BoxFit.fill),
+                    onTap: () {},
+                    gridtitle: 'Booking help'),
 
-                InkWell(
-                  onTap: () {},
-                  child: Card(
-                    color: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15)),
-                          child: Image.asset('lib/assets/images/climb_2.png',
-                              height: 110,
-                              gaplessPlayback: true,
-                              fit: BoxFit.fill),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Under 16 \n bookings',
-                          style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.normal),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                Servicegrid(
+                    gridImage: Image.asset('lib/assets/images/climb_2.png',
+                        height: 110, gaplessPlayback: true, fit: BoxFit.fill),
+                    onTap: () {},
+                    gridtitle: 'Join a club'),
               ]),
         ));
   }

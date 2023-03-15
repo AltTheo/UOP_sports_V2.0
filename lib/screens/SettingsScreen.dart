@@ -8,6 +8,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:sport_test/auth/SignIn.dart';
 import 'package:sport_test/auth/authScreen.dart';
+import 'package:sport_test/component/memberProfile.dart';
 import 'package:sport_test/redundant%20files/simpleNav.dart';
 import 'package:sport_test/settingsSubscreen/profile.dart';
 import 'package:sport_test/src/main.dart';
@@ -16,14 +17,16 @@ import 'package:url_launcher/url_launcher.dart';
 import '../SettingsSubscreen/About.dart';
 
 class Settings extends StatefulWidget {
-  static const String route = '/';
   const Settings({super.key});
+
+  static const String route = '/';
 
   @override
   State<Settings> createState() => _SettingsState();
 }
 
 class _SettingsState extends State<Settings> {
+  Size size = Size.zero;
   final user = FirebaseAuth.instance.currentUser;
 
   final _scrollController = ScrollController();
@@ -35,6 +38,12 @@ class _SettingsState extends State<Settings> {
     if (size.width < 600) {
       _addScrollListener();
     }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   void handleScroll() {
@@ -53,13 +62,6 @@ class _SettingsState extends State<Settings> {
 
   void _addScrollListener() {
     _scrollController.addListener(handleScroll);
-  }
-
-  Size size = Size.zero;
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
   }
 
   void _showAction(BuildContext context) {
@@ -114,44 +116,30 @@ class _SettingsState extends State<Settings> {
 
   @override
   Widget build(BuildContext context) {
-    String src =
-        'https://lh3.googleusercontent.com/a/AEdFTp7W1SXYppsLgrKV64IpYCDddjB1c7HBUtiXdcJemg=s96-c';
-
     return Scaffold(
       appBar: AppBar(
         // centerTitle: true,
         title: const Text('Settings'),
-        backgroundColor: Colors.purple,
       ),
       body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('lib/assets/images/white_3.png'))),
+        color: const Color.fromARGB(255, 243, 241, 241),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
           child: ListView(
             controller: _scrollController,
             children: [
               // You can add a settings title
-              BigUserCard(
-                  backgroundColor: Colors.purple,
-                  cardActionWidget: SettingsItem(
-                    icons: Icons.manage_accounts_outlined,
-                    title: "Manage Acount",
-                    subtitle: "Tap to manage membership",
-                    onTap: () async {
-                      var url = Uri.parse(
-                          "https://uniofportsmouth.leisurecloud.net/Connect/mrmResourceStatus.aspx");
-                      await launchUrl(url);
-                    },
-                  ),
-                  userMoreInfo: Text(
-                    '${user?.email}',
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                  userName: '${user?.displayName}',
-                  userProfilePic: NetworkImage('${user?.photoURL}')),
+              MemberCard(
+                  username: '${user?.displayName}',
+                  useremail: '${user?.email}',
+                  photo: '${user?.photoURL}'),
+              const SizedBox(
+                height: 10.0,
+              ),
+              const Divider(thickness: 0.7),
+              const SizedBox(
+                height: 30.0,
+              ),
               SettingsItem(
                 onTap: () {},
                 icons: CupertinoIcons.paintbrush,
@@ -213,8 +201,8 @@ class ActionButton extends StatelessWidget {
     required this.icon,
   });
 
-  final VoidCallback? onPressed;
   final Widget icon;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {

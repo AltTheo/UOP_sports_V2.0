@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Sports App',
         theme: ThemeData(
+          useMaterial3: true,
           primarySwatch: Colors.purple,
         ),
         darkTheme: ThemeData(

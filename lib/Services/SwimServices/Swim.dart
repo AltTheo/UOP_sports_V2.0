@@ -1,5 +1,6 @@
 //Swim Page
 import 'package:flutter/material.dart';
+import 'package:sport_test/component/ServiceGrid.dart';
 import 'Instructions.dart';
 
 class Swim extends StatefulWidget {
@@ -21,10 +22,10 @@ class SwimState extends State<Swim> {
           centerTitle: true,
         ),
         body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('lib/assets/images/white_3.png'))),
+          // decoration: const BoxDecoration(
+          //     image: DecorationImage(
+          //         fit: BoxFit.cover,
+          //         image: AssetImage('lib/assets/images/white_3.png'))),
           child: GridView(
               padding: const EdgeInsets.all(20),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -34,134 +35,35 @@ class SwimState extends State<Swim> {
               ),
               children: [
                 // BOOKING CARD
-                InkWell(
-                  onTap: () {},
-                  child: Card(
-                    color: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15)),
-                          child: Image.asset('lib/assets/images/man_swim.png',
-                              height: 110,
-                              gaplessPlayback: true,
-                              fit: BoxFit.fill),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Swim booking',
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                Servicegrid(
+                    gridImage: Image.asset('lib/assets/images/man_swim.png',
+                        height: 110, gaplessPlayback: true, fit: BoxFit.fill),
+                    onTap: () {},
+                    gridtitle: 'Swim booking'),
 
-                //SERVICES CARD
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const Instructions()));
-                  },
-                  child: Card(
-                    color: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15)),
-                          child: Image.asset('lib/assets/images/sauna.png',
-                              height: 110,
-                              gaplessPlayback: true,
-                              fit: BoxFit.fill),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Steam & Sauna',
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                //SAUNA CARD
+                Servicegrid(
+                    gridImage: Image.asset('lib/assets/images/sauna.png',
+                        height: 110, gaplessPlayback: true, fit: BoxFit.fill),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const Instructions()));
+                    },
+                    gridtitle: 'Steam & Sauna'),
 
-                InkWell(
-                  onTap: () {},
-                  child: Card(
-                    color: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15)),
-                          child: Image.asset('lib/assets/images/under_16.png',
-                              height: 110,
-                              gaplessPlayback: true,
-                              fit: BoxFit.fill),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Under 16 \n bookings',
-                          style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.normal),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                //UNDER 16 CARD
+                Servicegrid(
+                    gridImage: Image.asset('lib/assets/images/under_16.png',
+                        height: 110, gaplessPlayback: true, fit: BoxFit.fill),
+                    onTap: () {},
+                    gridtitle: 'Under 16\nbooking'),
 
-                //RULES CARD
-                InkWell(
-                  onTap: () {},
-                  child: Card(
-                    color: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15)),
-                          child: Image.asset(
-                              'lib/assets/images/session_help.png',
-                              height: 110,
-                              width: 180,
-                              fit: BoxFit.fill),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Session help',
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                //SESSION HELP CARD
+                Servicegrid(
+                    gridImage: Image.asset('lib/assets/images/session_help.png',
+                        height: 110, gaplessPlayback: true, fit: BoxFit.fill),
+                    onTap: () {},
+                    gridtitle: 'Session help'),
               ]),
         ));
   }

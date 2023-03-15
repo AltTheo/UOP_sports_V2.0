@@ -1,9 +1,11 @@
 //Gym Class Page
 import 'package:flutter/material.dart';
+import 'package:sport_test/component/ServiceGrid.dart';
 
 class Gymclass extends StatefulWidget {
-  static const String route = '/Bookings/Gymclass';
   const Gymclass({Key? key}) : super(key: key);
+
+  static const String route = '/Bookings/Gymclass';
 
   @override
   State<Gymclass> createState() => GymclassState();
@@ -30,131 +32,47 @@ class GymclassState extends State<Gymclass> {
                 crossAxisSpacing: 15.0,
               ),
               children: [
-                // BOOKING CARD
-                InkWell(
+                // class booking CARD
+                Servicegrid(
+                    gridImage: Image.asset('lib/assets/images/classes_3.png',
+                        height: 110,
+                        width: 170,
+                        gaplessPlayback: true,
+                        fit: BoxFit.fill),
+                    onTap: () {},
+                    gridtitle: 'Class booking'),
+
+                //AQUA CLASSES CARD
+                Servicegrid(
+                  gridImage: Image.asset('lib/assets/images/aquaclass_2.png',
+                      height: 110,
+                      width: 170,
+                      gaplessPlayback: true,
+                      fit: BoxFit.fill),
+                  gridtitle: 'Aqua classes',
                   onTap: () {},
-                  child: Card(
-                    color: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15)),
-                          child: Image.asset('lib/assets/images/classes_3.png',
-                              height: 110,
-                              width: 170,
-                              gaplessPlayback: true,
-                              fit: BoxFit.fill),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Class booking',
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
                 ),
 
-                //SERVICES CARD
-                InkWell(
+                //CLASS RULES
+                Servicegrid(
+                  gridImage: Image.asset('lib/assets/images/classes_4.png',
+                      height: 110,
+                      width: 170,
+                      gaplessPlayback: true,
+                      fit: BoxFit.fill),
+                  gridtitle: 'Class rules',
                   onTap: () {},
-                  child: Card(
-                    color: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15)),
-                          child: Image.asset(
-                              'lib/assets/images/aquaclass_2.png',
-                              height: 110,
-                              width: 170,
-                              gaplessPlayback: true,
-                              fit: BoxFit.fill),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Aqua classes',
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
                 ),
 
-                InkWell(
+                //UOP FITNESS CARD
+                Servicegrid(
+                  gridImage: Image.asset('lib/assets/images/classes_5.png',
+                      height: 110,
+                      width: 170,
+                      gaplessPlayback: true,
+                      fit: BoxFit.fill),
+                  gridtitle: 'UoP Fitness',
                   onTap: () {},
-                  child: Card(
-                    color: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15)),
-                          child: Image.asset('lib/assets/images/classes_4.png',
-                              height: 110,
-                              gaplessPlayback: true,
-                              fit: BoxFit.fill),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'Class rules',
-                          style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                              fontWeight: FontWeight.normal),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-
-                //RULES CARD
-                InkWell(
-                  onTap: () {},
-                  child: Card(
-                    color: Colors.purple,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15)),
-                          child: Image.asset('lib/assets/images/classes_5.png',
-                              height: 110, width: 180, fit: BoxFit.fill),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          'UoP fitness',
-                          style: TextStyle(fontSize: 18, color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
                 ),
               ]),
         ));

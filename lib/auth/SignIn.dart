@@ -144,10 +144,10 @@ class SignInState extends State<SignInScreen> {
                 // const Center(
                 //     child: Icon(CupertinoIcons.sportscourt,
                 //         size: 65, color: Colors.purple)),
-                const Text(
+                Text(
                   'Welcome back',
                   style: TextStyle(
-                      color: Colors.purple,
+                      color: Theme.of(context).colorScheme.primary,
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold),
                 ),
@@ -166,19 +166,21 @@ class SignInState extends State<SignInScreen> {
                           }
                           return null;
                         },
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                             // errorText: '',
                             // errorStyle: TextStyle(color: Colors.red),
-                            border: OutlineInputBorder(
+                            border: const OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(5))),
                             hintText: 'Email address',
-                            hintStyle: TextStyle(color: Colors.grey),
+                            hintStyle: const TextStyle(color: Colors.grey),
                             prefixIcon: Padding(
-                                padding:
-                                    EdgeInsetsDirectional.only(start: 12.0),
-                                child: Icon(Icons.email_outlined,
-                                    color: Colors.purple))))),
+                                padding: const EdgeInsetsDirectional.only(
+                                    start: 12.0),
+                                child: Icon(
+                                  Icons.email_outlined,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ))))),
                 const SizedBox(height: 15.0),
                 Form(
                     key: passwordKey,
@@ -204,10 +206,11 @@ class SignInState extends State<SignInScreen> {
                         //     borderRadius: BorderRadius.circular(14.0),
                         //     borderSide: const BorderSide(color: Colors.black)),
                         hintStyle: const TextStyle(color: Colors.grey),
-                        prefixIcon: const Padding(
-                            padding: EdgeInsetsDirectional.only(start: 15.0),
+                        prefixIcon: Padding(
+                            padding:
+                                const EdgeInsetsDirectional.only(start: 15.0),
                             child: Icon(Icons.lock_outline_rounded,
-                                color: Colors.purple)),
+                                color: Theme.of(context).colorScheme.primary)),
                         suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
@@ -237,8 +240,9 @@ class SignInState extends State<SignInScreen> {
                 ),
                 // const SizedBox(height: 8.0),
                 ElevatedButton(
-                  style:
-                      ElevatedButton.styleFrom(fixedSize: const Size(380, 55)),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      fixedSize: const Size(380, 55)),
                   onPressed: () async {
                     User? user = await loginUsingEmailPassword(
                         email: emailController.text,

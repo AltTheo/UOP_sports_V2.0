@@ -75,14 +75,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      drawer: const Drawer(
-        backgroundColor: Colors.white12,
-      ),
       body: Container(
-          decoration: const BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('lib/assets/images/white_3.png'))),
+        // decoration: const BoxDecoration(
+        //       image: DecorationImage(
+        //           fit: BoxFit.cover,
+        //           image: AssetImage('lib/assets/images/white_3.png'))),
         child: ListView.builder(
           controller: _scrollController,
           itemCount: 11,
@@ -122,7 +119,7 @@ class FeedTile extends StatelessWidget {
             right: 4,
             left: 4,
             child: Container(
-              color: Colors.purple,
+              color: Theme.of(context).colorScheme.primary,
               height: 180,
               alignment: Alignment.center,
               child: Text('Feed $index card'),

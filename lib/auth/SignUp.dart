@@ -121,10 +121,10 @@ class RegisterState extends State<Register> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Center(
+                  Center(
                     child: Text('Create your account',
                         style: TextStyle(
-                            color: Colors.purple,
+                            color: Theme.of(context).colorScheme.primary,
                             fontSize: 30.0,
                             fontWeight: FontWeight.bold)),
                   ),
@@ -137,18 +137,21 @@ class RegisterState extends State<Register> {
                         textInputAction: TextInputAction.next,
                         controller: newEmailController,
                         keyboardType: TextInputType.emailAddress,
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
                           // errorText: 'Please Enter your email address',
                           // errorStyle: TextStyle(color: Colors.red),
-                          border: OutlineInputBorder(
+                          border: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(5))),
                           hintText: 'Email address',
-                          hintStyle: TextStyle(color: Colors.grey),
+                          hintStyle: const TextStyle(color: Colors.grey),
                           prefixIcon: Padding(
-                              padding: EdgeInsetsDirectional.only(start: 15.0),
-                              child: Icon(Icons.email_outlined,
-                                  color: Colors.purple)),
+                              padding:
+                                  const EdgeInsetsDirectional.only(start: 15.0),
+                              child: Icon(
+                                Icons.email_outlined,
+                                color: Theme.of(context).colorScheme.primary,
+                              )),
                         )),
                   ),
                   const SizedBox(
@@ -179,10 +182,13 @@ class RegisterState extends State<Register> {
                           //     borderRadius: BorderRadius.circular(14.0),
                           //     borderSide: const BorderSide(color: Colors.black)),
                           hintStyle: const TextStyle(color: Colors.grey),
-                          prefixIcon: const Padding(
-                              padding: EdgeInsetsDirectional.only(start: 15.0),
-                              child: Icon(Icons.lock_outline_rounded,
-                                  color: Colors.purple)),
+                          prefixIcon: Padding(
+                              padding:
+                                  const EdgeInsetsDirectional.only(start: 15.0),
+                              child: Icon(
+                                Icons.lock_outline_rounded,
+                                color: Theme.of(context).colorScheme.primary,
+                              )),
                           suffixIcon: IconButton(
                               onPressed: () {
                                 setState(() {
@@ -202,6 +208,7 @@ class RegisterState extends State<Register> {
                     //     borderRadius: BorderRadius.circular(50.0)),
                     // enableFeedback: true,
                     style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).colorScheme.primary,
                         fixedSize: const Size(380, 55)),
                     onPressed: () async {
                       User? user = await loginUsingEmailPassword(
@@ -279,9 +286,8 @@ class RegisterState extends State<Register> {
                         if (mounted) {
                           User user = FirebaseAuth.instance.currentUser!;
                           Usermodel newUser = Usermodel(
-                            userEmail: '${user.email}',
-                            fullName: '${user.displayName}'
-                          );
+                              userEmail: '${user.email}',
+                              fullName: '${user.displayName}');
                           addUser(newUser);
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => const verifyScreen()));

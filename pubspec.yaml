@@ -62,20 +62,9 @@ dependencies:
   flutter_signin_button: ^2.0.0
   google_sign_in: ^5.4.4
   flutter_fast_forms: ^9.0.0
-  flutter_launcher_icons: ^0.12.0
   build_runner: ^2.3.3
+  flutter_native_splash: ^2.2.19
 
-flutter_icons:
-  image_path: "lib/assets/images/uop_sports.png"
-  android: true # can specify file name here e.g. "ic_launcher"
-  ios: true # can specify file name here e.g. "My-Launcher-Icon"
-  remove_alpha_ios: true
-  web:
-    generate: true
-  windows:
-    generate: true
-  macos:
-    generate: true
 
 dev_dependencies:
   flutter_test:

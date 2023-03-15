@@ -33,16 +33,19 @@ class SignInPassState extends State<SignInPass> {
         body: Center(
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             Icon(
               CupertinoIcons.sportscourt,
               size: 60.0,
-              color: Colors.purple,
+              color: Theme.of(context).colorScheme.primary,
             ),
-            SizedBox(height: 10.0),
-            Text('Signing in ...', style: TextStyle(fontSize: 18),),
-            SizedBox(height: 20.0),
-            Padding(
+            const SizedBox(height: 10.0),
+            const Text(
+              'Signing in ...',
+              style: TextStyle(fontSize: 18),
+            ),
+            const SizedBox(height: 20.0),
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 80.0),
               child: LinearProgressIndicator(),
             )

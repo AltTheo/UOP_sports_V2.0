@@ -65,13 +65,14 @@ class SimpleNavState extends State<SimpleNav> {
                     icon: Icon(CupertinoIcons.graph_circle),
                     label: 'Activity'),
                 BottomNavigationBarItem(
+                  activeIcon: Icon(CupertinoIcons.gear_solid),
                     tooltip: 'Settings',
-                    icon: Icon(CupertinoIcons.settings),
+                    icon: Icon(CupertinoIcons.gear),
                     label: 'Settings')
               ],
               currentIndex: selectedIndex,
               onTap: onItemTapped,
-              fixedColor: Colors.purple,
+              fixedColor: Theme.of(context).colorScheme.primary,
               landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
               type: BottomNavigationBarType.fixed)),
     );
