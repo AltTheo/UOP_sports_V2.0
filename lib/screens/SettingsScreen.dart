@@ -1,20 +1,13 @@
-import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:navbar_router/navbar_router.dart';
-import 'package:sport_test/auth/SignIn.dart';
 import 'package:sport_test/auth/authScreen.dart';
 import 'package:sport_test/component/memberProfile.dart';
-import 'package:sport_test/redundant%20files/simpleNav.dart';
-import 'package:sport_test/settingsSubscreen/profile.dart';
-import 'package:sport_test/src/main.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../SettingsSubscreen/About.dart';
+import '../component/settingItem.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -76,7 +69,8 @@ class _SettingsState extends State<Settings> {
             borderRadius: BorderRadius.all(Radius.circular(30)),
           ),
           icon: const Icon(Ionicons.alert_circle_sharp),
-          content: Text('Do you want to sign out as \n \n ${user?.email} ?'),
+          content: Text('Do you want to sign out as \n \n ${user?.email} ?',
+              style: const TextStyle(fontSize: 18)),
           actions: [
             TextButton(
               onPressed: () {
@@ -84,11 +78,17 @@ class _SettingsState extends State<Settings> {
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => const WelcomeScreen()));
               },
-              child: const Text('Accept'),
+              child: const Text(
+                'Accept',
+                style: TextStyle(fontSize: 18),
+              ),
             ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Close'),
+              child: const Text(
+                'Close',
+                style: TextStyle(fontSize: 18),
+              ),
             ),
           ],
         );
@@ -119,7 +119,11 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       appBar: AppBar(
         // centerTitle: true,
-        title: const Text('Settings'),
+        title: const Text(
+          'Settings',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Container(
         color: const Color.fromARGB(255, 243, 241, 241),
@@ -138,45 +142,33 @@ class _SettingsState extends State<Settings> {
               ),
               const Divider(thickness: 0.7),
               const SizedBox(
-                height: 30.0,
+                height: 8.0,
               ),
-              SettingsItem(
-                onTap: () {},
-                icons: CupertinoIcons.paintbrush,
-                title: 'App Appearance',
-                titleStyle: const TextStyle(fontSize: 17),
-              ),
-              SettingsItem(
-                  icons: CupertinoIcons.bell,
+              SettingItem(
+                  onTap: () {},
+                  icons: CupertinoIcons.paintbrush,
+                  title: 'App Appearance'),
+              SettingItem(
                   title: 'Notifications',
-                  titleStyle: const TextStyle(fontSize: 17),
+                  icons: CupertinoIcons.bell,
                   onTap: () {}),
-
-              SettingsItem(
+              SettingItem(
+                title: 'About',
+                icons: CupertinoIcons.info,
                 onTap: () {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => const About()));
                 },
-                icons: CupertinoIcons.info,
-                title: 'About',
-                titleStyle: const TextStyle(fontSize: 17),
               ),
-              SettingsItem(
-                icons: Icons.message_outlined,
-                title: 'Help',
-                titleStyle: const TextStyle(fontSize: 17),
-              ),
+              SettingItem(
+                  title: 'Help', icons: Icons.message_outlined, onTap: () {}),
 
-              SettingsItem(
-                icons: Icons.exit_to_app_sharp,
-                onTap: () {
-                  _showAction(context);
-                },
-                title: 'Log out',
-                titleStyle: const TextStyle(fontSize: 17),
-                subtitleStyle: const TextStyle(fontSize: 15),
-              ),
-
+              SettingItem(
+                  title: 'Log out',
+                  icons: Icons.exit_to_app_sharp,
+                  onTap: () {
+                    _showAction(context);
+                  })
               // Padding(
               //   padding: const EdgeInsets.all(30.0),
               //   child: Column(

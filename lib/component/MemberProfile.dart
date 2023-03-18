@@ -41,7 +41,7 @@ class MemberCard extends StatelessWidget {
             ),
             Text(
               useremail,
-              style: const TextStyle(fontSize: 17),
+              style: const TextStyle(fontSize: 18, color: Colors.blue),
             ),
           ],
         ),

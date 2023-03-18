@@ -7,7 +7,11 @@ class Activity extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Activity'),
+          title: const Text(
+            'Activity',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Theme.of(context).colorScheme.primary,
         ),
         body: Container(
           decoration: const BoxDecoration(

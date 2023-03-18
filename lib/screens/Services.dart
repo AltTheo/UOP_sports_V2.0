@@ -28,7 +28,11 @@ class ServiceState extends State<Service> {
     return Scaffold(
         appBar: AppBar(
           // centerTitle: true,
-          title: const Text('Services'),
+          title: const Text(
+            'Services',
+            style: TextStyle(color: Colors.white),
+          ),
+          backgroundColor: Theme.of(context).colorScheme.primary,
         ),
         body: Container(
           color: const Color.fromARGB(255, 243, 241, 241),

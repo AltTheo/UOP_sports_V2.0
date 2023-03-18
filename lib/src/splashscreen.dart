@@ -36,14 +36,14 @@ class SplashScreenState extends State<SplashScreen> {
           child: Center(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Icon(
                 CupertinoIcons.sportscourt,
                 size: 60.0,
-                color: Colors.purple,
+                color: Theme.of(context).colorScheme.primary,
               ),
-              SizedBox(height: 10.0),
-              Padding(
+              const SizedBox(height: 10.0),
+              const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 80.0),
                 child: LinearProgressIndicator(),
               )
