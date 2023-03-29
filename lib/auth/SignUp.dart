@@ -248,7 +248,7 @@ class RegisterState extends State<Register> {
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const SignInPage()));
+                              builder: (context) => const SignInScreen()));
                         },
                         child: const Text('Log in',
                             style: TextStyle(fontSize: 15)),
