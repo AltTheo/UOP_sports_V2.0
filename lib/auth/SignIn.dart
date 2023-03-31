@@ -182,7 +182,7 @@ class SignInState extends State<SignInScreen> {
                 Form(
                     key: passwordKey,
                     child: TextFormField(
-                      textInputAction: TextInputAction.done,
+                      textInputAction: TextInputAction.go,
                       controller: passwordController,
                       obscureText: passwordVisible,
                       obscuringCharacter: '*',
@@ -284,7 +284,7 @@ class SignInState extends State<SignInScreen> {
                   child: Row(children: const [
                     Expanded(
                       child: Divider(
-                        thickness: 0.5,
+                        thickness: 1,
                         color: Colors.grey,
                       ),
                     ),
@@ -294,7 +294,7 @@ class SignInState extends State<SignInScreen> {
                     ),
                     Expanded(
                       child: Divider(
-                        thickness: 0.5,
+                        thickness: 1,
                         color: Colors.grey,
                       ),
                     ),

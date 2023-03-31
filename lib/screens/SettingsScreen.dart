@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:navbar_router/navbar_router.dart';
+import 'package:sport_test/SettingsSubscreen/manage.dart';
 import 'package:sport_test/auth/authScreen.dart';
 import 'package:sport_test/component/MemberProfile.dart';
 import '../SettingsSubscreen/About.dart';
@@ -33,8 +34,11 @@ class _SettingsState extends State<Settings> {
             ),
             borderRadius: BorderRadius.all(Radius.circular(30)),
           ),
-          icon: const Icon(Ionicons.alert_circle_sharp),
-          content: Text('Do you want to sign out as \n \n ${user?.email} ?',
+          icon: const Icon(
+            Ionicons.alert_circle_sharp,
+            size: 50,
+          ),
+          content: Text('${user?.displayName} \nDo you want to sign out?',
               style: const TextStyle(fontSize: 18)),
           actions: [
             TextButton(
@@ -96,6 +100,13 @@ class _SettingsState extends State<Settings> {
             // You can add a settings title
             MemberCard(
                 username: '${user?.displayName}', photo: '${user?.photoURL}'),
+            SettingItem(
+                title: 'Edit Profile',
+                icons: CupertinoIcons.pencil_ellipsis_rectangle,
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Manage()));
+                }),
             const Divider(thickness: 0.7),
             SettingItem(
                 onTap: () {},

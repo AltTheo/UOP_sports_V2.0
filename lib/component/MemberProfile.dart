@@ -1,18 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sport_test/component/settingItem.dart';
 
 // ignore: must_be_immutable
 class MemberCard extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser;
   final photourl = FirebaseAuth.instance.currentUser?.photoURL;
-  final String username;
+  final String? username;
   final String photo;
 
   MemberCard({
     super.key,
-    required this.username,
+    this.username,
     required this.photo,
   });
 
@@ -36,25 +34,56 @@ class MemberCard extends StatelessWidget {
                   photourl == null
                       ? 'https://static.vecteezy.com/system/resources/thumbnails/004/511/281/small/default-avatar-photo-placeholder-profile-picture-vector.jpg'
                       : photo,
-                  height: 100,
+                  height: 95,
                 ),
               ),
+            ),
+            const SizedBox(
+              width: 15,
             ),
             Column(
               children: [
                 Text(
-                  username,
+                  username ?? '',
                   style: const TextStyle(fontSize: 25),
                 ),
               ],
             ),
           ],
         ),
-        SettingItem(
-            title: 'Manage Account',
-            icons: CupertinoIcons.pencil_ellipsis_rectangle,
-            onTap: () {})
       ],
+    );
+  }
+}
+
+class Editprofile extends StatelessWidget {
+  final user = FirebaseAuth.instance.currentUser;
+  final photourl = FirebaseAuth.instance.currentUser?.photoURL;
+  final String photo;
+
+  Editprofile({super.key, required this.photo});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Row(
+        children: [
+          InkWell(
+            onTap: () {},
+            child: Center(
+              child: ClipOval(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: Image.network(
+                  photourl == null
+                      ? 'https://static.vecteezy.com/system/resources/thumbnails/004/511/281/small/default-avatar-photo-placeholder-profile-picture-vector.jpg'
+                      : photo,
+                  height: 95,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

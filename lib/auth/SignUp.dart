@@ -57,10 +57,62 @@ class RegisterState extends State<Register> {
   bool passwordVisible = true;
   TextEditingController newEmailController = TextEditingController();
   TextEditingController newPasswordController = TextEditingController();
-  TextEditingController UserNameController = TextEditingController();
+  TextEditingController userNameController = TextEditingController();
+  FocusNode nameFocus = FocusNode();
+  FocusNode emailFocus = FocusNode();
+  FocusNode passwordFocus = FocusNode();
   GlobalKey<FormState> emailKey = GlobalKey();
   GlobalKey<FormState> passwordKey = GlobalKey();
   GlobalKey<FormState> userKey = GlobalKey();
+
+  fieldFocusChange(
+      BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
+    currentFocus.unfocus();
+    FocusScope.of(context).requestFocus(nextFocus);
+  }
+
+  //Register to the firebase account
+  register() async {
+    final navigator = Navigator.of(context);
+    final scaffold = ScaffoldMessenger.of(context);
+    User? user = await loginUsingEmailPassword(
+        email: newEmailController.text,
+        password: newPasswordController.text,
+        context: context);
+    // ignore: deprecated_member_use
+    await FirebaseAuth.instance.currentUser
+        ?.updateDisplayName(userNameController.text);
+    if (kDebugMode) {
+      print(user);
+    }
+    // FirebaseAuth result = await
+    if (newEmailController.text.isEmpty ||
+        newPasswordController.text.isEmpty ||
+        userNameController.text.isEmpty) {
+      scaffold.showSnackBar(
+        const SnackBar(
+            elevation: 15.0,
+            duration: Duration(seconds: 2),
+            // padding: EdgeInsets.all(15.0),
+            dismissDirection: DismissDirection.startToEnd,
+            behavior: SnackBarBehavior.floating,
+            content: Text(
+              'Please fill the fields above',
+              style: TextStyle(fontSize: 15),
+            )),
+      );
+    }
+    if (user != null && mounted) {
+      User user = FirebaseAuth.instance.currentUser!;
+      Usermodel newUser = Usermodel(
+        userEmail: '${user.email}',
+        fullName: userNameController.text,
+      );
+      addUser(newUser);
+      navigator.pushReplacement(
+          MaterialPageRoute(builder: (context) => const SignInPass()));
+    }
+  }
 
   static Future<User?> loginUsingEmailPassword(
       {required String email,
@@ -126,10 +178,15 @@ class RegisterState extends State<Register> {
                 ),
                 Form(
                     key: userKey,
-                    child: TextField(
+                    child: TextFormField(
+                        focusNode: nameFocus,
+                        textCapitalization: TextCapitalization.words,
                         textInputAction: TextInputAction.next,
-                        controller: UserNameController,
+                        controller: userNameController,
                         keyboardType: TextInputType.emailAddress,
+                        onFieldSubmitted: (value) {
+                          fieldFocusChange(context, nameFocus, emailFocus);
+                        },
                         decoration: InputDecoration(
                           // errorText: 'Please Enter your email address',
                           // errorStyle: TextStyle(color: Colors.red),
@@ -152,9 +209,13 @@ class RegisterState extends State<Register> {
                 Form(
                   key: emailKey,
                   child: TextFormField(
+                      focusNode: emailFocus,
                       textInputAction: TextInputAction.next,
                       controller: newEmailController,
                       keyboardType: TextInputType.emailAddress,
+                      onFieldSubmitted: (value) {
+                        fieldFocusChange(context, emailFocus, passwordFocus);
+                      },
                       decoration: InputDecoration(
                         // errorText: 'Please Enter your email address',
                         // errorStyle: TextStyle(color: Colors.red),
@@ -177,11 +238,16 @@ class RegisterState extends State<Register> {
                 Form(
                     key: passwordKey,
                     child: TextFormField(
-                      textInputAction: TextInputAction.next,
+                      focusNode: passwordFocus,
+                      textInputAction: TextInputAction.done,
                       controller: newPasswordController,
                       obscureText: passwordVisible,
                       obscuringCharacter: '*',
                       keyboardType: TextInputType.text,
+                      onFieldSubmitted: (value) {
+                        passwordFocus.unfocus();
+                        register();
+                      },
                       validator: (passText) {
                         if (passText == null || passText.isEmpty) {
                           return 'Please enter your password';
@@ -218,38 +284,10 @@ class RegisterState extends State<Register> {
                     )),
                 const SizedBox(height: 30.0),
                 ElevatedButton(
-                  // fillColor: Colors.purple,
-                  // splashColor: const Color.fromARGB(255, 200, 129, 212),
-                  // shape: RoundedRectangleBorder(
-                  //     borderRadius: BorderRadius.circular(50.0)),
-                  // enableFeedback: true,
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       fixedSize: const Size(380, 55)),
-                  onPressed: () async {
-                    final navigator = Navigator.of(context);
-                    User? user = await loginUsingEmailPassword(
-                        email: newEmailController.text,
-                        password: newPasswordController.text,
-                        context: context);
-                    // ignore: deprecated_member_use
-                    await FirebaseAuth.instance.currentUser
-                        ?.updateDisplayName(UserNameController.text);
-                    if (kDebugMode) {
-                      print(user);
-                    }
-                    // FirebaseAuth result = await
-                    if (user != null) {
-                      User user = FirebaseAuth.instance.currentUser!;
-                      Usermodel newUser = Usermodel(
-                        userEmail: '${user.email}',
-                        fullName: UserNameController.text,
-                      );
-                      addUser(newUser);
-                      navigator.pushReplacement(MaterialPageRoute(
-                          builder: (context) => const SignInPass()));
-                    }
-                  },
+                  onPressed: register,
                   child: const Text(
                     'Register',
                     style: TextStyle(
@@ -280,7 +318,7 @@ class RegisterState extends State<Register> {
                   child: Row(children: const [
                     Expanded(
                       child: Divider(
-                        thickness: 0.5,
+                        thickness: 1,
                         color: Colors.grey,
                       ),
                     ),
@@ -290,7 +328,7 @@ class RegisterState extends State<Register> {
                     ),
                     Expanded(
                       child: Divider(
-                        thickness: 0.5,
+                        thickness: 1,
                         color: Colors.grey,
                       ),
                     ),
