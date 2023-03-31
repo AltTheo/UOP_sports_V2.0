@@ -44,37 +44,31 @@ class SimpleNavState extends State<SimpleNav> {
             children: widgetOptions,
           ),
           bottomNavigationBar: BottomNavigationBar(
-              showSelectedLabels: true,
-              unselectedItemColor: Colors.grey,
-              showUnselectedLabels: false,
-              enableFeedback: false,
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                    activeIcon: Icon(CupertinoIcons.home),
-                    tooltip: 'News Feed',
-                    icon: Icon(Ionicons.home_outline),
-                    label: 'home'),
-                BottomNavigationBarItem(
-                    activeIcon: Icon(CupertinoIcons.sportscourt_fill),
-                    tooltip: 'Services at centre',
-                    icon: Icon(CupertinoIcons.sportscourt),
-                    label: 'Services'),
-                BottomNavigationBarItem(
-                    activeIcon: Icon(CupertinoIcons.graph_circle_fill),
-                    tooltip: 'How busy is the centre',
-                    icon: Icon(CupertinoIcons.graph_circle),
-                    label: 'Activity'),
-                BottomNavigationBarItem(
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                  activeIcon: Icon(CupertinoIcons.home),
+                  tooltip: 'News Feed',
+                  icon: Icon(Ionicons.home_outline),
+                  label: 'home'),
+              BottomNavigationBarItem(
+                  activeIcon: Icon(CupertinoIcons.sportscourt_fill),
+                  tooltip: 'Services at centre',
+                  icon: Icon(CupertinoIcons.sportscourt),
+                  label: 'Services'),
+              BottomNavigationBarItem(
+                  activeIcon: Icon(CupertinoIcons.graph_circle_fill),
+                  tooltip: 'How busy is the centre',
+                  icon: Icon(CupertinoIcons.graph_circle),
+                  label: 'Activity'),
+              BottomNavigationBarItem(
                   activeIcon: Icon(CupertinoIcons.gear_solid),
-                    tooltip: 'Settings',
-                    icon: Icon(CupertinoIcons.gear),
-                    label: 'Settings')
-              ],
-              currentIndex: selectedIndex,
-              onTap: onItemTapped,
-              fixedColor: Theme.of(context).colorScheme.primary,
-              landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
-              type: BottomNavigationBarType.fixed)),
+                  tooltip: 'Settings',
+                  icon: Icon(CupertinoIcons.gear),
+                  label: 'Settings')
+            ],
+            currentIndex: selectedIndex,
+            onTap: onItemTapped,
+          )),
     );
   }
 }

@@ -57,10 +57,10 @@ class RegisterState extends State<Register> {
   bool passwordVisible = true;
   TextEditingController newEmailController = TextEditingController();
   TextEditingController newPasswordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController UserNameController = TextEditingController();
   GlobalKey<FormState> emailKey = GlobalKey();
   GlobalKey<FormState> passwordKey = GlobalKey();
-  GlobalKey<FormState> confirmKey = GlobalKey();
+  GlobalKey<FormState> userKey = GlobalKey();
 
   static Future<User?> loginUsingEmailPassword(
       {required String email,
@@ -96,46 +96,39 @@ class RegisterState extends State<Register> {
     final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
     //Sign in the user with the credentials
-
     final UserCredential userCredential =
         await authG.signInWithCredential(credential);
   }
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        Navigator.of(context).pop();
-        return true;
-      },
-      child: Scaffold(
-        body: SafeArea(
-          child: Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage('lib/assets/images/white_3.png'))),
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Center(
-                    child: Text('Create your account',
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontSize: 30.0,
-                            fontWeight: FontWeight.bold)),
-                  ),
-                  const SizedBox(
-                    height: 25.0,
-                  ),
-                  Form(
-                    key: emailKey,
-                    child: TextFormField(
+    return Scaffold(
+      body: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        padding: const EdgeInsetsDirectional.only(top: 120.0),
+        physics: const ScrollPhysics(),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Text('Create your account',
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold)),
+                ),
+                const SizedBox(
+                  height: 25.0,
+                ),
+                Form(
+                    key: userKey,
+                    child: TextField(
                         textInputAction: TextInputAction.next,
-                        controller: newEmailController,
+                        controller: UserNameController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           // errorText: 'Please Enter your email address',
@@ -143,177 +136,202 @@ class RegisterState extends State<Register> {
                           border: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(5))),
-                          hintText: 'Email address',
+                          hintText: 'Full name',
                           hintStyle: const TextStyle(color: Colors.grey),
                           prefixIcon: Padding(
                               padding:
-                                  const EdgeInsetsDirectional.only(start: 15.0),
+                                  const EdgeInsetsDirectional.only(start: 5.0),
                               child: Icon(
-                                Icons.email_outlined,
+                                CupertinoIcons.person,
                                 color: Theme.of(context).colorScheme.primary,
                               )),
-                        )),
-                  ),
-                  const SizedBox(
-                    height: 15.0,
-                  ),
-                  Form(
-                      key: passwordKey,
-                      child: TextFormField(
-                        textInputAction: TextInputAction.next,
-                        controller: newPasswordController,
-                        obscureText: passwordVisible,
-                        obscuringCharacter: '*',
-                        keyboardType: TextInputType.text,
-                        validator: (passText) {
-                          if (passText == null || passText.isEmpty) {
-                            return 'Please enter your password';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          // errorText: 'Please Enter your password',
-                          // errorStyle: TextStyle(color: Colors.red),
-                          border: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
-                          hintText: 'new password',
-                          // focusedBorder: OutlineInputBorder(
-                          //     borderRadius: BorderRadius.circular(14.0),
-                          //     borderSide: const BorderSide(color: Colors.black)),
-                          hintStyle: const TextStyle(color: Colors.grey),
-                          prefixIcon: Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.only(start: 15.0),
-                              child: Icon(
-                                Icons.lock_outline_rounded,
-                                color: Theme.of(context).colorScheme.primary,
-                              )),
-                          suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  passwordVisible = !passwordVisible;
-                                });
-                              },
-                              icon: Icon(passwordVisible
-                                  ? Icons.visibility_rounded
-                                  : Icons.visibility_off_rounded)),
-                        ),
+                        ))),
+                const SizedBox(
+                  height: 15.0,
+                ),
+                Form(
+                  key: emailKey,
+                  child: TextFormField(
+                      textInputAction: TextInputAction.next,
+                      controller: newEmailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        // errorText: 'Please Enter your email address',
+                        // errorStyle: TextStyle(color: Colors.red),
+                        border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(5))),
+                        hintText: 'Email address',
+                        hintStyle: const TextStyle(color: Colors.grey),
+                        prefixIcon: Padding(
+                            padding:
+                                const EdgeInsetsDirectional.only(start: 5.0),
+                            child: Icon(
+                              CupertinoIcons.mail,
+                              color: Theme.of(context).colorScheme.primary,
+                            )),
                       )),
-                  const SizedBox(height: 30.0),
-                  ElevatedButton(
-                    // fillColor: Colors.purple,
-                    // splashColor: const Color.fromARGB(255, 200, 129, 212),
-                    // shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(50.0)),
-                    // enableFeedback: true,
+                ),
+                const SizedBox(
+                  height: 15.0,
+                ),
+                Form(
+                    key: passwordKey,
+                    child: TextFormField(
+                      textInputAction: TextInputAction.next,
+                      controller: newPasswordController,
+                      obscureText: passwordVisible,
+                      obscuringCharacter: '*',
+                      keyboardType: TextInputType.text,
+                      validator: (passText) {
+                        if (passText == null || passText.isEmpty) {
+                          return 'Please enter your password';
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        // errorText: 'Please Enter your password',
+                        // errorStyle: TextStyle(color: Colors.red),
+                        border: const OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(5))),
+                        hintText: 'new password',
+                        // focusedBorder: OutlineInputBorder(
+                        //     borderRadius: BorderRadius.circular(14.0),
+                        //     borderSide: const BorderSide(color: Colors.black)),
+                        hintStyle: const TextStyle(color: Colors.grey),
+                        prefixIcon: Padding(
+                            padding:
+                                const EdgeInsetsDirectional.only(start: 5.0),
+                            child: Icon(
+                              CupertinoIcons.lock,
+                              color: Theme.of(context).colorScheme.primary,
+                            )),
+                        suffixIcon: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                passwordVisible = !passwordVisible;
+                              });
+                            },
+                            icon: Icon(passwordVisible
+                                ? Icons.visibility_rounded
+                                : Icons.visibility_off_rounded)),
+                      ),
+                    )),
+                const SizedBox(height: 30.0),
+                ElevatedButton(
+                  // fillColor: Colors.purple,
+                  // splashColor: const Color.fromARGB(255, 200, 129, 212),
+                  // shape: RoundedRectangleBorder(
+                  //     borderRadius: BorderRadius.circular(50.0)),
+                  // enableFeedback: true,
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      fixedSize: const Size(380, 55)),
+                  onPressed: () async {
+                    final navigator = Navigator.of(context);
+                    User? user = await loginUsingEmailPassword(
+                        email: newEmailController.text,
+                        password: newPasswordController.text,
+                        context: context);
+                    // ignore: deprecated_member_use
+                    await FirebaseAuth.instance.currentUser
+                        ?.updateDisplayName(UserNameController.text);
+                    if (kDebugMode) {
+                      print(user);
+                    }
+                    // FirebaseAuth result = await
+                    if (user != null) {
+                      User user = FirebaseAuth.instance.currentUser!;
+                      Usermodel newUser = Usermodel(
+                        userEmail: '${user.email}',
+                        fullName: UserNameController.text,
+                      );
+                      addUser(newUser);
+                      navigator.pushReplacement(MaterialPageRoute(
+                          builder: (context) => const SignInPass()));
+                    }
+                  },
+                  child: const Text(
+                    'Register',
+                    style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.normal),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Already have an account?",
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const SignInScreen()));
+                      },
+                      child:
+                          const Text('Log in', style: TextStyle(fontSize: 15)),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(children: const [
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text('OR'),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ]),
+                ),
+                const SizedBox(height: 5.0),
+                ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        fixedSize: const Size(380, 55)),
+                        fixedSize: const Size(380, 55),
+                        backgroundColor: Colors.white),
                     onPressed: () async {
-                      User? user = await loginUsingEmailPassword(
-                          email: newEmailController.text,
-                          password: newPasswordController.text,
-                          context: context);
-                      if (kDebugMode) {
-                        print(user);
-                      }
-                      // FirebaseAuth result = await
-                      if (user != null) {
+                      await signInWithGoogle();
+                      if (mounted) {
                         User user = FirebaseAuth.instance.currentUser!;
                         Usermodel newUser = Usermodel(
-                          userEmail: '${user.email}',
-                        );
+                            userEmail: '${user.email}',
+                            fullName: '${user.displayName}');
                         addUser(newUser);
-                        // ignore: use_build_context_synchronously
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const SignInPass()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const verifyScreen()));
                       }
                     },
-                    child: const Text(
-                      'Register',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.normal),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "Already have an account?",
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const SignInScreen()));
-                        },
-                        child: const Text('Log in',
-                            style: TextStyle(fontSize: 15)),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(children: const [
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Text('OR'),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ]),
-                  ),
-                  const SizedBox(height: 5.0),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(380, 55),
-                          backgroundColor: Colors.white),
-                      onPressed: () async {
-                        await signInWithGoogle();
-                        if (mounted) {
-                          User user = FirebaseAuth.instance.currentUser!;
-                          Usermodel newUser = Usermodel(
-                              userEmail: '${user.email}',
-                              fullName: '${user.displayName}');
-                          addUser(newUser);
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const verifyScreen()));
-                        }
-                      },
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 15.0),
-                            child: Image.asset(
-                              'lib/assets/images/google_logo.png',
-                              height: 30,
-                            ),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          child: Image.asset(
+                            'lib/assets/images/google_logo.png',
+                            height: 30,
                           ),
-                          const Text(
-                            'Continue With Google',
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Color.fromARGB(255, 24, 23, 23),
-                                fontWeight: FontWeight.normal),
-                          ),
-                        ],
-                      ))
-                ],
-              ),
+                        ),
+                        const Text(
+                          'Continue With Google',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 24, 23, 23),
+                              fontWeight: FontWeight.normal),
+                        ),
+                      ],
+                    ))
+              ],
             ),
           ),
         ),

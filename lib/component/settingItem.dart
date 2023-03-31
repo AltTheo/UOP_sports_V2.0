@@ -21,11 +21,11 @@ class SettingItem extends StatelessWidget {
           onTap: onTap,
           leading: Icon(
             icons,
-            size: 33.0,
+            size: 30.0,
           ),
           title: Text(
             title,
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.normal),
           ),
           trailing: const Icon(Icons.arrow_forward_ios_rounded)),
     );

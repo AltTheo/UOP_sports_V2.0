@@ -1,4 +1,5 @@
 import 'package:booking_calendar/booking_calendar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -10,6 +11,7 @@ import 'package:sport_test/Services/GymServices/gymsesh.dart';
 import 'package:sport_test/Services/PhysioServices/physio.dart';
 import 'package:sport_test/Services/SwimServices/swim.dart';
 import 'package:sport_test/component/ServiceGrid.dart';
+import 'package:sport_test/screens/your_bookings.dart';
 import '../Services/ClassServices/gymclass.dart';
 
 class ServiceNavigatorRoutes {}
@@ -26,98 +28,102 @@ class ServiceState extends State<Service> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          // centerTitle: true,
-          title: const Text(
-            'Services',
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Theme.of(context).colorScheme.primary,
+      appBar: AppBar(
+        // centerTitle: true,
+        title: const Text(
+          'Services',
         ),
-        body: Container(
-          color: const Color.fromARGB(255, 243, 241, 241),
-          child: Center(
-              child: GridView(
-                  padding: const EdgeInsets.all(20),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisSpacing: 15,
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 15.0,
-                  ),
-                  children: [
-                // GYM CARD
-                Servicegrid(
-                    gridImage: Image.asset('lib/assets/images/ravelin_gym.png',
-                        height: 110, gaplessPlayback: true, fit: BoxFit.fill),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Gymsesh()));
-                    },
-                    gridtitle: 'Gym'),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              CupertinoIcons.cart_fill,
+            ),
+            tooltip: 'Open shopping cart',
+            onPressed: () {
+              // handle the press
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const YourBookings()));
+            },
+          ),
+        ],
+      ),
+      body: Center(
+          child: GridView(
+              padding: const EdgeInsets.all(20),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                mainAxisSpacing: 15,
+                crossAxisCount: 2,
+                crossAxisSpacing: 15.0,
+              ),
+              children: [
+            // GYM CARD
+            Servicegrid(
+                gridImage: Image.asset('lib/assets/images/ravelin_gym.png',
+                    height: 110, gaplessPlayback: true, fit: BoxFit.fill),
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Gymsesh()));
+                },
+                gridtitle: 'Gym'),
 
-                //CLASSES CARD
-                Servicegrid(
-                    gridImage: Image.asset(
-                        'lib/assets/images/ravelin_class.png',
-                        height: 110,
-                        gaplessPlayback: true,
-                        fit: BoxFit.fill),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Gymclass()));
-                    },
-                    gridtitle: 'Classes'),
+            //CLASSES CARD
+            Servicegrid(
+                gridImage: Image.asset('lib/assets/images/ravelin_class.png',
+                    height: 110, gaplessPlayback: true, fit: BoxFit.fill),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const Gymclass()));
+                },
+                gridtitle: 'Classes'),
 
-                //SWIM CARD
-                Servicegrid(
-                    gridImage: Image.asset('lib/assets/images/ravelin_swim.png',
-                        height: 110, width: 180, fit: BoxFit.fill),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Swim()));
-                    },
-                    gridtitle: 'Swim'),
+            //SWIM CARD
+            Servicegrid(
+                gridImage: Image.asset('lib/assets/images/ravelin_swim.png',
+                    height: 110, width: 180, fit: BoxFit.fill),
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Swim()));
+                },
+                gridtitle: 'Swim'),
 
-                //CLIMB CARD
-                Servicegrid(
-                    gridImage: Image.asset(
-                        'lib/assets/images/ravelin_climb.png',
-                        height: 110,
-                        gaplessPlayback: true,
-                        fit: BoxFit.fill),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Climb()));
-                    },
-                    gridtitle: 'Climb'),
+            //CLIMB CARD
+            Servicegrid(
+                gridImage: Image.asset('lib/assets/images/ravelin_climb.png',
+                    height: 110, gaplessPlayback: true, fit: BoxFit.fill),
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Climb()));
+                },
+                gridtitle: 'Climb'),
 
-                //COURT CARD
-                Servicegrid(
-                    gridImage: Image.asset('lib/assets/images/court_2.png',
-                        height: 110,
-                        width: 185,
-                        gaplessPlayback: true,
-                        fit: BoxFit.fill),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Court()));
-                    },
-                    gridtitle: 'Courts & Pitches'),
+            //COURT CARD
+            Servicegrid(
+                gridImage: Image.asset('lib/assets/images/court_2.png',
+                    height: 110,
+                    width: 185,
+                    gaplessPlayback: true,
+                    fit: BoxFit.fill),
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const Court()));
+                },
+                gridtitle: 'Courts & Pitches'),
 
-                //PHYSIO CARD
-                Servicegrid(
-                    gridImage: Image.asset('lib/assets/images/physio_1.png',
-                        height: 110,
-                        width: 185,
-                        gaplessPlayback: true,
-                        fit: BoxFit.fill),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const RavPhysio()));
-                    },
-                    gridtitle: 'Ravelin physio'),
-              ])),
-        ));
+            //PHYSIO CARD
+            Servicegrid(
+                gridImage: Image.asset('lib/assets/images/physio_1.png',
+                    height: 110,
+                    width: 185,
+                    gaplessPlayback: true,
+                    fit: BoxFit.fill),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const RavPhysio()));
+                },
+                gridtitle: 'Ravelin physio'),
+          ])),
+    );
   }
 }
 

@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Usermodel {
-  final String? fullName;
+  final String fullName;
   final String userEmail;
   // final String userPassword;
 
   Usermodel(
       {required this.userEmail,
       // required this.userPassword,
-      this.fullName});
+      required this.fullName});
 
   Map<String, dynamic> toMap() {
     return {

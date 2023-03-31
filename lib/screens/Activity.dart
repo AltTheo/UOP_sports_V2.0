@@ -9,7 +9,6 @@ class Activity extends StatelessWidget {
         appBar: AppBar(
           title: const Text(
             'Activity',
-            style: TextStyle(color: Colors.white),
           ),
           backgroundColor: Theme.of(context).colorScheme.primary,
         ),

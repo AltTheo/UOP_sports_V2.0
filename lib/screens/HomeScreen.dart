@@ -1,6 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:navbar_router/navbar_router.dart';
 
 // class HomeScreen extends StatelessWidget {
 //   static const String route = '/';
@@ -33,48 +32,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _scrollController = ScrollController();
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    size = MediaQuery.of(context).size;
-    if (size.width < 600) {
-      _addScrollListener();
-    }
-  }
-
-  void handleScroll() {
-    if (size.width > 600) return;
-    if (_scrollController.position.userScrollDirection ==
-        ScrollDirection.forward) {
-      if (NavbarNotifier.isNavbarHidden) {
-        NavbarNotifier.hideBottomNavBar = false;
-      }
-    } else {
-      if (!NavbarNotifier.isNavbarHidden) {
-        NavbarNotifier.hideBottomNavBar = true;
-      }
-    }
-  }
-
-  void _addScrollListener() {
-    _scrollController.addListener(handleScroll);
-  }
-
-  Size size = Size.zero;
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home', style: TextStyle(color: Colors.white)),
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: const Text('Home'),
       ),
       body: Container(
         // decoration: const BoxDecoration(
@@ -82,7 +44,6 @@ class _HomeScreenState extends State<HomeScreen> {
         //           fit: BoxFit.cover,
         //           image: AssetImage('lib/assets/images/white_3.png'))),
         child: ListView.builder(
-          controller: _scrollController,
           itemCount: 11,
           itemBuilder: (context, index) {
             return InkWell(

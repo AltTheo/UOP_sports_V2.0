@@ -17,12 +17,7 @@ class Gymsesh extends StatefulWidget {
 class GymseshState extends State<Gymsesh> {
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop: () async {
-          Navigator.of(context).pop();
-          return true;
-        },
-        child: Scaffold(
+    return Scaffold(
             appBar: AppBar(
               title: const Text('Gym Session'),
             ),
@@ -109,6 +104,6 @@ class GymseshState extends State<Gymsesh> {
                     //   ),
                     // ),
                   ]),
-            )));
+            ));
   }
 }

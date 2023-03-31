@@ -5,7 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:navbar_router/navbar_router.dart';
 import 'package:sport_test/auth/authScreen.dart';
-import 'package:sport_test/component/memberProfile.dart';
+import 'package:sport_test/component/MemberProfile.dart';
 import '../SettingsSubscreen/About.dart';
 import '../component/settingItem.dart';
 
@@ -21,41 +21,6 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   Size size = Size.zero;
   final user = FirebaseAuth.instance.currentUser;
-
-  final _scrollController = ScrollController();
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    size = MediaQuery.of(context).size;
-    if (size.width < 600) {
-      _addScrollListener();
-    }
-  }
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  void handleScroll() {
-    if (size.width > 600) return;
-    if (_scrollController.position.userScrollDirection ==
-        ScrollDirection.forward) {
-      if (NavbarNotifier.isNavbarHidden) {
-        NavbarNotifier.hideBottomNavBar = false;
-      }
-    } else {
-      if (!NavbarNotifier.isNavbarHidden) {
-        NavbarNotifier.hideBottomNavBar = true;
-      }
-    }
-  }
-
-  void _addScrollListener() {
-    _scrollController.addListener(handleScroll);
-  }
 
   void _showAction(BuildContext context) {
     showDialog<void>(
@@ -121,63 +86,49 @@ class _SettingsState extends State<Settings> {
         // centerTitle: true,
         title: const Text(
           'Settings',
-          style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      body: Container(
-        color: const Color.fromARGB(255, 243, 241, 241),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
-          child: ListView(
-            controller: _scrollController,
-            children: [
-              // You can add a settings title
-              MemberCard(
-                  username: '${user?.displayName}',
-                  useremail: '${user?.email}',
-                  photo: '${user?.photoURL}'),
-              const SizedBox(
-                height: 10.0,
-              ),
-              const Divider(thickness: 0.7),
-              const SizedBox(
-                height: 8.0,
-              ),
-              SettingItem(
-                  onTap: () {},
-                  icons: CupertinoIcons.paintbrush,
-                  title: 'App Appearance'),
-              SettingItem(
-                  title: 'Notifications',
-                  icons: CupertinoIcons.bell,
-                  onTap: () {}),
-              SettingItem(
-                title: 'About',
-                icons: CupertinoIcons.info,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
+        child: ListView(
+          children: [
+            // You can add a settings title
+            MemberCard(
+                username: '${user?.displayName}', photo: '${user?.photoURL}'),
+            const Divider(thickness: 0.7),
+            SettingItem(
+                onTap: () {},
+                icons: CupertinoIcons.paintbrush,
+                title: 'App Appearance'),
+            SettingItem(
+                title: 'Notifications',
+                icons: CupertinoIcons.bell,
+                onTap: () {}),
+            SettingItem(
+              title: 'About',
+              icons: CupertinoIcons.info,
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const About()));
+              },
+            ),
+            SettingItem(
+                title: 'Help', icons: Icons.message_outlined, onTap: () {}),
+            SettingItem(
+                title: 'Log out',
+                icons: Icons.exit_to_app_sharp,
                 onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const About()));
-                },
-              ),
-              SettingItem(
-                  title: 'Help', icons: Icons.message_outlined, onTap: () {}),
-
-              SettingItem(
-                  title: 'Log out',
-                  icons: Icons.exit_to_app_sharp,
-                  onTap: () {
-                    _showAction(context);
-                  })
-              // Padding(
-              //   padding: const EdgeInsets.all(30.0),
-              //   child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.end,
-              //       crossAxisAlignment: CrossAxisAlignment.center,
-              //       children: [Text('Signed in as ${user?.displayName}')]),
-              // )
-            ],
-          ),
+                  _showAction(context);
+                })
+            // Padding(
+            //   padding: const EdgeInsets.all(30.0),
+            //   child: Column(
+            //       mainAxisAlignment: MainAxisAlignment.end,
+            //       crossAxisAlignment: CrossAxisAlignment.center,
+            //       children: [Text('Signed in as ${user?.displayName}')]),
+            // )
+          ],
         ),
       ),
     );

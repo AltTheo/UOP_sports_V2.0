@@ -1,50 +1,59 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sport_test/component/settingItem.dart';
 
 // ignore: must_be_immutable
 class MemberCard extends StatelessWidget {
+  final user = FirebaseAuth.instance.currentUser;
+  final photourl = FirebaseAuth.instance.currentUser?.photoURL;
   final String username;
-  final String useremail;
-  String photo;
+  final String photo;
 
-  MemberCard(
-      {super.key,
-      required this.username,
-      required this.useremail,
-      required this.photo});
+  MemberCard({
+    super.key,
+    required this.username,
+    required this.photo,
+  });
 
-  void empty() {
-    if (photo.isEmpty) {
-      photo =
-          'https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png';
-    }
-  }
-
+  // void empty() {
+  //   if (photo.isEmpty) {
+  //     photo =
+  //         'https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png';
+  //   }
+  // }
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        InkWell(
-          onTap: () {},
-          child: ClipOval(
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            child: Image.network(photo),
-          ),
-        ),
-        const SizedBox(
-          width: 10.0,
-        ),
-        Column(
+        Row(
           children: [
-            Text(
-              username,
-              style: const TextStyle(fontSize: 28),
+            InkWell(
+              onTap: () {},
+              child: ClipOval(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: Image.network(
+                  photourl == null
+                      ? 'https://static.vecteezy.com/system/resources/thumbnails/004/511/281/small/default-avatar-photo-placeholder-profile-picture-vector.jpg'
+                      : photo,
+                  height: 100,
+                ),
+              ),
             ),
-            Text(
-              useremail,
-              style: const TextStyle(fontSize: 18, color: Colors.blue),
+            Column(
+              children: [
+                Text(
+                  username,
+                  style: const TextStyle(fontSize: 25),
+                ),
+              ],
             ),
           ],
         ),
+        SettingItem(
+            title: 'Manage Account',
+            icons: CupertinoIcons.pencil_ellipsis_rectangle,
+            onTap: () {})
       ],
     );
   }

@@ -17,7 +17,6 @@ import '../redundant files/simpleNav.dart';
 import 'authScreen.dart';
 
 class SignInPage extends StatefulWidget {
-  static const String route = '/';
   const SignInPage({super.key});
 
   @override
@@ -61,7 +60,6 @@ class SignInPageState extends State<SignInPage> {
 }
 
 class SignInScreen extends StatefulWidget {
-  static const String route = '/HomePage/SignIn';
   const SignInScreen({super.key});
 
   @override
@@ -129,12 +127,11 @@ class SignInState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('lib/assets/images/white_3.png'))),
+      body: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        padding: const EdgeInsetsDirectional.only(top: 120.0),
+        physics: const ScrollPhysics(),
+        child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
@@ -176,9 +173,9 @@ class SignInState extends State<SignInScreen> {
                             hintStyle: const TextStyle(color: Colors.grey),
                             prefixIcon: Padding(
                                 padding: const EdgeInsetsDirectional.only(
-                                    start: 12.0),
+                                    start: 5.0),
                                 child: Icon(
-                                  Icons.email_outlined,
+                                  CupertinoIcons.mail,
                                   color: Theme.of(context).colorScheme.primary,
                                 ))))),
                 const SizedBox(height: 15.0),
@@ -208,8 +205,8 @@ class SignInState extends State<SignInScreen> {
                         hintStyle: const TextStyle(color: Colors.grey),
                         prefixIcon: Padding(
                             padding:
-                                const EdgeInsetsDirectional.only(start: 15.0),
-                            child: Icon(Icons.lock_outline_rounded,
+                                const EdgeInsetsDirectional.only(start: 5.0),
+                            child: Icon(CupertinoIcons.lock,
                                 color: Theme.of(context).colorScheme.primary)),
                         suffixIcon: IconButton(
                             onPressed: () {
@@ -244,17 +241,16 @@ class SignInState extends State<SignInScreen> {
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       fixedSize: const Size(380, 55)),
                   onPressed: () async {
+                    final navigator = Navigator.of(context);
                     User? user = await loginUsingEmailPassword(
                         email: emailController.text,
                         password: passwordController.text,
                         context: context);
-                    print(user);
+                    if (kDebugMode) {
+                      print(user);
+                    }
                     if (user != null) {
-                      SharedPreferences pref =
-                          await SharedPreferences.getInstance();
-                      // pref.setString("UserID", User.user.uid);
-                      // ignore: use_build_context_synchronously
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      navigator.pushReplacement(MaterialPageRoute(
                           builder: (context) => const SignInPass()));
                     }
                   },

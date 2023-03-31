@@ -4,14 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:navbar_router/navbar_router.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sport_test/auth/SignIn.dart';
-import 'package:sport_test/auth/authScreen.dart';
-import 'package:sport_test/redundant%20files/Nav.dart';
-import 'package:sport_test/screens/signInpassstate.dart';
 import 'package:sport_test/src/splashscreen.dart';
-import '../redundant files/simpleNav.dart';
-import 'NavRouteBar.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,12 +20,36 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        themeAnimationCurve: Curves.bounceIn,
         debugShowCheckedModeBanner: false,
         title: 'Sports App',
         theme: ThemeData(
-          // useMaterial3: true,
-          primarySwatch: Colors.purple,
-        ),
+            bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+                type: BottomNavigationBarType.fixed,
+                enableFeedback: false,
+                showUnselectedLabels: false, 
+                unselectedItemColor: Colors.grey,
+                landscapeLayout: BottomNavigationBarLandscapeLayout.spread),
+            pageTransitionsTheme: const PageTransitionsTheme(builders: {
+              TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
+              TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+            }),
+            fontFamily: 'Ubuntu',
+            appBarTheme: const AppBarTheme(
+              scrolledUnderElevation: 5.0, 
+                color: Colors.purple,
+                iconTheme: IconThemeData(size: 30, color: Colors.white),
+                centerTitle: true,
+                elevation: 5.0,
+                titleTextStyle: TextStyle(
+                    fontFamily: 'Raleway',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 23,
+                    color: Colors.white)),
+            useMaterial3: true,
+            colorSchemeSeed: Colors.purple
+            // primarySwatch: Colors.purple,
+            ),
         darkTheme: ThemeData(
           brightness: Brightness.dark,
         ),
