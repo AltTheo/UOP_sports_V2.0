@@ -1,12 +1,21 @@
 import 'dart:async';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:logging/logging.dart';
 import 'package:navbar_router/navbar_router.dart';
-import 'package:sport_test/src/splashscreen.dart';
+import 'package:sport_test/auth/sign_in.dart';
 
 Future<void> main() async {
+  Logger.root.level = Level.ALL; // set the root logger level
+  Logger.root.onRecord.listen((record) {
+    // listen to all logs
+    if (kDebugMode) {
+      print('${record.level.name}: ${record.time}: ${record.message}');
+    }
+  });
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -24,10 +33,16 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Sports App',
         theme: ThemeData(
+            snackBarTheme: const SnackBarThemeData(
+              backgroundColor: Color.fromARGB(255, 126, 125, 125),
+              contentTextStyle: TextStyle(fontSize: 17),
+              elevation: 150.0,
+              behavior: SnackBarBehavior.floating,
+            ),
             bottomNavigationBarTheme: const BottomNavigationBarThemeData(
                 type: BottomNavigationBarType.fixed,
                 enableFeedback: false,
-                showUnselectedLabels: false, 
+                showUnselectedLabels: false,
                 unselectedItemColor: Colors.grey,
                 landscapeLayout: BottomNavigationBarLandscapeLayout.spread),
             pageTransitionsTheme: const PageTransitionsTheme(builders: {
@@ -36,7 +51,7 @@ class MyApp extends StatelessWidget {
             }),
             fontFamily: 'Ubuntu',
             appBarTheme: const AppBarTheme(
-              scrolledUnderElevation: 5.0, 
+                scrolledUnderElevation: 5.0,
                 color: Colors.purple,
                 iconTheme: IconThemeData(size: 30, color: Colors.white),
                 centerTitle: true,
@@ -53,7 +68,7 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData(
           brightness: Brightness.dark,
         ),
-        home: const SplashScreen());
+        home: const SignInPage());
     // home: const NavbarSample(title: 'BottomNavbar Demo'));
   }
 }

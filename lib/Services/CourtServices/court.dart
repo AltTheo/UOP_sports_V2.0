@@ -1,6 +1,6 @@
 //Climbing Page
 import 'package:flutter/material.dart';
-import 'package:sport_test/component/ServiceGrid.dart';
+import '../../component/service_grid.dart';
 
 class Court extends StatefulWidget {
   static const String route = '/Bookings/Climb';

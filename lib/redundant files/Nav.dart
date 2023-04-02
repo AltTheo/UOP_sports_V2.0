@@ -1,12 +1,10 @@
 import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:sport_test/screens/Activity.dart';
-import 'package:sport_test/screens/HomeScreen.dart';
-
+import 'package:sport_test/screens/activity.dart';
+import 'package:sport_test/screens/home_screen.dart';
 import '../screens/Services.dart';
-import '../screens/SettingsScreen.dart';
+import '../screens/setting_screen.dart';
 
 class Nav extends StatefulWidget {
   const Nav({super.key});
@@ -36,12 +34,12 @@ class NavState extends State<Nav> {
         // appBar: AppBar(
         //     title: Text('Bottom NavBar'), backgroundColor: Colors.purple),
         body: Navigator(
-        onGenerateRoute: (RouteSettings settings) {
-          return MaterialPageRoute(
-            builder: (BuildContext context) => widgetOptions[selectedIndex],
-          );
-        },
-      ),
+          onGenerateRoute: (RouteSettings settings) {
+            return MaterialPageRoute(
+              builder: (BuildContext context) => widgetOptions[selectedIndex],
+            );
+          },
+        ),
         bottomNavigationBar: AnimatedNotchBottomBar(
           notchColor: Colors.white,
           color: Colors.white,

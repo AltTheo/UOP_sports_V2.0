@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:navbar_router/navbar_router.dart';
 
 // class HomeScreen extends StatelessWidget {
 //   static const String route = '/';
@@ -33,8 +31,6 @@ class HomeOne extends StatefulWidget {
 }
 
 class _HomeOneState extends State<HomeOne> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

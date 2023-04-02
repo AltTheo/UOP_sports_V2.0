@@ -1,18 +1,13 @@
-import 'package:booking_calendar/booking_calendar.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:navbar_router/navbar_router.dart';
 import 'package:sport_test/Services/ClimbServices/climb.dart';
 import 'package:sport_test/Services/CourtServices/court.dart';
-import 'package:sport_test/Services/GymServices/gymsesh.dart';
 import 'package:sport_test/Services/PhysioServices/physio.dart';
 import 'package:sport_test/Services/SwimServices/swim.dart';
-import 'package:sport_test/component/ServiceGrid.dart';
 import 'package:sport_test/screens/your_bookings.dart';
 import '../Services/ClassServices/gymclass.dart';
+import '../Services/GymServices/gym_sesh.dart';
+import '../component/service_grid.dart';
 
 class ServiceNavigatorRoutes {}
 
@@ -140,7 +135,6 @@ class ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Material(
       shape: const CircleBorder(),
       clipBehavior: Clip.antiAlias,

@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:sport_test/auth/SignIn.dart';
-import 'package:sport_test/auth/SignUp.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RavPhysio extends StatefulWidget {

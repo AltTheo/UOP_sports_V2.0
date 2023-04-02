@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sport_test/component/MemberProfile.dart';
+import 'package:sport_test/component/member_profile.dart';
 
 class Manage extends StatefulWidget {
   const Manage({super.key});
@@ -16,7 +16,7 @@ class _ManageState extends State<Manage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Edit Profile'),
+        title: const Text('Edit Profile'),
       ),
       body: Center(child: Editprofile(photo: '$photourl')),
     );

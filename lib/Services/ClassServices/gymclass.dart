@@ -1,6 +1,6 @@
 //Gym Class Page
 import 'package:flutter/material.dart';
-import 'package:sport_test/component/ServiceGrid.dart';
+import '../../component/service_grid.dart';
 
 class Gymclass extends StatefulWidget {
   const Gymclass({Key? key}) : super(key: key);

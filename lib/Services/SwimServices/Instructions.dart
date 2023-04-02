@@ -1,12 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:sport_test/auth/SignIn.dart';
-import 'package:sport_test/auth/SignUp.dart';
-
-import '../../src/BookingCalendar.dart';
+import 'package:sport_test/Services/SwimServices/swim_booking_calendar.dart';
 
 class Instructions extends StatefulWidget {
   const Instructions({super.key});
@@ -69,7 +63,7 @@ class InstructionsState extends State<Instructions> {
                       ElevatedButton.styleFrom(fixedSize: const Size(190, 40)),
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const BookingCalendarView()));
+                        builder: (context) => const SwimBookingCalendarView()));
                   },
                   child: Row(
                     children: const [

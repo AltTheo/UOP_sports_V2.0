@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sport_test/auth/SignIn.dart';
-import 'package:sport_test/auth/authScreen.dart';
-import 'package:sport_test/redundant%20files/simpleNav.dart';
+import 'package:sport_test/auth/sign_in.dart';
+import '../redundant files/bottom_nav.dart';
+import 'auth_screen.dart';
 
 class Wrapper extends StatelessWidget {
   const Wrapper({super.key});
@@ -24,7 +24,7 @@ class Wrapper extends StatelessWidget {
           if (kDebugMode) {
             print(user);
           }
-          return const SimpleNav();
+          return const BottomNavBar();
         } else {
           if (kDebugMode) {
             print("user is not logged in");

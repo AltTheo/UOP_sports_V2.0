@@ -63,6 +63,8 @@ dependencies:
   flutter_fast_forms: ^9.0.0
   build_runner: ^2.3.3
   flutter_native_splash: ^2.2.19
+  email_validator: ^2.1.17
+  logging: ^1.1.1
 
 dev_dependencies:
   flutter_test:
