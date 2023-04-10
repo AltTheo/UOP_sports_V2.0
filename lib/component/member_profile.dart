@@ -26,10 +26,10 @@ class MemberCard extends StatelessWidget {
       children: [
         Row(
           children: [
-            InkWell(
-              onTap: () {},
-              child: ClipOval(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
+            ClipOval(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: CircleAvatar(
+                radius: 45,
                 child: Image.network(
                   photourl == null
                       ? 'https://static.vecteezy.com/system/resources/thumbnails/004/511/281/small/default-avatar-photo-placeholder-profile-picture-vector.jpg'
@@ -66,13 +66,14 @@ class Editprofile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Row(
-        children: [
-          InkWell(
-            onTap: () {},
-            child: Center(
-              child: ClipOval(
-                clipBehavior: Clip.antiAliasWithSaveLayer,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: Column(
+          children: [
+            ClipOval(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              child: CircleAvatar(
+                radius: 45,
                 child: Image.network(
                   photourl == null
                       ? 'https://static.vecteezy.com/system/resources/thumbnails/004/511/281/small/default-avatar-photo-placeholder-profile-picture-vector.jpg'
@@ -81,8 +82,8 @@ class Editprofile extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

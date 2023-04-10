@@ -89,7 +89,6 @@ class _SettingsState extends State<Settings> {
         title: const Text(
           'Settings',
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),

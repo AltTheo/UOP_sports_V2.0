@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sport_test/auth/sign_in.dart';
-import '../redundant files/bottom_nav.dart';
+import '../navigation/bottom_nav.dart';
 import 'auth_screen.dart';
 
 class Wrapper extends StatelessWidget {

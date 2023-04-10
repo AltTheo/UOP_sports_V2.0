@@ -24,11 +24,9 @@ class ServiceState extends State<Service> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // centerTitle: true,
         title: const Text(
           'Services',
         ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
         actions: <Widget>[
           IconButton(
             icon: const Icon(

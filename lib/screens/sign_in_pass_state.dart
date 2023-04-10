@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../redundant files/bottom_nav.dart';
+import 'package:sport_test/navigation/bottom_nav.dart';
 
 class SignInPass extends StatefulWidget {
   const SignInPass({Key? key}) : super(key: key);

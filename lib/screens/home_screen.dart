@@ -1,24 +1,5 @@
 import 'package:flutter/material.dart';
 
-// class HomeScreen extends StatelessWidget {
-//   static const String route = '/';
-//   const HomeScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Home'),
-//         centerTitle: true,
-//         backgroundColor: Colors.purple,
-//       ),
-//       drawer: const Drawer(
-//         semanticLabel: 'Dashboard',
-//       ),
-//     );
-//   }
-// }
-
 const Color mediumPurple = Color.fromRGBO(79, 0, 241, 1.0);
 const String placeHolderText = 'Some news about sports from the university.';
 
@@ -34,23 +15,26 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: ListView.builder(
-        itemCount: 11,
-        itemBuilder: (context, index) {
-          return InkWell(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (contex) => FeedDetail(
-                          feedId: index.toString(),
-                        )));
-              },
-              child: FeedTile(
-                index: index,
-              ));
-        },
+      body: SafeArea(
+        child: ListView.builder(
+          itemCount: 11,
+          itemBuilder: (context, index) {
+            return InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (contex) => FeedDetail(
+                            feedId: index.toString(),
+                          )));
+                },
+                child: FeedTile(
+                  index: index,
+                ));
+          },
+        ),
       ),
     );
   }

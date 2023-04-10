@@ -10,7 +10,6 @@ class Activity extends StatelessWidget {
           title: const Text(
             'Activity',
           ),
-          backgroundColor: Theme.of(context).colorScheme.primary,
         ),
         body: Container(
           decoration: const BoxDecoration(

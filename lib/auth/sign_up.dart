@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_fast_forms/flutter_fast_forms.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sport_test/auth/sign_in.dart';
 import 'package:sport_test/auth/verify_screen.dart';
@@ -70,6 +69,10 @@ class RegisterState extends State<Register> {
       BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
     currentFocus.unfocus();
     FocusScope.of(context).requestFocus(nextFocus);
+  }
+
+  bool isPasswordValid(String data) {
+    return data.length >= 8;
   }
 
   //snackbar
@@ -193,11 +196,10 @@ class RegisterState extends State<Register> {
                           fieldFocusChange(context, nameFocus, emailFocus);
                         },
                         decoration: InputDecoration(
+                          labelText: 'Full Name',
                           border: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(5))),
-                          hintText: 'Full name',
-                          hintStyle: const TextStyle(color: Colors.grey),
                           prefixIcon: Padding(
                               padding:
                                   const EdgeInsetsDirectional.only(start: 5.0),
@@ -230,10 +232,9 @@ class RegisterState extends State<Register> {
                         fieldFocusChange(context, emailFocus, passwordFocus);
                       },
                       decoration: InputDecoration(
+                        labelText: 'Email Address',
                         border: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(5))),
-                        hintText: 'Email address',
-                        hintStyle: const TextStyle(color: Colors.grey),
                         prefixIcon: Padding(
                             padding:
                                 const EdgeInsetsDirectional.only(start: 5.0),
@@ -274,22 +275,16 @@ class RegisterState extends State<Register> {
                         return null;
                       },
                       decoration: InputDecoration(
-                        errorText: errorTextvalue.isEmpty
-                            ? null
-                            : 'This is the error text',
-                        errorStyle: const TextStyle(color: Colors.red),
+                        labelText: 'New Password',
                         border: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(5))),
-                        hintText: 'new password',
-                        // focusedBorder: OutlineInputBorder(
-                        //     borderRadius: BorderRadius.circular(14.0),
-                        //     borderSide: const BorderSide(color: Colors.black)),
-                        hintStyle: const TextStyle(color: Colors.grey),
                         prefixIcon: Padding(
                             padding:
                                 const EdgeInsetsDirectional.only(start: 5.0),
                             child: Icon(
-                              CupertinoIcons.lock,
+                              isPasswordValid(newPasswordController.text)
+                                  ? CupertinoIcons.check_mark_circled
+                                  : CupertinoIcons.lock,
                               color: Theme.of(context).colorScheme.primary,
                             )),
                         suffixIcon: IconButton(
@@ -374,7 +369,7 @@ class RegisterState extends State<Register> {
                             userEmail: '${user.email}',
                             fullName: '${user.displayName}');
                         addUser(newUser);
-                        Navigator.of(context).push(MaterialPageRoute(
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
                             builder: (context) => const VerifyScreen()));
                       }
                     },

@@ -50,9 +50,9 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
     Future.delayed(const Duration(seconds: 2));
     try {
       addBooking(newBooking);
-      print('Booking added to database.');
+      debugPrint('Booking added to database.');
     } catch (error) {
-      print('Error adding booking to database: $error');
+      debugPrint('Error adding booking to database: $error');
     }
 
     // print('Booking Saved');
@@ -68,7 +68,7 @@ class _BookingCalendarViewState extends State<BookingCalendarView> {
     ///here you can parse the streamresult and convert to [List<DateTimeRange>]
     ///take care this is only mock, so if you add today as disabledDays it will still be visible on the first load
     ///disabledDays will properly work with real data
-    DateTime first = now;
+    // DateTime first = now;
     // DateTime second = now.add(const Duration(minutes: 15));
     // DateTime third = now.add(const Duration(minutes: 15));
     // DateTime fourth = now.add(const Duration(minutes: 15));

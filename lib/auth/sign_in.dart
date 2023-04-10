@@ -6,7 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sport_test/auth/reset.dart';
 import 'package:sport_test/auth/sign_up.dart';
 import 'package:sport_test/screens/sign_In_pass_state.dart';
-import '../redundant files/bottom_nav.dart';
+import '../navigation/bottom_nav.dart';
 import 'auth_screen.dart';
 
 class SignInPage extends StatefulWidget {
@@ -194,10 +194,10 @@ class SignInState extends State<SignInScreen> {
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
+                            labelText: 'Email Address',
                             border: const OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(5))),
-                            hintText: 'Email address',
                             hintStyle: const TextStyle(color: Colors.grey),
                             prefixIcon: Padding(
                                 padding: const EdgeInsetsDirectional.only(
@@ -234,9 +234,9 @@ class SignInState extends State<SignInScreen> {
                         return null;
                       },
                       decoration: InputDecoration(
+                        labelText: 'Password',
                         border: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(5))),
-                        hintText: 'Password',
                         hintStyle: const TextStyle(color: Colors.grey),
                         prefixIcon: Padding(
                             padding:
@@ -332,11 +332,10 @@ class SignInState extends State<SignInScreen> {
                         fixedSize: const Size(380, 55),
                         backgroundColor: Colors.white),
                     onPressed: () async {
+                      final navigator = Navigator.of(context);
                       await signInWithGoogle();
-                      if (mounted) {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const SignInPass()));
-                      }
+                      navigator.pushReplacement(MaterialPageRoute(
+                          builder: (context) => const SignInPass()));
                     },
                     child: Row(
                       children: [

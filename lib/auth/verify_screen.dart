@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../redundant files/bottom_nav.dart';
+import '../navigation/bottom_nav.dart';
 
 class VerifyScreen extends StatefulWidget {
   const VerifyScreen({super.key});

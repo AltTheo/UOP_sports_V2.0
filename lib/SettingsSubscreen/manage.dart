@@ -15,10 +15,24 @@ class _ManageState extends State<Manage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Edit Profile'),
-      ),
-      body: Center(child: Editprofile(photo: '$photourl')),
-    );
+        appBar: AppBar(
+          title: const Text('Edit Profile'),
+        ),
+        body: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Editprofile(photo: '$photourl'),
+              TextButton(
+                  onPressed: () {},
+                  child: const Text('Edit picture',
+                      style: TextStyle(color: Colors.purple, fontSize: 20))),
+              const Divider(
+                thickness: 1,
+              ),
+              TextField()
+            ],
+          ),
+        ));
   }
 }
