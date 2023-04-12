@@ -26,14 +26,19 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SafeArea(
         child: FutureBuilder<QuerySnapshot>(
-          future: firestore.collection('News').orderBy('priority', descending: false).get(),
+          future: firestore
+              .collection('News')
+              .orderBy('priority', descending: false)
+              .get(),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return Center(child: Text('Error: ${snapshot.error}'));
+              return Scaffold(
+                  body: Center(child: Text('Error: ${snapshot.error}')));
             }
 
             if (!snapshot.hasData) {
-              return const Center(child: CircularProgressIndicator());
+              return const Scaffold(
+                  body: Center(child: CircularProgressIndicator()));
             }
 
             final documents = snapshot.data!.docs;

@@ -17,7 +17,7 @@ class YourBookings extends StatelessWidget {
   Widget _buildList(BuildContext context, QuerySnapshot snapshot) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Bookings'),
+          title: const Text('Your bookings'),
         ),
         body: ListView.builder(
               itemCount: snapshot.docs.length,
@@ -30,8 +30,7 @@ class YourBookings extends StatelessWidget {
                   onTap: () {},
                 );
               },
-            ) ??
-            NoBookings());
+            ));
   }
 
   Widget _buildError(BuildContext context, Object error) {
