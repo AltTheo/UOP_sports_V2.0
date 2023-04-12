@@ -19,10 +19,10 @@ class ClimbState extends State<Climb> {
           centerTitle: true,
         ),
         body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage('lib/assets/images/white_3.png'))),
+          // decoration: const BoxDecoration(
+          //     image: DecorationImage(
+          //         fit: BoxFit.cover,
+          //         image: AssetImage('lib/assets/images/white_3.png'))),
           child: GridView(
               padding: const EdgeInsets.all(20),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -50,13 +50,13 @@ class ClimbState extends State<Climb> {
                     gridImage: Image.asset('lib/assets/images/climb_1.png',
                         height: 110, gaplessPlayback: true, fit: BoxFit.fill),
                     onTap: () {},
-                    gridtitle: 'Climbing\nequipments'),
+                    gridtitle: 'Equipments'),
 
                 Servicegrid(
                     gridImage: Image.asset('lib/assets/images/climb_2.png',
                         height: 110, gaplessPlayback: true, fit: BoxFit.fill),
                     onTap: () {},
-                    gridtitle: 'Under 16\nbookings'),
+                    gridtitle: 'Under 16 booking'),
               ]),
         ));
   }

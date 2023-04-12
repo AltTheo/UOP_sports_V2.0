@@ -42,9 +42,11 @@ class MyApp extends StatelessWidget {
             bottomNavigationBarTheme: const BottomNavigationBarThemeData(
                 backgroundColor: Color.fromARGB(255, 244, 244, 244),
                 type: BottomNavigationBarType.fixed,
+                selectedItemColor: Color.fromARGB(255, 29, 2, 36),
                 enableFeedback: false,
+                showSelectedLabels: false,
                 showUnselectedLabels: false,
-                unselectedItemColor: Colors.grey,
+                unselectedItemColor: Colors.black,
                 landscapeLayout: BottomNavigationBarLandscapeLayout.spread),
             pageTransitionsTheme: const PageTransitionsTheme(builders: {
               TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
@@ -54,17 +56,17 @@ class MyApp extends StatelessWidget {
             appBarTheme: const AppBarTheme(
                 scrolledUnderElevation: 5.0,
                 color: Color.fromARGB(255, 244, 244, 244),
-                actionsIconTheme: IconThemeData(size: 30, color: Colors.black),
-                iconTheme: IconThemeData(size: 30, color: Colors.black),
+                actionsIconTheme: IconThemeData(size: 30, color: Color.fromARGB(255, 29, 2, 36)),
+                iconTheme: IconThemeData(size: 30, color: Color.fromARGB(255, 29, 2, 36)),
                 centerTitle: false,
                 elevation: 0,
                 titleTextStyle: TextStyle(
                     fontFamily: 'Ubuntu',
                     fontWeight: FontWeight.normal,
                     fontSize: 30,
-                    color: Colors.black)),
+                    color: Color.fromARGB(255, 29, 2, 36))),
             useMaterial3: true,
-            colorSchemeSeed: Color.fromARGB(255, 54, 3, 65)
+            colorSchemeSeed: const Color.fromARGB(255, 54, 3, 65)
             // primarySwatch: Colors.purple,
             ),
         darkTheme: ThemeData(

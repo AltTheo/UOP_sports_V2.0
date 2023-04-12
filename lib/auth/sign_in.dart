@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sport_test/auth/reset.dart';
 import 'package:sport_test/auth/sign_up.dart';
-import 'package:sport_test/screens/sign_In_pass_state.dart';
 import '../navigation/bottom_nav.dart';
 import 'auth_screen.dart';
 
@@ -145,7 +144,7 @@ class SignInState extends State<SignInScreen> {
     debugPrint('$user');
     if (user != null && mounted) {
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const SignInPass()));
+          MaterialPageRoute(builder: (context) => const BottomNavBar()));
     }
   }
 
@@ -335,7 +334,7 @@ class SignInState extends State<SignInScreen> {
                       final navigator = Navigator.of(context);
                       await signInWithGoogle();
                       navigator.pushReplacement(MaterialPageRoute(
-                          builder: (context) => const SignInPass()));
+                          builder: (context) => const BottomNavBar()));
                     },
                     child: Row(
                       children: [

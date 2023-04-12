@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:sport_test/settingssubscreen/manage.dart';
 import 'package:sport_test/component/member_profile.dart';
@@ -20,6 +21,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   Size size = Size.zero;
   final user = FirebaseAuth.instance.currentUser;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
 
   void _showAction(BuildContext context) {
     showDialog<void>(
@@ -40,10 +42,23 @@ class _SettingsState extends State<Settings> {
               style: const TextStyle(fontSize: 18)),
           actions: [
             TextButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const WelcomeScreen()));
+              onPressed: () async {
+                if (await googleSignIn.isSignedIn() && mounted) {
+                  googleSignIn.signOut();
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                        builder: (BuildContext buildContext) =>
+                            const WelcomeScreen()),
+                  );
+                }
+                if (user != null && mounted) {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                        builder: (BuildContext buildContext) =>
+                            const WelcomeScreen()),
+                  );
+                }
               },
               child: const Text(
                 'Accept',

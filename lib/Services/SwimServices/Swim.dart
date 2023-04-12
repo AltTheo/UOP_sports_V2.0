@@ -51,7 +51,7 @@ class SwimState extends State<Swim> {
                   gridImage: Image.asset('lib/assets/images/under_16.png',
                       height: 110, gaplessPlayback: true, fit: BoxFit.fill),
                   onTap: () {},
-                  gridtitle: 'Under 16\nbooking'),
+                  gridtitle: 'Under 16 booking'),
 
               //SESSION HELP CARD
               Servicegrid(

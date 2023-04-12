@@ -17,7 +17,7 @@ class BottomNavBar extends StatefulWidget {
 class BottomNavBarState extends State<BottomNavBar> {
   int selectedIndex = 0;
   List<Widget> widgetOptions = <Widget>[
-    const HomeScreen(),
+    HomeScreen(),
     const Service(),
     const Activity(),
     const Settings(),

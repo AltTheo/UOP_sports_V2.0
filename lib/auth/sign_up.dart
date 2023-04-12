@@ -7,7 +7,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sport_test/auth/sign_in.dart';
 import 'package:sport_test/auth/verify_screen.dart';
 import 'package:sport_test/model/users.dart';
-import 'package:sport_test/screens/sign_in_pass_state.dart';
+import 'package:sport_test/navigation/bottom_nav.dart';
+
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -104,7 +105,7 @@ class RegisterState extends State<Register> {
       );
       addUser(newUser);
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const SignInPass()));
+          MaterialPageRoute(builder: (context) => const BottomNavBar()));
     }
   }
 

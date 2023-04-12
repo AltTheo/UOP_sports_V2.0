@@ -35,8 +35,8 @@ class ServiceState extends State<Service> {
             tooltip: 'Open shopping cart',
             onPressed: () {
               // handle the press
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const YourBookings()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => YourBookings()));
             },
           ),
         ],

@@ -16,7 +16,7 @@ class Nav extends StatefulWidget {
 class NavState extends State<Nav> {
   int selectedIndex = 0;
   List<Widget> widgetOptions = <Widget>[
-    const HomeScreen(),
+    HomeScreen(),
     const Service(),
     const Activity(),
     const Settings(),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sport_test/Services/SwimServices/swim_booking_calendar.dart';
+import 'package:sport_test/services/swimservices/sauna_booking_calendar.dart';
 
 class Instructions extends StatefulWidget {
   const Instructions({super.key});
@@ -27,61 +27,54 @@ class InstructionsState extends State<Instructions> {
     textData();
     return Scaffold(
       appBar: AppBar(title: const Text('Steam & Sauna')),
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('lib/assets/images/white_3.png'))),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              child: Image.asset('lib/assets/images/sauna.png',
-                  height: 300, fit: BoxFit.cover),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            child: Image.asset('lib/assets/images/sauna.png',
+                height: 300, fit: BoxFit.cover),
+          ),
+          const SizedBox(height: 10.0),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
+            child: Text(
+              placeText,
+              style: const TextStyle(fontSize: 18.0),
             ),
-            const SizedBox(height: 10.0),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
-              child: Text(
-                placeText,
-                style: const TextStyle(fontSize: 17.0),
-              ),
-            ),
-            const SizedBox(
-              height: 3.0,
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  style:
-                      ElevatedButton.styleFrom(fixedSize: const Size(190, 40)),
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const SwimBookingCalendarView()));
-                  },
-                  child: Row(
-                    children: const [
-                      Icon(Icons.timer_sharp),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Text(
-                        'Pick your time',
-                        style: TextStyle(fontSize: 18.0),
-                      ),
-                    ],
-                  ),
+          ),
+          const SizedBox(
+            height: 3.0,
+          ),
+          const SizedBox(
+            height: 10.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(fixedSize: const Size(200, 40)),
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const SaunaBookingCalendarView()));
+                },
+                child: Row(
+                  children: const [
+                    Icon(Icons.timer_sharp),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(
+                      'Pick your time',
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ],
                 ),
-              ],
-            )
-          ],
-        ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

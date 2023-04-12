@@ -29,65 +29,56 @@ class RavPhysioState extends State<RavPhysio> {
     textData();
     return Scaffold(
       appBar: AppBar(title: const Text('South Coast Rx Physio')),
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('lib/assets/images/white_3.png'))),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              child: Image.asset('lib/assets/images/physio.png',
-                  height: 300, fit: BoxFit.cover),
-            ),
-            const SizedBox(height: 10.0),
-            Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
-                child: Text(
-                  placeText,
-                  style: const TextStyle(fontSize: 17),
-                )),
-            const SizedBox(
-              height: 10.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                TextButton(
-                  style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(300, 40),
-                      backgroundColor: Theme.of(context).colorScheme.primary),
-                  onPressed: () async {
-                    var url = Uri.parse(
-                        "https://www.southcoastrxphysiotherapy.co.uk/");
-                    await launchUrl(url);
-                  },
-                  child: Row(
-                    children: const [
-                      Icon(
-                        CupertinoIcons.hourglass_tophalf_fill,
-                        color: Colors.white,
-                      ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      Text(
-                        'South Coast Rx Physiotherapy',
-                        style: TextStyle(
-                            fontSize: 18.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal),
-                      ),
-                    ],
-                  ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            child: Image.asset('lib/assets/images/physio.png',
+                height: 250, width: 450, fit: BoxFit.cover),
+          ),
+          const SizedBox(height: 10.0),
+          Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
+              child: Text(
+                placeText,
+                style: const TextStyle(fontSize: 17),
+              )),
+          const SizedBox(
+            height: 15.0,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  fixedSize: const Size(340, 40),
                 ),
-              ],
-            )
-          ],
-        ),
+                onPressed: () async {
+                  var url =
+                      Uri.parse("https://www.southcoastrxphysiotherapy.co.uk/");
+                  await launchUrl(url);
+                },
+                child: Row(
+                  children: const [
+                    Icon(
+                      CupertinoIcons.hourglass_tophalf_fill,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(
+                      'South Coast Rx Physiotherapy',
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.normal),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }

@@ -30,11 +30,14 @@ class Servicegrid extends StatelessWidget {
                     topRight: Radius.circular(15)),
                 child: gridImage),
             const SizedBox(
-              height: 10,
+              height: 8,
             ),
             Text(
               gridtitle,
-              style: const TextStyle(fontSize: 20, color: Colors.white),
+              style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
             )
           ],
         ),

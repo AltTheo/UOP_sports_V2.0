@@ -5,17 +5,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:sport_test/screens/your_bookings.dart';
 
-import '../../screens/your_bookings.dart';
-
-class GymBookingCalendarView extends StatefulWidget {
-  const GymBookingCalendarView({Key? key}) : super(key: key);
+class SaunaBookingCalendarView extends StatefulWidget {
+  const SaunaBookingCalendarView({Key? key}) : super(key: key);
 
   @override
-  State<GymBookingCalendarView> createState() => _GymBookingCalendarViewState();
+  State<SaunaBookingCalendarView> createState() =>
+      _SaunaBookingCalendarViewState();
 }
 
-class _GymBookingCalendarViewState extends State<GymBookingCalendarView> {
+class _SaunaBookingCalendarViewState extends State<SaunaBookingCalendarView> {
   final user = FirebaseAuth.instance.currentUser;
   final now = DateTime.now();
   late BookingService sportBookingService;
@@ -30,7 +30,7 @@ class _GymBookingCalendarViewState extends State<GymBookingCalendarView> {
         userEmail: '${user?.email}',
         userId: '${user?.uid}',
         userName: '${user?.displayName}',
-        serviceName: 'Gym session',
+        serviceName: 'Sauna session',
         serviceDuration: 15,
         bookingEnd: DateTime(now.year, now.month, now.day, 22, 00),
         bookingStart: DateTime(now.year, now.month, now.day, 6, 30));
