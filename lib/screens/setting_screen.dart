@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:sport_test/navigation/bottom_nav.dart';
 import 'package:sport_test/settingssubscreen/manage.dart';
 import 'package:sport_test/component/member_profile.dart';
 import '../settingssubscreen/about.dart';
@@ -45,7 +46,12 @@ class _SettingsState extends State<Settings> {
               onPressed: () async {
                 if (await googleSignIn.isSignedIn() && mounted) {
                   googleSignIn.signOut();
-                  Navigator.of(context).pushReplacement(
+                  Navigator.of(context).pop(
+                    MaterialPageRoute(
+                        builder: (BuildContext buildContext) =>
+                            const BottomNavBar()),
+                  );
+                  Navigator.of(context).push(
                     MaterialPageRoute(
                         builder: (BuildContext buildContext) =>
                             const WelcomeScreen()),
@@ -53,7 +59,12 @@ class _SettingsState extends State<Settings> {
                 }
                 if (user != null && mounted) {
                   FirebaseAuth.instance.signOut();
-                  Navigator.of(context).pushReplacement(
+                  Navigator.of(context).pop(
+                    MaterialPageRoute(
+                        builder: (BuildContext buildContext) =>
+                            const BottomNavBar()),
+                  );
+                  Navigator.of(context).push(
                     MaterialPageRoute(
                         builder: (BuildContext buildContext) =>
                             const WelcomeScreen()),

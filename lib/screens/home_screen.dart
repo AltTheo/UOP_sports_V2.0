@@ -87,7 +87,7 @@ class FeedTile extends StatelessWidget {
       height: 300,
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8),
       margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-      color: Colors.white54.withOpacity(0.4),
+      color: Colors.white38.withOpacity(0.4),
       child: Stack(
         children: [
           Positioned(
@@ -125,8 +125,6 @@ class FeedDetail extends StatelessWidget {
   final String feedId;
 
   const FeedDetail({Key? key, required this.feedId}) : super(key: key);
-
-  static const String route = '/feeds/detail';
 
   @override
   Widget build(BuildContext context) {

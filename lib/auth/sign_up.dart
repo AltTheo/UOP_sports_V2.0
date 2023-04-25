@@ -5,10 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sport_test/auth/sign_in.dart';
-import 'package:sport_test/auth/verify_screen.dart';
 import 'package:sport_test/model/users.dart';
 import 'package:sport_test/navigation/bottom_nav.dart';
-
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -101,7 +99,8 @@ class RegisterState extends State<Register> {
       User user = FirebaseAuth.instance.currentUser!;
       Usermodel newUser = Usermodel(
         userEmail: '${user.email}',
-        fullName: userNameController.text,
+        userName: userNameController.text,
+        userId: user.uid,
       );
       addUser(newUser);
       Navigator.of(context).pushReplacement(
@@ -368,10 +367,13 @@ class RegisterState extends State<Register> {
                         User user = FirebaseAuth.instance.currentUser!;
                         Usermodel newUser = Usermodel(
                             userEmail: '${user.email}',
-                            fullName: '${user.displayName}');
+                            userName: '${user.displayName}',
+                            userId: user.uid);
                         addUser(newUser);
+                        Navigator.of(context).pop(MaterialPageRoute(
+                            builder: (context) => const SignUp()));
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const VerifyScreen()));
+                            builder: (context) => const BottomNavBar()));
                       }
                     },
                     child: Row(

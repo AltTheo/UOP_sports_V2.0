@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-
 import '../../screens/your_bookings.dart';
 
 class GymBookingCalendarView extends StatefulWidget {
@@ -43,41 +42,30 @@ class _GymBookingCalendarViewState extends State<GymBookingCalendarView> {
     // Query the "Bookings" collection for bookings between the start and end dates
     return firestore
         .collection('Bookings')
-        // .where('startTime', isGreaterThanOrEqualTo: Timestamp.fromDate(start))
-        // .where('startTime', isLessThanOrEqualTo: Timestamp.fromDate(end))
+        .where('startTime', isGreaterThanOrEqualTo: Timestamp.fromDate(start))
+        .where('startTime', isLessThanOrEqualTo: Timestamp.fromDate(end))
         .snapshots();
   }
 
   Future<dynamic> createBooking({required BookingService newBooking}) async {
     await Future.delayed(const Duration(seconds: 2));
     try {
-      // Check if the selected time slot is already fully booked
-      final bookings = await getBookingStream(
-              start: newBooking.bookingStart, end: newBooking.bookingEnd)
-          ?.toList();
-      if (bookings != null && bookings.length >= 5) {
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          dismissDirection: DismissDirection.startToEnd,
-          behavior: SnackBarBehavior.floating,
-          content: Text('This time slot is fully booked'),
-        ));
-      } else {
-        addBooking(newBooking);
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              duration: Duration(seconds: 1),
-              padding: EdgeInsets.all(15.0),
-              dismissDirection: DismissDirection.startToEnd,
-              content: Text(
-                'The session was successfully booked',
-              )),
-        );
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => YourBookings()));
-        debugPrint('Booking added to database.');
-      }
+      converted.add(DateTimeRange(
+          start: newBooking.bookingStart, end: newBooking.bookingEnd));
+      addBooking(newBooking);
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            duration: Duration(seconds: 1),
+            padding: EdgeInsets.all(15.0),
+            dismissDirection: DismissDirection.startToEnd,
+            content: Text(
+              'The session was successfully booked',
+            )),
+      );
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => YourBookings()));
+      debugPrint('Booking added to database.');
     } catch (error) {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

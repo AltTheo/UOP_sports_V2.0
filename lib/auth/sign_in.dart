@@ -143,6 +143,8 @@ class SignInState extends State<SignInScreen> {
         context: context);
     debugPrint('$user');
     if (user != null && mounted) {
+      Navigator.of(context)
+          .pop(MaterialPageRoute(builder: (context) => const SignInScreen()));
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const BottomNavBar()));
     }
@@ -333,6 +335,8 @@ class SignInState extends State<SignInScreen> {
                     onPressed: () async {
                       final navigator = Navigator.of(context);
                       await signInWithGoogle();
+                      navigator.pop(MaterialPageRoute(
+                          builder: (context) => const SignInScreen()));
                       navigator.pushReplacement(MaterialPageRoute(
                           builder: (context) => const BottomNavBar()));
                     },
