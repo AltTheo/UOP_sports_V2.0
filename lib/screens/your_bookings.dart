@@ -20,17 +20,23 @@ class YourBookings extends StatelessWidget {
           title: const Text('Your bookings'),
         ),
         body: ListView.builder(
-              itemCount: snapshot.docs.length,
-              itemBuilder: (context, index) {
-                DocumentSnapshot documentSnapshot = snapshot.docs[index];
-                // Extract data from documentSnapshot and use it to build your UI
-                return Bookingitem(
-                  title: documentSnapshot['serviceName'],
-                  subtitle: documentSnapshot['bookingStart'],
-                  onTap: () {},
-                );
+          itemCount: snapshot.docs.length,
+          itemBuilder: (context, index) {
+            DocumentSnapshot documentSnapshot = snapshot.docs[index];
+            // Extract data from documentSnapshot and use it to build your UI
+            return Bookingitem(
+              title: documentSnapshot['serviceName'],
+              subtitle: documentSnapshot['bookingStart'],
+              onTap: () {
+                FirebaseFirestore.instance
+                    .collection('Bookings')
+                    .doc(documentSnapshot.id)
+                    .delete();
+                    debugPrint('Booking deleted');
               },
-            ));
+            );
+          },
+        ));
   }
 
   Widget _buildError(BuildContext context, Object error) {

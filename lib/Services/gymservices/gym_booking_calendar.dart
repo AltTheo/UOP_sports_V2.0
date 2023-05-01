@@ -153,7 +153,7 @@ class _GymBookingCalendarViewState extends State<GymBookingCalendarView> {
       appBar: AppBar(
         // backgroundColor: Colors.purple,
         automaticallyImplyLeading: true,
-        title: const Text('Choose a time slot'),
+        title: const Text('Gym booking'),
       ),
       body: Center(
         child: BookingCalendar(

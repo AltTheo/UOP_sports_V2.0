@@ -20,7 +20,6 @@ class Bookingitem extends StatelessWidget {
         child: Column(
           children: [
             ListTile(
-              onTap: onTap,
               subtitle: Text(
                 subtitle,
                 style: const TextStyle(
@@ -29,12 +28,32 @@ class Bookingitem extends StatelessWidget {
               leading: const Icon(
                 CupertinoIcons.timer_fill,
                 size: 40.0,
-                color: Colors.green,
+                color: Colors.purple,
               ),
               title: Text(
                 title,
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              trailing: PopupMenuButton(
+                itemBuilder: (BuildContext context) {
+                  return <PopupMenuEntry>[
+                    PopupMenuItem(
+                        value: 1,
+                        onTap: () {},
+                        child: const Text(
+                          'Edit',
+                          style: TextStyle(fontSize: 18),
+                        )),
+                    PopupMenuItem(
+                        value: 2,
+                        onTap: onTap,
+                        child: const Text(
+                          'Cancel',
+                          style: TextStyle(fontSize: 18),
+                        )),
+                  ];
+                },
               ),
             ),
             const Divider(

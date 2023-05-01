@@ -11,8 +11,7 @@ class SaunaBookingCalendarView extends StatefulWidget {
   const SaunaBookingCalendarView({Key? key}) : super(key: key);
 
   @override
-  State<SaunaBookingCalendarView> createState() =>
-      _SaunaBookingCalendarViewState();
+  State<SaunaBookingCalendarView> createState() => _SaunaBookingCalendarViewState();
 }
 
 class _SaunaBookingCalendarViewState extends State<SaunaBookingCalendarView> {
@@ -125,7 +124,7 @@ class _SaunaBookingCalendarViewState extends State<SaunaBookingCalendarView> {
     DateTime now = DateTime.now();
     final openingTime = DateTime(now.year, now.month, now.day, 6, 30);
     final startPause = openingTime;
-    final endPause = now.subtract(const Duration(minutes: 30));
+    final endPause = now.subtract(const Duration(minutes: 15));
     return [
       DateTimeRange(start: startPause, end: endPause),
     ];
@@ -154,7 +153,7 @@ class _SaunaBookingCalendarViewState extends State<SaunaBookingCalendarView> {
       appBar: AppBar(
         // backgroundColor: Colors.purple,
         automaticallyImplyLeading: true,
-        title: const Text('Choose a time slot'),
+        title: const Text('Sauna booking'),
       ),
       body: Center(
         child: BookingCalendar(
@@ -194,7 +193,7 @@ class _SaunaBookingCalendarViewState extends State<SaunaBookingCalendarView> {
           selectedSlotText: '',
           selectedSlotColor: Colors.orangeAccent,
           bookedSlotText: '',
-          bookedSlotColor: Colors.green[200],
+          bookedSlotColor: Colors.red[300],
           pauseSlotColor: Colors.grey,
           bookingGridCrossAxisCount: 4,
           bookingGridChildAspectRatio: 600 / 550,

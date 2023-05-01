@@ -4,13 +4,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
+
+import '../../screens/your_bookings.dart';
 
 class CourtBookingCalendarView extends StatefulWidget {
   const CourtBookingCalendarView({Key? key}) : super(key: key);
 
   @override
-  State<CourtBookingCalendarView> createState() =>
-      _CourtBookingCalendarViewState();
+  State<CourtBookingCalendarView> createState() => _CourtBookingCalendarViewState();
 }
 
 class _CourtBookingCalendarViewState extends State<CourtBookingCalendarView> {
@@ -26,25 +28,24 @@ class _CourtBookingCalendarViewState extends State<CourtBookingCalendarView> {
     // DateTime.now().endOfDay
     sportBookingService = BookingService(
         userEmail: '${user?.email}',
+        userId: '${user?.uid}',
         userName: '${user?.displayName}',
-        serviceName: 'Sports Booking',
-        serviceDuration: 60,
+        serviceName: 'Gym session',
+        serviceDuration: 15,
         bookingEnd: DateTime(now.year, now.month, now.day, 22, 00),
         bookingStart: DateTime(now.year, now.month, now.day, 6, 30));
   }
 
   Stream<dynamic>? getBookingStream(
       {required DateTime end, required DateTime start}) {
-    return Stream.value([]);
-  }
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Future<dynamic> uploadBooking({required BookingService newBooking}) async {
-    await Future.delayed(const Duration(seconds: 3));
-    converted.add(DateTimeRange(
-        start: newBooking.bookingStart, end: newBooking.bookingEnd));
-    if (kDebugMode) {
-      print('${newBooking.toJson()} has been uploaded');
-    }
+    // Query the "Bookings" collection for bookings between the start and end dates
+    return firestore
+        .collection('Bookings')
+        .where('startTime', isGreaterThanOrEqualTo: Timestamp.fromDate(start))
+        .where('startTime', isLessThanOrEqualTo: Timestamp.fromDate(end))
+        .snapshots();
   }
 
   Future<dynamic> createBooking({required BookingService newBooking}) async {
@@ -56,22 +57,16 @@ class _CourtBookingCalendarViewState extends State<CourtBookingCalendarView> {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-            backgroundColor: Colors.purple,
-            elevation: 15.0,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(25.0))),
             duration: Duration(seconds: 1),
             padding: EdgeInsets.all(15.0),
             dismissDirection: DismissDirection.startToEnd,
-            behavior: SnackBarBehavior.floating,
             content: Text(
               'The session was successfully booked',
-              style: TextStyle(fontSize: 18),
             )),
       );
-      if (kDebugMode) {
-        print('Booking added to database.');
-      }
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => YourBookings()));
+      debugPrint('Booking added to database.');
     } catch (error) {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -79,10 +74,9 @@ class _CourtBookingCalendarViewState extends State<CourtBookingCalendarView> {
         behavior: SnackBarBehavior.floating,
         content: Text('The booking was unsuccessful'),
       ));
-      if (kDebugMode) {
-        print('Error adding booking to database: $error');
-      }
+      debugPrint('Error adding booking to database: $error');
     }
+
     // print('Booking Saved');
   }
 
@@ -93,82 +87,122 @@ class _CourtBookingCalendarViewState extends State<CourtBookingCalendarView> {
   List<DateTimeRange> converted = [];
 
   List<DateTimeRange> convertStreamResult({required dynamic streamResult}) {
-    ///here you can parse the streamresult and convert to [List<DateTimeRange>]
-    ///take care this is only mock, so if you add today as disabledDays it will still be visible on the first load
-    ///disabledDays will properly work with real data
-    DateTime first = now;
-    // DateTime second = now.add(const Duration(minutes: 15));
-    // DateTime third = now.add(const Duration(minutes: 15));
-    // DateTime fourth = now.add(const Duration(minutes: 15));
-    // converted.add(
-    //     DateTimeRange(start: first, end: now.add(const Duration(minutes: 15))));
-    // converted.add(DateTimeRange(
-    //     start: second, end: second.add(const Duration(minutes: 15))));
-    // converted.add(DateTimeRange(
-    //     start: third, end: third.add(const Duration(minutes: 15))));
-    // converted.add(DateTimeRange(
-    //     start: fourth, end: fourth.add(const Duration(minutes: 15))));
-    return converted;
+    // Use constant values for testing
+    DateTime first = DateTime.now();
+    const int intervalInMinutes = 15;
+    int rangeCount = 4;
+
+    return List.generate(rangeCount, (index) {
+      final start = index == 0
+          ? first
+          : first.add(Duration(minutes: index * intervalInMinutes));
+      final end = start.add(const Duration(minutes: intervalInMinutes));
+      return DateTimeRange(start: start, end: end);
+    });
   }
 
-  // List<DateTimeRange> generatePauseSlots() {
-  //   return [
-  //     DateTimeRange(
-  //         start: DateTime(now.year, now.month, now.day, 12, 0),
-  //         end: DateTime(now.year, now.month, now.day, 15, 0))
-  //   ];
-  // }
+  List<DateTimeRange> convertStreamResult2({
+    required dynamic streamResult,
+    int intervalInMinutes = 60,
+    Duration expectedDuration = const Duration(hours: 1),
+  }) {
+    final DateTime first = DateTime.now();
 
-  //  String Function(DateTime) formatDateTime = (dateTime) {
-  //   return DateFormat().format(dateTime);
-  // };
+    final int rangeCount =
+        (expectedDuration.inMinutes / intervalInMinutes).ceil();
 
-  //  static String formatDateTime1(DateTime dt) {
-  //   return DateFormat.Hm().format(dt);
-  // }
+    return List.generate(rangeCount, (index) {
+      final start = index == 0
+          ? first
+          : first.add(Duration(minutes: index * intervalInMinutes));
+      final end = start.add(Duration(minutes: intervalInMinutes));
+
+      return DateTimeRange(start: start, end: end);
+    });
+  }
+
+  List<DateTimeRange> generatePauseSlots() {
+    DateTime now = DateTime.now();
+    final openingTime = DateTime(now.year, now.month, now.day, 6, 30);
+    final startPause = openingTime;
+    final endPause = now.subtract(const Duration(minutes: 15));
+    return [
+      DateTimeRange(start: startPause, end: endPause),
+    ];
+  }
+
+  CollectionReference bookings =
+      FirebaseFirestore.instance.collection('Bookings');
+
+  ///This is how can you get the reference to your data from the collection, and serialize the data with the help of the Firestore [withConverter]. This function would be in your repository.
+  CollectionReference<BookingService> getBookingStreamFirestore() {
+    return bookings.doc().collection('Bookings').withConverter<BookingService>(
+          fromFirestore: (snapshots, _) =>
+              BookingService.fromJson(snapshots.data()!),
+          toFirestore: (snapshots, _) => snapshots.toJson(),
+        );
+  }
+
+  String formatDateTime(DateTime dateTime) {
+    final formatter = DateFormat('HH:mm');
+    return formatter.format(dateTime);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple,
+        // backgroundColor: Colors.purple,
         automaticallyImplyLeading: true,
-        title: const Text('Book a slot'),
+        title: const Text('Gym booking'),
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('lib/assets/images/white_3.png'))),
-        child: Center(
-          child: BookingCalendar(
-            bookingService: sportBookingService,
-            convertStreamResultToDateTimeRanges: convertStreamResult,
-            getBookingStream: getBookingStream,
-            uploadBooking: createBooking,
-            hideBreakTime: true,
-            loadingWidget: const Text('Fetching data...'),
-            uploadingWidget: Column(
-              children: const [
-                Text('Please wait'),
-                CircularProgressIndicator(color: Colors.purple),
-              ],
-            ),
-            startingDayOfWeek: StartingDayOfWeek.monday,
-            locale: "en",
-            gridScrollPhysics:
-                const ScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-            availableSlotText: 'Available',
-            selectedSlotText: 'Selected',
-            bookedSlotText: 'Booked',
-            // pauseSlotColor: Colors.grey,
-            bookingGridCrossAxisCount: 4,
-            bookingGridChildAspectRatio: 350 / 420,
-            wholeDayIsBookedWidget:
-                const Text('Sorry, There are no available slots'),
-            // formatDateTime: formatDateTime1(),
-            // disabledDays: const [6, 7],
+      body: Center(
+        child: BookingCalendar(
+          bookingExplanation: const Text(
+            'Select a time below',
+            style: TextStyle(fontSize: 25),
           ),
+          bookingService: sportBookingService,
+          convertStreamResultToDateTimeRanges: convertStreamResult2,
+          getBookingStream: getBookingStream,
+          uploadBooking: createBooking,
+          hideBreakTime: true,
+          loadingWidget: const Text('Fetching data...'),
+          uploadingWidget: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text(
+                'Please wait',
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 80.0),
+                child: LinearProgressIndicator(),
+              ),
+            ],
+          ),
+          startingDayOfWeek: StartingDayOfWeek.monday,
+          locale: "en",
+          gridScrollPhysics:
+              const ScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          availableSlotText: 'available',
+          availableSlotColor: Colors.green[200],
+          selectedSlotText: '',
+          selectedSlotColor: Colors.orangeAccent,
+          bookedSlotText: '',
+          bookedSlotColor: Colors.red[300],
+          pauseSlotColor: Colors.grey,
+          bookingGridCrossAxisCount: 4,
+          bookingGridChildAspectRatio: 600 / 550,
+          wholeDayIsBookedWidget:
+              const Text('Sorry, There are no available slots'),
+          pauseSlots: generatePauseSlots(),
+          formatDateTime: formatDateTime,
+          // disabledDays: const [6, 7],
         ),
       ),
     );

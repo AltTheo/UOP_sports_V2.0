@@ -72,7 +72,6 @@ class FeedTile extends StatelessWidget {
 
     // Access the fields from your document data:
     final title = data['title'] as String?;
-    final description = data['description'] as String?;
     final url = data['imageUrl'] as String?;
     final image = (url != null)
         ? Image(
@@ -109,7 +108,7 @@ class FeedTile extends StatelessWidget {
             right: 12,
             left: 12,
             child: Text(
-              title ?? 'No description available.',
+              title ?? 'No title available.',
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
