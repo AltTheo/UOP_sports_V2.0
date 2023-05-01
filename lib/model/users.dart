@@ -21,7 +21,7 @@ class Usermodel {
     };
   }
 
-  // Convert a Firestore document to a Booking object
+  // Convert a Firestore document to a user object
   factory Usermodel.fromFirestore(DocumentSnapshot doc) {
     Map data = doc.data() as Map<String, dynamic>;
     return Usermodel(
