@@ -1,1 +1,25 @@
-@startuml system architecture
+@startuml client-server architecture
+top to bottom direction
+node app as "               <b>Sports App\n<b>[Android application, providing\n<b>features to allow users book\n<b>sessions at the sports centre\n<b>and manage their accounts]"
+cloud {
+    database data as "          <b>Firestore Cloud Firebase \n<b>[stores user registration information,\n<b>booking data and news and updates]"
+}
+frame components{
+    component calendar as "<b>Calendar API service\n       <b>[Flutter/dart]"
+    component auth as "         <b>Firebase Auth \n[External Auth system \n<b>that authenticates \n<b>and assign user access]"
+    rectangle service as "          <b>Services\n<b>[Allows users to book\nmultiple services]"
+    rectangle activity as "                <b>Activity\n<b>[Displays the capacity of a\n<b>particular service\n<b>in the centre]"
+    rectangle home as "               <b>Home\n<b>[Provides users witth the\n<b>latest news, updates and\n<b>notices at the centre]"
+    rectangle sign as "             <b>Sign-In\n<b>[Enforces access rights]"
+    app ..> sign : <b>Sends request
+    app ..> home :<b>Displays
+    app ..> service : <b>Set up\n<b>parameters
+    app ..> activity : <b>Set up\n<b>parameters
+    activity .right-> service: <b>Retrieved from
+    sign ..> auth : <b>Authenticates\n<b>[HTTPS]
+    auth ..> data : <b>Store data\n<b>[JSON]
+    service ..> calendar : <b>Controlled through\n<b>[Flutter/Dart]
+    calendar ...> data : <b>Stores and\n<b>retrieves\n<b>data from\n<b>[JSON]
+    home .> data : <b>Data retrieved from\n<b>[JSON]
+}
+@enduml

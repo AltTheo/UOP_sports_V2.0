@@ -4,7 +4,7 @@ left to right direction
 actor unr as "Unregistered User" #grey
 actor reg as "Registered User" #grey
 actor Auth as "Firebase Auth" #grey
-actor Data as "Cloud Firestore" #grey
+database Data as "Cloud Firestore" #grey
 
 Package SportsApp {
     unr --> (Register)
