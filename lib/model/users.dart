@@ -7,9 +7,11 @@ class Usermodel {
   final String userName;
   final String userEmail;
   final String userId;
+  final String photoURL;
 
   Usermodel(
-      {required this.userEmail,
+      {required this.photoURL,
+      required this.userEmail,
       required this.userId,
       required this.userName});
 
@@ -18,6 +20,7 @@ class Usermodel {
       'userName': userName,
       'userEmail': userEmail,
       'userId': userId,
+      'photoURL': photoURL,
     };
   }
 
@@ -28,6 +31,7 @@ class Usermodel {
       userName: data['userName'],
       userEmail: data['userEmail'],
       userId: data['userId'],
+      photoURL: data['photoUrl']
     );
   }
 }

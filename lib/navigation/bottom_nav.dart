@@ -19,7 +19,7 @@ class BottomNavBarState extends State<BottomNavBar> {
   List<Widget> widgetOptions = <Widget>[
     const HomeScreen(),
     const Service(),
-    const Activity(),
+    Activity(),
     const Settings(),
   ];
 

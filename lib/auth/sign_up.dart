@@ -98,10 +98,10 @@ class RegisterState extends State<Register> {
     if (user != null && mounted) {
       User user = FirebaseAuth.instance.currentUser!;
       Usermodel newUser = Usermodel(
-        userEmail: '${user.email}',
-        userName: userNameController.text,
-        userId: user.uid,
-      );
+          userEmail: '${user.email}',
+          userName: userNameController.text,
+          userId: user.uid,
+          photoURL: '${user.photoURL}');
       addUser(newUser);
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const BottomNavBar()));
@@ -368,7 +368,8 @@ class RegisterState extends State<Register> {
                         Usermodel newUser = Usermodel(
                             userEmail: '${user.email}',
                             userName: '${user.displayName}',
-                            userId: user.uid);
+                            userId: user.uid,
+                            photoURL: '${user.photoURL}');
                         addUser(newUser);
                         Navigator.of(context).pop(MaterialPageRoute(
                             builder: (context) => const SignUp()));

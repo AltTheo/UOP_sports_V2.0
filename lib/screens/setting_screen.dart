@@ -1,7 +1,13 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:sport_test/navigation/bottom_nav.dart';
 import 'package:sport_test/settingssubscreen/manage.dart';
@@ -89,23 +95,132 @@ class _SettingsState extends State<Settings> {
     );
   }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Settings'),
-//       ),
-//       body: ListView.builder(
-//         controller: _scrollController,
-//           itemCount: 100,
-//           itemBuilder: (context, index) {
-//             return ListTile(
-//               title: Text('Settingggggggggggggggggggggggggg $index'),
-//             );
-//           }),
-//     );
-//   }
-// }
+  void _showSelectionDialog(BuildContext context) {
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          // title: const Text("From where do you want to take the photo?"),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                GestureDetector(
+                  child: Row(
+                    children: const [
+                      Icon(CupertinoIcons.photo),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "Choose from library",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    pickImageGallery();
+                  },
+                ),
+                const Padding(padding: EdgeInsets.all(8.0)),
+                GestureDetector(
+                  child: Row(
+                    children: const [
+                      Icon(CupertinoIcons.photo_camera),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        "Take photo",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    pickImageCamera();
+                  },
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseStorage _storage = FirebaseStorage.instance;
+
+  Future<void> updateUserProfilePicture(File image) async {
+    // Get the current user's UID
+    final User? user = _auth.currentUser;
+    if (user == null) {
+      throw Exception('User is not signed in');
+    }
+    final String uid = user.uid;
+
+    // Upload the selected image to Firebase Storage
+    final Reference ref =
+        _storage.ref().child('users/$uid/profile_picture.jpg');
+    await ref.putFile(image);
+
+    // Get the download URL of the uploaded image
+    final String downloadUrl = await ref.getDownloadURL();
+
+    // Save the download URL in Firestore
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
+    await firestore
+        .collection('Users')
+        .where('userID', isEqualTo: uid)
+        .get()
+        .then((querySnapshot) => {
+              querySnapshot.docs.forEach((doc) {
+                firestore
+                    .collection('Users')
+                    .doc(doc.id)
+                    .update({'photoURL': downloadUrl});
+              })
+            });
+
+    // Update the user's display picture
+    await user.updatePhotoURL(downloadUrl);
+  }
+
+  File? image;
+  Future pickImageGallery() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+
+      final imageTemp = File(image.path);
+      setState(() => this.image = imageTemp);
+
+      // Call the function to update the user profile picture
+      await updateUserProfilePicture(this.image!);
+    } on PlatformException catch (e) {
+      debugPrint('Failed to pick image: $e');
+    }
+    Navigator.of(context).pop();
+  }
+
+  Future pickImageCamera() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.camera);
+      if (image == null) return;
+
+      final imageTemp = File(image.path);
+      setState(() => this.image = imageTemp);
+
+      // Call the function to update the user profile picture
+      await updateUserProfilePicture(this.image!);
+    } on PlatformException catch (e) {
+      debugPrint('Failed to pick image: $e');
+    }
+    Navigator.of(context).pop();
+  }
+
+//   final Reference storageRef = FirebaseStorage.instance.ref().child('user/profile_picture.jpg');
+// final taskSnapshot = await storageRef.putFile(pickedImage);
+// final downloadUrl = await taskSnapshot.ref.getDownloadURL();
 
   @override
   Widget build(BuildContext context) {
@@ -122,13 +237,15 @@ class _SettingsState extends State<Settings> {
           children: [
             // You can add a settings title
             MemberCard(
-                username: '${user?.displayName}', photo: '${user?.photoURL}'),
+                username: '${user?.displayName}',
+                photo: '${user?.photoURL}',
+                // uid: '${user?.uid}'
+                ),
             SettingItem(
-                title: 'Edit Profile',
+                title: 'Edit Picture',
                 icons: CupertinoIcons.pencil_ellipsis_rectangle,
                 onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const Manage()));
+                  _showSelectionDialog(context);
                 }),
             const Divider(thickness: 0.7),
             SettingItem(

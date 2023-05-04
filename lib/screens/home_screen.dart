@@ -74,11 +74,14 @@ class FeedTile extends StatelessWidget {
     final title = data['title'] as String?;
     final url = data['imageUrl'] as String?;
     final image = (url != null)
-        ? Image(
-            image: NetworkImage(url),
-            height: 500,
-            width: 1000,
-            fit: BoxFit.cover,
+        ? ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(15)),
+            child: Image(
+              image: NetworkImage(url),
+              height: 500,
+              width: 1000,
+              fit: BoxFit.cover,
+            ),
           )
         : const Placeholder();
 
@@ -95,7 +98,6 @@ class FeedTile extends StatelessWidget {
             left: 4,
             child: Container(
                 decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 54, 3, 65),
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: AssetImage('lib/assets/images/white_3.png'))),
@@ -104,12 +106,12 @@ class FeedTile extends StatelessWidget {
                 child: Container(child: image)),
           ),
           Positioned(
-            bottom: 12,
+            bottom: 8,
             right: 12,
             left: 12,
             child: Text(
               title ?? 'No title available.',
-              maxLines: 3,
+              maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
@@ -143,16 +145,25 @@ class FeedDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    height: 250,
-                    decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 54, 3, 65),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(data['imageUrl'] ?? ''),
-                      ),
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    child: Image(
+                      image: NetworkImage(data['imageUrl'] ?? ''),
+                      height: 250,
+                      width: 500,
+                      fit: BoxFit.cover,
                     ),
                   ),
+                  // Container(
+                  //   height: 250,
+                  //   decoration: BoxDecoration(
+                  //     color: const Color.fromARGB(255, 54, 3, 65),
+                  //     image: DecorationImage(
+                  //       fit: BoxFit.cover,
+                  //       image: NetworkImage(data['imageUrl'] ?? ''),
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(
                     height: 16.0,
                   ),

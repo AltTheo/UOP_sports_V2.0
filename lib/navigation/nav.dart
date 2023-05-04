@@ -18,7 +18,7 @@ class NavState extends State<Nav> {
   List<Widget> widgetOptions = <Widget>[
     HomeScreen(),
     const Service(),
-    const Activity(),
+    Activity(),
     const Settings(),
   ];
 
