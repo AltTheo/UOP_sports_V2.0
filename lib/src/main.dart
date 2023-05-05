@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'package:sport_test/auth/sign_in.dart';
+import 'package:sport_test/src/theme_manager.dart';
 
 Future<void> main() async {
   Logger.root.level = Level.ALL; // set the root logger level
@@ -56,8 +57,10 @@ class MyApp extends StatelessWidget {
             appBarTheme: const AppBarTheme(
                 scrolledUnderElevation: 5.0,
                 color: Color.fromARGB(255, 244, 244, 244),
-                actionsIconTheme: IconThemeData(size: 30, color: Color.fromARGB(255, 29, 2, 36)),
-                iconTheme: IconThemeData(size: 30, color: Color.fromARGB(255, 29, 2, 36)),
+                actionsIconTheme: IconThemeData(
+                    size: 30, color: Color.fromARGB(255, 29, 2, 36)),
+                iconTheme: IconThemeData(
+                    size: 30, color: Color.fromARGB(255, 29, 2, 36)),
                 centerTitle: false,
                 elevation: 0,
                 titleTextStyle: TextStyle(
@@ -100,7 +103,7 @@ class MyApp extends StatelessWidget {
                   fontSize: 30,
                   color: Colors.white)),
           useMaterial3: true,
-          colorSchemeSeed: Color.fromARGB(255, 211, 168, 218),
+          colorSchemeSeed: const Color.fromARGB(255, 211, 168, 218),
           // primarySwatch: Colors.purple,
           brightness: Brightness.dark,
         ),

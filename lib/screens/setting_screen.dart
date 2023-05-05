@@ -15,6 +15,7 @@ import 'package:sport_test/component/member_profile.dart';
 import '../settingssubscreen/about.dart';
 import '../auth/auth_screen.dart';
 import '../component/setting_item.dart';
+import '../settingssubscreen/theme.dart';
 
 class Settings extends StatefulWidget {
   const Settings({super.key});
@@ -237,10 +238,10 @@ class _SettingsState extends State<Settings> {
           children: [
             // You can add a settings title
             MemberCard(
-                username: '${user?.displayName}',
-                photo: '${user?.photoURL}',
-                // uid: '${user?.uid}'
-                ),
+              username: '${user?.displayName}',
+              photo: '${user?.photoURL}',
+              // uid: '${user?.uid}'
+            ),
             SettingItem(
                 title: 'Edit Picture',
                 icons: CupertinoIcons.pencil_ellipsis_rectangle,
@@ -249,7 +250,10 @@ class _SettingsState extends State<Settings> {
                 }),
             const Divider(thickness: 0.7),
             SettingItem(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => ThemeSettingItem()));
+                },
                 icons: CupertinoIcons.paintbrush,
                 title: 'App Appearance'),
             SettingItem(
