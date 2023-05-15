@@ -22,14 +22,16 @@ class About extends StatelessWidget {
                     title: 'Privacy',
                     icons: Icons.remove_red_eye_rounded,
                     onTap: () async {
-                      var url = Uri.parse("https://www.geeksforgeeks.org/");
+                      var url = Uri.parse(
+                          "https://sport.port.ac.uk/about-us/policies-and-terms/privacy-policy");
                       await launchUrl(url);
                     }),
                 SettingItem(
                     title: 'Terms of Use',
                     icons: CupertinoIcons.book,
                     onTap: () async {
-                      var url = Uri.parse("https://www.geeksforgeeks.org/");
+                      var url = Uri.parse(
+                          "https://www.port.ac.uk/about-us/structure-and-governance/legal/terms-and-conditions/website-terms-and-conditions");
                       await launchUrl(url);
                     }),
               ],

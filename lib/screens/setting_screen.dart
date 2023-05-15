@@ -95,56 +95,30 @@ class _SettingsState extends State<Settings> {
     );
   }
 
-  void _showSelectionDialog(BuildContext context) {
-    showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          // title: const Text("From where do you want to take the photo?"),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                GestureDetector(
-                  child: const Row(
-                    children: [
-                      Icon(CupertinoIcons.photo),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Choose from library",
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ],
-                  ),
-                  onTap: () {
-                    pickImageGallery();
-                  },
+  void _showPictureTypeBottomSheet(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return Wrap(
+            spacing: 10.0,
+            runSpacing: 10.0,
+            children: <Widget>[
+              ListTile(
+                  leading: const Icon(CupertinoIcons.photo),
+                  title: const Text('Choose from library',
+                      style: TextStyle(fontSize: 18)),
+                  onTap: () => {pickImageGallery()}),
+              ListTile(
+                leading: const Icon(CupertinoIcons.photo_camera),
+                title: const Text(
+                  'Take photo',
+                  style: TextStyle(fontSize: 18),
                 ),
-                const Padding(padding: EdgeInsets.all(8.0)),
-                GestureDetector(
-                  child: const Row(
-                    children: [
-                      Icon(CupertinoIcons.photo_camera),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "Take photo",
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ],
-                  ),
-                  onTap: () {
-                    pickImageCamera();
-                  },
-                )
-              ],
-            ),
-          ),
-        );
-      },
-    );
+                onTap: () => {pickImageCamera()},
+              ),
+            ],
+          );
+        });
   }
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -245,7 +219,8 @@ class _SettingsState extends State<Settings> {
                 title: 'Edit Picture',
                 icons: CupertinoIcons.pencil_ellipsis_rectangle,
                 onTap: () {
-                  _showSelectionDialog(context);
+                  _showPictureTypeBottomSheet(context);
+                  // _showSelectionDialog(context);
                 }),
             const Divider(thickness: 0.7),
             SettingItem(
