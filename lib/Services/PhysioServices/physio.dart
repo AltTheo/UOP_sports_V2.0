@@ -60,8 +60,8 @@ class RavPhysioState extends State<RavPhysio> {
                       Uri.parse("https://www.southcoastrxphysiotherapy.co.uk/");
                   await launchUrl(url);
                 },
-                child: Row(
-                  children: const [
+                child: const Row(
+                  children: [
                     Icon(
                       CupertinoIcons.hourglass_tophalf_fill,
                     ),

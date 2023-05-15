@@ -149,8 +149,8 @@ class _ClimbBookingCalendarViewState extends State<ClimbBookingCalendarView> {
             uploadBooking: createBooking,
             hideBreakTime: true,
             loadingWidget: const Text('Fetching data...'),
-            uploadingWidget: Column(
-              children: const [
+            uploadingWidget: const Column(
+              children: [
                 Text('Please wait'),
                 CircularProgressIndicator(color: Colors.purple),
               ],

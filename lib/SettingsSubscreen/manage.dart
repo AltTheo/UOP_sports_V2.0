@@ -30,7 +30,7 @@ class _ManageState extends State<Manage> {
               const Divider(
                 thickness: 1,
               ),
-              TextField()
+              const TextField()
             ],
           ),
         ));

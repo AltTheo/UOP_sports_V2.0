@@ -167,10 +167,10 @@ class _SaunaBookingCalendarViewState extends State<SaunaBookingCalendarView> {
           uploadBooking: createBooking,
           hideBreakTime: true,
           loadingWidget: const Text('Fetching data...'),
-          uploadingWidget: Column(
+          uploadingWidget: const Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text(
                 'Please wait',
                 style: TextStyle(fontSize: 20),

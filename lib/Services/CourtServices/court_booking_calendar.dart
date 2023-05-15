@@ -1,7 +1,6 @@
 import 'package:booking_calendar/booking_calendar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
@@ -168,10 +167,10 @@ class _CourtBookingCalendarViewState extends State<CourtBookingCalendarView> {
           uploadBooking: createBooking,
           hideBreakTime: true,
           loadingWidget: const Text('Fetching data...'),
-          uploadingWidget: Column(
+          uploadingWidget: const Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text(
                 'Please wait',
                 style: TextStyle(fontSize: 20),

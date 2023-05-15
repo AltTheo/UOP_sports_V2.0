@@ -10,7 +10,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:sport_test/navigation/bottom_nav.dart';
-import 'package:sport_test/settingssubscreen/manage.dart';
 import 'package:sport_test/component/member_profile.dart';
 import '../settingssubscreen/about.dart';
 import '../auth/auth_screen.dart';
@@ -106,8 +105,8 @@ class _SettingsState extends State<Settings> {
             child: ListBody(
               children: <Widget>[
                 GestureDetector(
-                  child: Row(
-                    children: const [
+                  child: const Row(
+                    children: [
                       Icon(CupertinoIcons.photo),
                       SizedBox(
                         width: 10,
@@ -124,8 +123,8 @@ class _SettingsState extends State<Settings> {
                 ),
                 const Padding(padding: EdgeInsets.all(8.0)),
                 GestureDetector(
-                  child: Row(
-                    children: const [
+                  child: const Row(
+                    children: [
                       Icon(CupertinoIcons.photo_camera),
                       SizedBox(
                         width: 10,
@@ -252,7 +251,7 @@ class _SettingsState extends State<Settings> {
             SettingItem(
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => ThemeSettingItem()));
+                      builder: (context) => const ThemeSettingItem()));
                 },
                 icons: CupertinoIcons.paintbrush,
                 title: 'App Appearance'),

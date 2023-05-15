@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../src/theme_manager.dart';
 
 class ThemeSettingItem extends StatefulWidget {
   const ThemeSettingItem({super.key});

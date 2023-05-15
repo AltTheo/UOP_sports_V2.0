@@ -59,8 +59,8 @@ class InstructionsState extends State<Instructions> {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => const SaunaBookingCalendarView()));
                 },
-                child: Row(
-                  children: const [
+                child: const Row(
+                  children: [
                     Icon(Icons.timer_sharp),
                     SizedBox(
                       width: 10.0,
