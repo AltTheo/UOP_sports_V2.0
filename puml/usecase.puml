@@ -1,0 +1,31 @@
+@startuml SportsAppUseCase
+' skinparam actorStyle awesome
+left to right direction
+actor unr as "Unregistered User" #grey
+actor reg as "Registered User" #grey
+actor Auth as "Firebase Auth" #grey
+database Data as "Cloud Firestore" #grey
+
+Package SportsApp {
+    unr --> (Register)
+    reg --> (Login)
+    (Login) .> (Authenticate user): <<include>>
+    (Display Login Error) .> (Login): <<extends>>
+    reg --> (Make Booking)
+    reg --> (View Bookings)
+    reg --> (Edit Booking)
+    reg --> (Cancel Booking)
+    reg --> (Edit profile)
+    reg --> (View update and news content)
+    reg --> (View capacity of service at the centre)
+    (Login) <--> Auth
+    (Register) <--  Auth
+    (Make Booking) --> Data
+    (Edit Booking) --> Data
+    (Cancel Booking) --> Data
+    (Edit profile) <--> Data
+    (View update and news content) <-- Data
+    (View capacity of service at the centre) <-- Data
+    (View Bookings) <-- Data
+}
+@enduml
