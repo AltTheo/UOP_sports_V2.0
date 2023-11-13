@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "906297552907",
+    "firebase_url": "https://sportsapp-login-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "sportsapp-login",
     "storage_bucket": "sportsapp-login.appspot.com"
   },
@@ -14,7 +15,23 @@
       },
       "oauth_client": [
         {
-          "client_id": "906297552907-jmkhk8s9g6a11vhf6alrc9rjs6497iur.apps.googleusercontent.com",
+          "client_id": "906297552907-0k4vgtj3pokv9627657oitdh339f7eum.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sport_test",
+            "certificate_hash": "f4b0234126a178cbd8829d3422edd142ca1d71f2"
+          }
+        },
+        {
+          "client_id": "906297552907-0qg60diounm9n5q6nrb75l6vf87kenco.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sport_test",
+            "certificate_hash": "b73ed22c9d0e6a3ad08636c36916161abd7f2413"
+          }
+        },
+        {
+          "client_id": "906297552907-qa1ua8e3qhta2tacii3go5hafurfa7gs.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

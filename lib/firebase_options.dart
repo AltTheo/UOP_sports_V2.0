@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '906297552907',
     projectId: 'sportsapp-login',
     authDomain: 'sportsapp-login.firebaseapp.com',
+    databaseURL: 'https://sportsapp-login-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'sportsapp-login.appspot.com',
   );
 
@@ -57,6 +58,7 @@ class DefaultFirebaseOptions {
     appId: '1:906297552907:android:8ba0bf489fe67bee1c970e',
     messagingSenderId: '906297552907',
     projectId: 'sportsapp-login',
+    databaseURL: 'https://sportsapp-login-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'sportsapp-login.appspot.com',
   );
 
@@ -65,7 +67,9 @@ class DefaultFirebaseOptions {
     appId: '1:906297552907:ios:fb0a024b1cdbb3101c970e',
     messagingSenderId: '906297552907',
     projectId: 'sportsapp-login',
+    databaseURL: 'https://sportsapp-login-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'sportsapp-login.appspot.com',
+    androidClientId: '906297552907-0k4vgtj3pokv9627657oitdh339f7eum.apps.googleusercontent.com',
     iosClientId: '906297552907-fe5c1km8hdsdknrpff1hl9m2ooekeda9.apps.googleusercontent.com',
     iosBundleId: 'com.example.sportTest',
   );
@@ -75,7 +79,9 @@ class DefaultFirebaseOptions {
     appId: '1:906297552907:ios:fb0a024b1cdbb3101c970e',
     messagingSenderId: '906297552907',
     projectId: 'sportsapp-login',
+    databaseURL: 'https://sportsapp-login-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'sportsapp-login.appspot.com',
+    androidClientId: '906297552907-0k4vgtj3pokv9627657oitdh339f7eum.apps.googleusercontent.com',
     iosClientId: '906297552907-fe5c1km8hdsdknrpff1hl9m2ooekeda9.apps.googleusercontent.com',
     iosBundleId: 'com.example.sportTest',
   );
