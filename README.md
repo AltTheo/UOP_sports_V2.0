@@ -1,8 +1,8 @@
-# sport_test
+# UOP sports
 
-A Flutter Project
+A Flutter mobile application project
 
-## Getting Started
+## Overview
 
 This project is an improvement to the current UoP sports app as at October 2022.
-The project is designed to show better interface design and user experience design and the importance of both in mobile application development.
+The application is designed to improve the user interface and user experience and show the importance of both in a mobile application with its benefit to a business
