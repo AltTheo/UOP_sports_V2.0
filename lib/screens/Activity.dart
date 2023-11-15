@@ -36,7 +36,7 @@ class Activity extends StatelessWidget {
                   child: Container(
                     // color: Theme.of(context).colorScheme.primary,
                     child: DigitalClock(
-                      areaHeight: 90,
+                      areaHeight: 80,
                       areaWidth: 200,
                       hourMinuteDigitTextStyle: const TextStyle(
                         fontSize: 45,

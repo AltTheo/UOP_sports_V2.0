@@ -39,6 +39,14 @@
           }
         },
         {
+          "client_id": "906297552907-u3srsgptbbvnphk4elu5kgdogvd4p425.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sport_test",
+            "certificate_hash": "e153c0508030cc72ffcad552d4d979378a4691c4"
+          }
+        },
+        {
           "client_id": "906297552907-qa1ua8e3qhta2tacii3go5hafurfa7gs.apps.googleusercontent.com",
           "client_type": 3
         }

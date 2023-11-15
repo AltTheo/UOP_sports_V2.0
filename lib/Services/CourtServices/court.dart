@@ -29,7 +29,7 @@ class CourtState extends State<Court> {
               // BOOKING CARD
               Servicegrid(
                   gridImage: Image.asset('lib/assets/images/racket.png',
-                      height: 110,
+                      height: 100,
                       width: 180,
                       gaplessPlayback: true,
                       fit: BoxFit.fill),

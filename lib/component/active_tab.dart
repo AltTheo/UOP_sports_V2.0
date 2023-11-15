@@ -46,13 +46,13 @@ class Activeitem extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            width: 80,
+            width: 50,
           ),
           const SimpleCircularProgressBar(
               mergeMode: true,
               progressStrokeWidth: 15.0,
               animationDuration: 60,
-              backStrokeWidth: 25.0,
+              backStrokeWidth: 24.0,
               fullProgressColor: Colors.red,
               progressColors: [Colors.green, Colors.orange],
               size: 100,

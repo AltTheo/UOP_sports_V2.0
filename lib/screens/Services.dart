@@ -101,7 +101,7 @@ class ServiceState extends State<Service> {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => const Court()));
                 },
-                gridtitle: 'Courts & Pitches'),
+                gridtitle: 'Courts'),
 
             //PHYSIO CARD
             Servicegrid(
