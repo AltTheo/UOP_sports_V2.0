@@ -8,6 +8,9 @@ This project is an improvement to the current UoP sports app as at October 2022.
 The application is designed to improve the user interface and user experience and show the importance of both in a mobile application with its benefit to a business
 
 # Features
+* The most important thing is the all new refreshing look of the application, better navigation around the application using a modern bottom navigation bar against having all the pages chunked in one screen.
+  placing things where people can easily navigate to them and use the entire application without needing a manual!
+
 * The application has booking functionalities at its core, providing a better user experience for users to book time slots for services at the sports centre.
   A better user interface for the booking has been put in place against the current one, This reduces clusters and provides a simple, yet effective booking system.
   Work is stil bein done on booking capacity reflections. The page is expected to show how much slots are available and the ones times that have been totally booked.
