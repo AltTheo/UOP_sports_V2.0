@@ -12,10 +12,8 @@ The application is designed to improve the user interface and user experience an
 * The most important thing is the all new refreshing look of the application, better navigation around the application using a modern bottom navigation bar against having all the pages chunked in one screen.
   placing things where people can easily navigate to them and use the entire application without needing a manual!
 
-<img src="UOP_sports_V2.0 - sreens/What's On page.png" alt="What's On" height="400">
-<img src="UOP_sports_V2.0 - sreens/Services Screen.png" alt="Services" height="400">
-<img src="UOP_sports_V2.0 - sreens/settings page.png" alt="Settings" height="400">
-<img src="UOP_sports_V2.0 - sreens/Booking page.png" alt="Booking" height="400">
+<img src="UOP_sports_V2.0 - sreens/What's On page.png" alt="What's On" height="400"> <img src="UOP_sports_V2.0 - sreens/Services Screen.png" alt="Services" height="400">
+<img src="UOP_sports_V2.0 - sreens/settings page.png" alt="Settings" height="400"> <img src="UOP_sports_V2.0 - sreens/Booking page.png" alt="Booking" height="400">
 
 
 * The application has booking functionalities at its core, providing a better user experience for users to book time slots for services at the sports centre.
