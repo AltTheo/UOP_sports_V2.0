@@ -15,7 +15,7 @@
     "dart.flutterHotReloadOnSave": "allIfDirty",
     "dart.hotReloadOnSave": "allIfDirty",
     "files.autoSave": "afterDelay",
-    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreview": true,
     "genieai.promptPrefix.addComments-enabled": true,
     "genieai.enableConversationHistory": true,
     "genieai.personalizedName": "Jarvis"
